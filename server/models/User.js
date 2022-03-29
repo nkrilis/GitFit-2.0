@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const { WorkoutPlan } = require('./WorkoutPlan');
+const  WorkoutPlan = require('./WorkoutPlan');
 
 const userSchema = new Schema({
   firstName: {
@@ -25,7 +25,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  WorkoutPlan: [WorkoutPlan.schema]
+  workout_Plan: [WorkoutPlan.schema]
 });
 
 // set up pre-save middleware to create password
