@@ -6,15 +6,15 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
+    // <BrowserRouter>
+    <Header />
 
-      <Routes>
+    /* <Routes>
         <Route path="/" element={<Home />} exact />
       </Routes>
 
       <Footer />
-    </BrowserRouter>
+    </BrowserRouter> */
   );
 }
 
