@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Excercise, WorkoutPlan  } = require('../models');
+const { User, Exercise, WorkoutPlan  } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -27,14 +27,14 @@ const resolvers = {
             return workoutPlans;
         },
         getExercise: async (_, { _id }, context) => {
-            const exercise = await Excercise.findById(_id);
+            const exercise = await Exercise.findById(_id);
             if (!exercise) {
                 throw new Error('Exercise not found');
             }
             return exercise;
         },
         getExercises: async () => {
-            const exercises = await Excercise.find();
+            const exercises = await Exercise.find();
             return exercises;
         },
         
@@ -50,7 +50,7 @@ const resolvers = {
             return workoutPlan;
         },
         createExercise: async (_, { name, description, sets, reps, muscleGroup }) => {
-            const exercise = await Excercise.create({ name, description, sets, reps, muscleGroup });
+            const exercise = await Exercise.create({ name, description, sets, reps, muscleGroup });
             return exercise;
         },
         updateUser: async (_, { _id, firstName, lastName, email, password }) => {
@@ -61,22 +61,24 @@ const resolvers = {
             return user;
         },
 
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+        // login: async (parent, { email, password }) => {
+        //     const user = await User.findOne({ email });
       
-            if (!user) {
-              throw new AuthenticationError('Incorrect credentials');
-            }
+        //     if (!user) {
+        //       throw new AuthenticationError('Incorrect credentials');
+        //     }
       
-            const correctPw = await user.isCorrectPassword(password);
+        //     const correctPw = await user.isCorrectPassword(password);
       
-            if (!correctPw) {
-              throw new AuthenticationError('Incorrect credentials');
-            }
+        //     if (!correctPw) {
+        //       throw new AuthenticationError('Incorrect credentials');
+        //     }
       
-            const token = signToken(user);
+        //     const token = signToken(user);
       
-            return { token, user };
-          }
+        //     return { token, user };
+        //   }
     }   
 };
+
+module.exports = resolvers;
