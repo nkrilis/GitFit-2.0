@@ -17,18 +17,18 @@ const resolvers = {
             return users;
         },
 
-        // getWorkoutPlan: async (_, { _id }, context) => {
-        //     const workoutPlan = await WorkoutPlan.findById(_id);
-        //     if (!workoutPlan) {
-        //         throw new Error('WorkoutPlan not found');
-        //     }
-        //     return workoutPlan;
-        // },
+        getWorkoutPlan: async (_, { _id }, context) => {
+            const workoutPlan = await WorkoutPlan.findById(_id);
+            if (!workoutPlan) {
+                throw new Error('WorkoutPlan not found');
+            }
+            return workoutPlan;
+        },
 
-        // getWorkoutPlans: async () => {
-        //     const workoutPlans = await WorkoutPlan.find();
-        //     return workoutPlans;
-        // },
+        getWorkoutPlans: async () => {
+            const workoutPlans = await WorkoutPlan.find();
+            return workoutPlans;
+        },
 
         getExercise: async (_, { _id }, context) => {
             const exercise = await Exercise.findById(_id);
@@ -52,10 +52,10 @@ const resolvers = {
             return { token, user };
         },
 
-    //    createWorkoutPlan: async (_, { title, description, type, numOfWeeks, plan }) => {
-    //         const workoutPlan = await WorkoutPlan.create({ title, description, type, numOfWeeks, plan });
-    //         return workoutPlan;
-    //     },
+       createWorkoutPlan: async (_, { title, description, type, numOfWeeks, plan }) => {
+            const workoutPlan = await WorkoutPlan.create({ title, description, type, numOfWeeks, plan });
+            return workoutPlan;
+        },
 
         createExercise: async (_, { name, description, sets, reps, muscleGroup }, context) => {
             const exercise = await Exercise.create({ name, description, sets, reps, muscleGroup });
@@ -70,13 +70,13 @@ const resolvers = {
             return user;
         },
 
-        // updateWorkoutPlan: async (_, { _id, title, description, type, weeks }, context) => {
-        //     const workoutPlan = await WorkoutPlan.findByIdAndUpdate(_id, { title, description, type, weeks }, { new: true });
-        //     if (!workoutPlan) {
-        //         throw new Error('WorkoutPlan not found');
-        //     }
-        //     return workoutPlan;
-        // },
+        updateWorkoutPlan: async (_, { _id, title, description, type, weeks }, context) => {
+            const workoutPlan = await WorkoutPlan.findByIdAndUpdate(_id, { title, description, type, weeks }, { new: true });
+            if (!workoutPlan) {
+                throw new Error('WorkoutPlan not found');
+            }
+            return workoutPlan;
+        },
 
         updateExercise: async (_, { _id, name, description, sets, reps, muscleGroup }, context) => {
             const exercise = await Exercise.findByIdAndUpdate(_id, { name, description, sets, reps, muscleGroup }, { new: true });
@@ -94,13 +94,13 @@ const resolvers = {
             return user;
         },
 
-        // deleteWorkoutPlan: async (_, { _id }, context) => {
-        //     const workoutPlan = await WorkoutPlan.findByIdAndDelete(_id);
-        //     if (!workoutPlan) {
-        //         throw new Error('WorkoutPlan not found');
-        //     }
-        //     return workoutPlan;
-        // },
+        deleteWorkoutPlan: async (_, { _id }, context) => {
+            const workoutPlan = await WorkoutPlan.findByIdAndDelete(_id);
+            if (!workoutPlan) {
+                throw new Error('WorkoutPlan not found');
+            }
+            return workoutPlan;
+        },
 
         deleteExercise: async (_, { _id }, context) => {
             const exercise = await Exercise.findByIdAndDelete(_id);
