@@ -13,8 +13,8 @@ const Header = () => {
         <Link className="inline-flex itmes-center pr-10" to="/login">
           Sign up/Log in
         </Link>
-        <Link className="inline-flex items-center pr-10" to="/account">
-          Account details
+        <Link className="inline-flex items-center pr-10" to="/workout">
+          Workouts
         </Link>
       </div>
     </header>

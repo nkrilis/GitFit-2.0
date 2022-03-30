@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Workout from "./pages/Workout";
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/login" element={<Login />} exact />
-        {/* <Route path="/" element={<Workout />} exact /> */}
+        <Route path="/workout" element={<Workout />} exact />
       </Routes>
       <Footer />
     </BrowserRouter>
