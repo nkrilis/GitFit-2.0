@@ -7,7 +7,7 @@ const Home = () => {
       <h1 className="lg:text-9xl md:text-7xl sm:text-5xl text-5xl mb-20">
         GitFit
       </h1>
-
+      
       <p className="lg:text-7xl md:text-5xl sm:text-3xl text-3xl text-teal-600 mb-20">
         Ready to start your fitness Journey?
       </p>
