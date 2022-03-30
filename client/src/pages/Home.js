@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="h-screen flex flex-col justify-center items-center">
-      <h1 className="lg:text-7xl md:text-5xl sm:text-3xl text-3xl text-teal-600 mb-20">
-        Ready to start your fitness Journey?
+      <h1 className="lg:text-9xl md:text-7xl sm:text-5xl text-5xl mb-20">
+        GitFit
       </h1>
+
+      <p className="lg:text-7xl md:text-5xl sm:text-3xl text-3xl text-teal-600 mb-20">
+        Ready to start your fitness Journey?
+      </p>
       <Link
         className="py-6 px-6 bg-orange-500 rounded-full text-2xl hover:bg-red-400 transition duration-300 ease-in-out flex items-center animate-bounce"
         to="/signup"
