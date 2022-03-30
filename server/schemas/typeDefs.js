@@ -7,7 +7,7 @@ const typeDefs = gql`
         lastName: String!
         email: String!
         password: String!
-        # WorkoutPlan: [WorkoutPlan]
+        WorkoutPlan: [WorkoutPlan]
     }
 
     type WorkoutPlan {
@@ -16,17 +16,27 @@ const typeDefs = gql`
         description: String!
         type: String!
         numOfWeeks: Int!
-        plan: [{
-            type: Object,
-            weeks: [{
-                type: Object,
-                days: [{
-                    type: String,
-                    exercises: [Exercise]
-                }]
-            }]
-        }]
+        plan: [Weeks]
        
+    }
+
+    type Weeks {
+        title: String!
+        days: [Days]
+    }
+
+    input WeeksInput {
+        days: [DaysInput]
+    }
+
+    type Days {
+        title: String!
+        exercises: [Exercise]
+    }
+
+    input DaysInput {
+        title: String!
+        exercises: [ExerciseInput]
     }
 
     type Exercise {
@@ -36,6 +46,10 @@ const typeDefs = gql`
         sets: Int!
         reps: Int!
         muscleGroup: String!
+    }
+
+    input ExerciseInput {
+        _id: ID!
     }
 
     type Query {
@@ -50,20 +64,20 @@ const typeDefs = gql`
     type Mutation {
         createUser(firstName: String!, lastName: String!, email: String!, password: String!): User
 
-        # createWorkoutPlan(title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [weeks: [days: [exercises: [Exercise]]]]): WorkoutPlan
-
+        createWorkoutPlan(title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [WeeksInput] ): WorkoutPlan
 
         createExercise(name: String!, description: String!, sets: Int!, reps: Int!, muscleGroup: String!): Exercise
 
-        updateUser(_id: ID!, firstName: String, lastName: String, email: String, password: String): User
+        updateUser(_id: ID!, firstName: String!, lastName: String!, email: String!, password: String!): User
 
         # updateWorkoutPlan(_id: ID!, title: String, description: String, type: String, numOfWeeks: Int, plan: [weeks: [days: [exercises: [Exercise]]]]): WorkoutPlan
+        updateWorkoutPlan(_id: ID!, title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [WeeksInput]): WorkoutPlan  
 
-        updateExercise(_id: ID!, name: String, description: String, sets: Int, reps: Int, muscleGroup: String): Exercise
+        updateExercise(_id: ID!, name: String!, description: String!, sets: Int!, reps: Int!, muscleGroup: String!): Exercise
 
         deleteUser(_id: ID!): User
 
-        # deleteWorkoutPlan(_id: ID!): WorkoutPlan
+        deleteWorkoutPlan(_id: ID!): WorkoutPlan
 
         deleteExercise(_id: ID!): Exercise
     }

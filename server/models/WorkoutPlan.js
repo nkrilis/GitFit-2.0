@@ -23,6 +23,7 @@ const workoutPlanSchema = new Schema({
         required: true,
         trim: true
     },
+
     
     plan: [
         {
