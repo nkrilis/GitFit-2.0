@@ -18,10 +18,17 @@ const workoutPlanSchema = new Schema({
         required: true,
         trim: true
     },
-    exercises: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Exercise'
-    }]  // reference to the exercise model
+    weeks: {
+        type: Map,
+        of: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Exercise'
+        }]
+    },
+    // exercises: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Exercise'
+    // }]  // reference to the exercise model
 
 });
 
