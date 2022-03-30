@@ -18,13 +18,41 @@ const workoutPlanSchema = new Schema({
         required: true,
         trim: true
     },
-    weeks: {
-        type: Map,
-        of: [{
-            type: Schema.Types.ObjectId,
-            ref: 'Exercise'
-        }]
+    numOfWeeks: {
+        type: Number,
+        required: true,
+        trim: true
     },
+    
+    plan: [
+        {
+            type: Object,
+            weeks: [
+                {
+                    type: Object,
+                    days: [{
+                        type: String,
+                        exercises: [{
+                            type: Schema.Types.ObjectId,
+                            ref: "Exercise"
+                        }]
+                    }]
+                }
+            ]
+        }
+    ]
+
+    
+
+    
+
+    // weeks: {
+    //     type: Map,
+    //     of: [{
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'Exercise'
+    //     }]
+    // },
     // exercises: [{
     //     type: Schema.Types.ObjectId,
     //     ref: 'Exercise'
