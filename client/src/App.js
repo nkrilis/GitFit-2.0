@@ -1,21 +1,19 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 
-function App() {
+export default function App() {
   return (
-    // <BrowserRouter>
-    <Header />
-
-    /* <Routes>
+    <BrowserRouter>
+      <Header />
+      <Routes>
         <Route path="/" element={<Home />} exact />
+        {/* <Route path="/" element={<Signup />} exact />
+        <Route path="/" element={<Workout />} exact /> */}
       </Routes>
-
       <Footer />
-    </BrowserRouter> */
+    </BrowserRouter>
   );
 }
-
-export default App;
