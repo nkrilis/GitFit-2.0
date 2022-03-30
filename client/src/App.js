@@ -6,12 +6,12 @@ import Home from "./pages/Home";
 
 export default function App() {
   return (
-    // <BrowserRouter>
-    <Header />
-    // <Routes>
-    //   <Route path="/" element={<Home />} exact />
-    // </Routes>
-    // <Footer />
-    /* </BrowserRouter> */
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} exact />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
