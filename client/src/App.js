@@ -15,7 +15,7 @@ export default function App() {
         <Route path="/" element={<Home />} exact />
         <Route path="/login" element={<Login />} exact />
         <Route path="/workout" element={<Workout />} exact />
-        <Route path="/exercise" element={<Exercise />} exact />
+        {/* <Route path="/exercise" element={<Exercise />} exact /> */}
       </Routes>
       <Footer />
     </BrowserRouter>
