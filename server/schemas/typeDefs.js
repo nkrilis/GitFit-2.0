@@ -16,26 +16,34 @@ const typeDefs = gql`
         description: String!
         type: String!
         numOfWeeks: Int!
-        plan: [Weeks]
+        plan: [Plan]
        
     }
 
-    type Weeks {
-        title: String!
-        days: [Days]
+    type Plan {
+        weeks: [Week]
     }
 
-    input WeeksInput {
-        days: [DaysInput]
+    input PlanInput {
+        weeks: [WeekInput]
     }
 
-    type Days {
-        title: String!
+
+    type Week {
+        days: [Day]
+    }
+
+    input WeekInput {
+        weekNumber: Int!
+        days: [DayInput]
+    }
+
+    type Day {
         exercises: [Exercise]
     }
 
-    input DaysInput {
-        title: String!
+    input DayInput {
+        dayOfWeek: String!
         exercises: [ExerciseInput]
     }
 
@@ -64,14 +72,14 @@ const typeDefs = gql`
     type Mutation {
         createUser(firstName: String!, lastName: String!, email: String!, password: String!): User
 
-        createWorkoutPlan(title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [WeeksInput] ): WorkoutPlan
+        createWorkoutPlan(title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [PlanInput] ): WorkoutPlan
 
         createExercise(name: String!, description: String!, sets: Int!, reps: Int!, muscleGroup: String!): Exercise
 
         updateUser(_id: ID!, firstName: String!, lastName: String!, email: String!, password: String!): User
 
         # updateWorkoutPlan(_id: ID!, title: String, description: String, type: String, numOfWeeks: Int, plan: [weeks: [days: [exercises: [Exercise]]]]): WorkoutPlan
-        updateWorkoutPlan(_id: ID!, title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [WeeksInput]): WorkoutPlan  
+        updateWorkoutPlan(_id: ID!, title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [PlanInput]): WorkoutPlan  
 
         updateExercise(_id: ID!, name: String!, description: String!, sets: Int!, reps: Int!, muscleGroup: String!): Exercise
 
