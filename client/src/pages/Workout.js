@@ -14,7 +14,9 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <Link to="/Exercise">
+              <div className="font-bold">Workout X</div>
+            </Link>
             <div className="md:flex justify-center">
               <div classNme="text-md">Sets: 3</div>
               <div className="text-md">Reps: 12</div>
@@ -51,7 +53,7 @@ const Workout = () => {
         </div>
       </div>
 
-      <div className="border-t-2"></div>
+      <div className="border-t-4"></div>
 
       <div className="mt-4 grid lg:grid-cols-3 gap-5">
         <div className="card">
