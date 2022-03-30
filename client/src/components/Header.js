@@ -10,7 +10,7 @@ const Header = () => {
         <Link className="inline-flex items-center pr-10" to="/">
           Home Page
         </Link>
-        <Link className="inline-flex itmes-center pr-10" to="/signup">
+        <Link className="inline-flex itmes-center pr-10" to="/login">
           Sign up/Log in
         </Link>
         <Link className="inline-flex items-center pr-10" to="/account">
