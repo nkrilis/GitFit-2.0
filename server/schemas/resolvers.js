@@ -17,6 +17,7 @@ const resolvers = {
             return users;
         },
 
+        // Needs to return WorkoutPlan joined with exercises
         getWorkoutPlan: async (_, { _id }, context) => {
             const workoutPlan = await WorkoutPlan.findById(_id);
             if (!workoutPlan) {
