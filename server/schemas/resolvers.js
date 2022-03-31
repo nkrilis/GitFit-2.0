@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Exercise, WorkoutPlan  } = require('../models');
+const { on } = require('../models/WorkoutPlan');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -26,10 +27,27 @@ const resolvers = {
             return workoutPlan;
         },
 
+        // get all workout plans and populate exercises where the _id is in the exercise model
         getWorkoutPlans: async () => {
-            const workoutPlans = await WorkoutPlan.find();
+            const workoutPlans = await WorkoutPlan.aggregate([
+                {
+                    $lookup: {
+                        from: 'Exercise',
+                        localField: 'plan.weeks.days.exercises._id',
+                        foreignField: '_id',
+                        as: 'exercises'
+                    }
+                }
+            ]);
             return workoutPlans;
         },
+
+
+        // getWorkoutPlans: async () => {
+        //     const workoutPlans = await WorkoutPlan.find().populate('plan.weeks.days.exercises');
+                
+        //     return workoutPlans;
+        // },
 
         getExercise: async (_, { _id }, context) => {
             const exercise = await Exercise.findById(_id);
