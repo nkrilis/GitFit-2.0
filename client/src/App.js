@@ -9,7 +9,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -50,6 +49,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/login" element={<Login />} exact />
+          <Route path="/signup" element={<Signup />} exact />
           <Route path="/workout" element={<Workout />} exact />
           <Route path="/exercise" element={<Exercise />} exact />
         </Routes>
