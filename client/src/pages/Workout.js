@@ -11,7 +11,8 @@ const Workout = () => {
     fetchPolicy: "no-cache",
   });
 
-  const exerciseList = data?.getexercisePlan || [];
+  const exerciseList = data?.getExercises || [];
+  console.log(exerciseList);
 
   return (
     <div className="container flex-col justify-center items-center bg-teal-300">
