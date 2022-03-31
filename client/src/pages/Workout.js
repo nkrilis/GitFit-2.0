@@ -2,20 +2,39 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 // import { GET_WORKOUT_PLANS } from "../utils/queries";
+import { GET_EXERCISES } from "../utils/queries";
 
 import testImage from "../assets/images/proj2.png";
 
 const Workout = () => {
-  // const { loading, data } = useQuery(GET_WORKOUT_PLANS, {
-  //   fetchPolicy: "no-cache",
-  // });
+  const { loading, data } = useQuery(GET_EXERCISES, {
+    fetchPolicy: "no-cache",
+  });
 
-  // const workoutList = data?.getWorkoutPlan || [];
+  const exerciseList = data?.getexercisePlan || [];
 
   return (
-    <container className="flex-col justify-center items-center bg-teal-300">
-      <h1 className="text-2xl">Checkout these workouts!</h1>
+    <div className="container flex-col justify-center items-center bg-teal-300">
+      <h1 className="text-2xl">Checkout these exercises!</h1>
       <div className="mt-4 grid lg:grid-cols-3 gap-5">
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <ul className="square">
+            {exerciseList.map((exercise) => {
+              return (
+                <li key={exercise._id}>
+                  <Link to={{ pathname: `/exercise/${exercise._id}` }}>
+                    {exercise.title}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+
+      {/* <div className="mt-4 grid lg:grid-cols-3 gap-5">
         <div className="card">
           <img
             src={testImage}
@@ -24,7 +43,7 @@ const Workout = () => {
           />
           <div className="m-2">
             <Link to="/Exercise">
-              <div className="font-bold">Workout X</div>
+              <div className="font-bold">exercise X</div>
             </Link>
             <div className="md:flex justify-center">
               <div classNme="text-md">Sets: 3</div>
@@ -39,7 +58,7 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div className="flex-1">
               <div classNme="text-md">Sets: 3</div>
               <div className="text-md">Reps: 12</div>
@@ -55,7 +74,7 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div classNme="text-md">Sets: 3</div>
             <div className="text-md">Reps: 12</div>
           </div>
@@ -72,7 +91,7 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div classNme="text-md">Sets: 3</div>
             <div className="text-md">Reps: 12</div>
           </div>
@@ -84,7 +103,7 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div classNme="text-md">Sets: 3</div>
             <div className="text-md">Reps: 12</div>
           </div>
@@ -96,13 +115,13 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div classNme="text-md">Sets: 3</div>
             <div className="text-md">Reps: 12</div>
           </div>
         </div>
-      </div>
-    </container>
+      </div> */}
+    </div>
   );
 };
 
