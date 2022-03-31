@@ -17,7 +17,6 @@ const typeDefs = gql`
         type: String!
         numOfWeeks: Int!
         plan: [Plan]
-       
     }
 
     type Plan {
@@ -30,6 +29,7 @@ const typeDefs = gql`
 
 
     type Week {
+        weekNumber: Int!
         days: [Day]
     }
 
@@ -39,12 +39,13 @@ const typeDefs = gql`
     }
 
     type Day {
+        dayOfWeek: String!
         exercises: [Exercise]
     }
 
     input DayInput {
         dayOfWeek: String!
-        exercises: [ExerciseInput]
+        exercises: [String]
     }
 
     type Exercise {
@@ -54,10 +55,6 @@ const typeDefs = gql`
         sets: Int!
         reps: Int!
         muscleGroup: String!
-    }
-
-    input ExerciseInput {
-        _id: ID!
     }
 
     type Query {

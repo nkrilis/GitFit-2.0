@@ -20,7 +20,9 @@ const resolvers = {
 
         // Needs to return WorkoutPlan joined with exercises
         getWorkoutPlan: async (_, { _id }, context) => {
-            const workoutPlan = await WorkoutPlan.findById(_id);
+            const workoutPlan = await WorkoutPlan.findById(_id)
+            .populate('plan.weeks.days.exercises');
+            
             if (!workoutPlan) {
                 throw new Error('WorkoutPlan not found');
             }
@@ -29,25 +31,11 @@ const resolvers = {
 
         // get all workout plans and populate exercises where the _id is in the exercise model
         getWorkoutPlans: async () => {
-            const workoutPlans = await WorkoutPlan.aggregate([
-                {
-                    $lookup: {
-                        from: 'Exercise',
-                        localField: 'plan.weeks.days.exercises._id',
-                        foreignField: '_id',
-                        as: 'exercises'
-                    }
-                }
-            ]);
+            const workoutPlans = await WorkoutPlan.find()
+            .populate('plan.weeks.days.exercises');
+
             return workoutPlans;
         },
-
-
-        // getWorkoutPlans: async () => {
-        //     const workoutPlans = await WorkoutPlan.find().populate('plan.weeks.days.exercises');
-                
-        //     return workoutPlans;
-        // },
 
         getExercise: async (_, { _id }, context) => {
             const exercise = await Exercise.findById(_id);

@@ -24,15 +24,14 @@ const workoutPlanSchema = new Schema({
         trim: true
     },
 
-    
     plan: [
         {
-            type: Object,
+           
             weeks: [
                 {
-                    type: Object,
+                    weekNumber: Number,
                     days: [{
-                        type: String,
+                        dayOfWeek: String,
                         exercises: [{
                             type: Schema.Types.ObjectId,
                             ref: "Exercise"
