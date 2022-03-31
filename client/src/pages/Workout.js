@@ -10,11 +10,13 @@ const Workout = () => {
   //   fetchPolicy: "no-cache",
   // });
 
-  // const workoutList = data?.getWorkoutPlan || [];
+  // const exerciseList = data?.getWorkoutPlans || [];
+  // console.log(exerciseList);
 
   return (
-    <container className="flex-col justify-center items-center bg-teal-300">
+    <div className="container flex-col justify-center items-center bg-teal-300">
       <h1 className="text-2xl">Checkout these workouts!</h1>
+
       <div className="mt-4 grid lg:grid-cols-3 gap-5">
         <div className="card">
           <img
@@ -24,7 +26,7 @@ const Workout = () => {
           />
           <div className="m-2">
             <Link to="/Exercise">
-              <div className="font-bold">Workout X</div>
+              <div className="font-bold">exercise X</div>
             </Link>
             <div className="md:flex justify-center">
               <div classNme="text-md">Sets: 3</div>
@@ -39,7 +41,7 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div className="flex-1">
               <div classNme="text-md">Sets: 3</div>
               <div className="text-md">Reps: 12</div>
@@ -55,7 +57,7 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div classNme="text-md">Sets: 3</div>
             <div className="text-md">Reps: 12</div>
           </div>
@@ -72,7 +74,7 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div classNme="text-md">Sets: 3</div>
             <div className="text-md">Reps: 12</div>
           </div>
@@ -84,7 +86,7 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div classNme="text-md">Sets: 3</div>
             <div className="text-md">Reps: 12</div>
           </div>
@@ -96,13 +98,13 @@ const Workout = () => {
             className="w-full h-44 object-cover"
           />
           <div className="m-2">
-            <div className="font-bold">Workout X</div>
+            <div className="font-bold">exercise X</div>
             <div classNme="text-md">Sets: 3</div>
             <div className="text-md">Reps: 12</div>
           </div>
         </div>
       </div>
-    </container>
+    </div>
   );
 };
 
