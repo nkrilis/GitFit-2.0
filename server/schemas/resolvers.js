@@ -53,23 +53,23 @@ const resolvers = {
     },
     Mutation : {
 
-        createUser: async (_, { firstName, lastName, email, password }) => {
+        createUser: async (parent,{ firstName, lastName, email, password }) => {
             const user = await User.create({ firstName, lastName, email, password });
-            const token = signToken(user._id);
+            const token = signToken(user);
             return { token, user };
         },
 
-       createWorkoutPlan: async (_, { title, description, type, numOfWeeks, plan }) => {
+       createWorkoutPlan: async (parent, { title, description, type, numOfWeeks, plan }) => {
             const workoutPlan = await WorkoutPlan.create({ title, description, type, numOfWeeks, plan });
             return workoutPlan;
         },
 
-        createExercise: async (_, { name, description, sets, reps, muscleGroup }, context) => {
+        createExercise: async (parent, { name, description, sets, reps, muscleGroup }, context) => {
             const exercise = await Exercise.create({ name, description, sets, reps, muscleGroup });
             return exercise;
         },
 
-        updateUser: async (_, { _id, firstName, lastName, email, password }, context) => {
+        updateUser: async (parent, { _id, firstName, lastName, email, password }, context) => {
             const user = await User.findByIdAndUpdate(_id, { firstName, lastName, email, password }, { new: true });
             if (!user) {
                 throw new Error('User not found');
@@ -77,7 +77,7 @@ const resolvers = {
             return user;
         },
 
-        updateWorkoutPlan: async (_, { _id, title, description, type, weeks }, context) => {
+        updateWorkoutPlan: async (parent, { _id, title, description, type, weeks }, context) => {
             const workoutPlan = await WorkoutPlan.findByIdAndUpdate(_id, { title, description, type, weeks }, { new: true });
             if (!workoutPlan) {
                 throw new Error('WorkoutPlan not found');
@@ -85,7 +85,7 @@ const resolvers = {
             return workoutPlan;
         },
 
-        updateExercise: async (_, { _id, name, description, sets, reps, muscleGroup }, context) => {
+        updateExercise: async (parent, { _id, name, description, sets, reps, muscleGroup }, context) => {
             const exercise = await Exercise.findByIdAndUpdate(_id, { name, description, sets, reps, muscleGroup }, { new: true });
             if (!exercise) {
                 throw new Error('Exercise not found');
@@ -93,7 +93,7 @@ const resolvers = {
             return exercise;
         },
 
-        deleteUser: async (_, { _id }, context) => {
+        deleteUser: async (parent, { _id }, context) => {
             const user = await User.findByIdAndDelete(_id);
             if (!user) {
                 throw new Error('User not found');
@@ -101,7 +101,7 @@ const resolvers = {
             return user;
         },
 
-        deleteWorkoutPlan: async (_, { _id }, context) => {
+        deleteWorkoutPlan: async (parent, { _id }, context) => {
             const workoutPlan = await WorkoutPlan.findByIdAndDelete(_id);
             if (!workoutPlan) {
                 throw new Error('WorkoutPlan not found');
@@ -109,31 +109,31 @@ const resolvers = {
             return workoutPlan;
         },
 
-        deleteExercise: async (_, { _id }, context) => {
+        deleteExercise: async (parent, { _id }, context) => {
             const exercise = await Exercise.findByIdAndDelete(_id);
             if (!exercise) {
                 throw new Error('Exercise not found');
             }
             return exercise;
         },
-
-        // login: async (parent, { email, password }) => {
-        //     const user = await User.findOne({ email });
+          
+          login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
       
-        //     if (!user) {
-        //       throw new AuthenticationError('Incorrect credentials');
-        //     }
+            if (!user) {
+              throw new AuthenticationError('No user found with this email address');
+            }
       
-        //     const correctPw = await user.isCorrectPassword(password);
+            const correctPw = await user.isCorrectPassword(password);
       
-        //     if (!correctPw) {
-        //       throw new AuthenticationError('Incorrect credentials');
-        //     }
+            if (!correctPw) {
+              throw new AuthenticationError('Incorrect credentials');
+            }
       
-        //     const token = signToken(user);
+            const token = signToken(user);
       
-        //     return { token, user };
-        //   }   
+            return { token, user };
+          },
     },
 };
 
