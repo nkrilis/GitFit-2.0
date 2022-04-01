@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_EXERCISES } from "../utils/queries";
+
+const chars = [
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()_+-=[]{}|;:",
+];
+
+const generator = () => {
+  let result = " ";
+  const charactersLength = chars.length;
+  for (let i = 0; i < 15; i++) {
+    i++;
+    result += Math.random().toString(36).substring(2, 6);
+  }
+
+  return result;
+};
 
 const CreateWorkout = () => {
   const { loading, data } = useQuery(GET_EXERCISES, {
@@ -10,6 +25,28 @@ const CreateWorkout = () => {
 
   const exerciseList = data?.getExercises || [];
   console.log(exerciseList);
+
+  const [quantityExercise, setQuantity] = useState([{ id: generator() }]);
+
+  //   useEffect(() => {
+  //     document.title = quantityExercise;
+  //   });
+
+  const addExercise = () => {
+    setQuantity([
+      ...quantityExercise,
+      {
+        id: generator(),
+      },
+    ]);
+    console.log(quantityExercise);
+  };
+
+  const removeExercise = (e) => {
+    let i = e.target.getAttribute("data-id");
+    setQuantity(quantityExercise.filter((items) => items.id !== i));
+    console.log(i);
+  };
 
   return (
     <div className="container w-full">
@@ -68,44 +105,66 @@ const CreateWorkout = () => {
               <th>Exercise</th>
               <th>Sets</th>
               <th>Reps</th>
+              <th>
+                <button
+                  className="bg-red-500"
+                  type="button"
+                  onClick={addExercise}
+                >
+                  Add another exercise
+                </button>
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <select
-                  className="form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                  aria-label="exercise"
-                >
-                  {exerciseList.map((exercise) => {
-                    return (
-                      <option value={exercise._id} key={exercise._id}>
-                        {exercise.name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </td>
-              <td>
-                <input
-                  className=""
-                  id="sets"
-                  type="number"
-                  placeholder="1"
-                ></input>
-              </td>
-              <td>
-                <input
-                  className=""
-                  id="reps"
-                  type="number"
-                  placeholder="1"
-                ></input>
-              </td>
-            </tr>
+            {quantityExercise.map((row) => {
+              return (
+                <tr>
+                  <td key={row.id}>
+                    <select
+                      className="form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      aria-label="exercise"
+                    >
+                      {exerciseList.map((exercise) => {
+                        return (
+                          <option value={exercise._id} key={exercise._id}>
+                            {exercise.name}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      className=""
+                      id="sets"
+                      type="number"
+                      placeholder="1"
+                    ></input>
+                  </td>
+                  <td>
+                    <input
+                      className=""
+                      id="reps"
+                      type="number"
+                      placeholder="1"
+                    ></input>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      data-id={row.id}
+                      onClick={removeExercise}
+                    >
+                      Remove exercise
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
-
+        <br></br>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
