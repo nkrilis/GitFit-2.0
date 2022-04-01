@@ -24,6 +24,16 @@ const CreateWorkout = () => {
 
   const [quantityExercise, setQuantity] = useState([{ id: generator() }]);
 
+  const [workoutValue, setWorkout] = useState({
+    name: "BACK SQUAT",
+    description:
+      "SIT BACK AND DOWN, 15° TOE FLARE, DRIVE YOUR KNEES OUT LATERALLY",
+    sets: 4,
+    reps: 5,
+  });
+
+  const [inputValue, setInputValue] = useState(1);
+
   //   useEffect(() => {
   //     document.title = quantityExercise;
   //   });
@@ -36,7 +46,7 @@ const CreateWorkout = () => {
         id: generator(),
       },
     ]);
-    console.log(quantityExercise);
+    console.log(workoutValue);
   };
 
   //when exercise is clicked to be removed it is filtered out, if it is the last object in the array then a new blank object is created
@@ -44,6 +54,7 @@ const CreateWorkout = () => {
     let i = e.target.getAttribute("data-id");
     setQuantity(quantityExercise.filter((items) => items.id !== i));
     console.log(i);
+    console.log(workoutValue);
 
     if (quantityExercise.length === 1) {
       setQuantity([
@@ -54,10 +65,20 @@ const CreateWorkout = () => {
     }
   };
 
-  const [inputValue, setInputValue] = useState("");
-
   const weekHandler = (event) => {
     setInputValue(event.target.value);
+  };
+
+  const updateRow = () => {
+    const x = document.querySelector("#option");
+    setWorkout({
+      ...workoutValue,
+      name: x.getAttribute("name"),
+      description: x.getAttribute("description"),
+      sets: x.getAttribute("sets"),
+      reps: x.getAttribute("reps"),
+    });
+    console.log(workoutValue);
   };
 
   return (
@@ -117,6 +138,7 @@ const CreateWorkout = () => {
           <thead>
             <tr>
               <th>Exercise</th>
+              <th>Description</th>
               <th>Sets</th>
               <th>Reps</th>
               <th>
@@ -136,12 +158,24 @@ const CreateWorkout = () => {
                 <tr key={row.id}>
                   <td>
                     <select
+                      id={row.id}
+                      // value={workoutValue}
+                      onChange={updateRow}
                       className="form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       aria-label="exercise"
                     >
                       {exerciseList.map((exercise) => {
                         return (
-                          <option value={exercise._id} key={exercise._id}>
+                          <option
+                            id="option"
+                            data-id={row.id}
+                            name={exercise.name}
+                            sets={exercise.sets}
+                            reps={exercise.reps}
+                            description={exercise.description}
+                            key={exercise._id}
+                            value={exercise.name}
+                          >
                             {exercise.name}
                           </option>
                         );
@@ -149,20 +183,13 @@ const CreateWorkout = () => {
                     </select>
                   </td>
                   <td>
-                    <input
-                      className=""
-                      id="sets"
-                      type="number"
-                      placeholder="1"
-                    ></input>
+                    <p id="description">{workoutValue.description}</p>
                   </td>
                   <td>
-                    <input
-                      className=""
-                      id="reps"
-                      type="number"
-                      placeholder="1"
-                    ></input>
+                    <p id="sets">{workoutValue.sets}</p>
+                  </td>
+                  <td>
+                    <p id="reps">{workoutValue.reps}</p>
                   </td>
                   <td>
                     <button

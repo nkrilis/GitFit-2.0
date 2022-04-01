@@ -49,44 +49,46 @@ import { gql } from "@apollo/client";
 //   }
 // `;
 
-// export const GET_WORKOUT_PLANS = gql`
-//   query getWorkoutPlans {
-//     getWorkoutPlan {
-//       _id
-//       title
-//       description
-//       type
-//       numOfWeeks
-//       plan {
-//         weeks {
-//           days {
-//             exercise {
-//               _id
-//               name
-//               description
-//               sets
-//               reps
-//               muscleGroup
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+export const GET_WORKOUT_PLANS = gql`
+  query GetWorkoutPlans {
+    getWorkoutPlans {
+      _id
+      title
+      description
+      type
+      numOfWeeks
+      plan {
+        weeks {
+          weekNumber
+          days {
+            dayOfWeek
+            exercises {
+              _id
+              description
+              name
+              reps
+              sets
+              muscleGroup
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
-// export const GET_EXERCISE = gql`
-//   query getExercise($_id: String) {
-//     getExercise(_id: $_id) {
-//       _id
-//       name
-//       description
-//       sets
-//       reps
-//       muscleGroup
-//     }
-//   }
-// `;
+export const GET_EXERCISE = gql`
+  query getExercise($_id: String) {
+    getExercise(_id: $_id) {
+      _id
+      name
+      description
+      sets
+      reps
+      muscleGroup
+    }
+  }
+`;
 
 export const GET_EXERCISES = gql`
   query GetExercises {
