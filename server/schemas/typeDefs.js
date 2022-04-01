@@ -57,6 +57,11 @@ const typeDefs = gql`
         muscleGroup: String!
     }
 
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     type Query {
         getUser(_id: ID!): User
         getUsers: [User]
