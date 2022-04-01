@@ -13,7 +13,7 @@ const Signup = () => {
     password: '',
   });
 
-  const [addUser, { error, data }] = useMutation(CREATE_USER);
+  const [createUser, { error, data }] = useMutation(CREATE_USER);
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -28,11 +28,11 @@ const Signup = () => {
     console.log(formState);
 
     try {
-      const { data } = await addUser({
+      const { data } = await createUser({
         variables: { ...formState },
       });
 
-      Auth.login(data.addUser.token);
+      Auth.login(data.createUser.token);
     } catch (e) {
       console.error(e);
     }
