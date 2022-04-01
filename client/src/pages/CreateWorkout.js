@@ -3,21 +3,17 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_EXERCISES } from "../utils/queries";
 
-const chars = [
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()_+-=[]{}|;:",
-];
-
+// generates a random string id to be attached to each new document/row added
 const generator = () => {
   let result = " ";
-  const charactersLength = chars.length;
   for (let i = 0; i < 15; i++) {
     i++;
     result += Math.random().toString(36).substring(2, 6);
   }
-
   return result;
 };
 
+// grabs the exercises to be used in drop down menu
 const CreateWorkout = () => {
   const { loading, data } = useQuery(GET_EXERCISES, {
     fetchPolicy: "no-cache",
@@ -32,6 +28,7 @@ const CreateWorkout = () => {
   //     document.title = quantityExercise;
   //   });
 
+  // when add an exercise is clicked another id is created and added to the array
   const addExercise = () => {
     setQuantity([
       ...quantityExercise,
@@ -42,10 +39,25 @@ const CreateWorkout = () => {
     console.log(quantityExercise);
   };
 
+  //when exercise is clicked to be removed it is filtered out, if it is the last object in the array then a new blank object is created
   const removeExercise = (e) => {
     let i = e.target.getAttribute("data-id");
     setQuantity(quantityExercise.filter((items) => items.id !== i));
     console.log(i);
+
+    if (quantityExercise.length === 1) {
+      setQuantity([
+        {
+          id: generator(),
+        },
+      ]);
+    }
+  };
+
+  const [inputValue, setInputValue] = useState("");
+
+  const weekHandler = (event) => {
+    setInputValue(event.target.value);
   };
 
   return (
@@ -87,6 +99,8 @@ const CreateWorkout = () => {
             id="numOfWeeks"
             type="number"
             placeholder="1"
+            onChange={weekHandler}
+            value={inputValue}
           />
           <label className="bg-teal-300" htmlFor="days">
             Number of workout days each week:
@@ -119,8 +133,8 @@ const CreateWorkout = () => {
           <tbody>
             {quantityExercise.map((row) => {
               return (
-                <tr>
-                  <td key={row.id}>
+                <tr key={row.id}>
+                  <td>
                     <select
                       className="form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       aria-label="exercise"
