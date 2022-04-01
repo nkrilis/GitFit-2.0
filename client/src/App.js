@@ -23,7 +23,7 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
+  const token = localStorage.getItem('id_token');
   return {
     headers: {
       ...headers,
@@ -43,7 +43,7 @@ export default function App() {
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Header />
-        <Routes>
+        <Routes >
           <Route path="/" element={<Home />} exact />
           <Route path="/login" element={<Login />} exact />
           <Route path="/signup" element={<Signup />} exact />

@@ -30,7 +30,7 @@ const resolvers = {
         },
 
         // get all workout plans and populate exercises where the _id is in the exercise model
-        getWorkoutPlans: async () => {
+        getWorkoutPlans: async (_, __, context) => {
             const workoutPlans = await WorkoutPlan.find()
             .populate('plan.weeks.days.exercises');
 
@@ -38,6 +38,9 @@ const resolvers = {
         },
 
         getExercise: async (_, { _id }, context) => {
+
+            console.log(`${_id}  context: ${context}`);
+
             const exercise = await Exercise.findById(_id);
             if (!exercise) {
                 throw new Error('Exercise not found');
@@ -45,9 +48,15 @@ const resolvers = {
             return exercise;
         },
 
-        getExercises: async () => {
-            const exercises = await Exercise.find();
-            return exercises;
+        getExercises: async (_, __, context) => {
+            console.log(context.user);
+            if (!context.user) {
+                return [];
+            }
+            else{
+                const exercises = await Exercise.find();
+                return exercises;
+            }
         },
         
     },
