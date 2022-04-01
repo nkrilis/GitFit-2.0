@@ -22,6 +22,7 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log('***********************************')
     console.log(formState);
     try {
       const { data } = await login({
@@ -46,6 +47,12 @@ const Login = (props) => {
         <div className="px-6 flex items-center justify-center bg-gray-100"></div>
             <div className="px-8 py-3 mt-4 text-left"></div>
                 <h3 className="text-2xl font-bold text-center">Login to your account</h3>
+                {data ? (
+              <p>
+                Success! You may now head{' '}
+                <Link to="/exercise">back to the homepage.</Link>
+              </p>
+            ) : (
                 <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input items-center w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
@@ -71,6 +78,15 @@ const Login = (props) => {
                   Login
                 </button>
               </form>
+
+          )}
+
+          {error && (
+            <div className="my-3 p-3 bg-danger text-white">
+              {error.message}
+            </div>
+          )}
+
         <div className="flex items-baseline justify-between">
             <button className="px-4 text-sm text-blue-600 hover:underline">Forgot password?</button>
         </div>

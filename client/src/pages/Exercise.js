@@ -5,7 +5,7 @@ import { GET_EXERCISES } from "../utils/queries";
 
 const Exercise = () => {
   const { loading, data } = useQuery(GET_EXERCISES, {
-    fetchPolicy: "no-cache",
+    fetchPolicy: "cache-first",
   });
 
   const exerciseList = data?.getExercises || [];
