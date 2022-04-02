@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // Get user by username
 export const QUERY_USER = gql`
@@ -66,8 +66,8 @@ export const GET_EXERCISES = gql`
 
 // Get exercise by id
 export const GET_EXERCISE = gql`
-  query GetExercise($id: ID!) {
-    getExercise(id: $id) {
+  query GetExercise($_id: ID!) {
+    getExercise(_id: $_id) {
       _id
       name
       description

@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 import Exercise from "./pages/Exercise";
 import Login from "./pages/Login";
 import SingleWorkout from "./pages/SingleWorkout";
+import SingleExercise from "./pages/SingleExercise";
 import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -55,9 +56,8 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/me" element={<Profile />} />
               <Route path="/workoutplan/:_id" element={<SingleWorkout />} />
-
+              <Route path="/exercise/:_id" element={<SingleExercise />} />
               <Route path="/exercise" element={<Exercise />} />
-
               <Route path="/workoutplan" element={<Workout />} />
             </Routes>
           </div>
