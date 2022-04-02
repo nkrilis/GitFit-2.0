@@ -6,11 +6,26 @@ const resolvers = {
   Query: {
     
     users: async () => {
-      return User.find().populate('workoutPlan');
+      // find all users and populate their workout plans and exercises
+      const users = await User.find({}).populate({
+        path: 'workoutPlan',
+        populate: {
+          path: 'plan.weeks.days.exercises',
+          model: 'Exercise'
+        }
+      });
+      return users;
     },
 
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('workoutPlan');
+      const users = User.findOne({ username }).populate({
+        path: 'workoutPlan',
+        populate: {
+          path: 'plan.weeks.days.exercises',
+          model: 'Exercise'
+        }
+      });
+      return users;
     },
 
     me: async (parent, args, context) => {
@@ -111,13 +126,33 @@ const resolvers = {
         return workoutPlan;
     },
 
-    addPlanToUser: async (parent, { _id }, context) => {
-      const user = await User.findByIdAndUpdate(context.user._id, { workoutPlan: _id }, { new: true });
-      if (!user) {
-          throw new Error('User not found');
-      }
-      return user;
+    // add workout plan to user
+    addWorkoutPlanToUser: async (parent, { _id, workoutPlan }, context) => {
+        const user = await User.findByIdAndUpdate(_id, { $push: { workoutPlan } }, { new: true });
+        if (!user) {
+            throw new Error('User not found');
+        }
+        return user;
+    },
+
+    // remove workout plan from user
+    removeWorkoutPlanFromUser: async (parent, { _id, workoutPlan }, context) => {
+        const user = await User.findByIdAndUpdate(_id, { $pull: { workoutPlan } }, { new: true });
+        if (!user) {
+            throw new Error('User not found');
+        }
+        return user;
+    },
+
+    // Add an exercise to a workout plan in the specified week and day
+    addExerciseToWorkoutPlan: async (parent, { _id, week, day, exercise }, context) => {
+        const workoutPlan = await WorkoutPlan.findByIdAndUpdate(_id, { $push: { 'plan.weeks.$.days.$.exercises': exercise } }, { new: true });
+        if (!workoutPlan) {
+            throw new Error('WorkoutPlan not found');
+        }
+        return workoutPlan;
     }
+
 
     
   },

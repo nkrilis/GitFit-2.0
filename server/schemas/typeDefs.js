@@ -84,7 +84,15 @@ const typeDefs = gql`
 
         deleteWorkoutPlan(_id: ID!): WorkoutPlan
 
-        addPlanToUser(username: String!, _id: ID!): User
+        # Add a workout plan to a user
+        addWorkoutPlanToUser(_id: ID!, workoutPlan: ID!): User
+
+        # Add an exercise to a workout plan in the specified week and day
+        addExerciseToWorkoutPlan(_id: ID!, weekNumber: Int!, dayOfWeek: String!, exercise: ID!): WorkoutPlan
+
+        # Remove a workout plan from a user
+        removeWorkoutPlanFromUser(_id: ID!, workoutPlan: ID!): User
+
 
     }
 `;
