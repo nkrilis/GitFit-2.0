@@ -22,11 +22,12 @@ const SingleWorkout = () => {
     <div className="justify-center bg-teal-300">
       <h1 className="text-2xl text-center">{workout.title}</h1>
       <div key={workout._id} className="bg-teal-200 w-full">
-        <h1 className="grid grid-cols-2 text-center mx-auto">
+        <div className="grid grid-flow-col text-center mx-auto">
           <div className="px-5">Workout type: {workout.type}</div>
           <div className="px-5 pb-2">Number of weeks: {workout.numOfWeeks}</div>
-        </h1>
-        <p>{workout.description}</p>
+        </div>
+        <div className="px-5 pb-2">{workout.description}</div>
+
         <br></br>
         {workout.plan[0].weeks.map((week) => {
           return (
@@ -38,7 +39,7 @@ const SingleWorkout = () => {
               {week.days.map((day) => {
                 return (
                   <div key={day.dayOfWeek}>
-                    <h1>{day.dayOfWeek}</h1>
+                    <h1 className="font-bold">{day.dayOfWeek}</h1>
                     <table className="w-full bg-gray-200 border border-black">
                       <thead>
                         <tr>
@@ -68,7 +69,11 @@ const SingleWorkout = () => {
                             className="border border-black"
                           >
                             <tr>
-                              <td>{exercise.name}</td>
+                              <td>
+                                <Link to={`/exercise/${exercise._id}`}>
+                                  {exercise.name}
+                                </Link>
+                              </td>
                               <td className="text-center border border-black">
                                 {exercise.sets}
                               </td>

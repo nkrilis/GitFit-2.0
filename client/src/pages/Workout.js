@@ -11,7 +11,6 @@ const Workout = () => {
   });
 
   const workoutList = data?.getWorkoutPlans || [];
-  console.log(workoutList);
 
   return (
     <div className="justify-center bg-teal-300">
