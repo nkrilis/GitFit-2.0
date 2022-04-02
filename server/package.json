@@ -14,10 +14,13 @@
   "dependencies": {
     "apollo-server-express": "^3.6.2",
     "bcrypt": "^4.0.1",
+    "code-point-at": "^2.0.0",
     "express": "^4.17.2",
     "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.8"
+    "mongoose": "^6.1.8",
+    "node-pre-gyp": "^0.17.0",
+    "number-is-nan": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
