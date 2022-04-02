@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
+const { Schema, model } = require('mongoose');
 
 const workoutPlanSchema = new Schema({
     title: {
@@ -26,7 +24,6 @@ const workoutPlanSchema = new Schema({
 
     plan: [
         {
-           
             weeks: [
                 {
                     weekNumber: Number,
@@ -42,24 +39,8 @@ const workoutPlanSchema = new Schema({
         }
     ]
 
-    
-
-    
-
-    // weeks: {
-    //     type: Map,
-    //     of: [{
-    //         type: Schema.Types.ObjectId,
-    //         ref: 'Exercise'
-    //     }]
-    // },
-    // exercises: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Exercise'
-    // }]  // reference to the exercise model
-
 });
 
-const WorkoutPlan = mongoose.model('WorkoutPlan', workoutPlanSchema);
+const WorkoutPlan = model('WorkoutPlan', workoutPlanSchema);
 
 module.exports = WorkoutPlan;
