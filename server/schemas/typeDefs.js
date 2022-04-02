@@ -73,15 +73,23 @@ const typeDefs = gql`
     }
 
     type Mutation {
+
+        # Create a new user
         addUser(username: String!, email: String!, password: String!): Auth
+
+        # Login
         login(email: String!, password: String!): Auth
         
+        # Create a new workout plan
         createWorkoutPlan(title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [PlanInput] ): WorkoutPlan
 
+        # Create a new exercise
         createExercise(name: String!, description: String!, sets: Int!, reps: Int!, muscleGroup: String!): Exercise
 
+        # Update a workout plan
         updateWorkoutPlan(_id: ID!, title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [PlanInput]): WorkoutPlan
 
+        # Delete a workout plan
         deleteWorkoutPlan(_id: ID!): WorkoutPlan
 
         # Add a workout plan to a user
@@ -92,7 +100,6 @@ const typeDefs = gql`
 
         # Remove a workout plan from a user
         removeWorkoutPlanFromUser(_id: ID!, workoutPlan: ID!): User
-
 
     }
 `;
