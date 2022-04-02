@@ -446,6 +446,22 @@
         "sets": 3,
         "reps": 20,
         "muscleGroup": "Tricep"
+    },
+    {
+        "_id": 57,
+        "name": "AB WHEEL ROLLOUT",
+        "description": "KEEP YOUR PELVIS POSTERIORLY TILTED (SQUEEZE YOUR GLUTES), CUT THE ROM SHORT IF YOU CAN'T MAINTAIN THIS POSITION",
+        "sets": 3,
+        "reps": 6,
+        "muscleGroup": "Abdominals"
+    },
+    {
+        "_id": 58,
+        "name": "BICYCLE CRUNCH",
+        "description": "OPPOSITE KNEE TO ELBOW, FOCUS ON FLEXING YOUR SPINE",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Abdominals"
     }
 ]
 
