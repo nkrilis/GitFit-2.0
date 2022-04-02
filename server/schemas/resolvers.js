@@ -76,7 +76,7 @@ const resolvers = {
 
     // Query all exercises
     getExercises: async (parent, args, context) => {
-      if (context.user) {
+      if (!context.user) {
         return Exercise.find();
       }
       throw new AuthenticationError('You need to be logged in!');
