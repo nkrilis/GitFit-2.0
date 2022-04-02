@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const workoutPlanSchema = new Schema({
+    _id: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
@@ -30,7 +34,7 @@ const workoutPlanSchema = new Schema({
                     days: [{
                         dayOfWeek: String,
                         exercises: [{
-                            type: Schema.Types.ObjectId,
+                            type: String,
                             ref: "Exercise"
                         }]
                     }]

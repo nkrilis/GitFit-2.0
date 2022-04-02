@@ -1,5 +1,6 @@
 [
     {
+        "_id": 1,
         "name": "BACK SQUAT",
         "description": "SIT BACK AND DOWN, 15° TOE FLARE, DRIVE YOUR KNEES OUT LATERALLY",
         "sets": 4,
@@ -7,6 +8,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 2,
         "name": "DEADLIFT",
         "description": "BRACE YOUR LATS, CHEST TALL, HIPS HIGH, PULL THE SLACK OUT OF THE BAR PRIOR TO MOVING IT OFF THE GROUND",
         "sets": 2,
@@ -14,6 +16,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 3,
         "name": "BARBELL HIP THRUST",
         "description": "TUCK YOUR CHIN AND RIB CAGE DOWN, ONLY MOVE YOUR HIPS. USE A PAD",
         "sets": 3,
@@ -21,6 +24,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 4,
         "name": "DUMBBELL WALKING LUNGE",
         "description": "TAKE MEDIUM STRIDES, MINIMIZE THE AMOUNT YOU PUSH OFF YOUR REAR LEG (Reps are per leg)",
         "sets": 2,
@@ -28,6 +32,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 5,
         "name": "LEG EXTENSION",
         "description": "FOCUS ON SQUEEZING YOUR QUADS TO MOVE THE WEIGHT",
         "sets": 3,
@@ -35,6 +40,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 6,
         "name": "SEATED LEG CURL",
         "description": "FOCUS ON SQUEEZING YOUR HAMSTRINGS TO MOVE THE WEIGHT",
         "sets": 3,
@@ -42,6 +48,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 7,
         "name": "STANDING CALF RAISE",
         "description": "PRESS ALL THE WAY UP TO YOUR TOES, STRETCH YOUR CALVES AT THE TO BOTTOM, DON'T BOUNCE",
         "sets": 3,
@@ -49,6 +56,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 8,
         "name": "FRONT SQUAT",
         "description": "SIT DOWN, 15° TOE FLARE, DRIVE YOUR KNEES OUT LATERALLY",
         "sets": 3,
@@ -56,6 +64,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 9,
         "name": "CABLE PULL THROUGH",
         "description": "FOCUS ON ANTERIORLY TILTING YOUR PELVIS DURING THE ECCENTRIC, POSTERIORLY DURING THE CONCENTRIC",
         "sets": 3,
@@ -63,6 +72,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 10,
         "name": "SINGLE-LEG LEG PRESS",
         "description": "HIGH FOOT PLACEMENT",
         "sets": 3,
@@ -70,6 +80,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 11,
         "name": "SINGLE-LEG LEG EXTENSION",
         "description": "START WITH YOUR WEAKER LEG, FOCUS ON SQUEEZING YOUR QUADS TO MOVE THE WEIGHT",
         "sets": 3,
@@ -77,6 +88,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 12,
         "name": "SWISS BALL SINGLE-LEG LEG CURL",
         "description": "START WITH YOUR WEAKER LEG, PREVENT YOUR HIPS FROM TOUCH THE GROUND",
         "sets": 3,
@@ -84,6 +96,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 13,
         "name": "ROMANIAN DEADLIFT",
         "description": "FOCUS ON KEEPING YOUR SPINE NEUTRAL, ANTERIOR PELVIC TILT DURING THE ECCENTRIC",
         "sets": 3,
@@ -91,6 +104,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 14,
         "name": "PAUSE BARBELL HIP THRUST",
         "description": "3-SECOND PAUSE. TUCK YOUR CHIN AND RIB CAGE DOWN, ONLY MOVE YOUR HIPS. USE A PAD",
         "sets": 2,
@@ -98,6 +112,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 15,
         "name": "SLOW ECCENTRIC GOBLET SQUAT",
         "description": "3-SECOND LOWERING PHASE. SIT DOWN, KNEES OUT, TORSO UPRIGHT (PER LEG)",
         "sets": 2,
@@ -105,6 +120,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 16,
         "name": "CABLE ROPE PULLTHROUGH",
         "description": "FOCUS ON SQUEEZING YOUR GLUTES TO MOVE THE WEIGHT",
         "sets": 2,
@@ -112,6 +128,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 17,
         "name": "SMITH MACHINE REVERSE LUNGE",
         "description": "SIT BACK, START WITH YOUR WEAKER LEG",
         "sets": 2,
@@ -119,6 +136,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 18,
         "name": "ENHANCED-ECCENTRIC LYING LEG CURL",
         "description": "HAVE A TRAINING PARTNER PUSH DOWN ON THE PAD DURING THE ECCENTRIC",
         "sets": 2,
@@ -126,6 +144,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 19,
         "name": "ENHANCED-ECCENTRIC LEG EXTENSION",
         "description": "HAVE A TRAINING PARTNER PUSH DOWN ON THE PAD DURING THE ECCENTRIC",
         "sets": 2,
@@ -133,6 +152,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 20,
         "name": "LATERAL BAND WALK",
         "description": "OR MACHINE HIP ABDUCTION, FOCUS ON DRIVING YOUR KNEES OUT",
         "sets": 2,
@@ -140,6 +160,7 @@
         "muscleGroup": "Legs"
     },
     {
+        "_id": 21,
         "name": "BARBELL BENCH PRESS",
         "description": "TUCK ELBOWS AT A 45° ANGLE, SQUEEZE YOUR SHOULDER BLADES AND STAY FIRM ON THE BENCH",
         "sets": 3,
@@ -147,6 +168,7 @@
         "muscleGroup": "Chest"
     },
     {
+        "_id": 22,
         "name": "WEIGHTED DIP",
         "description": "TUCK YOUR ELBOWS AT A 45° ANGLE, LEAN YOUR TORSO FORWARD 15°, KEEP YOUR SCAPULAE RETRACTED",
         "sets": 3,
@@ -154,6 +176,7 @@
         "muscleGroup": "Chest"
     },
     {
+        "_id": 23,
         "name": "CLOSE-GRIP SMITH MACHINE PRESS",
         "description": "SHOULDER WIDTH GRIP, ELBOWS DOWN AT YOUR SIDES",
         "sets": 2,
@@ -161,6 +184,7 @@
         "muscleGroup": "Chest"
     },
     {
+        "_id": 24,
         "name": "LOW-TO-HIGH CABLE FLYE",
         "description": "START EXTERNALLY ROTATED WITH YOUR ELBOWS DOWN AND OUT, PULL YOUR ELBOWS (NOT HANDS) UP AND IN WHILE SLIGHTLY INTERNALLY ROTATING YOUR SHOULDER",
         "sets": 3,
@@ -168,6 +192,7 @@
         "muscleGroup": "Chest"
     },
     {
+        "_id": 25,
         "name": "CLOSE-GRIP BENCH PRESS",
         "description": "SHOULDER WIDTH GRIP, ELBOWS DOWN AT YOUR SIDES",
         "sets": 3,
@@ -175,6 +200,7 @@
         "muscleGroup": "Chest"
     },
     {
+        "_id": 26,
         "name": "DUMBBELL INCLINE PRESS",
         "description": "KEEP YOUR SCAPULAE RETRACTED AND DEPRESSED",
         "sets": 3,
@@ -182,6 +208,7 @@
         "muscleGroup": "Chest"
     },
     {
+        "_id": 27,
         "name": "PEC DECK",
         "description": "FOCUS ON BRINGING YOUR INNER ELBOWS TOGETHER - NOT YOUR HANDS",
         "sets": 3,
@@ -189,6 +216,7 @@
         "muscleGroup": "Chest"
     },
     {
+        "_id": 28,
         "name": "DUMBBELL SEATED SHOULDER PRESS",
         "description": "BRING THE DUMBBELL ALL THE WAY DOWN, KEEP YOUR TORSO UPRIGHT",
         "sets": 3,
@@ -196,6 +224,7 @@
         "muscleGroup": "Shoulders"
     },
     {
+        "_id": 29,
         "name": "MILITARY PRESS",
         "description": "SQUEEZE YOUR GLUTES TO KEEP YOUR TORSO UPRIGHT, CLEAR YOUR HEAD OUT OF THE WAY, PRESS UP AND SLIGHTLY BACK",
         "sets": 3,
@@ -203,6 +232,7 @@
         "muscleGroup": "Shoulders"
     },
     {
+        "_id": 30,
         "name": "ARNOLD PRESS",
         "description": "START YOUR SHOULDERS INTERNALLY ROTATED, GRADUALLY EXTERNALLY ROTATE THEM AS YOU PRESS UP",
         "sets": 2,
@@ -210,6 +240,7 @@
         "muscleGroup": "Shoulders"
     },
     {
+        "_id": 31,
         "name": "EGYPTIAN LATERAL RAISE",
         "description": "LEAN AWAY FROM THE CABLE, FOCUS ON SQUEEZING YOUR DELTS",
         "sets": 2,
@@ -217,6 +248,7 @@
         "muscleGroup": "Shoulders"
     },
     {
+        "_id": 32,
         "name": "MILITARY PRESS / PUSH PRESS COMPLEX",
         "description": "FIRST 4 REPS MILITARY PRESS, LAST 4 REPS PUSH PRESS (USE LEG DRIVE)",
         "sets": 3,
@@ -224,6 +256,7 @@
         "muscleGroup": "Shoulders"
     },
     {
+        "_id": 33,
         "name": "CABLE LATERAL RAISE",
         "description": "FOCUS ON SQUEEZING YOUR LATERAL DELT TO MOVE THE WEIGHT",
         "sets": 3,
@@ -231,6 +264,7 @@
         "muscleGroup": "Shoulders"
     },
     {
+        "_id": 34,
         "name": "DUMBBELL LATERAL RAISE",
         "description": "TILT THE DUMBBELL SUCH THAT YOUR PINKY COMES UP FIRST",
         "sets": 3,
@@ -238,6 +272,7 @@
         "muscleGroup": "Shoulders"
     },
     {
+        "_id": 35,
         "name": "1 ARM LAT PULL-IN",
         "description": "LIGHT SETS, DRIVE ELBOW DOWN AND IN TOWARD SIDE, LATERALLY FLEX INTO THE DIRECTION OF PULL",
         "sets": 2,
@@ -245,6 +280,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 36,
         "name": "PULL-UP",
         "description": "PULL YOUR ELBOWS DOWN AND IN, MINIMIZE SWINGING",
         "sets": 4,
@@ -252,6 +288,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 37,
         "name": "PENDLAY ROW",
         "description": "INITIATE THE MOVEMENT WITH SCAPULAR RETRACTION, PULL TO YOUR LOWER CHEST, KEEP YOUR TORSO MOTIONLESS",
         "sets": 3,
@@ -259,6 +296,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 38,
         "name": "MACHINE HIGH ROW",
         "description": "FOCUS ON SQUEEZING YOUR LATS",
         "sets": 3,
@@ -266,6 +304,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 39,
         "name": "SEATED FACE PULL",
         "description": "PULL YOUR ELBOWS UP AND OUT, RETRACT YOUR SCAPULA",
         "sets": 3,
@@ -273,6 +312,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 40,
         "name": "NEUTRAL-GRIP PULLDOWN",
         "description": "PULL YOUR ELBOWS DOWN AGAINST YOUR SIDES",
         "sets": 3,
@@ -280,6 +320,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 41,
         "name": "CABLE SEATED ELBOWS OUT ROW",
         "description": "FOCUS ON SCAPULAR RETRACTION, PULL WITH YOUR ELBOWS UP AND OUT",
         "sets": 3,
@@ -287,6 +328,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 42,
         "name": "CABLE SEATED ROW",
         "description": "FOCUS ON SCAPULAR RETRACTION, PULL WITH YOUR ELBOWS DOWN AND IN",
         "sets": 3,
@@ -294,6 +336,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 43,
         "name": "KNEELING STRAIGHT-ARM CABLE PULL-OVER",
         "description": "LEAN YOUR TORSO AT A 45° ANGLE, FOCUS ON PULLING THE WEIGHT STRAIGHT DOWN, NOT IN",
         "sets": 3,
@@ -301,6 +344,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 44,
         "name": "SNATCH GRIP BARBELL SHRUG",
         "description": "USE A 1.5X SHOULDER WIDTH GRIP, CONTROL THE WEIGHT AND SHRUG UP TO YOUR EARS",
         "sets": 3,
@@ -308,6 +352,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 45,
         "name": "CABLE REVERSE FLYE",
         "description": "FOCUS ON SWEEPING THE WEIGHT OUT LATERALLY",
         "sets": 3,
@@ -315,6 +360,7 @@
         "muscleGroup": "Back"
     },
     {
+        "_id": 46,
         "name": "SINGLE-ARM CABLE CURL",
         "description": "STAND UPRIGHT, KEEP YOUR ELBOW BEHIND YOUR TORSO",
         "sets": 3,
@@ -322,6 +368,7 @@
         "muscleGroup": "Bicep"
     },
     {
+        "_id": 47,
         "name": "HAMMER CURL",
         "description": "FOCUS ON SQUEEZING YOUR BICEPS TO MOVE THE WEIGHT",
         "sets": 3,
@@ -329,6 +376,7 @@
         "muscleGroup": "Bicep"
     },
     {
+        "_id": 48,
         "name": "REVERSE GRIP EZ BAR CURL",
         "description": "ARCH THE BAR OUT, NOT UP. FOCUS ON SQUEEZING YOUR FOREARMS",
         "sets": 3,
@@ -336,6 +384,7 @@
         "muscleGroup": "Bicep"
     },
     {
+        "_id": 49,
         "name": "SUPINATED EZ BAR CURL",
         "description": "ARCH THE BAR OUT, NOT UP. FOCUS ON SQUEEZING YOUR BICEPS",
         "sets": 3,
@@ -343,6 +392,7 @@
         "muscleGroup": "Bicep"
     },
     {
+        "_id": 50,
         "name": "DUMBBELL PREACHER CURL",
         "description": "FOCUS ON SQUEEZING YOUR BICEPS TO MOVE THE WEIGHT",
         "sets": 3,
@@ -350,6 +400,7 @@
         "muscleGroup": "Bicep"
     },
     {
+        "_id": 51,
         "name": "DUMBBELL PRONATED CURL",
         "description": "ARCH THE DUMBBELL OUT, NOT UP. FOCUS ON SQUEEZING YOUR FOREARMS",
         "sets": 4,
@@ -357,6 +408,7 @@
         "muscleGroup": "Bicep"
     },
     {
+        "_id": 52,
         "name": "DUMBBELL SUPINATED CURL",
         "description": "ARCH THE DUMBBELL OUT, NOT UP. FOCUS ON SQUEEZING YOUR BICEPS",
         "sets": 4,
@@ -364,6 +416,7 @@
         "muscleGroup": "Bicep"
     },
     {
+        "_id": 53,
         "name": "TRICEPS V-BAR PRESSDOWN",
         "description": "FOCUS ON SQUEEZING YOUR TRICEPS TO MOVE THE WEIGHT",
         "sets": 3,
@@ -371,6 +424,7 @@
         "muscleGroup": "Tricep"
     },
     {
+        "_id": 54,
         "name": "ROPE OVERHEAD TRICEPS EXTENSION",
         "description": "FOCUS ON STRETCHING YOUR TRICEPS AT THE BOTTOM OF THE MOVEMENT",
         "sets": 2,
@@ -378,6 +432,7 @@
         "muscleGroup": "Tricep"
     },
     {
+        "_id": 55,
         "name": "DUMBBELL ISOLATERAL SKULL CRUSHER",
         "description": "USE 1 DUMBBELL IN EACH HAND. KEEP YOUR ELBOWS IN A FIXED POSITION INLINE WITH THE TOP OF YOUR HEAD, PRESS THE DUMBBELL OVER YOUR HEAD (NOT IN FRONT OF YOUR FACE)",
         "sets": 3,
@@ -385,11 +440,28 @@
         "muscleGroup": "Tricep"
     },
     {
+        "_id": 56,
         "name": "CABLE TRICEPS KICKBACK",
         "description": "STAND UPRIGHT, KEEP YOUR ELBOWS BEHIND YOUR TORSO",
         "sets": 3,
         "reps": 20,
         "muscleGroup": "Tricep"
+    },
+    {
+        "_id": 57,
+        "name": "AB WHEEL ROLLOUT",
+        "description": "KEEP YOUR PELVIS POSTERIORLY TILTED (SQUEEZE YOUR GLUTES), CUT THE ROM SHORT IF YOU CAN'T MAINTAIN THIS POSITION",
+        "sets": 3,
+        "reps": 6,
+        "muscleGroup": "Abdominals"
+    },
+    {
+        "_id": 58,
+        "name": "BICYCLE CRUNCH",
+        "description": "OPPOSITE KNEE TO ELBOW, FOCUS ON FLEXING YOUR SPINE",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Abdominals"
     }
 ]
 
