@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_WORKOUT_PLAN } from "../utils/queries";
 
 const SingleWorkout = () => {
+  const { _id: userParam } = useParams();
+
   const { loading, data } = useQuery(GET_WORKOUT_PLAN, {
-    variables: { _id: 1 },
+    variables: { _id: userParam },
     fetchPolicy: "no-cache",
   });
 
