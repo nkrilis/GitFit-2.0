@@ -1,22 +1,19 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="w-100 mt-auto bg-gradient-to-r from-blue-500 to-green-400">
-      <div className="container text-center mb-5">
-        {location.pathname !== '/' && (
-          <button
-            className="btn btn-dark mb-3"
-            onClick={() => navigate(-1)}
-          >
+    <footer className="w-full p-4 mt-auto bg-gradient-to-r from-blue-500 to-green-400">
+      <div className="container mx-auto text-center mb-5">
+        {location.pathname !== "/" && (
+          <button className="btn btn-dark mb-3" onClick={() => navigate(-1)}>
             &larr; Go Back
           </button>
         )}
         <h4>
-          Made with{' '}
+          Made with{" "}
           <span
             className="emoji"
             role="img"
@@ -24,14 +21,11 @@ const Footer = () => {
             aria-hidden="false"
           >
             ❤️
-          </span>{' '}
+          </span>{" "}
           by the GitFit team.
         </h4>
       </div>
     </footer>
-
-          
-
   );
 };
 
