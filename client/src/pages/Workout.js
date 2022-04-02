@@ -14,138 +14,87 @@ const Workout = () => {
   console.log(workoutList);
 
   return (
-    <div className="container flex-col justify-center items-center bg-teal-300">
-      <h1 className="text-2xl">Checkout these workouts!</h1>
+    <div className="justify-center bg-teal-300">
+      <h1 className="text-2xl text-center">Checkout these workouts!</h1>
+      {workoutList.map((workout) => {
+        return (
+          <div key={workout._id} className="bg-teal-200 w-full">
+            <h1 className="grid grid-cols-3 text-center mx-auto">
+              <div className="px-5">{workout.title}</div>
+              <div className="px-5">Workout type: {workout.type}</div>
+              <div className="px-5">Number of weeks: {workout.numOfWeeks}</div>
+            </h1>
+            <p>{workout.description}</p>
+            <br></br>
+            {workout.plan[0].weeks.map((week) => {
+              return (
+                <div key={week.weekNumber}>
+                  <h1 className="bg-white text-center">
+                    - Week {week.weekNumber} -
+                  </h1>
 
-      <div className="mt-4 grid lg:grid-cols-3 gap-5">
-        {workoutList.map((workout) => {
-          return (
-            <div className="card" key={workout._id}>
-              <img
-                src={testImage}
-                alt="benchpress"
-                className="w-full h-44 object-cover"
-              />
-              <div className="m-2">
-                <Link to="/Exercise">
-                  <div className="font-bold">{workout.title}</div>
-                  <div className="text-md">
-                    Description{workout.description}
-                  </div>
-                  <div className="text-md">Workout type:{workout.type}</div>
-                  <div className="font-bold">
-                    Weeks in plan: {workout.numOfWeeks}
-                  </div>
-                </Link>
-                <div className="md:flex justify-center">
-                  <div className="txt-lg">
-                    {workout.plan[0].weeks.map((week) => {
-                      return (
-                        <div>
-                          Week:{week.weekNumber}
-                          <div>
-                            {" "}
-                            {week.days.map((day) => {
-                              return (
-                                <div>
-                                  Day of week:{day.dayOfWeek}
-                                  {day.exercises.map((exercise) => {
-                                    return (
-                                      <div>
-                                        <div>{exercise.name}</div>
-                                        <div>{exercise.description}</div>
-                                        <div>Muscle:{exercise.muscleGroup}</div>
-                                        <div>Sets:{exercise.sets}</div>
-                                        <div>Reps:{exercise.reps}</div>
-                                      </div>
-                                    );
-                                  })}
+                  {week.days.map((day) => {
+                    return (
+                      <div key={day.dayOfWeek}>
+                        <h1>{day.dayOfWeek}</h1>
+                        <table className="w-full bg-gray-200 border border-black">
+                          <thead>
+                            <tr>
+                              <th className="w-1.5 text-center px-4 py-4 border border-black">
+                                <div className="font-bold bg-gray-200">
+                                  Exercise
                                 </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  {/* <div className="text-md">Sets: {workout.plan.weeks.sets}</div> */}
-                  <div className="text-md">Reps: {workout.reps}</div>
+                              </th>
+                              <th className="w-1.5 text-center b px-4 py-4 border border-black">
+                                <div className="font-bold bg-gray-200">
+                                  Sets
+                                </div>
+                              </th>
+                              <th className="w-1.5 text-center  px-4 py-4 border border-black">
+                                <div className="font-bold bg-gray-200">
+                                  Reps
+                                </div>
+                              </th>
+                              <th className="w-1.5 text-center  px-4 py-4 border border-black">
+                                <div className="font-bold bg-gray-200">
+                                  Description
+                                </div>
+                              </th>
+                            </tr>
+                          </thead>
+                          {day.exercises.map((exercise) => {
+                            return (
+                              // key error needs to be made unique
+                              <tbody
+                                key={exercise.name}
+                                className="border border-black"
+                              >
+                                <tr>
+                                  <td>{exercise.name}</td>
+                                  <td className="text-center border border-black">
+                                    {exercise.sets}
+                                  </td>
+                                  <td className="text-center border border-black">
+                                    {exercise.reps}
+                                  </td>
+                                  <td className="border border-black">
+                                    {exercise.description}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            );
+                          })}
+                        </table>
+                        <br></br>
+                      </div>
+                    );
+                  })}
                 </div>
-              </div>
-            </div>
-          );
-        })}
-
-        <div className="card">
-          <img
-            src={testImage}
-            alt="benchpress"
-            className="w-full h-44 object-cover"
-          />
-          <div className="m-2">
-            <div className="font-bold">exercise X</div>
-            <div className="flex-1">
-              <div className="text-md">Sets: 3</div>
-              <div className="text-md">Reps: 12</div>
-            </div>
-
-            <div className="text-lg">Intensity: 8</div>
+              );
+            })}
           </div>
-        </div>
-        <div className="card">
-          <img
-            src={testImage}
-            alt="benchpress"
-            className="w-full h-44 object-cover"
-          />
-          <div className="m-2">
-            <div className="font-bold">exercise X</div>
-            <div className="text-md">Sets: 3</div>
-            <div className="text-md">Reps: 12</div>
-          </div>
-        </div>
-      </div>
-
-      {/* <div className="border-t-4"></div>
-
-      <div className="mt-4 grid lg:grid-cols-3 gap-5">
-        <div className="card">
-          <img
-            src={testImage}
-            alt="benchpress"
-            className="w-full h-44 object-cover"
-          />
-          <div className="m-2">
-            <div className="font-bold">exercise X</div>
-            <div className="text-md">Sets: 3</div>
-            <div className="text-md">Reps: 12</div>
-          </div>
-        </div>
-        <div className="card">
-          <img
-            src={testImage}
-            alt="benchpress"
-            className="w-full h-44 object-cover"
-          />
-          <div className="m-2">
-            <div className="font-bold">exercise X</div>
-            <div className="text-md">Sets: 3</div>
-            <div className="text-md">Reps: 12</div>
-          </div>
-        </div>
-        <div className="card">
-          <img
-            src={testImage}
-            alt="benchpress"
-            className="w-full h-44 object-cover"
-          />
-          <div className="m-2">
-            <div className="font-bold">exercise X</div>
-            <div className="text-md">Sets: 3</div>
-            <div className="text-md">Reps: 12</div>
-          </div>
-        </div>
-      </div> */}
+        );
+      })}
     </div>
   );
 };
