@@ -54,10 +54,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/me" element={<Profile />} />
-              {/* <Route
-                path="/workoutplan/:workoutPlanId"
-                element={<SingleWorkout />}
-              /> */}
+              <Route path="/workoutplan/:_id" element={<SingleWorkout />} />
 
               <Route path="/exercise" element={<Exercise />} />
 
