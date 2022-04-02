@@ -218,9 +218,3 @@ const CreateWorkout = () => {
 };
 
 export default CreateWorkout;
-
-// GiShoulderArmor
-// GiMuscularTorso
-// GiAbdominalArmor
-// GiLeg
-// GiBiceps
