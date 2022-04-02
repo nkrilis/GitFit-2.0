@@ -22,7 +22,6 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log('***********************************')
     console.log(formState);
     try {
       const { data } = await login({
@@ -42,60 +41,54 @@ const Login = (props) => {
   };
 
   return (
-    <div>
-    <div className = "items-center">
-        <div className="px-6 flex items-center justify-center bg-gray-100"></div>
-            <div className="px-8 py-3 mt-4 text-left"></div>
-                <h3 className="text-2xl font-bold text-center">Login to your account</h3>
-                {data ? (
+    <main className="flex-row justify-center mb-4">
+      <div className="col-12 col-lg-10">
+        <div className="card">
+          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+          <div className="card-body">
+            {data ? (
               <p>
                 Success! You may now head{' '}
-                <Link to="/exercise">back to the homepage.</Link>
+                <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-                <form onSubmit={handleFormSubmit}>
+              <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input items-center w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="email"
+                  className="form-input"
+                  placeholder="Your email"
                   name="email"
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input items-center w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="password"
+                  className="form-input"
+                  placeholder="******"
                   name="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
                 <button
-                  className="items-center w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
-                  Login
+                  Submit
                 </button>
               </form>
+            )}
 
-          )}
-
-          {error && (
-            <div className="my-3 p-3 bg-danger text-white">
-              {error.message}
-            </div>
-          )}
-
-        <div className="flex items-baseline justify-between">
-            <button className="px-4 text-sm text-blue-600 hover:underline">Forgot password?</button>
+            {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+            )}
+          </div>
         </div>
-    </div>
-    </div>
- 
+      </div>
+    </main>
   );
 };
 
 export default Login;
-
-

@@ -1,66 +1,32 @@
-import { gql } from "@apollo/client";
-
+import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
-  mutation login(
-    $email: String!, 
-    $password: String!
-  ) {
-    login(
-      email: $email, 
-      password: $password
-      ) {
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       token
       user {
         _id
-        email
+        username
       }
     }
   }
 `;
 
-// $firstName: String!
-// $lastName: String!
-// firstName: $firstName
-// lastName: $lastName
-// firstName
-// lastName
-export const CREATE_USER = gql`
-    mutation createUser(
-      $firstName: String!
-      $lastName: String!
-      $email: String!
-      $password: String!
-    ) {
-      createUser(
-        firstName: $firstName
-        lastName: $lastName
-        email: $email
-        password: $password) {
-        token
-        user {
-          _id
-          email
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
       }
     }
   }
 `;
 
 export const CREATE_WORKOUT_PLAN = gql`
-  mutation createWorkoutPlan(
-    $title: String!
-    $description: String!
-    $type: String!
-    $numOfWeeks: Int!
-    $plan: plan!
-  ) {
-    createWorkoutPlan(
-      title: $title
-      description: $description
-      type: $type
-      numOfWeeks: $numOfWeeks
-      plan: $plan
-    ) {
+  mutation createWorkoutPlan( $title: String!, $description: String!, $type: String!, $numOfWeeks: Int!, $plan: plan!) {
+    createWorkoutPlan( title: $title, description: $description, type: $type, numOfWeeks: $numOfWeeks, plan: $plan) {
       _id
       title
       description
