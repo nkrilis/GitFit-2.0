@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// Get user by username
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
@@ -15,6 +16,7 @@ export const QUERY_USER = gql`
   }
 `;
 
+// Get logged in user
 export const QUERY_ME = gql`
   query me {
     me {
@@ -48,6 +50,7 @@ export const QUERY_ME = gql`
   }
 `;
 
+// Get all exercises
 export const GET_EXERCISES = gql`
   query GetExercises {
     getExercises {
@@ -61,6 +64,21 @@ export const GET_EXERCISES = gql`
   }
 `;
 
+// Get exercise by id
+export const GET_EXERCISE = gql`
+  query GetExercise($id: ID!) {
+    getExercise(id: $id) {
+      _id
+      name
+      description
+      sets
+      reps
+      muscleGroup
+    }
+  }
+`;
+
+// Get all Workout Plans
 export const GET_WORKOUT_PLANS = gql`
   query GetWorkoutPlans {
     getWorkoutPlans {
@@ -89,15 +107,31 @@ export const GET_WORKOUT_PLANS = gql`
   }
 `;
 
-export const GET_EXERCISE = gql`
-  query getExercise($_id: String) {
-    getExercise(_id: $_id) {
+// Get workout Plan by id
+export const GET_WORKOUT_PLAN = gql`
+  query GetWorkoutPlan($_id: ID!) {
+    getWorkoutPlan(_id: $_id) {
       _id
-      name
+      title
       description
-      sets
-      reps
-      muscleGroup
+      type
+      numOfWeeks
+      plan {
+        weeks {
+          weekNumber
+          days {
+            dayOfWeek
+            exercises {
+              _id
+              description
+              name
+              reps
+              sets
+              muscleGroup
+            }
+          }
+        }
+      }
     }
   }
 `;
