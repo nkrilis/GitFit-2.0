@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_WORKOUT_PLANS } from "../utils/queries";
+import Auth from "../utils/auth";
 
 import testImage from "../assets/images/proj2.png";
 
@@ -9,6 +10,10 @@ const Workout = () => {
   const { loading, data } = useQuery(GET_WORKOUT_PLANS, {
     fetchPolicy: "no-cache",
   });
+
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
+  }
 
   const workoutList = data?.getWorkoutPlans || [];
 
@@ -18,11 +23,11 @@ const Workout = () => {
       {workoutList.map((workout) => {
         return (
           <div key={workout._id} className="bg-teal-200 w-full">
-            <h1 className="grid grid-cols-3 text-center mx-auto">
+            <div className="grid grid-cols-3 text-center mx-auto">
               <div className="px-5">{workout.title}</div>
               <div className="px-5">Workout type: {workout.type}</div>
               <div className="px-5">Number of weeks: {workout.numOfWeeks}</div>
-            </h1>
+            </div>
             <p>{workout.description}</p>
             <br></br>
             {workout.plan[0].weeks.map((week) => {
@@ -36,7 +41,7 @@ const Workout = () => {
                     return (
                       <div key={day.dayOfWeek}>
                         <h1>{day.dayOfWeek}</h1>
-                        <table className="w-full bg-gray-200 border border-black">
+                        <table className="w-full bg-gray border border-black">
                           <thead>
                             <tr>
                               <th className="w-1.5 text-center px-4 py-4 border border-black">
