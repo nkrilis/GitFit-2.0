@@ -1,22 +1,21 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_EXERCISE } from "../utils/queries";
-// GiShoulderArmor
-// GiMuscularTorso
-// GiAbdominalArmor
-// GiLeg
-// GiBiceps
-// import { FaAngular } from "react-icons/fa";
+import Auth from "../utils/auth";
 
 const SingleExercise = () => {
   const { _id: userParam } = useParams();
   console.log(userParam);
-  //   let icon;
+
   const { loading, data } = useQuery(GET_EXERCISE, {
     variables: { _id: userParam },
     fetchPolicy: "no-cache",
   });
+
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
+  }
 
   const exercise = data?.getExercise || [];
   console.log(exercise);
@@ -24,10 +23,6 @@ const SingleExercise = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  //   if (exercise.muscleGroup === "Chest") {
-  //     icon = FaAngular;
-  //   }
 
   return (
     <div key={exercise._id} className="bg-orange-300">
