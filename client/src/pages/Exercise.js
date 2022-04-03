@@ -17,25 +17,25 @@ const Exercise = () => {
 
   return (
     <div className="container flex-col justify-center items-center">
-      <h1 className="text-2xl">Checkout these exercises!</h1>
-
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto mt-2 gap-2">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-auto mt-2 gap-2">
           {exerciseList.map((exercise) => {
             return (
               <div
-                className="card mb-2 mx-3 shadow-md text-center text-white bg-purple rounded-lg"
+                className="card mb-2 mx-3 text-center text-white bg-purple rounded-lg hover:shadow-white shadow-md"
                 key={exercise._id}
               >
                 <Link to={{ pathname: `/exercise/${exercise._id}` }}>
                   <div className="font-bold">{exercise.name}:</div>
-                  <div>{exercise.description}</div>
-                  <div className="grid grid-cols-3 mx-auto">
+                  <div>
+                    Main muscle:{" "}
+                    <span className="font-bold">{exercise.muscleGroup}</span>
+                  </div>
+                  <div className="grid grid-cols-2 mx-auto">
                     <div>Sets: {exercise.sets}</div>{" "}
                     <div>Reps: {exercise.reps}</div>{" "}
-                    <div>Muscle: {exercise.muscleGroup}</div>
                   </div>
                 </Link>
               </div>

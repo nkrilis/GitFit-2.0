@@ -41,10 +41,14 @@ const Header = () => {
     //     </div>
     //   </div>
     // </header>
-    <nav class="flex items-center justify-between flex-wrap p-6">
+    <nav className="flex items-center justify-between flex-wrap p-6">
       <Link to="/">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <img class="object-fill h-48 w-48" src={logo} alt="logo" />
+        <div className="flex items-center flex-shrink-0 text-white mr-6">
+          <img
+            className="object-fill h-24 w-24 lg:h-48 lg:w-48 md:w-36 md:h-36  rounded-full hover:shadow-white shadow-lg"
+            src={logo}
+            alt="logo"
+          />
         </div>
       </Link>
       <div className="pr-8 md:block hidden">

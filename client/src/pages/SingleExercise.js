@@ -25,12 +25,18 @@ const SingleExercise = () => {
   }
 
   return (
-    <div key={exercise._id} className="bg-orange-300">
-      <div>{exercise.name}</div>
-      <div>{exercise.muscleGroup}</div>
+    <div
+      className="card mb-2 mx-3 shadow-md text-center text-white bg-purple rounded-lg"
+      key={exercise._id}
+    >
+      <div className="font-bold">{exercise.name}:</div>
+      <div>
+        Main muscle: <span className="font-bold">{exercise.muscleGroup}</span>
+      </div>
       <div>{exercise.description}</div>
-      <div>{exercise.sets}</div>
-      <div>{exercise.reps}</div>
+      <div className="grid grid-cols-2 mx-auto">
+        <div>Sets: {exercise.sets}</div> <div>Reps: {exercise.reps}</div>{" "}
+      </div>
     </div>
   );
 };

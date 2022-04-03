@@ -22,8 +22,8 @@ const SingleWorkout = () => {
   }
 
   return (
-    <div className="justify-center bg-gray">
-      <h1 className="text-3xl text-center border-b border-black">
+    <div className="justify-center bg-white">
+      <h1 className="text-3xl text-center border-b border-black bg-purple text-black">
         {workout.title}
       </h1>
       <br></br>
@@ -51,7 +51,7 @@ const SingleWorkout = () => {
           console.log(week.weekNumber);
           return (
             <div id={week.weekNumber} key={week.weekNumber}>
-              <h1 className="bg-white text-center text-2xl">
+              <h1 className="text-center text-2xl bg-gray">
                 - Week {week.weekNumber} -
               </h1>
               <a href="#top">
