@@ -18,11 +18,11 @@ const Workout = () => {
       {workoutList.map((workout) => {
         return (
           <div key={workout._id} className="bg-teal-200 w-full">
-            <h1 className="grid grid-cols-3 text-center mx-auto">
+            <div className="grid grid-cols-3 text-center mx-auto">
               <div className="px-5">{workout.title}</div>
               <div className="px-5">Workout type: {workout.type}</div>
               <div className="px-5">Number of weeks: {workout.numOfWeeks}</div>
-            </h1>
+            </div>
             <p>{workout.description}</p>
             <br></br>
             {workout.plan[0].weeks.map((week) => {

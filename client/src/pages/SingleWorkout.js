@@ -12,7 +12,6 @@ const SingleWorkout = () => {
   });
 
   const workout = data?.getWorkoutPlan || [];
-  console.log(workout);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -41,51 +40,76 @@ const SingleWorkout = () => {
                   <div key={day.dayOfWeek}>
                     <h1 className="font-bold">{day.dayOfWeek}</h1>
                     <table className="w-full bg-gray-200 border border-black">
-                      <thead>
+                      <thead className="bg-white">
                         <tr>
                           <th className="w-1.5 text-center px-4 py-4 border border-black">
-                            <div className="font-bold bg-gray-200">
-                              Exercise
-                            </div>
+                            <div className="font-bold">Exercise</div>
                           </th>
                           <th className="w-1.5 text-center b px-4 py-4 border border-black">
-                            <div className="font-bold bg-gray-200">Sets</div>
+                            <div className="font-bold">Sets</div>
                           </th>
                           <th className="w-1.5 text-center  px-4 py-4 border border-black">
-                            <div className="font-bold bg-gray-200">Reps</div>
+                            <div className="font-bold">Reps</div>
                           </th>
                           <th className="w-1.5 text-center  px-4 py-4 border border-black">
-                            <div className="font-bold bg-gray-200">
-                              Description
-                            </div>
+                            <div className="font-bold">Description</div>
                           </th>
                         </tr>
                       </thead>
-                      {day.exercises.map((exercise) => {
-                        return (
-                          // key error needs to be made unique
-                          <tbody
-                            key={exercise.name}
-                            className="border border-black"
-                          >
-                            <tr>
-                              <td>
-                                <Link to={`/exercise/${exercise._id}`}>
-                                  {exercise.name}
-                                </Link>
-                              </td>
-                              <td className="text-center border border-black">
-                                {exercise.sets}
-                              </td>
-                              <td className="text-center border border-black">
-                                {exercise.reps}
-                              </td>
-                              <td className="border border-black">
-                                {exercise.description}
-                              </td>
-                            </tr>
-                          </tbody>
-                        );
+                      {day.exercises.map((exercise, index) => {
+                        if (index % 2 === 0) {
+                          return (
+                            // key error needs to be made unique
+
+                            <tbody
+                              key={exercise.name}
+                              className="border border-black"
+                            >
+                              <tr>
+                                <td>
+                                  <Link to={`/exercise/${exercise._id}`}>
+                                    {exercise.name}
+                                  </Link>
+                                </td>
+                                <td className="text-center border border-black">
+                                  {exercise.sets}
+                                </td>
+                                <td className="text-center border border-black">
+                                  {exercise.reps}
+                                </td>
+                                <td className="border border-black">
+                                  {exercise.description}
+                                </td>
+                              </tr>
+                            </tbody>
+                          );
+                        } else {
+                          return (
+                            // key error needs to be made unique
+
+                            <tbody
+                              key={exercise.name}
+                              className="border border-black bg-white"
+                            >
+                              <tr>
+                                <td>
+                                  <Link to={`/exercise/${exercise._id}`}>
+                                    {exercise.name}
+                                  </Link>
+                                </td>
+                                <td className="text-center border border-black">
+                                  {exercise.sets}
+                                </td>
+                                <td className="text-center border border-black">
+                                  {exercise.reps}
+                                </td>
+                                <td className="border border-black">
+                                  {exercise.description}
+                                </td>
+                              </tr>
+                            </tbody>
+                          );
+                        }
                       })}
                     </table>
                     <br></br>
