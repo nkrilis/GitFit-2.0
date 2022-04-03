@@ -36,7 +36,7 @@ const Workout = () => {
                     return (
                       <div key={day.dayOfWeek}>
                         <h1>{day.dayOfWeek}</h1>
-                        <table className="w-full bg-gray-200 border border-black">
+                        <table className="w-full bg-gray border border-black">
                           <thead>
                             <tr>
                               <th className="w-1.5 text-center px-4 py-4 border border-black">
