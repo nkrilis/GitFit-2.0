@@ -43,17 +43,19 @@ const Header = () => {
     // </header>
     <nav className="flex items-center justify-between flex-wrap p-6">
       <Link to="/">
+
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <img
             className="object-fill h-24 w-24 lg:h-48 lg:w-48 md:w-36 md:h-36  rounded-full hover:shadow-white shadow-lg"
             src={logo}
             alt="logo"
           />
+
         </div>
       </Link>
       <div className="pr-8 md:block hidden">
         <Link
-          className="inline-flex items-center pr-10 text-white"
+          className="inline-flex items-center pr-10 text-white hover:text-purple-200"
           to="/exercise"
         >
           Exercises
@@ -62,7 +64,7 @@ const Header = () => {
         {Auth.loggedIn() ? (
           <>
             <Link
-              className="inline-flex items-center pr-10 text-white"
+              className="inline-flex items-center pr-10 text-white hover:text-purple-200"
               to="/me"
             >
               <svg
@@ -88,7 +90,7 @@ const Header = () => {
               Profile
             </Link>
             <button
-              className="inline-flex items-center pr-10 text-white"
+              className="inline-flex items-center pr-10 text-white hover:text-purple-200"
               onClick={logout}
             >
               Logout
@@ -97,13 +99,13 @@ const Header = () => {
         ) : (
           <>
             <Link
-              className="inline-flex items-center pr-10 text-white"
+              className="inline-flex items-center pr-10 text-white hover:text-purple-200"
               to="/login"
             >
               Login
             </Link>
             <Link
-              className="inline-flex items-center pr-10 text-white"
+              className="inline-flex items-center pr-10 text-white hover:text-purple-200"
               to="/signup"
             >
               Signup
