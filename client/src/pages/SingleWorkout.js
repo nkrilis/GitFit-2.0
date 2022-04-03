@@ -22,8 +22,10 @@ const SingleWorkout = () => {
   }
 
   return (
-    <div className="justify-center bg-gray">
-      <h1 className="text-3xl text-center">{workout.title}</h1>
+    <div className="justify-center bg-white">
+      <h1 className="text-3xl text-center border-b border-black bg-purple text-black">
+        {workout.title}
+      </h1>
       <br></br>
       <div key={workout._id}>
         <div className="grid grid-flow-col text-center mx-auto">
@@ -49,7 +51,7 @@ const SingleWorkout = () => {
           console.log(week.weekNumber);
           return (
             <div id={week.weekNumber} key={week.weekNumber}>
-              <h1 className="bg-white text-center text-2xl">
+              <h1 className="text-center text-2xl bg-gray">
                 - Week {week.weekNumber} -
               </h1>
               <a href="#top">
@@ -62,16 +64,16 @@ const SingleWorkout = () => {
                     <h1 className="font-bold bg-white text-lg">
                       {day.dayOfWeek}
                     </h1>
-                    <table className="w-full bg-gray border-t border-black">
+                    <table className="w-full bg-gray border-t border-b border-black">
                       <thead className="bg-white">
                         <tr>
-                          <th className="w-1.5 text-center px-4 py-4">
+                          <th className="w-1.5 text-center px-4 py-4 border-r border-black">
                             <div className="font-bold">Exercise</div>
                           </th>
-                          <th className="w-1.5 text-center px-4 py-4">
+                          <th className="w-1.5 text-center px-4 py-4 border-r border-black">
                             <div className="font-bold">Sets</div>
                           </th>
-                          <th className="w-1.5 text-center px-4 py-4 ">
+                          <th className="w-1.5 text-center px-4 py-4 border-r border-black">
                             <div className="font-bold">Reps</div>
                           </th>
                           <th className="w-1.5 text-center px-4 py-4">
@@ -86,18 +88,20 @@ const SingleWorkout = () => {
 
                             <tbody key={exercise.name} className="">
                               <tr>
-                                <td className="text-center border-t border-black">
+                                <td className="text-center border-t border-r border-black">
                                   <Link to={`/exercise/${exercise._id}`}>
                                     {exercise.name}
                                   </Link>
                                 </td>
-                                <td className="text-center ">
+                                <td className="text-center border-t border-r border-black">
                                   {exercise.sets}
                                 </td>
-                                <td className="text-center ">
+                                <td className="text-center border-t border-r border-black">
                                   {exercise.reps}
                                 </td>
-                                <td className="">{exercise.description}</td>
+                                <td className="border-t border-blac">
+                                  {exercise.description}
+                                </td>
                               </tr>
                             </tbody>
                           );
@@ -107,15 +111,15 @@ const SingleWorkout = () => {
 
                             <tbody key={exercise.name} className=" bg-white">
                               <tr>
-                                <td>
+                                <td className="border-t border-r border-black">
                                   <Link to={`/exercise/${exercise._id}`}>
                                     {exercise.name}
                                   </Link>
                                 </td>
-                                <td className="text-center ">
+                                <td className="text-center border-t border-r border-black">
                                   {exercise.sets}
                                 </td>
-                                <td className="text-center ">
+                                <td className="text-center border-t border-r border-black">
                                   {exercise.reps}
                                 </td>
                                 <td className="">{exercise.description}</td>
