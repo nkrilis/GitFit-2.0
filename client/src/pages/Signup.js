@@ -101,15 +101,15 @@ const Signup = () => {
               </form>
             )}
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
-            <p className="text-center text-white text-xs">
-            &copy;2022 GitFit Corp. All rights reserved.
-          </p>
-          </div>
+      {error && (
+        <div className="my-3 p-3 bg-danger text-white">
+          {error.message}
+        </div>
+      )}
+      <p className="text-center text-white text-xs">
+      &copy;2022 GitFit Corp. All rights reserved.
+    </p>
+  </div>
   );
 };
 
