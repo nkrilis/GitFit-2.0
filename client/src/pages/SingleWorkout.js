@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_WORKOUT_PLAN } from "../utils/queries";
+import Auth from "../utils/auth";
 
 const SingleWorkout = () => {
   const { _id: userParam } = useParams();
@@ -11,6 +12,9 @@ const SingleWorkout = () => {
     fetchPolicy: "no-cache",
   });
 
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
+  }
   const workout = data?.getWorkoutPlan || [];
 
   if (loading) {
@@ -19,9 +23,7 @@ const SingleWorkout = () => {
 
   return (
     <div className="justify-center bg-gray">
-      <h1 className="text-3xl text-center border border-black">
-        {workout.title}
-      </h1>
+      <h1 className="text-3xl text-center">{workout.title}</h1>
       <br></br>
       <div key={workout._id}>
         <div className="grid grid-flow-col text-center mx-auto">
@@ -60,19 +62,19 @@ const SingleWorkout = () => {
                     <h1 className="font-bold bg-white text-lg">
                       {day.dayOfWeek}
                     </h1>
-                    <table className="w-full bg-gray border border-black">
+                    <table className="w-full bg-gray border-t border-black">
                       <thead className="bg-white">
                         <tr>
-                          <th className="w-1.5 text-center px-4 py-4 border border-black">
+                          <th className="w-1.5 text-center px-4 py-4">
                             <div className="font-bold">Exercise</div>
                           </th>
-                          <th className="w-1.5 text-center b px-4 py-4 border border-black">
+                          <th className="w-1.5 text-center px-4 py-4">
                             <div className="font-bold">Sets</div>
                           </th>
-                          <th className="w-1.5 text-center  px-4 py-4 border border-black">
+                          <th className="w-1.5 text-center px-4 py-4 ">
                             <div className="font-bold">Reps</div>
                           </th>
-                          <th className="w-1.5 text-center  px-4 py-4 border border-black">
+                          <th className="w-1.5 text-center px-4 py-4">
                             <div className="font-bold">Description</div>
                           </th>
                         </tr>
@@ -82,25 +84,20 @@ const SingleWorkout = () => {
                           return (
                             // key error needs to be made unique
 
-                            <tbody
-                              key={exercise.name}
-                              className="border border-black"
-                            >
+                            <tbody key={exercise.name} className="">
                               <tr>
-                                <td>
+                                <td className="text-center border-t border-black">
                                   <Link to={`/exercise/${exercise._id}`}>
                                     {exercise.name}
                                   </Link>
                                 </td>
-                                <td className="text-center border border-black">
+                                <td className="text-center ">
                                   {exercise.sets}
                                 </td>
-                                <td className="text-center border border-black">
+                                <td className="text-center ">
                                   {exercise.reps}
                                 </td>
-                                <td className="border border-black">
-                                  {exercise.description}
-                                </td>
+                                <td className="">{exercise.description}</td>
                               </tr>
                             </tbody>
                           );
@@ -108,25 +105,20 @@ const SingleWorkout = () => {
                           return (
                             // key error needs to be made unique
 
-                            <tbody
-                              key={exercise.name}
-                              className="border border-black bg-white"
-                            >
+                            <tbody key={exercise.name} className=" bg-white">
                               <tr>
                                 <td>
                                   <Link to={`/exercise/${exercise._id}`}>
                                     {exercise.name}
                                   </Link>
                                 </td>
-                                <td className="text-center border border-black">
+                                <td className="text-center ">
                                   {exercise.sets}
                                 </td>
-                                <td className="text-center border border-black">
+                                <td className="text-center ">
                                   {exercise.reps}
                                 </td>
-                                <td className="border border-black">
-                                  {exercise.description}
-                                </td>
+                                <td className="">{exercise.description}</td>
                               </tr>
                             </tbody>
                           );

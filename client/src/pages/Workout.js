@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_WORKOUT_PLANS } from "../utils/queries";
+import Auth from "../utils/auth";
 
 import testImage from "../assets/images/proj2.png";
 
@@ -9,6 +10,10 @@ const Workout = () => {
   const { loading, data } = useQuery(GET_WORKOUT_PLANS, {
     fetchPolicy: "no-cache",
   });
+
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
+  }
 
   const workoutList = data?.getWorkoutPlans || [];
 

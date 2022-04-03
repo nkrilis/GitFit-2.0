@@ -1,13 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_EXERCISES } from "../utils/queries";
+import Auth from "../utils/auth";
 
 const Exercise = () => {
   const { loading, data } = useQuery(GET_EXERCISES, {
     fetchPolicy: "cache-first",
   });
 
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
+  }
   const exerciseList = data?.getExercises || [];
   console.log(exerciseList);
 
@@ -22,7 +26,7 @@ const Exercise = () => {
           {exerciseList.map((exercise) => {
             return (
               <div
-                className="card mb-2 mx-3 shadow-md text-center text-black bg-purple rounded-lg"
+                className="card mb-2 mx-3 shadow-md text-center text-white bg-purple rounded-lg"
                 key={exercise._id}
               >
                 <Link to={{ pathname: `/exercise/${exercise._id}` }}>
