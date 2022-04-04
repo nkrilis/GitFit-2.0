@@ -1,13 +1,14 @@
-import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import React from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { FcPlanner } from "react-icons/fc";
 
 // import ThoughtForm from '../components/ThoughtForm';
 // import ThoughtList from '../components/ThoughtList';
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -17,6 +18,7 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
+  console.log(user);
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
@@ -35,32 +37,38 @@ const Profile = () => {
     );
   }
 
-  return (
-    <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
-        </h2>
+  if (!user.workoutPlan) {
+    return <h1>Add some workout plans to your list</h1>;
+  }
 
-        <div className="col-12 col-md-10 mb-5">
-          {/* <ThoughtList
-            thoughts={user.thoughts}
-            title={`${user.username}'s thoughts...`}
-            showTitle={false}
-            showUsername={false}
-          />
-        </div>
-        {!userParam && (
-          <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: '1px dotted #1a1a1a' }}
-          >
-            <ThoughtForm />
-          </div>
-        )} */}
+  return (
+    <main>
+      <div className="flex-row justify-center" key={user._id}>
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
+          {user.workoutPlan.map((workout) => {
+            return (
+              <div
+                className="content-center bg-white text-center rounded-md px-10 py-5"
+                key={workout._id}
+              >
+                <Link
+                  className="items-center"
+                  to={`/workoutplan/${workout._id}`}
+                >
+                  {" "}
+                  <div className="items-center text-purple-100 text-bold text-lg">
+                    <FcPlanner size={56} />
+                    {workout.title}
+                  </div>
+                  <div> {workout.type}</div>
+                  <div> {workout.description}</div>
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
