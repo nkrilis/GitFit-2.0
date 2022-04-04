@@ -37,12 +37,12 @@ const SingleWorkout = () => {
       },
     });
     window.location.reload();
-    console.log(data);
+    window.location.assign("/me");
   };
 
   return (
     <div className="justify-center bg-white">
-      <div className="inline-flex" onClick={addClick}>
+      <div className="inline-flex hover:font-bold" onClick={addClick}>
         {" "}
         <svg
           className="w-6 h-6"

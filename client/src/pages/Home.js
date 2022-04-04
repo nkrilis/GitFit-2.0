@@ -38,42 +38,6 @@ const Home = () => {
               </div>
             );
           })}
-          {workoutList.map((workout) => {
-            return (
-              <div className="content-center bg-white text-center rounded-md px-10 py-5">
-                <Link
-                  className="items-center"
-                  to={`/workoutplan/${workout._id}`}
-                >
-                  {" "}
-                  <div className="items-center text-purple-100 text-bold text-lg">
-                    <FcPlanner size={56} />
-                    {workout.title}
-                  </div>
-                  <div> {workout.type}</div>
-                  <div> {workout.description}</div>
-                </Link>
-              </div>
-            );
-          })}
-          {workoutList.map((workout) => {
-            return (
-              <div className="content-center bg-white text-center rounded-md px-10 py-5">
-                <Link
-                  className="items-center"
-                  to={`/workoutplan/${workout._id}`}
-                >
-                  {" "}
-                  <div className="items-center text-purple-100 text-bold text-lg">
-                    <FcPlanner size={56} />
-                    {workout.title}
-                  </div>
-                  <div> {workout.type}</div>
-                  <div> {workout.description}</div>
-                </Link>
-              </div>
-            );
-          })}
         </div>
       </div>
     </main>
