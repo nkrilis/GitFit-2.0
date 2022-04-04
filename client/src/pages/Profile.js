@@ -90,7 +90,11 @@ const Profile = () => {
                   <div> {workout.type}</div>
                   <div> {workout.description}</div>
                 </Link>
-                <div onClick={removeClick} value={workout._id}>
+                <div
+                  className="font-xl hover:text-purple-100 hover:cursor-pointer"
+                  onClick={removeClick}
+                  value={workout._id}
+                >
                   Delete
                 </div>
               </div>

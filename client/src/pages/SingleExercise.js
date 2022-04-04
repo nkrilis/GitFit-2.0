@@ -36,12 +36,12 @@ const SingleExercise = () => {
       </div>
       <br></br>
       <div>{exercise.description}</div>
-      <div className='player-wrapper'>
+      <div className="player-wrapper">
         <ReactPlayer
-          className='react-player'
-          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
-          width='100%'
-          height='100%'
+          className="react-player"
+          url={exercise.video}
+          width="100%"
+          height="100%"
         />
       </div>
       {/* <iframe
