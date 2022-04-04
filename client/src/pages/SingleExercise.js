@@ -25,7 +25,6 @@ const SingleExercise = () => {
   }
 
   return (
-    <div
       className="card mb-2 mx-3 shadow-md text-center text-white bg-purple-100 rounded-lg py-10"
       key={exercise._id}
     >
