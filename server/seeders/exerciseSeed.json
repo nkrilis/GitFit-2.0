@@ -5,7 +5,8 @@
         "description": "SIT BACK AND DOWN, 15° TOE FLARE, DRIVE YOUR KNEES OUT LATERALLY",
         "sets": 4,
         "reps": 5,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=dW5-C1fsMjk"
     },
     {
         "_id": 2,
@@ -13,7 +14,8 @@
         "description": "BRACE YOUR LATS, CHEST TALL, HIPS HIGH, PULL THE SLACK OUT OF THE BAR PRIOR TO MOVING IT OFF THE GROUND",
         "sets": 2,
         "reps": 8,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=fc4_hq7tjkU"
     },
     {
         "_id": 3,
@@ -21,7 +23,8 @@
         "description": "TUCK YOUR CHIN AND RIB CAGE DOWN, ONLY MOVE YOUR HIPS. USE A PAD",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=RjWiwq1wgFg&t=2s"
     },
     {
         "_id": 4,

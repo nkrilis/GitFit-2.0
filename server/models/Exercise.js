@@ -30,6 +30,10 @@ const exerciseSchema = new Schema({
         required: true,
         trim: true
     },
+    video: {
+        type: String,
+        trim: true
+    }
 
 });
 
