@@ -36,8 +36,13 @@ const SingleExercise = () => {
       </div>
       <br></br>
       <div>{exercise.description}</div>
-      <div>
-        <ReactPlayer url={exercise.video} />
+      <div className='player-wrapper'>
+        <ReactPlayer
+          className='react-player'
+          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
+          width='100%'
+          height='100%'
+        />
       </div>
       {/* <iframe
         title="Exercise"
