@@ -24,7 +24,7 @@ const Exercise = () => {
           {exerciseList.map((exercise) => {
             return (
               <div
-                className="card mb-2 mx-3 text-center text-white bg-purple rounded-lg hover:shadow-white shadow-md"
+                className="card mb-2 mx-3 text-center text-white bg-purple-100 rounded-lg hover:shadow-white shadow-md"
                 key={exercise._id}
               >
                 <Link to={{ pathname: `/exercise/${exercise._id}` }}>

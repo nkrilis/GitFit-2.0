@@ -17,7 +17,7 @@ const Home = () => {
         <div className="p-3 grid grid-cols-3">
           {workoutList.map((workout) => {
             return (
-              <div className="bg-purple text-white text-center">
+              <div className="bg-purple-100 hover:bg-purple-200 text-white text-center">
                 <Link
                   className="inline-flex items-center pr-10"
                   to={`/workoutplan/${workout._id}`}
