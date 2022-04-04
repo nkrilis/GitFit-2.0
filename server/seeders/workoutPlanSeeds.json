@@ -397,5 +397,308 @@
                 ]
             }
         ]
+    },
+
+    {
+        "_id": 2,
+        "title": "Thavage AF Chest Workout",
+        "description": "Welcome to the Thavage AF Chest Training E-Book!",
+        "type": "Chest Training",
+        "numOfWeeks": "6",
+        "plan": 
+        [
+            {
+                "weeks": 
+                [
+                    {
+                        "weekNumber": "1",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    27, 26, 24, 22
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    24, 23, 43, 27
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    26, 21, 24, 23
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "weekNumber": "2",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    27, 26, 24, 22
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    24, 23, 43, 27
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    26, 21, 24, 23
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "weekNumber": "3",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    27, 26, 24, 22
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    24, 23, 43, 27
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    26, 21, 24, 23
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "weekNumber": "4",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    27, 26, 24, 22
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    24, 23, 43, 27
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    26, 21, 24, 23
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "weekNumber": "5",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    27, 26, 24, 22
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    24, 23, 43, 27
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    26, 21, 24, 23
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "weekNumber": "6",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    27, 26, 24, 22
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    24, 23, 43, 27
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    26, 21, 24, 23
+                                ]
+                            }
+                        ]
+                    }
+                    
+                ]
+            }
+        ]
+    },
+
+    {
+        "_id": 3,
+        "title": "Upper Lower",
+        "description": "Jeff Nippard's Upper Lower Intermediate",
+        "type": "Size and Strength Program",
+        "numOfWeeks": "4",
+        "plan": 
+        [
+            {
+                "weeks": 
+                [
+                    {
+                        "weekNumber": "1",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    1, 2, 10, 13, 7, 58
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    21, 40, 26, 37, 29, 33
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    2, 15, 3, 6, 5
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "weekNumber": "2",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    1, 2, 10, 13, 7, 58
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    21, 40, 26, 37, 29, 33
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    2, 15, 3, 6, 5
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "weekNumber": "3",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    1, 2, 10, 13, 7, 58
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    21, 40, 26, 37, 29, 33
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    2, 15, 3, 6, 5
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "weekNumber": "4",
+                        "days": 
+                        [
+                            {
+                                "dayOfWeek": "Monday",
+                                "exercises":
+                                [
+                                    1, 2, 10, 13, 7, 58
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Tuesday",
+                                "exercises":
+                                [
+                                    21, 40, 26, 37, 29, 33
+                                ]
+                            },
+                            {
+                                "dayOfWeek": "Wednesday",
+                                "exercises":
+                                [
+                                    2, 15, 3, 6, 5
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 ]
