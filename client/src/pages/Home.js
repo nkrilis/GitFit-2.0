@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_WORKOUT_PLANS } from "../utils/queries";
 import { Link } from "react-router-dom";
+import { FcPlanner } from "react-icons/fc";
 
 const Home = () => {
   const { loading, data } = useQuery(GET_WORKOUT_PLANS, {
@@ -14,89 +15,58 @@ const Home = () => {
   return (
     <main>
       <div className="flex-row justify-center">
-        <div className="p-3 grid grid-cols-3">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
           {workoutList.map((workout) => {
             return (
-              <div className="bg-purple-100 hover:bg-purple-200 text-white text-center">
+              <div className="content-center bg-white text-center rounded-md px-10 py-5">
                 <Link
-                  className="inline-flex items-center pr-10"
+                  className="items-center"
                   to={`/workoutplan/${workout._id}`}
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  {" "}
+                  <div className="items-center text-purple-100 text-bold text-lg">
+                    <FcPlanner size={56} />
+                    {workout.title}
+                  </div>
+                  <div> {workout.type}</div>
+                  <div> {workout.description}</div>
                 </Link>
-
-                <div> {workout.title}</div>
-                <div> {workout.type}</div>
-                <div> {workout.description}</div>
               </div>
             );
           })}
           {workoutList.map((workout) => {
             return (
-              <div className="">
+              <div className="content-center bg-white text-center rounded-md px-10 py-5">
                 <Link
-                  className="inline-flex items-center pr-10"
+                  className="items-center"
                   to={`/workoutplan/${workout._id}`}
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  {" "}
+                  <div className="items-center text-purple-100 text-bold text-lg">
+                    <FcPlanner size={56} />
+                    {workout.title}
+                  </div>
+                  <div> {workout.type}</div>
+                  <div> {workout.description}</div>
                 </Link>
-                <div> {workout.title}</div>
-                <div> {workout.type}</div>
-                <div> {workout.description}</div>
               </div>
             );
           })}
           {workoutList.map((workout) => {
             return (
-              <div className="">
+              <div className="content-center bg-white text-center rounded-md px-10 py-5">
                 <Link
-                  className="inline-flex items-center pr-10"
+                  className="items-center"
                   to={`/workoutplan/${workout._id}`}
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  {" "}
+                  <div className="items-center text-purple-100 text-bold text-lg">
+                    <FcPlanner size={56} />
+                    {workout.title}
+                  </div>
+                  <div> {workout.type}</div>
+                  <div> {workout.description}</div>
                 </Link>
-                <div> {workout.title}</div>
-                <div> {workout.type}</div>
-                <div> {workout.description}</div>
               </div>
             );
           })}

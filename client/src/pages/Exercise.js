@@ -33,10 +33,10 @@ const Exercise = () => {
                     Main muscle:{" "}
                     <span className="font-bold">{exercise.muscleGroup}</span>
                   </div>
-                  <div className="grid grid-cols-2 mx-auto">
+                  {/* <div className="grid grid-cols-2 mx-auto">
                     <div>Sets: {exercise.sets}</div>{" "}
                     <div>Reps: {exercise.reps}</div>{" "}
-                  </div>
+                  </div> */}
                 </Link>
               </div>
             );
