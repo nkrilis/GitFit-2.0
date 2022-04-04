@@ -12,6 +12,10 @@ const Home = () => {
   const workoutList = data?.getWorkoutPlans || [];
   console.log(workoutList);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <main>
       <div className="flex-row justify-center">

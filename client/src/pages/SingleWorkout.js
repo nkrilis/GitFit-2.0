@@ -3,16 +3,16 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_WORKOUT_PLAN } from "../utils/queries";
 import { ADD_WORKOUT_PLAN_TO_USER } from "../utils/mutations";
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
-import decode from 'jwt-decode';
+import decode from "jwt-decode";
 
 const SingleWorkout = () => {
   const { _id: userParam } = useParams();
 
   const [addWorkoutPlanToUser] = useMutation(ADD_WORKOUT_PLAN_TO_USER);
 
-  const decoded = decode(localStorage.getItem('id_token'));
+  const decoded = decode(localStorage.getItem("id_token"));
   // console.log(decoded.data._id);
 
   const { loading, data } = useQuery(GET_WORKOUT_PLAN, {
@@ -38,7 +38,7 @@ const SingleWorkout = () => {
       },
     });
     console.log(data);
-  }
+  };
 
   return (
     <div className="justify-center bg-white">
@@ -59,8 +59,6 @@ const SingleWorkout = () => {
           />
         </svg>
         <p>Add to my workouts</p>
-
-        
       </div>
       <h1 className="text-3xl text-center border-b border-black bg-purple-100 text-black">
         {workout.title}
