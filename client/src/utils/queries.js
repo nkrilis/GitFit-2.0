@@ -74,6 +74,7 @@ export const GET_EXERCISE = gql`
       sets
       reps
       muscleGroup
+      video
     }
   }
 `;

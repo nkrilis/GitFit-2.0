@@ -54,6 +54,7 @@ const typeDefs = gql`
         sets: Int!
         reps: Int!
         muscleGroup: String!
+        video: String!
     }
 
     type Auth {

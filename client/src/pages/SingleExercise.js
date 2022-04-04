@@ -3,6 +3,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_EXERCISE } from "../utils/queries";
 import Auth from "../utils/auth";
+import ReactPlayer from "react-player" 
 
 const SingleExercise = () => {
   const { _id: userParam } = useParams();
@@ -35,13 +36,11 @@ const SingleExercise = () => {
       </div>
       <br></br>
       <div>{exercise.description}</div>
-      <iframe
-        className=""
-        title="Exercise"
-        width="420"
-        height="315"
-        src={"https://www.youtube.com/embed/tgbNymZ7vqY"}
-      ></iframe>
+      <div>
+      <ReactPlayer
+        url={exercise.video}
+      />
+    </div>
       {/* <iframe
         title="Exercise"
         width="420"
