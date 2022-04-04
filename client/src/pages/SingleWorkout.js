@@ -54,7 +54,6 @@ const SingleWorkout = () => {
 
         <div className="grid grid-flow-col text-center mx-auto">
           {workout.plan[0].weeks.map((week) => {
-            console.log(week.weekNumber);
             return (
               <a href={`#${week.weekNumber}`}>
                 {" "}
@@ -66,7 +65,6 @@ const SingleWorkout = () => {
 
         <br></br>
         {workout.plan[0].weeks.map((week) => {
-          console.log(week.weekNumber);
           return (
             <div id={week.weekNumber} key={week.weekNumber}>
               <h1 className="text-center text-2xl bg-gray">
