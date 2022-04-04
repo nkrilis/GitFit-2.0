@@ -20,7 +20,7 @@ const Header = () => {
           />
         </div>
       </Link>
-      <div className="pr-8 md:block hidden">
+      <div className="pr-4">
         <Link
           className="inline-flex items-center pr-10 text-white hover:text-purple-200"
           to="/exercise"

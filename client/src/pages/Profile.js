@@ -1,4 +1,3 @@
-
 import { React, useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
@@ -10,22 +9,31 @@ import { REMOVE_WORKOUT_PLAN_FROM_USER } from "../utils/mutations";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
-import decode from 'jwt-decode';
-
+import decode from "jwt-decode";
 
 const Profile = () => {
+  // const [workoutData, setWorkoutData] = useState([]);
   const { username: userParam } = useParams();
 
-  const [removeWorkoutPlanFromUser] = useMutation(REMOVE_WORKOUT_PLAN_FROM_USER);
+  const [removeWorkoutPlanFromUser] = useMutation(
+    REMOVE_WORKOUT_PLAN_FROM_USER,
+    {}
+  );
 
-  const decoded = decode(localStorage.getItem('id_token'));
+  const decoded = decode(localStorage.getItem("id_token"));
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
 
+  // useEffect(() => {
+  //   if (!loading) {
+  //     setWorkoutData(data?.me || data?.user || {});
+  //     console.log(workoutData);
+  //   }
+  // });
   const user = data?.me || data?.user || {};
-  console.log(user);
+
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
@@ -50,17 +58,15 @@ const Profile = () => {
 
   const removeClick = async (event) => {
     event.preventDefault();
-    // console.log(event.target.getAttribute("value")+ "***********");
+
     await removeWorkoutPlanFromUser({
       variables: {
         id: decoded.data._id,
         workoutPlan: event.target.getAttribute("value"),
       },
     });
-    
-    console.log(data);
-  }
-
+    window.location.reload();
+  };
 
   return (
     <main>
@@ -85,8 +91,8 @@ const Profile = () => {
                   <div> {workout.description}</div>
                 </Link>
                 <div onClick={removeClick} value={workout._id}>
-                Delete
-              </div>
+                  Delete
+                </div>
               </div>
             );
           })}
