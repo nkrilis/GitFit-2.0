@@ -52,8 +52,14 @@ const Profile = () => {
     );
   }
 
-  if (!user.workoutPlan) {
-    return <h1>Add some workout plans to your list</h1>;
+  if (user.workoutPlan.length === 0) {
+    return (
+      <Link to="/">
+        <h1 className="text-white text-2xl hover:cursor-pointer hover:text-purple-100">
+          Add some workout plans to your list
+        </h1>
+      </Link>
+    );
   }
 
   const removeClick = async (event) => {
@@ -91,7 +97,7 @@ const Profile = () => {
                   <div> {workout.description}</div>
                 </Link>
                 <div
-                  className="font-xl hover:text-purple-100 hover:cursor-pointer"
+                  className="font-xl hover:text-purple-100 hover:cursor-pointer hover:font-bold"
                   onClick={removeClick}
                   value={workout._id}
                 >
