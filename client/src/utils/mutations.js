@@ -68,21 +68,12 @@ export const CREATE_EXERCISE = gql`
 
 // Add workout plan to user
 export const ADD_WORKOUT_PLAN_TO_USER = gql`
-  mutation addWorkoutPlanToUser($userId: ID!, $workoutPlanId: ID!) {
-    addWorkoutPlanToUser(userId: $userId, workoutPlanId: $workoutPlanId) {
-      _id
-      username
-      workoutPlans {
-        _id
-        title
-        description
-        type
-        numOfWeeks
-        plan
-      }
-    }
+  mutation Mutation($id: ID!, $workoutPlan: ID!) {
+  addWorkoutPlanToUser(_id: $id, workoutPlan: $workoutPlan) {
+    _id
   }
-`;
+}`
+;
 
 // Remove workout plan from user
 export const REMOVE_WORKOUT_PLAN_FROM_USER = gql`
