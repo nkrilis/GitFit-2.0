@@ -32,7 +32,8 @@
         "description": "TAKE MEDIUM STRIDES, MINIMIZE THE AMOUNT YOU PUSH OFF YOUR REAR LEG (Reps are per leg)",
         "sets": 2,
         "reps": 20,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=vni4lElTvsY"
     },
     {
         "_id": 5,
@@ -40,7 +41,8 @@
         "description": "FOCUS ON SQUEEZING YOUR QUADS TO MOVE THE WEIGHT",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=YyvSfVjQeL0"
     },
     {
         "_id": 6,
@@ -48,7 +50,8 @@
         "description": "FOCUS ON SQUEEZING YOUR HAMSTRINGS TO MOVE THE WEIGHT",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=1Tq3QdYUuHs"
     },
     {
         "_id": 7,
@@ -56,7 +59,8 @@
         "description": "PRESS ALL THE WAY UP TO YOUR TOES, STRETCH YOUR CALVES AT THE TO BOTTOM, DON'T BOUNCE",
         "sets": 3,
         "reps": 10,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=wxwY7GXxL4k"
     },
     {
         "_id": 8,
@@ -64,7 +68,8 @@
         "description": "SIT DOWN, 15° TOE FLARE, DRIVE YOUR KNEES OUT LATERALLY",
         "sets": 3,
         "reps": 8,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=v-mQm_droHg&t=467s"
     },
     {
         "_id": 9,
@@ -72,7 +77,8 @@
         "description": "FOCUS ON ANTERIORLY TILTING YOUR PELVIS DURING THE ECCENTRIC, POSTERIORLY DURING THE CONCENTRIC",
         "sets": 3,
         "reps": 20,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://youtu.be/0MGx97YdFg0?t=11m35s"
     },
     {
         "_id": 10,
@@ -80,7 +86,8 @@
         "description": "HIGH FOOT PLACEMENT",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=ZYDTJaAM-gE"
     },
     {
         "_id": 11,
@@ -88,7 +95,8 @@
         "description": "START WITH YOUR WEAKER LEG, FOCUS ON SQUEEZING YOUR QUADS TO MOVE THE WEIGHT",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=3VIpG6rtFAc"
     },
     {
         "_id": 12,
@@ -96,7 +104,8 @@
         "description": "START WITH YOUR WEAKER LEG, PREVENT YOUR HIPS FROM TOUCH THE GROUND",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=e3EeeA6L3YQ"
     },
     {
         "_id": 13,
@@ -104,7 +113,8 @@
         "description": "FOCUS ON KEEPING YOUR SPINE NEUTRAL, ANTERIOR PELVIC TILT DURING THE ECCENTRIC",
         "sets": 3,
         "reps": 8,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=SE-2Y-3a1pY"
     },
     {
         "_id": 14,
@@ -112,7 +122,8 @@
         "description": "3-SECOND PAUSE. TUCK YOUR CHIN AND RIB CAGE DOWN, ONLY MOVE YOUR HIPS. USE A PAD",
         "sets": 2,
         "reps": 10,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=RjWiwq1wgFg&t=2s"
     },
     {
         "_id": 15,
@@ -120,7 +131,8 @@
         "description": "3-SECOND LOWERING PHASE. SIT DOWN, KNEES OUT, TORSO UPRIGHT (PER LEG)",
         "sets": 2,
         "reps": 12,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=q4CSeayuKbo"
     },
     {
         "_id": 16,
@@ -128,7 +140,8 @@
         "description": "FOCUS ON SQUEEZING YOUR GLUTES TO MOVE THE WEIGHT",
         "sets": 2,
         "reps": 20,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://youtu.be/0MGx97YdFg0?t=11m35s"
     },
     {
         "_id": 17,
@@ -136,7 +149,8 @@
         "description": "SIT BACK, START WITH YOUR WEAKER LEG",
         "sets": 2,
         "reps": 15,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=bMNZAlCi11w"
     },
     {
         "_id": 18,
@@ -144,7 +158,8 @@
         "description": "HAVE A TRAINING PARTNER PUSH DOWN ON THE PAD DURING THE ECCENTRIC",
         "sets": 2,
         "reps": 12,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=1Tq3QdYUuHs"
     },
     {
         "_id": 19,
@@ -152,7 +167,8 @@
         "description": "HAVE A TRAINING PARTNER PUSH DOWN ON THE PAD DURING THE ECCENTRIC",
         "sets": 2,
         "reps": 12,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=YyvSfVjQeL0"
     },
     {
         "_id": 20,
@@ -160,7 +176,8 @@
         "description": "OR MACHINE HIP ABDUCTION, FOCUS ON DRIVING YOUR KNEES OUT",
         "sets": 2,
         "reps": 15,
-        "muscleGroup": "Legs"
+        "muscleGroup": "Legs",
+        "video": "https://www.youtube.com/watch?v=5wUk8wQNUT8"
     },
     {
         "_id": 21,
@@ -168,7 +185,8 @@
         "description": "TUCK ELBOWS AT A 45° ANGLE, SQUEEZE YOUR SHOULDER BLADES AND STAY FIRM ON THE BENCH",
         "sets": 3,
         "reps": 4,
-        "muscleGroup": "Chest"
+        "muscleGroup": "Chest",
+        "video": "https://www.youtube.com/watch?v=esQi683XR44"
     },
     {
         "_id": 22,
@@ -176,7 +194,8 @@
         "description": "TUCK YOUR ELBOWS AT A 45° ANGLE, LEAN YOUR TORSO FORWARD 15°, KEEP YOUR SCAPULAE RETRACTED",
         "sets": 3,
         "reps": 10,
-        "muscleGroup": "Chest"
+        "muscleGroup": "Chest",
+        "video": "https://www.youtube.com/watch?v=wjUmnZH528Y"
     },
     {
         "_id": 23,
@@ -184,7 +203,8 @@
         "description": "SHOULDER WIDTH GRIP, ELBOWS DOWN AT YOUR SIDES",
         "sets": 2,
         "reps": 15,
-        "muscleGroup": "Chest"
+        "muscleGroup": "Chest",
+        "video": "https://www.youtube.com/watch?v=3VP9HV1nAyQ"
     },
     {
         "_id": 24,
@@ -192,7 +212,8 @@
         "description": "START EXTERNALLY ROTATED WITH YOUR ELBOWS DOWN AND OUT, PULL YOUR ELBOWS (NOT HANDS) UP AND IN WHILE SLIGHTLY INTERNALLY ROTATING YOUR SHOULDER",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Chest"
+        "muscleGroup": "Chest",
+        "video": "https://youtu.be/-EIhKMDSjBY?t=172"
     },
     {
         "_id": 25,
@@ -200,7 +221,8 @@
         "description": "SHOULDER WIDTH GRIP, ELBOWS DOWN AT YOUR SIDES",
         "sets": 3,
         "reps": 6,
-        "muscleGroup": "Chest"
+        "muscleGroup": "Chest",
+        "video": "https://www.youtube.com/watch?v=vEUyEOVn3yM"
     },
     {
         "_id": 26,
@@ -208,7 +230,8 @@
         "description": "KEEP YOUR SCAPULAE RETRACTED AND DEPRESSED",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Chest"
+        "muscleGroup": "Chest",
+        "video": "https://www.youtube.com/watch?v=ggJycLjz01E"
     },
     {
         "_id": 27,
@@ -216,7 +239,8 @@
         "description": "FOCUS ON BRINGING YOUR INNER ELBOWS TOGETHER - NOT YOUR HANDS",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Chest"
+        "muscleGroup": "Chest",
+        "video": "https://www.youtube.com/watch?v=kuk-65akaFI"
     },
     {
         "_id": 28,
@@ -224,7 +248,8 @@
         "description": "BRING THE DUMBBELL ALL THE WAY DOWN, KEEP YOUR TORSO UPRIGHT",
         "sets": 3,
         "reps": 10,
-        "muscleGroup": "Shoulders"
+        "muscleGroup": "Shoulders",
+        "video": "https://www.youtube.com/watch?v=_RlRDWO2jfg"
     },
     {
         "_id": 29,
@@ -232,7 +257,8 @@
         "description": "SQUEEZE YOUR GLUTES TO KEEP YOUR TORSO UPRIGHT, CLEAR YOUR HEAD OUT OF THE WAY, PRESS UP AND SLIGHTLY BACK",
         "sets": 3,
         "reps": 5,
-        "muscleGroup": "Shoulders"
+        "muscleGroup": "Shoulders",
+        "video": "https://youtu.be/_RlRDWO2jfg?t=118"
     },
     {
         "_id": 30,
@@ -240,7 +266,8 @@
         "description": "START YOUR SHOULDERS INTERNALLY ROTATED, GRADUALLY EXTERNALLY ROTATE THEM AS YOU PRESS UP",
         "sets": 2,
         "reps": 12,
-        "muscleGroup": "Shoulders"
+        "muscleGroup": "Shoulders",
+        "video": "https://www.youtube.com/watch?v=6Z15_WdXmVw"
     },
     {
         "_id": 31,
@@ -248,7 +275,8 @@
         "description": "LEAN AWAY FROM THE CABLE, FOCUS ON SQUEEZING YOUR DELTS",
         "sets": 2,
         "reps": 15,
-        "muscleGroup": "Shoulders"
+        "muscleGroup": "Shoulders",
+        "video": "https://www.youtube.com/watch?v=v_ZkxWzYnMc"
     },
     {
         "_id": 32,
@@ -256,7 +284,8 @@
         "description": "FIRST 4 REPS MILITARY PRESS, LAST 4 REPS PUSH PRESS (USE LEG DRIVE)",
         "sets": 3,
         "reps": 8,
-        "muscleGroup": "Shoulders"
+        "muscleGroup": "Shoulders",
+        "video": "https://www.youtube.com/watch?v=CnBmiBqp-AI"
     },
     {
         "_id": 33,
@@ -264,7 +293,8 @@
         "description": "FOCUS ON SQUEEZING YOUR LATERAL DELT TO MOVE THE WEIGHT",
         "sets": 3,
         "reps": 8,
-        "muscleGroup": "Shoulders"
+        "muscleGroup": "Shoulders",
+        "video": "https://www.youtube.com/watch?v=v_ZkxWzYnMc"
     },
     {
         "_id": 34,
@@ -272,7 +302,8 @@
         "description": "TILT THE DUMBBELL SUCH THAT YOUR PINKY COMES UP FIRST",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Shoulders"
+        "muscleGroup": "Shoulders",
+        "video": "https://www.youtube.com/watch?v=v_ZkxWzYnMc"
     },
     {
         "_id": 35,
@@ -280,7 +311,8 @@
         "description": "LIGHT SETS, DRIVE ELBOW DOWN AND IN TOWARD SIDE, LATERALLY FLEX INTO THE DIRECTION OF PULL",
         "sets": 2,
         "reps": 20,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/f2JDJV0AnyY?t=36"
     },
     {
         "_id": 36,
@@ -288,7 +320,8 @@
         "description": "PULL YOUR ELBOWS DOWN AND IN, MINIMIZE SWINGING",
         "sets": 4,
         "reps": 8,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/f2JDJV0AnyY?t=147"
     },
     {
         "_id": 37,
@@ -296,7 +329,8 @@
         "description": "INITIATE THE MOVEMENT WITH SCAPULAR RETRACTION, PULL TO YOUR LOWER CHEST, KEEP YOUR TORSO MOTIONLESS",
         "sets": 3,
         "reps": 10,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/axoeDmW0oAY?t=97"
     },
     {
         "_id": 38,
@@ -304,7 +338,8 @@
         "description": "FOCUS ON SQUEEZING YOUR LATS",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://www.youtube.com/watch?v=nhWPIm0tcTI"
     },
     {
         "_id": 39,
@@ -312,7 +347,8 @@
         "description": "PULL YOUR ELBOWS UP AND OUT, RETRACT YOUR SCAPULA",
         "sets": 3,
         "reps": 20,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://www.youtube.com/watch?v=HSoHeSjvIdY"
     },
     {
         "_id": 40,
@@ -320,7 +356,8 @@
         "description": "PULL YOUR ELBOWS DOWN AGAINST YOUR SIDES",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://www.youtube.com/watch?v=O94yEoGXtBY&t=310s"
     },
     {
         "_id": 41,
@@ -328,7 +365,8 @@
         "description": "FOCUS ON SCAPULAR RETRACTION, PULL WITH YOUR ELBOWS UP AND OUT",
         "sets": 3,
         "reps": 10,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://www.youtube.com/watch?v=PAXkl-AdJFg"
     },
     {
         "_id": 42,
@@ -336,7 +374,8 @@
         "description": "FOCUS ON SCAPULAR RETRACTION, PULL WITH YOUR ELBOWS DOWN AND IN",
         "sets": 3,
         "reps": 10,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://www.youtube.com/watch?v=PAXkl-AdJFg"
     },
     {
         "_id": 43,
@@ -344,7 +383,8 @@
         "description": "LEAN YOUR TORSO AT A 45° ANGLE, FOCUS ON PULLING THE WEIGHT STRAIGHT DOWN, NOT IN",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/9B-5irFdB3c?t=320"
     },
     {
         "_id": 44,
@@ -352,7 +392,8 @@
         "description": "USE A 1.5X SHOULDER WIDTH GRIP, CONTROL THE WEIGHT AND SHRUG UP TO YOUR EARS",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/9B-5irFdB3c?t=386"
     },
     {
         "_id": 45,
@@ -360,7 +401,8 @@
         "description": "FOCUS ON SWEEPING THE WEIGHT OUT LATERALLY",
         "sets": 3,
         "reps": 20,
-        "muscleGroup": "Back"
+        "muscleGroup": "Back",
+        "video": "https://www.youtube.com/watch?v=JENKmsEZQO8"
     },
     {
         "_id": 46,
@@ -368,7 +410,8 @@
         "description": "STAND UPRIGHT, KEEP YOUR ELBOW BEHIND YOUR TORSO",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Bicep"
+        "muscleGroup": "Bicep",
+        "video": "https://www.youtube.com/watch?v=Qbk5A7lWVOE"
     },
     {
         "_id": 47,
@@ -376,7 +419,8 @@
         "description": "FOCUS ON SQUEEZING YOUR BICEPS TO MOVE THE WEIGHT",
         "sets": 3,
         "reps": 8,
-        "muscleGroup": "Bicep"
+        "muscleGroup": "Bicep",
+        "video": "https://www.youtube.com/watch?v=KZ_Fl2ajSxE"
     },
     {
         "_id": 48,
@@ -384,7 +428,8 @@
         "description": "ARCH THE BAR OUT, NOT UP. FOCUS ON SQUEEZING YOUR FOREARMS",
         "sets": 3,
         "reps": 20,
-        "muscleGroup": "Bicep"
+        "muscleGroup": "Bicep",
+        "video": "https://youtu.be/fsPdv3JQwNk?t=258"
     },
     {
         "_id": 49,
@@ -392,7 +437,8 @@
         "description": "ARCH THE BAR OUT, NOT UP. FOCUS ON SQUEEZING YOUR BICEPS",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Bicep"
+        "muscleGroup": "Bicep",
+        "video": "https://youtu.be/9B-5irFdB3c?t=493"
     },
     {
         "_id": 50,
@@ -400,7 +446,8 @@
         "description": "FOCUS ON SQUEEZING YOUR BICEPS TO MOVE THE WEIGHT",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Bicep"
+        "muscleGroup": "Bicep",
+        "video": "https://youtu.be/fsPdv3JQwNk?t=103"
     },
     {
         "_id": 51,
@@ -408,7 +455,8 @@
         "description": "ARCH THE DUMBBELL OUT, NOT UP. FOCUS ON SQUEEZING YOUR FOREARMS",
         "sets": 4,
         "reps": 8,
-        "muscleGroup": "Bicep"
+        "muscleGroup": "Bicep",
+        "video": "https://www.youtube.com/watch?v=Jz6vWLIfxRA"
     },
     {
         "_id": 52,
@@ -416,7 +464,8 @@
         "description": "ARCH THE DUMBBELL OUT, NOT UP. FOCUS ON SQUEEZING YOUR BICEPS",
         "sets": 4,
         "reps": 8,
-        "muscleGroup": "Bicep"
+        "muscleGroup": "Bicep",
+        "video": "https://www.youtube.com/watch?v=av7bFJahDpw&t=97s"
     },
     {
         "_id": 53,
@@ -424,7 +473,8 @@
         "description": "FOCUS ON SQUEEZING YOUR TRICEPS TO MOVE THE WEIGHT",
         "sets": 3,
         "reps": 15,
-        "muscleGroup": "Tricep"
+        "muscleGroup": "Tricep",
+        "video": "https://www.youtube.com/watch?v=gIT0iAv_Sas"
     },
     {
         "_id": 54,
@@ -432,7 +482,8 @@
         "description": "FOCUS ON STRETCHING YOUR TRICEPS AT THE BOTTOM OF THE MOVEMENT",
         "sets": 2,
         "reps": 15,
-        "muscleGroup": "Tricep"
+        "muscleGroup": "Tricep",
+        "video": "https://youtu.be/gIT0iAv_Sas?t=203"
     },
     {
         "_id": 55,
@@ -440,7 +491,8 @@
         "description": "USE 1 DUMBBELL IN EACH HAND. KEEP YOUR ELBOWS IN A FIXED POSITION INLINE WITH THE TOP OF YOUR HEAD, PRESS THE DUMBBELL OVER YOUR HEAD (NOT IN FRONT OF YOUR FACE)",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Tricep"
+        "muscleGroup": "Tricep",
+        "video": "https://youtu.be/gIT0iAv_Sas?t=146"
     },
     {
         "_id": 56,
@@ -448,7 +500,8 @@
         "description": "STAND UPRIGHT, KEEP YOUR ELBOWS BEHIND YOUR TORSO",
         "sets": 3,
         "reps": 20,
-        "muscleGroup": "Tricep"
+        "muscleGroup": "Tricep",
+        "video": "https://youtu.be/gIT0iAv_Sas?t=81"
     },
     {
         "_id": 57,
@@ -456,7 +509,8 @@
         "description": "KEEP YOUR PELVIS POSTERIORLY TILTED (SQUEEZE YOUR GLUTES), CUT THE ROM SHORT IF YOU CAN'T MAINTAIN THIS POSITION",
         "sets": 3,
         "reps": 6,
-        "muscleGroup": "Abdominals"
+        "muscleGroup": "Abdominals",
+        "video": "https://www.youtube.com/watch?v=1G0y8D5rFDc"
     },
     {
         "_id": 58,
@@ -464,7 +518,8 @@
         "description": "OPPOSITE KNEE TO ELBOW, FOCUS ON FLEXING YOUR SPINE",
         "sets": 3,
         "reps": 12,
-        "muscleGroup": "Abdominals"
+        "muscleGroup": "Abdominals",
+        "video": "https://youtu.be/2RrGnjxSsiA?t=374"
     }
 ]
 
