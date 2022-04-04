@@ -23,7 +23,25 @@ const SingleWorkout = () => {
 
   return (
     <div className="justify-center bg-white">
-      <h1 className="text-3xl text-center border-b border-black bg-purple text-black">
+      <div className="inline-flex">
+        {" "}
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+          />
+        </svg>
+        <p>Add to my workouts</p>
+      </div>
+      <h1 className="text-3xl text-center border-b border-black bg-purple-100 text-black">
         {workout.title}
       </h1>
       <br></br>
@@ -61,7 +79,7 @@ const SingleWorkout = () => {
               {week.days.map((day) => {
                 return (
                   <div key={day.dayOfWeek}>
-                    <h1 className="font-bold bg-white text-lg">
+                    <h1 className="font-bold bg-purple-100 text-lg">
                       {day.dayOfWeek}
                     </h1>
                     <table className="w-full bg-gray border-t border-b border-black">
@@ -88,7 +106,7 @@ const SingleWorkout = () => {
 
                             <tbody key={exercise.name} className="">
                               <tr>
-                                <td className="text-center border-t border-r border-black">
+                                <td className="border-t border-r border-black">
                                   <Link to={`/exercise/${exercise._id}`}>
                                     {exercise.name}
                                   </Link>
@@ -129,6 +147,7 @@ const SingleWorkout = () => {
                         }
                       })}
                     </table>
+                    <br></br>
                   </div>
                 );
               })}
