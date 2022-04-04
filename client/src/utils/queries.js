@@ -2,18 +2,16 @@ import { gql } from "@apollo/client";
 
 // Get user by username
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+query User($username: String!) {
+  user(username: $username) {
+    _id
+    username
+    email
+    workoutPlan {
       _id
-      username
-      email
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-      }
     }
   }
+}
 `;
 
 // Get logged in user
