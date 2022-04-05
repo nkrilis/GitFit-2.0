@@ -56,11 +56,16 @@ To run:
 Deployed to Heroku here: [https://gitfit-2.herokuapp.com/](https://gitfit-2.herokuapp.com/)
 
 ## Screenshots
-![Screen1](/client/src/assets/images/screenshot1.jpg)
+
+![Screenshot (634)](https://user-images.githubusercontent.com/96558916/161861996-32921cdb-e876-4fad-8f64-56b8313f53ac.png)
 ![Screen2](/client/src/assets/images/screenshot2.jpg)
 ![Screen3](/client/src/assets/images/screenshot3.jpg)
 ![Screen4](/client/src/assets/images/screenshot4.jpg)
 ![Screen5](/client/src/assets/images/screenshot5.jpg)
+![Screenshot (638)](https://user-images.githubusercontent.com/96558916/161862020-74b84bfb-4c9a-41d6-8367-1e4f3e7a02a5.png)
+![Screenshot (640)](https://user-images.githubusercontent.com/96558916/161862032-235acb98-5253-48b6-a8c0-ba0a142a5346.png)
+![Screenshot (642)](https://user-images.githubusercontent.com/96558916/161862043-c1bf5300-2557-41ca-8b3e-2f77209e1608.png)
+
 
 ## Future Development
 - User-created workouts
