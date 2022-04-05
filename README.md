@@ -1,6 +1,9 @@
 # GitFit-2.0
 
-![logo.png](/client/src/assets/images/logo.png)
+<p align="center">
+  <img width="300" height="300" src="/client/src/assets/images/logo.png">
+</p>
+
 ## Description
 
 GitFit is a [React.js](https://reactjs.org/)-driven application designed to discover and organize your workouts, track progress, and interact with users and trainers. [Node.js](https://nodejs.org/en/) and [Express.js](https://expressjs.com/) are used as the server-side framework, and data is handled by [GraphQL](https://graphql.org/), [MongoDB](https://www.mongodb.com/) and [MongoDB Atlas](https://www.mongodb.com/atlas).
@@ -70,9 +73,21 @@ You may contact the GitFit team on GitHub.
 
 ## GitFit Team:
 
- [![nkrilis](/client/src/assets/images/nkrilis.jpg)](https://github.com/nkrilis)
- [![MPAlfano](/client/src/assets/images/MpAlfano.jpg)](https://github.com/MpAlfano)
- [![ericfrancey](/client/src/assets/images/ericfrancey.jpg)](https://github.com/ericfrancey)
 
+<p align="center">
+  <a href="https://github.com/nkrilis">
+    <img width="200" height="255" src="/client/src/assets/images/nkrilis.jpg">
+  </a>
+  <a href="https://github.com/MpAlfano">
+    <img width="200" height="255" src="/client/src/assets/images/MpAlfano.jpg">
+  </a>
+  <a href="https://github.com/ericfrancey">
+    <img width="200" height="255" src="/client/src/assets/images/ericfrancey.jpg">
+  </a>
+</p>
 
-![apple-touch-icon.png](/client/src/assets/images/apple-touch-icon.png)
+<!-- 
+<p align="center">
+  <img width="200" height="200" src="/client/src/assets/images/logo.png">
+</p>
+ -->
