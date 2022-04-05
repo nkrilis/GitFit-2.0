@@ -1,6 +1,9 @@
 # GitFit-2.0
 
-![logo.png](/client/src/assets/images/logo.png)
+<p align="center">
+  <img width="460" height="460" src="/client/src/assets/images/logo.png">
+</p>
+
 ## Description
 
 GitFit is a [React.js](https://reactjs.org/)-driven application designed to discover and organize your workouts, track progress, and interact with users and trainers. [Node.js](https://nodejs.org/en/) and [Express.js](https://expressjs.com/) are used as the server-side framework, and data is handled by [GraphQL](https://graphql.org/), [MongoDB](https://www.mongodb.com/) and [MongoDB Atlas](https://www.mongodb.com/atlas).
@@ -75,4 +78,7 @@ You may contact the GitFit team on GitHub.
  [![ericfrancey](/client/src/assets/images/ericfrancey.jpg)](https://github.com/ericfrancey)
 
 
-![apple-touch-icon.png](/client/src/assets/images/apple-touch-icon.png)
+<p align="center">
+  <img width="260" height="260" src="/client/src/assets/images/logo.png">
+</p>
+
