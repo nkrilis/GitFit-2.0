@@ -76,18 +76,18 @@ You may contact the GitFit team on GitHub.
 
 <p align="center">
   <a href="https://github.com/nkrilis">
-    <img width="300" height="360" src="/client/src/assets/images/nkrilis.jpg">
+    <img width="200" height="255" src="/client/src/assets/images/nkrilis.jpg">
   </a>
   <a href="https://github.com/MpAlfano">
-    <img width="300" height="360" src="/client/src/assets/images/MpAlfano.jpg">
+    <img width="200" height="255" src="/client/src/assets/images/MpAlfano.jpg">
   </a>
   <a href="https://github.com/ericfrancey">
-    <img width="300" height="360" src="/client/src/assets/images/ericfrancey.jpg">
+    <img width="200" height="255" src="/client/src/assets/images/ericfrancey.jpg">
   </a>
 </p>
 
-
+<!-- 
 <p align="center">
-  <img width="260" height="260" src="/client/src/assets/images/logo.png">
+  <img width="200" height="200" src="/client/src/assets/images/logo.png">
 </p>
-
+ -->
