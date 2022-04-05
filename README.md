@@ -1,7 +1,7 @@
 # GitFit-2.0
 
 <p align="center">
-  <img width="460" height="460" src="/client/src/assets/images/logo.png">
+  <img width="300" height="300" src="/client/src/assets/images/logo.png">
 </p>
 
 ## Description
@@ -73,9 +73,18 @@ You may contact the GitFit team on GitHub.
 
 ## GitFit Team:
 
- [![nkrilis](/client/src/assets/images/nkrilis.jpg)](https://github.com/nkrilis)
- [![MPAlfano](/client/src/assets/images/MpAlfano.jpg)](https://github.com/MpAlfano)
- [![ericfrancey](/client/src/assets/images/ericfrancey.jpg)](https://github.com/ericfrancey)
+
+<p align="center">
+  <a href="https://github.com/nkrilis">
+    <img width="300" height="360" src="/client/src/assets/images/nkrilis.jpg">
+  </a>
+  <a href="https://github.com/MpAlfano">
+    <img width="300" height="360" src="/client/src/assets/images/MpAlfano.jpg">
+  </a>
+  <a href="https://github.com/ericfrancey">
+    <img width="300" height="360" src="/client/src/assets/images/ericfrancey.jpg">
+  </a>
+</p>
 
 
 <p align="center">
