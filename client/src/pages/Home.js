@@ -10,19 +10,21 @@ const Home = () => {
   });
 
   const workoutList = data?.getWorkoutPlans || [];
-  console.log(workoutList);
 
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  // returns list of current workout plans available with links to each when clicked
   return (
     <main>
       <div className="flex-row justify-center">
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
           {workoutList.map((workout) => {
             return (
-              <div className="content-center bg-white text-center rounded-md px-10 py-5">
+              <div
+                key={workout._id}
+                className="content-center bg-white text-center rounded-md px-10 py-5"
+              >
                 <Link
                   className="items-center"
                   to={`/workoutplan/${workout._id}`}

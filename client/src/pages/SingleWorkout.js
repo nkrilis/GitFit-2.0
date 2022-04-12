@@ -95,7 +95,7 @@ const SingleWorkout = () => {
 
               {week.days.map((day) => {
                 return (
-                  <div key={day.dayOfWeek}>
+                  <div key={day + day.dayOfWeek}>
                     <h1 className="font-bold bg-purple-100 text-lg">
                       {day.dayOfWeek}
                     </h1>
@@ -119,9 +119,10 @@ const SingleWorkout = () => {
                       {day.exercises.map((exercise, index) => {
                         if (index % 2 === 0) {
                           return (
-                            // key error needs to be made unique
-
-                            <tbody key={exercise.name} className="">
+                            <tbody
+                              key={day.dayofweek + exercise._id}
+                              className=""
+                            >
                               <tr>
                                 <td className="border-t border-r border-black">
                                   <Link to={`/exercise/${exercise._id}`}>
@@ -144,7 +145,10 @@ const SingleWorkout = () => {
                           return (
                             // key error needs to be made unique
 
-                            <tbody key={exercise.name} className=" bg-white">
+                            <tbody
+                              key={day.dayofweek + exercise._id}
+                              className=" bg-white"
+                            >
                               <tr>
                                 <td className="border-t border-r border-black">
                                   <Link to={`/exercise/${exercise._id}`}>
