@@ -21,6 +21,7 @@ const Exercise = () => {
         <div>Loading...</div>
       ) : (
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-auto mt-2 gap-2">
+          {/* map out exercise properties and creating a link for each to go to a single exercise page */}
           {exerciseList.map((exercise) => {
             return (
               <div
@@ -33,10 +34,6 @@ const Exercise = () => {
                     Main muscle:{" "}
                     <span className="font-bold">{exercise.muscleGroup}</span>
                   </div>
-                  {/* <div className="grid grid-cols-2 mx-auto">
-                    <div>Sets: {exercise.sets}</div>{" "}
-                    <div>Reps: {exercise.reps}</div>{" "}
-                  </div> */}
                 </Link>
               </div>
             );

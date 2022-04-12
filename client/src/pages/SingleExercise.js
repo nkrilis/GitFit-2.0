@@ -24,7 +24,7 @@ const SingleExercise = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  // Returning single exercise to render to page with workout description and video
   return (
     <div
       className="card mb-2 mx-3 shadow-md text-center text-white bg-purple-100 rounded-lg py-10"
@@ -44,15 +44,6 @@ const SingleExercise = () => {
           height="100%"
         />
       </div>
-      {/* <iframe
-        title="Exercise"
-        width="420"
-        height="315"
-        src={exercise.video}
-      ></iframe> */}
-      {/* <div className="grid grid-cols-2 mx-auto">
-        <div>Sets: {exercise.sets}</div> <div>Reps: {exercise.reps}</div>{" "}
-      </div> */}
     </div>
   );
 };
