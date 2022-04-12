@@ -35,7 +35,15 @@ const workoutPlanSchema = new Schema({
                         dayOfWeek: String,
                         exercises: [{
                             type: String,
-                            ref: "Exercise"
+                            ref: "Exercise",
+                            // userSets: {
+                            //     type: Number,
+                            //     default: 0
+                            // },
+                            // userReps: {
+                            //     type: Number,
+                            //     default: 0
+                            // }
                         }]
                     }]
                 }

@@ -8,10 +8,30 @@ query User($username: String!) {
     username
     email
     workoutPlan {
-      _id
+        _id
+        title
+        description
+        type
+        numOfWeeks
+        plan {
+          weeks {
+            weekNumber
+            days {
+              dayOfWeek
+              exercises {
+                _id
+                description
+                name
+                reps
+                sets
+                muscleGroup
+              }
+            }
+          }
+        }
+      }
     }
   }
-}
 `;
 
 // Get logged in user
