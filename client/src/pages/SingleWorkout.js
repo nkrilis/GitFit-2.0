@@ -36,13 +36,12 @@ const SingleWorkout = () => {
         workoutPlan: userParam,
       },
     });
-    window.location.reload();
-    window.location.assign("/me");
   };
 
   return (
     <div className="justify-center bg-white">
       <div className="inline-flex hover:font-bold" onClick={addClick}>
+      <Link to={{ pathname: `/me`}}>
         {" "}
         <svg
           className="w-6 h-6"
@@ -59,6 +58,7 @@ const SingleWorkout = () => {
           />
         </svg>
         <p className="hover:cursor-pointer">Add to my workouts</p>
+        </Link>
       </div>
       <h1 className="text-3xl text-center border-b border-black bg-purple-100 text-black">
         {workout.title}
