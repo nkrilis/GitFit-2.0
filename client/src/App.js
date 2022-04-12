@@ -18,6 +18,7 @@ import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Workout from "./pages/Workout";
+import CreateWorkout from "./pages/CreateWorkout";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -54,14 +55,23 @@ function App() {
           <Header />
           <div className="container m-auto">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/me" element={<Profile />} />
-              <Route path="/workoutplan/:_id" element={<SingleWorkout />} />
-              <Route path="/exercise/:_id" element={<SingleExercise />} />
-              <Route path="/exercise" element={<Exercise />} />
-              <Route path="/workoutplan" element={<Workout />} />
+              <Route path="/" element={<Home />} exact />
+              <Route path="/login" element={<Login />} exact />
+              <Route path="/signup" element={<Signup />} exact />
+              <Route path="/me" element={<Profile />} exact />
+              <Route
+                path="/workoutplan/:_id"
+                element={<SingleWorkout />}
+                exact
+              />
+              <Route path="/exercise/:_id" element={<SingleExercise />} exact />
+              <Route path="/exercise" element={<Exercise />} exact />
+              <Route path="/workoutplan" element={<Workout />} exact />
+              <Route
+                path="/createworkoutplan"
+                element={<CreateWorkout />}
+                exact
+              />
             </Routes>
           </div>
           <Footer />
