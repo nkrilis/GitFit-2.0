@@ -19,6 +19,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Workout from "./pages/Workout";
 import CreateWorkout from "./pages/CreateWorkout";
+import TestCreateWorkout from "./pages/TestCreateWorkout";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -70,6 +71,11 @@ function App() {
               <Route
                 path="/createworkoutplan"
                 element={<CreateWorkout />}
+                exact
+              />
+              <Route
+                path="/testcreateworkoutplan"
+                element={<TestCreateWorkout />}
                 exact
               />
             </Routes>

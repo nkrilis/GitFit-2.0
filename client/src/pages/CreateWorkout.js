@@ -69,46 +69,18 @@ const CreateWorkout = () => {
     setInputValue(event.target.value);
   };
 
-  const updateRow = () => {
-    const x = document.querySelector("#option");
-    setWorkout({
-      ...workoutValue,
-      name: x.getAttribute("name"),
-      description: x.getAttribute("description"),
-      sets: x.getAttribute("sets"),
-      reps: x.getAttribute("reps"),
-    });
-    console.log(workoutValue);
-  };
-
   return (
     <div className="container w-full">
       <form className="bg-purple-100 shadow-md px-4 pt-2">
         <div className="grid grid-cols-4 gap-2">
           <label htmlFor="name">Workout plan name:</label>
-          <input
-            className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
-            id="name"
-            type="text"
-            placeholder=""
-          />
+          <input id="name" type="text" placeholder="" />
           <label htmlFor="description">Workout description:</label>
-          <input
-            className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
-            id="description"
-            type="text"
-            placeholder=""
-          />
+          <input id="description" type="text" placeholder="" />
           <label htmlFor="type">Workout type:</label>
-          <input
-            className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
-            id="type"
-            type="text"
-            placeholder=""
-          />
+          <input id="type" type="text" placeholder="" />
           <label htmlFor="numOfWeeks">Number of weeks:</label>
           <input
-            className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
             id="numOfWeeks"
             type="number"
             placeholder="1"
@@ -116,19 +88,13 @@ const CreateWorkout = () => {
             value={inputValue}
           />
           <label htmlFor="days">Number of workout days each week:</label>
-          <input
-            className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
-            id="days"
-            type="number"
-            placeholder="1"
-          />
+          <input id="days" type="number" placeholder="1" />
         </div>
 
         <table className="table-auto">
           <thead>
             <tr>
               <th>Exercise</th>
-              <th>Description</th>
               <th>Sets</th>
               <th>Reps</th>
               <th>
@@ -149,8 +115,6 @@ const CreateWorkout = () => {
                   <td>
                     <select
                       id={row.id}
-                      // value={workoutValue}
-                      onChange={updateRow}
                       className="form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       aria-label="exercise"
                     >
@@ -162,7 +126,6 @@ const CreateWorkout = () => {
                             name={exercise.name}
                             sets={exercise.sets}
                             reps={exercise.reps}
-                            description={exercise.description}
                             key={exercise._id}
                             value={exercise.name}
                           >
@@ -173,13 +136,10 @@ const CreateWorkout = () => {
                     </select>
                   </td>
                   <td>
-                    <p id="description">{workoutValue.description}</p>
+                    <input id="sets" type="number" placeholder="1" />
                   </td>
                   <td>
-                    <p id="sets">{workoutValue.sets}</p>
-                  </td>
-                  <td>
-                    <p id="reps">{workoutValue.reps}</p>
+                    <input id="reps" type="number" placeholder="1" />
                   </td>
                   <td>
                     <button
@@ -203,6 +163,7 @@ const CreateWorkout = () => {
           Create workout
         </button>
       </form>
+      <br></br>
     </div>
   );
 };
