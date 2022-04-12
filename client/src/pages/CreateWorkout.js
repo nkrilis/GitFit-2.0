@@ -83,38 +83,30 @@ const CreateWorkout = () => {
 
   return (
     <div className="container w-full">
-      <form className="bg-sky-400 shadow-md px-4 pt-2">
+      <form className="bg-purple-100 shadow-md px-4 pt-2">
         <div className="grid grid-cols-4 gap-2">
-          <label className="bg-teal-300" htmlFor="name">
-            Workout plan name:
-          </label>
+          <label htmlFor="name">Workout plan name:</label>
           <input
             className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
             id="name"
             type="text"
             placeholder=""
           />
-          <label className="bg-teal-300" htmlFor="description">
-            Workout description:
-          </label>
+          <label htmlFor="description">Workout description:</label>
           <input
             className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
             id="description"
             type="text"
             placeholder=""
           />
-          <label className="bg-teal-300" htmlFor="type">
-            Workout type:
-          </label>
+          <label htmlFor="type">Workout type:</label>
           <input
             className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
             id="type"
             type="text"
             placeholder=""
           />
-          <label className="bg-teal-300" htmlFor="numOfWeeks">
-            Number of weeks:
-          </label>
+          <label htmlFor="numOfWeeks">Number of weeks:</label>
           <input
             className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
             id="numOfWeeks"
@@ -123,9 +115,7 @@ const CreateWorkout = () => {
             onChange={weekHandler}
             value={inputValue}
           />
-          <label className="bg-teal-300" htmlFor="days">
-            Number of workout days each week:
-          </label>
+          <label htmlFor="days">Number of workout days each week:</label>
           <input
             className="shadow appearance-none border rounded focus:outline-none focus:shadow-outline"
             id="days"
@@ -143,7 +133,7 @@ const CreateWorkout = () => {
               <th>Reps</th>
               <th>
                 <button
-                  className="bg-red-500"
+                  className="bg-blue-200"
                   type="button"
                   onClick={addExercise}
                 >
