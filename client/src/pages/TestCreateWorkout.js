@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_EXERCISES } from "../utils/queries";
 
@@ -13,8 +14,9 @@ const TestCreateWorkout = () => {
     title: "Name here",
     description: "Description here",
     type: "Type here",
-    numOfWeeks: "1",
+    numOfWeeks: 1,
     plan: "",
+    days: 1,
   });
 
   const updateTitle = (val) => {
@@ -45,44 +47,57 @@ const TestCreateWorkout = () => {
     });
   };
 
+  const updateDays = (val) => {
+    setPlanDetails({
+      ...planDetails,
+      days: val,
+    });
+  };
+
   return (
-    <div className="container">
-      <form className="bg-purple-100 shadow-md px-2 py-2">
-        <div className="grid grid-cols-4 gap-2">
-          <label htmlFor="name">Workout plan name:</label>
-          <input
-            className="w-full"
-            id="name"
-            type="text"
-            placeholder={planDetails.title}
-            onChange={(e) => updateTitle(e.target.value)}
-          />
-          <label htmlFor="type">Workout type:</label>
-          <input
-            id="type"
-            type="text"
-            placeholder={planDetails.type}
-            onChange={(e) => updateType(e.target.value)}
-          />
-          <label htmlFor="description">Workout description:</label>
-          <textarea
-            className="col-span-3"
-            id="description"
-            type="text"
-            placeholder={planDetails.description}
-            onChange={(e) => updateDescription(e.target.value)}
-          />
-          <label htmlFor="numOfWeeks">Number of weeks:</label>
-          <input
-            id="numOfWeeks"
-            type="number"
-            placeholder={planDetails.numOfWeeks}
-            onChange={(e) => updateWeeks(e.target.value)}
-          />
-          {/* <label htmlFor="days">Number of workout days each week:</label>
-          <input id="days" type="number" placeholder="1" /> */}
-        </div>
-      </form>
+    <div>
+      <Link to="/">
+        <div className="text-white">My created workout plans</div>
+      </Link>
+      <br></br>
+      <div className="container">
+        <form className="bg-purple-100 shadow-md px-2 py-2">
+          <div className="grid grid-cols-4 gap-2">
+            <label htmlFor="name">Workout plan name:</label>
+            <input
+              className="w-full"
+              type="text"
+              placeholder={planDetails.title}
+              onChange={(e) => updateTitle(e.target.value)}
+            />
+            <label htmlFor="type">Workout type:</label>
+            <input
+              type="text"
+              placeholder={planDetails.type}
+              onChange={(e) => updateType(e.target.value)}
+            />
+            <label htmlFor="description">Workout description:</label>
+            <textarea
+              className="col-span-3"
+              type="text"
+              placeholder={planDetails.description}
+              onChange={(e) => updateDescription(e.target.value)}
+            />
+            <label htmlFor="numOfWeeks">Number of weeks:</label>
+            <input
+              type="number"
+              placeholder={planDetails.numOfWeeks}
+              onChange={(e) => updateWeeks(e.target.value)}
+            />
+            <label htmlFor="days">Number of workout days each week:</label>
+            <input
+              type="number"
+              placeholder={planDetails.days}
+              onChange={(e) => updateDays(e.target.value)}
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
