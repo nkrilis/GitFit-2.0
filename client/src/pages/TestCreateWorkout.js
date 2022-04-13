@@ -16,9 +16,15 @@ const TestCreateWorkout = () => {
     type: "Type here",
     numOfWeeks: 1,
     plan: "",
-    days: 1,
+    numOfDays: 1,
   });
 
+  const [isActive, setDisplay] = useState("false");
+
+  const [weeks, setWeeks] = useState([1]);
+  const [days, setDays] = useState([1]);
+
+  //Updating state to have input user data
   const updateTitle = (val) => {
     setPlanDetails({
       ...planDetails,
@@ -50,8 +56,30 @@ const TestCreateWorkout = () => {
   const updateDays = (val) => {
     setPlanDetails({
       ...planDetails,
-      days: val,
+      numOfDays: val,
     });
+  };
+
+  //Switch between display of plan details or exercises
+  const toggleDisplay = () => {
+    setDisplay(!isActive);
+  };
+
+  //Create array to map for weeks and days in workout
+  const workoutWeeks = () => {
+    let weeks = [];
+    for (let i = 1; i < 1 + parseInt(planDetails.numOfWeeks); i++) {
+      weeks.push(i);
+    }
+    setWeeks(weeks);
+  };
+
+  const workoutDays = () => {
+    let days = [];
+    for (let i = 1; i < 1 + parseInt(planDetails.numOfWeeks); i++) {
+      days.push(i);
+    }
+    setDays(days);
   };
 
   return (
@@ -60,7 +88,7 @@ const TestCreateWorkout = () => {
         <div className="text-white">My created workout plans</div>
       </Link>
       <br></br>
-      <div className="container">
+      <div className={`${isActive ? "f" : "hidden"}`}>
         <form className="bg-purple-100 shadow-md px-2 py-2">
           <div className="grid grid-cols-4 gap-2">
             <label htmlFor="name">Workout plan name:</label>
@@ -86,17 +114,63 @@ const TestCreateWorkout = () => {
             <label htmlFor="numOfWeeks">Number of weeks:</label>
             <input
               type="number"
+              min="1"
+              max="52"
               placeholder={planDetails.numOfWeeks}
               onChange={(e) => updateWeeks(e.target.value)}
             />
             <label htmlFor="days">Number of workout days each week:</label>
             <input
               type="number"
-              placeholder={planDetails.days}
+              min="1"
+              max="7"
+              placeholder={planDetails.numOfDays}
               onChange={(e) => updateDays(e.target.value)}
             />
           </div>
+          <br></br>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onClick={() => {
+              toggleDisplay();
+              workoutWeeks();
+              workoutDays();
+            }}
+          >
+            Add exercises
+          </button>
         </form>
+      </div>
+      <div className={`${isActive ? "hidden" : "f"}`}>
+        {weeks.map((week) => {
+          return (
+            <div key={week}>
+              <h1>Week:{week}</h1>
+              {days.map((day) => {
+                return <div key={week + day}>Day: {day} </div>;
+              })}
+            </div>
+          );
+        })}
+        <table>
+          <thead>
+            <tr>
+              <th>Exercise:</th>
+              <th>Sets:</th>
+              <th>Reps:</th>
+              <th>Description:</th>
+            </tr>
+          </thead>
+        </table>
+
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+          onClick={toggleDisplay}
+        >
+          Edit plan details
+        </button>
       </div>
     </div>
   );
