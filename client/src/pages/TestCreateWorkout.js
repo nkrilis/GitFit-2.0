@@ -15,6 +15,7 @@ const TestCreateWorkout = () => {
 
   const [createWorkoutPlan] = useMutation(CREATE_WORKOUT_PLAN);
 
+  // function to create workout plan in database
   const createWorkout = async () => {
     await createWorkoutPlan({
       variables: {
