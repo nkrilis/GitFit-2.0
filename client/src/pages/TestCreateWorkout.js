@@ -1,14 +1,29 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { Link, Navigate } from "react-router-dom";
+import { useMutation, useQuery } from "@apollo/client";
 import { GET_EXERCISES } from "../utils/queries";
+import { CREATE_WORKOUT_PLAN } from "../utils/mutations";
+
+import Auth from "../utils/auth";
+import decode from "jwt-decode";
 
 const TestCreateWorkout = () => {
   const { loading, data } = useQuery(GET_EXERCISES, {
     fetchPolicy: "no-cache",
   });
-
   const exerciseList = data?.getExercises || [];
+
+  const [createWorkoutPlan] = useMutation(CREATE_WORKOUT_PLAN);
+
+  const createWorkout = async () => {
+    await createWorkoutPlan({
+      variables: {
+        user_id: decoded.data._id,
+      },
+    });
+  };
+
+  const decoded = decode(localStorage.getItem("id_token"));
 
   const [planDetails, setPlanDetails] = useState({
     title: "Name here",
@@ -18,11 +33,13 @@ const TestCreateWorkout = () => {
     plan: "",
     numOfDays: 1,
   });
-
   const [isActive, setDisplay] = useState("false");
-
   const [weeks, setWeeks] = useState([1]);
   const [days, setDays] = useState([1]);
+
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
+  }
 
   //Updating state to have input user data
   const updateTitle = (val) => {
@@ -151,58 +168,37 @@ const TestCreateWorkout = () => {
                 return (
                   <div key={week + day}>
                     <h1>Day: {day} </h1>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Exercise:</th>
-                          <th>Sets:</th>
-                          <th>Reps:</th>
-                          <th>Description:</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <select
-                              className="form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                              aria-label="exercise"
-                            >
-                              {exerciseList.map((exercise) => {
-                                return (
-                                  <option
-                                    id="option"
-                                    name={exercise.name}
-                                    key={exercise._id}
-                                    value={exercise.name}
-                                  >
-                                    {exercise.name}
-                                  </option>
-                                );
-                              })}
-                            </select>
-                          </td>
-                          <td>
-                            <input
-                              type="number"
-                              min="1"
-                              max="50"
-                              placeholder="1"
-                            />
-                          </td>
-                          <td>
-                            <input
-                              type="number"
-                              min="1"
-                              max="50"
-                              placeholder="1"
-                            />
-                          </td>
-                          <td>
-                            <textarea type="text" placeholder=""></textarea>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <form className="bg-purple-100 shadow-md px-2 py-2">
+                      <div className="grid grid-cols-6 gap-2">
+                        <select
+                          className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                          aria-label="exercise"
+                        >
+                          {exerciseList.map((exercise) => {
+                            return (
+                              <option
+                                id="option"
+                                name={exercise.name}
+                                key={exercise._id}
+                                value={exercise.name}
+                              >
+                                {exercise.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+
+                        <input type="number" min="1" max="50" placeholder="1" />
+
+                        <input type="number" min="1" max="50" placeholder="1" />
+
+                        <textarea
+                          className="col-span-2"
+                          type="text"
+                          placeholder=""
+                        ></textarea>
+                      </div>
+                    </form>
                   </div>
                 );
               })}
