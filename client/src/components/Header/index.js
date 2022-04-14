@@ -14,7 +14,7 @@ const Header = () => {
       <Link to="/">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <img
-            className="object-fill h-24 w-24 lg:h-48 lg:w-48 md:w-36 md:h-36  rounded-full hover:shadow-white shadow-lg"
+            className="object-fill h-24 w-24 lg:h-48 lg:w-48 md:w-36 md:h-36  rounded-full hover:shadow-white shadow-header"
             src={logo}
             alt="logo"
           />
