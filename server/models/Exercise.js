@@ -15,16 +15,16 @@ const exerciseSchema = new Schema({
         required: true,
         trim: true
     },
-    sets: {
-        type: Number,
-        required: true,
-        trim: true
-    },
-    reps: {
-        type: Number,
-        required: true,
-        trim: true
-    },
+    // sets: {
+    //     type: Number,
+    //     required: true,
+    //     trim: true
+    // },
+    // reps: {
+    //     type: Number,
+    //     required: true,
+    //     trim: true
+    // },
     muscleGroup: {
         type: String,
         required: true,

@@ -11,6 +11,8 @@ const typeDefs = gql`
 
   type WorkoutPlan {
         _id: ID!
+        ownerId: User
+        paid: Boolean!
         title: String!
         description: String!
         type: String!
@@ -39,20 +41,32 @@ const typeDefs = gql`
 
     type Day {
         dayOfWeek: String!
-        exercises: [Exercise]
+        exercises: [UserExercise]
     }
 
     input DayInput {
         dayOfWeek: String!
-        exercises: [String]
+        exercises: [ExerciseInput]
+    }
+
+    type UserExercise {
+        exerciseId: Exercise
+        userSets: Int!
+        userReps: Int!
+    }
+
+    input ExerciseInput {
+        exerciseId: String
+        userSets: Int!
+        userReps: Int!
     }
 
     type Exercise {
         _id: ID!
         name: String!
         description: String!
-        sets: Int!
-        reps: Int!
+        # sets: Int!
+        # reps: Int!
         muscleGroup: String!
         video: String!
     }
@@ -82,7 +96,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         
         # Create a new workout plan
-        createWorkoutPlan(title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [PlanInput] ): WorkoutPlan
+        createWorkoutPlan(_id: ID!, title: String!, description: String!, type: String!, numOfWeeks: Int!, plan: [PlanInput] ): WorkoutPlan
 
         # Create a new exercise
         createExercise(name: String!, description: String!, sets: Int!, reps: Int!, muscleGroup: String!): Exercise

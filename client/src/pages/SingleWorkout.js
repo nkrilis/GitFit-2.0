@@ -13,9 +13,11 @@ const SingleWorkout = () => {
   const [addWorkoutPlanToUser] = useMutation(ADD_WORKOUT_PLAN_TO_USER);
 
   const { loading, data } = useQuery(GET_WORKOUT_PLAN, {
-    variables: { _id: userParam },
+    variables: { id: userParam },
     fetchPolicy: "no-cache",
   });
+
+  console.log(data);
 
   if (!Auth.loggedIn()) {
     return <Navigate to="/login" />;
@@ -120,23 +122,23 @@ const SingleWorkout = () => {
                         if (index % 2 === 0) {
                           return (
                             <tbody
-                              key={day.dayofweek + exercise._id}
+                              key={day.dayofweek + exercise.exerciseId._id}
                               className=""
                             >
                               <tr>
                                 <td className="border-t border-r border-black">
-                                  <Link to={`/exercise/${exercise._id}`}>
-                                    {exercise.name}
+                                  <Link to={`/exercise/${exercise.exerciseId._id}`}>
+                                    {exercise.exerciseId.name}
                                   </Link>
                                 </td>
                                 <td className="text-center border-t border-r border-black">
-                                  {exercise.sets}
+                                  {exercise.userSets}
                                 </td>
                                 <td className="text-center border-t border-r border-black">
-                                  {exercise.reps}
+                                  {exercise.userReps}
                                 </td>
                                 <td className="border-t border-blac">
-                                  {exercise.description}
+                                  {exercise.exerciseId.description}
                                 </td>
                               </tr>
                             </tbody>
@@ -146,22 +148,22 @@ const SingleWorkout = () => {
                             // key error needs to be made unique
 
                             <tbody
-                              key={day.dayofweek + exercise._id}
+                              key={day.dayofweek + exercise.exerciseId._id}
                               className=" bg-white"
                             >
                               <tr>
                                 <td className="border-t border-r border-black">
-                                  <Link to={`/exercise/${exercise._id}`}>
-                                    {exercise.name}
+                                  <Link to={`/exercise/${exercise.exerciseId._id}`}>
+                                    {exercise.exerciseId.name}
                                   </Link>
                                 </td>
                                 <td className="text-center border-t border-r border-black">
-                                  {exercise.sets}
+                                  {exercise.userSets}
                                 </td>
                                 <td className="text-center border-t border-r border-black">
-                                  {exercise.reps}
+                                  {exercise.userReps}
                                 </td>
-                                <td className="">{exercise.description}</td>
+                                <td className="">{exercise.exerciseId.description}</td>
                               </tr>
                             </tbody>
                           );
