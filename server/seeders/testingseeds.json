@@ -1,0 +1,38 @@
+{
+    "_id": 1,
+    "title": "Push Pull Legs",
+    "description": "An intermediate-advanced Program BY: Jeff Nippard",
+    "type": "Hypertrophy Training",
+    "numOfWeeks": "8",
+    "plan": 
+    [
+        {
+            "weeks": 
+            [
+                {
+                    "weekNumber": "1",
+                    "days": 
+                    [
+                        {
+                            "dayOfWeek": "Monday",
+                            "exercises":
+                            [
+                                {
+                                    "exerciseId": "1",
+                                    "userSets": 3,
+                                    "userReps": 5
+                                },
+                                {
+                                    "exerciseId": "1",
+                                    "userSets": 3,
+                                    "userReps": 5
+                                }
+                                
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

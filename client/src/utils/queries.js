@@ -7,30 +7,34 @@ query User($username: String!) {
     _id
     username
     email
+    password
     workoutPlan {
-        _id
-        title
-        description
-        type
-        numOfWeeks
-        plan {
-          weeks {
-            weekNumber
-            days {
-              dayOfWeek
-              exercises {
+      _id
+      title
+      description
+      type
+      numOfWeeks
+      plan {
+        weeks {
+          weekNumber
+          days {
+            dayOfWeek
+            exercises {
+              exerciseId {
                 _id
-                description
                 name
-                reps
-                sets
+                description
                 muscleGroup
+                video
               }
+              userSets
+              userReps
             }
           }
         }
       }
     }
+  }
   }
 `;
 
@@ -38,33 +42,37 @@ query User($username: String!) {
 export const QUERY_ME = gql`
   query me {
     me {
+    _id
+    username
+    email
+    password
+    workoutPlan {
       _id
-      username
-      email
-      workoutPlan {
-        _id
-        title
-        description
-        type
-        numOfWeeks
-        plan {
-          weeks {
-            weekNumber
-            days {
-              dayOfWeek
-              exercises {
+      title
+      description
+      type
+      numOfWeeks
+      plan {
+        weeks {
+          weekNumber
+          days {
+            dayOfWeek
+            exercises {
+              exerciseId {
                 _id
-                description
                 name
-                reps
-                sets
+                description
                 muscleGroup
+                video
               }
+              userSets
+              userReps
             }
           }
         }
       }
     }
+  }
   }
 `;
 
@@ -72,13 +80,12 @@ export const QUERY_ME = gql`
 export const GET_EXERCISES = gql`
   query GetExercises {
     getExercises {
-      _id
-      name
-      description
-      sets
-      reps
-      muscleGroup
-    }
+    _id
+    name
+    description
+    muscleGroup
+    video
+  }
   }
 `;
 
@@ -89,8 +96,6 @@ export const GET_EXERCISE = gql`
       _id
       name
       description
-      sets
-      reps
       muscleGroup
       video
     }
@@ -100,7 +105,7 @@ export const GET_EXERCISE = gql`
 // Get all Workout Plans
 export const GET_WORKOUT_PLANS = gql`
   query GetWorkoutPlans {
-    getWorkoutPlans {
+      getWorkoutPlans {
       _id
       title
       description
@@ -112,12 +117,15 @@ export const GET_WORKOUT_PLANS = gql`
           days {
             dayOfWeek
             exercises {
-              _id
-              description
-              name
-              reps
-              sets
-              muscleGroup
+              exerciseId {
+                _id
+                name
+                description
+                muscleGroup
+                video
+              }
+              userSets
+              userReps
             }
           }
         }
@@ -128,29 +136,32 @@ export const GET_WORKOUT_PLANS = gql`
 
 // Get workout Plan by id
 export const GET_WORKOUT_PLAN = gql`
-  query GetWorkoutPlan($_id: ID!) {
-    getWorkoutPlan(_id: $_id) {
-      _id
-      title
-      description
-      type
-      numOfWeeks
-      plan {
-        weeks {
-          weekNumber
-          days {
-            dayOfWeek
-            exercises {
+  query GetWorkoutPlan($id: ID!) {
+    getWorkoutPlan(_id: $id) {
+    _id
+    title
+    description
+    type
+    numOfWeeks
+    plan {
+      weeks {
+        weekNumber
+        days {
+          dayOfWeek
+          exercises {
+            exerciseId {
               _id
-              description
               name
-              reps
-              sets
+              description
               muscleGroup
+              video
             }
+            userSets
+            userReps
           }
         }
       }
     }
+  }
   }
 `;

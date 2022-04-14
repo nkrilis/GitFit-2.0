@@ -2,7 +2,7 @@ const db = require('../config/connection');
 const { User, Exercise, WorkoutPlan } = require('../models');
 const userSeeds = require('./userSeeds.json');
 const exerciseSeeds = require('./exerciseSeed.json');
-const workoutPlanSeeds = require('./workoutPlanSeeds.json');
+const workoutPlanSeeds = require('./testingseeds.json');
 
 db.once('open', async () => {
   try {

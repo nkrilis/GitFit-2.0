@@ -9,7 +9,7 @@ const resolvers = {
       const users = await User.find({}).populate({
         path: "workoutPlan",
         populate: {
-          path: "plan.weeks.days.exercises",
+          path: "plan.weeks.days.exercises.exerciseId",
           model: "Exercise",
         },
       });
@@ -21,7 +21,7 @@ const resolvers = {
       const users = User.findOne({ username }).populate({
         path: "workoutPlan",
         populate: {
-          path: "plan.weeks.days.exercises",
+          path: "plan.weeks.days.exercises.exerciseId",
           model: "Exercise",
         },
       });
@@ -34,7 +34,7 @@ const resolvers = {
         return User.findOne({ _id: context.user._id }).populate({
           path: "workoutPlan",
           populate: {
-            path: "plan.weeks.days.exercises",
+            path: "plan.weeks.days.exercises.exerciseId",
             model: "Exercise",
           },
         });
@@ -45,7 +45,7 @@ const resolvers = {
     // Query a workout plan by its id and populate its exercises
     getWorkoutPlan: async (_, { _id }, context) => {
       const workoutPlan = await WorkoutPlan.findById(_id).populate(
-        "plan.weeks.days.exercises"
+        "plan.weeks.days.exercises.exerciseId"
       );
 
       if (!workoutPlan) {
@@ -57,7 +57,7 @@ const resolvers = {
     // Query all workout plans and populate exercises where the _id is in the exercise model
     getWorkoutPlans: async (_, __, context) => {
       const workoutPlans = await WorkoutPlan.find().populate(
-        "plan.weeks.days.exercises"
+        "plan.weeks.days.exercises.exerciseId"
       );
 
       return workoutPlans;
@@ -113,9 +113,10 @@ const resolvers = {
     // Create a new workout plan
     createWorkoutPlan: async (
       parent,
-      { title, description, type, numOfWeeks, plan }
+      { _id, title, description, type, numOfWeeks, plan }
     ) => {
       const workoutPlan = await WorkoutPlan.create({
+        _id,
         title,
         description,
         type,

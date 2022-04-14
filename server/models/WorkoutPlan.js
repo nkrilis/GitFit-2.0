@@ -5,6 +5,15 @@ const workoutPlanSchema = new Schema({
         type: String,
         required: true,
     },
+    ownerId: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
+    paid: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
     title: {
         type: String,
         required: true,
@@ -34,16 +43,18 @@ const workoutPlanSchema = new Schema({
                     days: [{
                         dayOfWeek: String,
                         exercises: [{
-                            type: String,
-                            ref: "Exercise",
-                            // userSets: {
-                            //     type: Number,
-                            //     default: 0
-                            // },
-                            // userReps: {
-                            //     type: Number,
-                            //     default: 0
-                            // }
+                            exerciseId: {
+                                type: String,
+                                ref: "Exercise",
+                            },
+                            userSets: {
+                                type: Number,
+                                default: 0
+                            },
+                            userReps: {
+                                type: Number,
+                                default: 0
+                            }
                         }]
                     }]
                 }
