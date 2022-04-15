@@ -1,4 +1,4 @@
-import { React, useEffect} from "react";
+import { React, useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useMutation, useLazyQuery } from "@apollo/client";
 import { FcPlanner } from "react-icons/fc";
@@ -18,20 +18,20 @@ const Profile = () => {
 
   const decoded = decode(localStorage.getItem("id_token"));
 
-  const [loadQuery, { loading, data }] = useLazyQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
-  },
+  const [loadQuery, { loading, data }] = useLazyQuery(
+    userParam ? QUERY_USER : QUERY_ME,
+    {
+      variables: { username: userParam },
+    }
   );
-  
+
   useEffect(() => {
     loadQuery();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
   const user = data?.me || data?.user || {};
-
 
   const removeClick = async (event) => {
     event.preventDefault();
@@ -42,17 +42,17 @@ const Profile = () => {
         workoutPlan: event.target.getAttribute("value"),
       },
     });
-    loadQuery()
+    loadQuery();
   };
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
-  };
+  }
 
   if (loading) {
     return <div>Loading...</div>;
-  };
+  }
 
   if (!user?.username) {
     return (
@@ -61,20 +61,28 @@ const Profile = () => {
         sign up or log in!
       </h4>
     );
-  };
+  }
 
   if (user.workoutPlan.length === 0) {
     return (
-      <Link to="/">
-        <h1 className="text-white text-2xl hover:cursor-pointer hover:text-purple-100">
-          Add some workout plans to your list
-        </h1>
-      </Link>
+      <main>
+        <nav>
+          <Link to="/testcreateworkoutplan">Create a workout</Link>
+        </nav>
+        <Link to="/">
+          <h1 className="text-white text-2xl hover:cursor-pointer hover:text-purple-100">
+            Add some workout plans to your list
+          </h1>
+        </Link>
+      </main>
     );
-  };
+  }
 
   return (
     <main>
+      <nav>
+        <Link to="/testcreateworkout">Create a workout</Link>
+      </nav>
       <div className="flex-row justify-center" key={user._id}>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
           {user.workoutPlan?.map((workout) => {
