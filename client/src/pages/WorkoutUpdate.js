@@ -1,24 +1,32 @@
-import React, { useState } from "react";
-import { GET_EXERCISES } from "../utils/queries";
+import React, { useEffect, useState } from "react";
+import { GET_EXERCISES, GET_WORKOUT_PLAN } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
 const WorkoutUpdate = () => {
-  const { loading, data } = useQuery(GET_EXERCISES, {
+  const { data: dataExercise } = useQuery(GET_EXERCISES, {
     fetchPolicy: "no-cache",
   });
-  const exerciseList = data?.getExercises || [];
+  const exerciseList = dataExercise?.getExercises || [];
 
-  const [weeks, setWeeks] = useState([1]);
+  const { loading, data: dataWorkoutPlan } = useQuery(GET_WORKOUT_PLAN, {
+    variables: { id: "9" },
+    fetchPolicy: "no-cache",
+  });
+  const workoutPlan = dataWorkoutPlan?.getWorkoutPlan || [];
+
+  console.log(workoutPlan);
+
+  const [weeks, setWeeks] = useState([]);
   const [days, setDays] = useState([1]);
 
-  //   Create array to map for weeks and days in workout
-  // const workoutWeeks = () => {
-  //   let weeks = [];
-  //   for (let i = 1; i < 1 + parseInt(planDetails.numOfWeeks); i++) {
-  //     weeks.push(i);
-  //   }
-  //   setWeeks(weeks);
-  // };
+  // Create array to map for weeks and days in workout
+  const workoutWeeks = () => {
+    let weeksVal = [];
+    for (let i = 1; i < 1 + workoutPlan.numOfWeeks; i++) {
+      weeksVal.push(i);
+    }
+    setWeeks(weeksVal);
+  };
 
   // const workoutDays = () => {
   //   let days = [];
@@ -27,6 +35,10 @@ const WorkoutUpdate = () => {
   //   }
   //   setDays(days);
   // };
+
+  useEffect(() => {
+    workoutWeeks();
+  }, [workoutPlan]);
 
   return (
     <div>
