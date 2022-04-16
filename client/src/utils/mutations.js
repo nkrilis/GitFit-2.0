@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // Login mutation
 export const LOGIN_USER = gql`
@@ -28,14 +28,27 @@ export const ADD_USER = gql`
 
 // Create a new workout plan
 export const CREATE_WORKOUT_PLAN = gql`
-  mutation createWorkoutPlan( $title: String!, $description: String!, $type: String!, $numOfWeeks: Int!, $plan: plan!) {
-    createWorkoutPlan( title: $title, description: $description, type: $type, numOfWeeks: $numOfWeeks, plan: $plan) {
+  mutation CreateWorkoutPlan(
+    $id: ID!
+    $title: String!
+    $description: String!
+    $type: String!
+    $numOfWeeks: Int!
+    $plan: [PlanInput]
+  ) {
+    createWorkoutPlan(
+      _id: $id
+      title: $title
+      description: $description
+      type: $type
+      numOfWeeks: $numOfWeeks
+      plan: $plan
+    ) {
       _id
       title
       description
       type
       numOfWeeks
-      plan
     }
   }
 `;
@@ -69,25 +82,35 @@ export const CREATE_EXERCISE = gql`
 // Add workout plan to user
 export const ADD_WORKOUT_PLAN_TO_USER = gql`
   mutation Mutation($id: ID!, $workoutPlan: ID!) {
-  addWorkoutPlanToUser(_id: $id, workoutPlan: $workoutPlan) {
-    _id
+    addWorkoutPlanToUser(_id: $id, workoutPlan: $workoutPlan) {
+      _id
+    }
   }
-}`
-;
+`;
 
 // Remove workout plan from user
 export const REMOVE_WORKOUT_PLAN_FROM_USER = gql`
   mutation RemoveWorkoutPlanFromUser($id: ID!, $workoutPlan: ID!) {
-  removeWorkoutPlanFromUser(_id: $id, workoutPlan: $workoutPlan) {
-    _id
+    removeWorkoutPlanFromUser(_id: $id, workoutPlan: $workoutPlan) {
+      _id
+    }
   }
-}
 `;
 
 // Add exercise to workout plan
 export const ADD_EXERCISE_TO_WORKOUT_PLAN = gql`
-  mutation addExerciseToWorkoutPlan( $workoutPlanId: ID!, $weekNumber: Int!, $dayOfWeek: String!, $exerciseId: ID!) {
-    addExerciseToWorkoutPlan(workoutPlanId: $workoutPlanId, weekNumber: $weekNumber, dayOfWeek: $dayOfWeek, exerciseId: $exerciseId) {
+  mutation addExerciseToWorkoutPlan(
+    $workoutPlanId: ID!
+    $weekNumber: Int!
+    $dayOfWeek: String!
+    $exerciseId: ID!
+  ) {
+    addExerciseToWorkoutPlan(
+      workoutPlanId: $workoutPlanId
+      weekNumber: $weekNumber
+      dayOfWeek: $dayOfWeek
+      exerciseId: $exerciseId
+    ) {
       _id
       title
       description
@@ -100,8 +123,18 @@ export const ADD_EXERCISE_TO_WORKOUT_PLAN = gql`
 
 // Remove exercise from workout plan
 export const REMOVE_EXERCISE_FROM_WORKOUT_PLAN = gql`
-  mutation removeExerciseFromWorkoutPlan( $workoutPlanId: ID!, $weekNumber: Int!, $dayOfWeek: String!, $exerciseId: ID!) {
-    removeExerciseFromWorkoutPlan(workoutPlanId: $workoutPlanId, weekNumber: $weekNumber, dayOfWeek: $dayOfWeek, exerciseId: $exerciseId) {
+  mutation removeExerciseFromWorkoutPlan(
+    $workoutPlanId: ID!
+    $weekNumber: Int!
+    $dayOfWeek: String!
+    $exerciseId: ID!
+  ) {
+    removeExerciseFromWorkoutPlan(
+      workoutPlanId: $workoutPlanId
+      weekNumber: $weekNumber
+      dayOfWeek: $dayOfWeek
+      exerciseId: $exerciseId
+    ) {
       _id
       title
       description
@@ -114,8 +147,22 @@ export const REMOVE_EXERCISE_FROM_WORKOUT_PLAN = gql`
 
 // Update workout plan
 export const UPDATE_WORKOUT_PLAN = gql`
-  mutation updateWorkoutPlan( $workoutPlanId: ID!, $title: String!, $description: String!, $type: String!, $numOfWeeks: Int!, $plan: plan!) {
-    updateWorkoutPlan(workoutPlanId: $workoutPlanId, title: $title, description: $description, type: $type, numOfWeeks: $numOfWeeks, plan: $plan) {
+  mutation updateWorkoutPlan(
+    $workoutPlanId: ID!
+    $title: String!
+    $description: String!
+    $type: String!
+    $numOfWeeks: Int!
+    $plan: plan!
+  ) {
+    updateWorkoutPlan(
+      workoutPlanId: $workoutPlanId
+      title: $title
+      description: $description
+      type: $type
+      numOfWeeks: $numOfWeeks
+      plan: $plan
+    ) {
       _id
       title
       description
@@ -128,7 +175,7 @@ export const UPDATE_WORKOUT_PLAN = gql`
 
 // Delete workout plan
 export const DELETE_WORKOUT_PLAN = gql`
-  mutation deleteWorkoutPlan( $workoutPlanId: ID!) {
+  mutation deleteWorkoutPlan($workoutPlanId: ID!) {
     deleteWorkoutPlan(workoutPlanId: $workoutPlanId) {
       _id
       title
@@ -138,4 +185,4 @@ export const DELETE_WORKOUT_PLAN = gql`
       plan
     }
   }
-`; 
+`;
