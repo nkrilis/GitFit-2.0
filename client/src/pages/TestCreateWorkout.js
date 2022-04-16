@@ -20,7 +20,7 @@ const TestCreateWorkout = () => {
         description: planDetails.description,
         type: planDetails.type,
         numOfWeeks: parseInt(planDetails.numOfWeeks),
-        plan: [],
+        plan: {},
       },
     });
     //add in function to set state back to starting text

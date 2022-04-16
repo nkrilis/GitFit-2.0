@@ -145,12 +145,12 @@ const resolvers = {
     // Update a workout plan
     updateWorkoutPlan: async (
       parent,
-      { _id, title, description, type, weeks },
+      { _id, title, description, type, numOfWeeks, plan },
       context
     ) => {
       const workoutPlan = await WorkoutPlan.findByIdAndUpdate(
         _id,
-        { title, description, type, weeks },
+        { title, description, type, numOfWeeks, plan },
         { new: true }
       );
       if (!workoutPlan) {
