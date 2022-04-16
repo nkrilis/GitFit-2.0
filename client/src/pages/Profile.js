@@ -66,9 +66,10 @@ const Profile = () => {
   if (user.workoutPlan.length === 0) {
     return (
       <main>
-        <nav>
-          <Link to="/testcreateworkoutplan">Create a workout</Link>
-        </nav>
+        <div className="text-white">
+          <Link to="/workoutupdate">Workout management page</Link>
+        </div>
+        <br></br>
         <Link to="/">
           <h1 className="text-white text-2xl hover:cursor-pointer hover:text-purple-100">
             Add some workout plans to your list
@@ -80,9 +81,10 @@ const Profile = () => {
 
   return (
     <main>
-      <nav>
-        <Link to="/testcreateworkout">Create a workout</Link>
-      </nav>
+      <div className="text-white">
+        <Link to="/workoutupdate">Workout management page</Link>
+      </div>
+      <br></br>
       <div className="flex-row justify-center" key={user._id}>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
           {user.workoutPlan?.map((workout) => {

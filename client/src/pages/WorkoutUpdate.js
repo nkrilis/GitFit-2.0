@@ -12,21 +12,21 @@ const WorkoutUpdate = () => {
   const [days, setDays] = useState([1]);
 
   //   Create array to map for weeks and days in workout
-  const workoutWeeks = () => {
-    let weeks = [];
-    for (let i = 1; i < 1 + parseInt(planDetails.numOfWeeks); i++) {
-      weeks.push(i);
-    }
-    setWeeks(weeks);
-  };
+  // const workoutWeeks = () => {
+  //   let weeks = [];
+  //   for (let i = 1; i < 1 + parseInt(planDetails.numOfWeeks); i++) {
+  //     weeks.push(i);
+  //   }
+  //   setWeeks(weeks);
+  // };
 
-  const workoutDays = () => {
-    let days = [];
-    for (let i = 1; i < 1 + parseInt(planDetails.numOfDays); i++) {
-      days.push(i);
-    }
-    setDays(days);
-  };
+  // const workoutDays = () => {
+  //   let days = [];
+  //   for (let i = 1; i < 1 + parseInt(planDetails.numOfDays); i++) {
+  //     days.push(i);
+  //   }
+  //   setDays(days);
+  // };
 
   return (
     <div>
@@ -76,7 +76,6 @@ const WorkoutUpdate = () => {
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
-              onClick
             >
               Edit plan details
             </button>
