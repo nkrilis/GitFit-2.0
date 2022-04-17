@@ -2,39 +2,39 @@ import { gql } from "@apollo/client";
 
 // Get user by username
 export const QUERY_USER = gql`
-query User($username: String!) {
-  user(username: $username) {
-    _id
-    username
-    email
-    password
-    workoutPlan {
+  query User($username: String!) {
+    user(username: $username) {
       _id
-      title
-      description
-      type
-      numOfWeeks
-      plan {
-        weeks {
-          weekNumber
-          days {
-            dayOfWeek
-            exercises {
-              exerciseId {
-                _id
-                name
-                description
-                muscleGroup
-                video
+      username
+      email
+      password
+      workoutPlan {
+        _id
+        title
+        description
+        type
+        numOfWeeks
+        plan {
+          weeks {
+            weekNumber
+            days {
+              dayOfWeek
+              exercises {
+                exerciseId {
+                  _id
+                  name
+                  description
+                  muscleGroup
+                  video
+                }
+                userSets
+                userReps
               }
-              userSets
-              userReps
             }
           }
         }
       }
     }
-  }
   }
 `;
 
@@ -42,37 +42,37 @@ query User($username: String!) {
 export const QUERY_ME = gql`
   query me {
     me {
-    _id
-    username
-    email
-    password
-    workoutPlan {
       _id
-      title
-      description
-      type
-      numOfWeeks
-      plan {
-        weeks {
-          weekNumber
-          days {
-            dayOfWeek
-            exercises {
-              exerciseId {
-                _id
-                name
-                description
-                muscleGroup
-                video
+      username
+      email
+      password
+      workoutPlan {
+        _id
+        title
+        description
+        type
+        numOfWeeks
+        plan {
+          weeks {
+            weekNumber
+            days {
+              dayOfWeek
+              exercises {
+                exerciseId {
+                  _id
+                  name
+                  description
+                  muscleGroup
+                  video
+                }
+                userSets
+                userReps
               }
-              userSets
-              userReps
             }
           }
         }
       }
     }
-  }
   }
 `;
 
@@ -80,12 +80,12 @@ export const QUERY_ME = gql`
 export const GET_EXERCISES = gql`
   query GetExercises {
     getExercises {
-    _id
-    name
-    description
-    muscleGroup
-    video
-  }
+      _id
+      name
+      description
+      muscleGroup
+      video
+    }
   }
 `;
 
@@ -105,7 +105,7 @@ export const GET_EXERCISE = gql`
 // Get all Workout Plans
 export const GET_WORKOUT_PLANS = gql`
   query GetWorkoutPlans {
-      getWorkoutPlans {
+    getWorkoutPlans {
       _id
       title
       description
@@ -138,30 +138,27 @@ export const GET_WORKOUT_PLANS = gql`
 export const GET_WORKOUT_PLAN = gql`
   query GetWorkoutPlan($id: ID!) {
     getWorkoutPlan(_id: $id) {
-    _id
-    title
-    description
-    type
-    numOfWeeks
-    plan {
-      weeks {
-        weekNumber
-        days {
-          dayOfWeek
-          exercises {
-            exerciseId {
-              _id
-              name
-              description
-              muscleGroup
-              video
+      _id
+      title
+      description
+      type
+      numOfWeeks
+      plan {
+        weeks {
+          weekNumber
+          days {
+            dayOfWeek
+            exercises {
+              exerciseId {
+                _id
+                name
+              }
+              userSets
+              userReps
             }
-            userSets
-            userReps
           }
         }
       }
     }
-  }
   }
 `;
