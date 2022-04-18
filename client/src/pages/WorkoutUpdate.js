@@ -19,223 +19,156 @@ const WorkoutUpdate = () => {
 
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
+  // function to create workout plan in database
   const testUpdate = async () => {
     let planVal = [
-      {
-        weeks: [
-          {
-            weekNumber: 1,
-            days: [
+      ...workoutPlan.plan[0].weeks[0].days.map((day) => {
+        if (day.dayOfWeek === "Monday") {
+          delete day.__typename;
+          return {
+            ...day,
+            exercises: [
               {
-                dayOfWeek: "Wednesday",
-                exercises: [
-                  {
-                    exerciseId: "1",
-                    userSets: 4,
-                    userReps: 5,
-                  },
-                  {
-                    exerciseId: "1",
-                    userSets: 4,
-                    userReps: 12,
-                  },
-                ],
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 5,
               },
               {
-                dayOfWeek: "Thursday",
-                exercises: [
-                  {
-                    exerciseId: "3",
-                    userSets: 4,
-                    userReps: 21,
-                  },
-                  {
-                    exerciseId: "1",
-                    userSets: 4,
-                    userReps: 21,
-                  },
-                ],
-              },
-              {
-                dayOfWeek: "Friday",
-                exercises: [
-                  {
-                    exerciseId: "4",
-                    userSets: 4,
-                    userReps: 15,
-                  },
-                  {
-                    exerciseId: "2",
-                    userSets: 3,
-                    userReps: 18,
-                  },
-                ],
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 12,
               },
             ],
-          },
-          {
-            weekNumber: 2,
-            days: [
+          };
+        }
+        if (day.dayOfWeek === "Tuesday") {
+          delete day.__typename;
+          return {
+            ...day,
+            exercises: [
               {
-                dayOfWeek: "Monday",
-                exercises: [
-                  {
-                    exerciseId: "1",
-                    userSets: 4,
-                    userReps: 5,
-                  },
-                  {
-                    exerciseId: "1",
-                    userSets: 4,
-                    userReps: 12,
-                  },
-                ],
+                exerciseId: "3",
+                userSets: 4,
+                userReps: 21,
               },
               {
-                dayOfWeek: "Tuesday",
-                exercises: [
-                  {
-                    exerciseId: "3",
-                    userSets: 4,
-                    userReps: 11,
-                  },
-                  {
-                    exerciseId: "1",
-                    userSets: 4,
-                    userReps: 9,
-                  },
-                ],
-              },
-              {
-                dayOfWeek: "Wednesday",
-                exercises: [
-                  {
-                    exerciseId: "4",
-                    userSets: 4,
-                    userReps: 15,
-                  },
-                  {
-                    exerciseId: "2",
-                    userSets: 3,
-                    userReps: 18,
-                  },
-                ],
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 21,
               },
             ],
-          },
-        ],
-      },
+          };
+        }
+        if (day.dayOfWeek === "Wednesday") {
+          delete day.__typename;
+          return {
+            ...day,
+            exercises: [
+              {
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 5,
+              },
+              {
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 12,
+              },
+            ],
+          };
+        }
+        if (day.dayOfWeek === "Thursday") {
+          delete day.__typename;
+          return {
+            ...day,
+            exercises: [
+              {
+                exerciseId: "3",
+                userSets: 4,
+                userReps: 21,
+              },
+              {
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 21,
+              },
+            ],
+          };
+        }
+        if (day.dayOfWeek === "Friday") {
+          delete day.__typename;
+          return {
+            ...day,
+            exercises: [
+              {
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 5,
+              },
+              {
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 12,
+              },
+            ],
+          };
+        }
+        if (day.dayOfWeek === "Saturday") {
+          delete day.__typename;
+          return {
+            ...day,
+            exercises: [
+              {
+                exerciseId: "3",
+                userSets: 4,
+                userReps: 21,
+              },
+              {
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 21,
+              },
+            ],
+          };
+        }
+        if (day.dayOfWeek === "Sunday") {
+          delete day.__typename;
+          return {
+            ...day,
+            exercises: [
+              {
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 5,
+              },
+              {
+                exerciseId: "1",
+                userSets: 4,
+                userReps: 12,
+              },
+            ],
+          };
+        }
+        delete day.__typename;
+        return day;
+      }),
     ];
+
+    console.log(planVal);
 
     await updateWorkoutPlan({
       variables: {
-        id: "test1",
-        title: "Push Pull Legs",
-        description: "An intermediate-advanced Program BY: Jeff Nippard",
-        type: "Hypertrophy Training",
-        numOfWeeks: 2,
+        id: "test",
+        title: workoutPlan.title,
+        description: workoutPlan.description,
+        type: workoutPlan.type,
+        numOfWeeks: parseInt(workoutPlan.numOfWeeks),
         plan: [
           {
             weeks: [
               {
                 weekNumber: 1,
-                days: [
-                  {
-                    dayOfWeek: "Wednesday",
-                    exercises: [
-                      {
-                        exerciseId: "1",
-                        userSets: 4,
-                        userReps: 5,
-                      },
-                      {
-                        exerciseId: "1",
-                        userSets: 4,
-                        userReps: 12,
-                      },
-                    ],
-                  },
-                  {
-                    dayOfWeek: "Thursday",
-                    exercises: [
-                      {
-                        exerciseId: "3",
-                        userSets: 4,
-                        userReps: 21,
-                      },
-                      {
-                        exerciseId: "1",
-                        userSets: 4,
-                        userReps: 21,
-                      },
-                    ],
-                  },
-                  {
-                    dayOfWeek: "Friday",
-                    exercises: [
-                      {
-                        exerciseId: "4",
-                        userSets: 4,
-                        userReps: 15,
-                      },
-                      {
-                        exerciseId: "2",
-                        userSets: 3,
-                        userReps: 18,
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                weekNumber: 2,
-                days: [
-                  {
-                    dayOfWeek: "Monday",
-                    exercises: [
-                      {
-                        exerciseId: "1",
-                        userSets: 4,
-                        userReps: 5,
-                      },
-                      {
-                        exerciseId: "1",
-                        userSets: 4,
-                        userReps: 12,
-                      },
-                    ],
-                  },
-                  {
-                    dayOfWeek: "Tuesday",
-                    exercises: [
-                      {
-                        exerciseId: "3",
-                        userSets: 4,
-                        userReps: 11,
-                      },
-                      {
-                        exerciseId: "1",
-                        userSets: 4,
-                        userReps: 9,
-                      },
-                    ],
-                  },
-                  {
-                    dayOfWeek: "Wednesday",
-                    exercises: [
-                      {
-                        exerciseId: "4",
-                        userSets: 4,
-                        userReps: 15,
-                      },
-                      {
-                        exerciseId: "2",
-                        userSets: 3,
-                        userReps: 18,
-                      },
-                    ],
-                  },
-                ],
+                days: planVal,
               },
             ],
           },
