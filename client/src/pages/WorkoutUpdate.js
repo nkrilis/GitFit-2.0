@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GET_EXERCISES, GET_WORKOUT_PLAN } from "../utils/queries";
-import { useQuery } from "@apollo/client";
+import { UPDATE_WORKOUT_PLAN } from "../utils/mutations";
+import { useQuery, useMutation } from "@apollo/client";
 
 const WorkoutUpdate = () => {
   const { data: dataExercise } = useQuery(GET_EXERCISES, {
@@ -9,12 +10,239 @@ const WorkoutUpdate = () => {
   const exerciseList = dataExercise?.getExercises || [];
 
   const { loading, data: dataWorkoutPlan } = useQuery(GET_WORKOUT_PLAN, {
-    variables: { id: "55" },
+    variables: { id: "test" },
     fetchPolicy: "no-cache",
   });
   const workoutPlan = dataWorkoutPlan?.getWorkoutPlan || [];
 
   console.log(workoutPlan);
+
+  const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
+
+  const testUpdate = async () => {
+    let planVal = [
+      {
+        weeks: [
+          {
+            weekNumber: 1,
+            days: [
+              {
+                dayOfWeek: "Wednesday",
+                exercises: [
+                  {
+                    exerciseId: "1",
+                    userSets: 4,
+                    userReps: 5,
+                  },
+                  {
+                    exerciseId: "1",
+                    userSets: 4,
+                    userReps: 12,
+                  },
+                ],
+              },
+              {
+                dayOfWeek: "Thursday",
+                exercises: [
+                  {
+                    exerciseId: "3",
+                    userSets: 4,
+                    userReps: 21,
+                  },
+                  {
+                    exerciseId: "1",
+                    userSets: 4,
+                    userReps: 21,
+                  },
+                ],
+              },
+              {
+                dayOfWeek: "Friday",
+                exercises: [
+                  {
+                    exerciseId: "4",
+                    userSets: 4,
+                    userReps: 15,
+                  },
+                  {
+                    exerciseId: "2",
+                    userSets: 3,
+                    userReps: 18,
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            weekNumber: 2,
+            days: [
+              {
+                dayOfWeek: "Monday",
+                exercises: [
+                  {
+                    exerciseId: "1",
+                    userSets: 4,
+                    userReps: 5,
+                  },
+                  {
+                    exerciseId: "1",
+                    userSets: 4,
+                    userReps: 12,
+                  },
+                ],
+              },
+              {
+                dayOfWeek: "Tuesday",
+                exercises: [
+                  {
+                    exerciseId: "3",
+                    userSets: 4,
+                    userReps: 11,
+                  },
+                  {
+                    exerciseId: "1",
+                    userSets: 4,
+                    userReps: 9,
+                  },
+                ],
+              },
+              {
+                dayOfWeek: "Wednesday",
+                exercises: [
+                  {
+                    exerciseId: "4",
+                    userSets: 4,
+                    userReps: 15,
+                  },
+                  {
+                    exerciseId: "2",
+                    userSets: 3,
+                    userReps: 18,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ];
+
+    await updateWorkoutPlan({
+      variables: {
+        id: "test1",
+        title: "Push Pull Legs",
+        description: "An intermediate-advanced Program BY: Jeff Nippard",
+        type: "Hypertrophy Training",
+        numOfWeeks: 2,
+        plan: [
+          {
+            weeks: [
+              {
+                weekNumber: 1,
+                days: [
+                  {
+                    dayOfWeek: "Wednesday",
+                    exercises: [
+                      {
+                        exerciseId: "1",
+                        userSets: 4,
+                        userReps: 5,
+                      },
+                      {
+                        exerciseId: "1",
+                        userSets: 4,
+                        userReps: 12,
+                      },
+                    ],
+                  },
+                  {
+                    dayOfWeek: "Thursday",
+                    exercises: [
+                      {
+                        exerciseId: "3",
+                        userSets: 4,
+                        userReps: 21,
+                      },
+                      {
+                        exerciseId: "1",
+                        userSets: 4,
+                        userReps: 21,
+                      },
+                    ],
+                  },
+                  {
+                    dayOfWeek: "Friday",
+                    exercises: [
+                      {
+                        exerciseId: "4",
+                        userSets: 4,
+                        userReps: 15,
+                      },
+                      {
+                        exerciseId: "2",
+                        userSets: 3,
+                        userReps: 18,
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                weekNumber: 2,
+                days: [
+                  {
+                    dayOfWeek: "Monday",
+                    exercises: [
+                      {
+                        exerciseId: "1",
+                        userSets: 4,
+                        userReps: 5,
+                      },
+                      {
+                        exerciseId: "1",
+                        userSets: 4,
+                        userReps: 12,
+                      },
+                    ],
+                  },
+                  {
+                    dayOfWeek: "Tuesday",
+                    exercises: [
+                      {
+                        exerciseId: "3",
+                        userSets: 4,
+                        userReps: 11,
+                      },
+                      {
+                        exerciseId: "1",
+                        userSets: 4,
+                        userReps: 9,
+                      },
+                    ],
+                  },
+                  {
+                    dayOfWeek: "Wednesday",
+                    exercises: [
+                      {
+                        exerciseId: "4",
+                        userSets: 4,
+                        userReps: 15,
+                      },
+                      {
+                        exerciseId: "2",
+                        userSets: 3,
+                        userReps: 18,
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    });
+  };
 
   const [weeks, setWeeks] = useState([]);
   const [days, setDays] = useState([1]);
@@ -120,6 +348,13 @@ const WorkoutUpdate = () => {
           </div>
         );
       })}
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="button"
+        onClick={testUpdate}
+      >
+        Update test
+      </button>
     </div>
   );
 };
