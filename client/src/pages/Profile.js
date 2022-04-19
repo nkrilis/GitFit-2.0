@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useMutation, useLazyQuery } from "@apollo/client";
-import { FcPlanner } from "react-icons/fc";
+import { FcPlanner, FcEmptyTrash } from "react-icons/fc";
 import { REMOVE_WORKOUT_PLAN_FROM_USER } from "../utils/mutations";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
@@ -90,7 +90,7 @@ const Profile = () => {
           {user.workoutPlan?.map((workout) => {
             return (
               <div
-                className="content-center bg-white text-center rounded-md px-10 py-5"
+                className="relative content-center bg-white text-center rounded-md px-10 py-5"
                 key={workout._id}
               >
                 <Link
@@ -105,12 +105,15 @@ const Profile = () => {
                   <div> {workout.type}</div>
                   <div> {workout.description}</div>
                 </Link>
-                <div
-                  className="font-xl hover:text-purple-100 hover:cursor-pointer hover:font-bold"
-                  onClick={removeClick}
-                  value={workout._id}
-                >
-                  Delete
+                <div className="absolute bottom-0 right-0">
+                  <button
+                    className="font-xl hover:text-purple-100 hover:cursor-pointer hover:font-bold"
+                    onClick={removeClick}
+                    value={workout._id}
+                  >
+                    <FcEmptyTrash size={40} className="" />
+                    Delete
+                  </button>
                 </div>
               </div>
             );

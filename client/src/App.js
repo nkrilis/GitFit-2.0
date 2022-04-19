@@ -71,14 +71,14 @@ function App() {
               <Route path="/workoutplan" element={<Workout />} exact />
               <Route
                 path="/createworkoutplan"
-                element={<CreateWorkout />}
-                exact
-              />
-              <Route
-                path="/testcreateworkoutplan"
                 element={<TestCreateWorkout />}
                 exact
               />
+              {/* <Route
+                path="/testcreateworkoutplan"
+                element={<TestCreateWorkout />}
+                exact
+              /> */}
               <Route path="/workoutupdate" element={<WorkoutUpdate />} exact />
             </Routes>
           </div>

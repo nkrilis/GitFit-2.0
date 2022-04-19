@@ -187,6 +187,11 @@ const WorkoutUpdate = () => {
     const data = new FormData(exerciseForm.current); //////////////////////////////////////////////////////////////////////////////////
 
     for (const [y, z] of data) console.log(y, z);
+
+    let x = document.querySelector("#exerciseSel1");
+
+    console.log(x);
+    console.log(x.options[x.selectedIndex].value);
   };
 
   // Create array to map for weeks and days in workout
@@ -245,13 +250,13 @@ const WorkoutUpdate = () => {
                     <h1>Day: {day} </h1>
                     <div className="grid grid-cols-7 gap-2">
                       <select
+                        id={`exerciseSel${day}`}
                         className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         aria-label="exercise"
                       >
                         {exerciseList.map((exercise) => {
                           return (
                             <option
-                              id="exerciseSel"
                               name={exercise.name}
                               key={exercise._id}
                               value={exercise.name}
