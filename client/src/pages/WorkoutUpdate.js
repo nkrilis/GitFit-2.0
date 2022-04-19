@@ -21,6 +21,13 @@ const WorkoutUpdate = () => {
 
   const [weeks, setWeeks] = useState([]);
   const [days, setDays] = useState([1]);
+  const [exercises1, setExercises1] = useState([1]);
+  const [exercises2, setExercises2] = useState([1]);
+  const [exercises3, setExercises3] = useState([1]);
+  const [exercises4, setExercises4] = useState([1]);
+  const [exercises5, setExercises5] = useState([1]);
+  const [exercises6, setExercises6] = useState([1]);
+  const [exercises7, setExercises7] = useState([1]);
 
   const exerciseForm = useRef(null);
 
@@ -185,9 +192,11 @@ const WorkoutUpdate = () => {
   const formSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(exerciseForm.current); //////////////////////////////////////////////////////////////////////////////////
-
+    let array = [];
     for (const [y, z] of data) console.log(y, z);
 
+    array.push(data.getAll("sets1"));
+    console.log(array);
     let x = document.querySelector("#exerciseSel1");
 
     console.log(x);
@@ -221,6 +230,12 @@ const WorkoutUpdate = () => {
     setDays(newVal);
   };
 
+  const addExercise = (x) => {
+    let exerciseVal = [...exercises1];
+
+    console.log(exerciseVal);
+  };
+
   useEffect(() => {
     workoutWeeks();
   }, [workoutPlan.numOfWeeks]);
@@ -233,7 +248,7 @@ const WorkoutUpdate = () => {
             <div className="grid grid-cols-6">
               <h1 className="col-span-5">Week:{week}</h1>
               <button
-                className="text-white bg-purple-100 hover:bg-purple-200"
+                className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
                 onClick={workoutDays}
               >
                 Add another day
@@ -246,8 +261,14 @@ const WorkoutUpdate = () => {
             >
               {days.map((day) => {
                 return (
-                  <div key={week + day}>
+                  <div key={week + day} name={`exercise${day}`}>
                     <h1>Day: {day} </h1>
+                    <button
+                      className="text-white bg-purple-200 hover:bg-purple-100"
+                      onClick={addExercise(`${day}`)}
+                    >
+                      Add another exercise
+                    </button>
                     <div className="grid grid-cols-7 gap-2">
                       <select
                         id={`exerciseSel${day}`}
@@ -268,7 +289,7 @@ const WorkoutUpdate = () => {
                       </select>
 
                       <input
-                        name="sets"
+                        name={`sets${day}`}
                         type="number"
                         min="1"
                         max="50"
@@ -276,7 +297,7 @@ const WorkoutUpdate = () => {
                       />
 
                       <input
-                        name="reps"
+                        name={`reps${day}`}
                         type="number"
                         min="1"
                         max="50"
@@ -289,14 +310,22 @@ const WorkoutUpdate = () => {
                         type="text"
                         defaultValue={""}
                       ></textarea>
+
                       <button
-                        className="font-xl hover:text-purple-100 hover:cursor-pointer hover:font-bold"
+                        className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
                         data-id={day}
                         onClick={removeDay}
                       >
-                        Delete
+                        Delete Exercise
                       </button>
                     </div>
+                    <button
+                      className="font-xl hover:text-white hover:cursor-pointer hover:font-bold"
+                      data-id={day}
+                      onClick={removeDay}
+                    >
+                      Delete day
+                    </button>
                   </div>
                 );
               })}

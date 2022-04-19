@@ -105,13 +105,13 @@ const Profile = () => {
                   <div> {workout.type}</div>
                   <div> {workout.description}</div>
                 </Link>
-                <div className="absolute bottom-0 right-0">
+                <div className="absolute bottom-0 right-1">
+                  <FcEmptyTrash size={40} className="" />
                   <button
                     className="font-xl hover:text-purple-100 hover:cursor-pointer hover:font-bold"
                     onClick={removeClick}
                     value={workout._id}
                   >
-                    <FcEmptyTrash size={40} className="" />
                     Delete
                   </button>
                 </div>
