@@ -147,16 +147,16 @@ export const REMOVE_EXERCISE_FROM_WORKOUT_PLAN = gql`
 
 // Update workout plan
 export const UPDATE_WORKOUT_PLAN = gql`
-  mutation updateWorkoutPlan(
-    $workoutPlanId: ID!
+  mutation UpdateWorkoutPlan(
+    $id: ID!
     $title: String!
     $description: String!
     $type: String!
     $numOfWeeks: Int!
-    $plan: plan!
+    $plan: [PlanInput]
   ) {
     updateWorkoutPlan(
-      workoutPlanId: $workoutPlanId
+      _id: $id
       title: $title
       description: $description
       type: $type
@@ -164,11 +164,6 @@ export const UPDATE_WORKOUT_PLAN = gql`
       plan: $plan
     ) {
       _id
-      title
-      description
-      type
-      numOfWeeks
-      plan
     }
   }
 `;
