@@ -230,10 +230,48 @@ const WorkoutUpdate = () => {
     setDays(newVal);
   };
 
-  const addExercise = (x) => {
-    let exerciseVal = [...exercises1];
+  const addExercise = (e) => {
+    e.preventDefault();
+    let x = e.target.value;
+    let exercisesVal = [];
 
-    console.log(exerciseVal);
+    if (x == 1) {
+      exercisesVal = [...exercises1];
+      exercisesVal.push(exercises1.length + 1);
+      setExercises1(exercisesVal);
+    }
+    if (x == 2) {
+      exercisesVal = [...exercises2];
+      exercisesVal.push(exercises2.length + 1);
+      setExercises2(exercisesVal);
+    }
+    if (x == 3) {
+      exercisesVal = [...exercises3];
+      exercisesVal.push(exercises3.length + 1);
+      setExercises3(exercisesVal);
+    }
+    if (x == 4) {
+      exercisesVal = [...exercises4];
+      exercisesVal.push(exercises4.length + 1);
+      setExercises4(exercisesVal);
+    }
+    if (x == 5) {
+      exercisesVal = [...exercises5];
+      exercisesVal.push(exercises5.length + 1);
+      setExercises5(exercisesVal);
+    }
+    if (x == 6) {
+      exercisesVal = [...exercises6];
+      exercisesVal.push(exercises6.length + 1);
+      setExercises6(exercisesVal);
+    }
+    if (x == 7) {
+      exercisesVal = [...exercises7];
+      exercisesVal.push(exercises7.length + 1);
+      setExercises7(exercisesVal);
+    }
+
+    console.log(exercisesVal);
   };
 
   useEffect(() => {
@@ -265,60 +303,67 @@ const WorkoutUpdate = () => {
                     <h1>Day: {day} </h1>
                     <button
                       className="text-white bg-purple-200 hover:bg-purple-100"
-                      onClick={addExercise(`${day}`)}
+                      onClick={(e) => addExercise(e)}
+                      value={day}
                     >
                       Add another exercise
                     </button>
-                    <div className="grid grid-cols-7 gap-2">
-                      <select
-                        id={`exerciseSel${day}`}
-                        className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        aria-label="exercise"
-                      >
-                        {exerciseList.map((exercise) => {
-                          return (
-                            <option
-                              name={exercise.name}
-                              key={exercise._id}
-                              value={exercise.name}
+                    {exercises1.map((exercise) => {
+                      return (
+                        <div key={exercise}>
+                          <div className="grid grid-cols-7 gap-2">
+                            <select
+                              id={`exerciseSel${day}`}
+                              className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                              aria-label="exercise"
                             >
-                              {exercise.name}
-                            </option>
-                          );
-                        })}
-                      </select>
+                              {exerciseList.map((exercise) => {
+                                return (
+                                  <option
+                                    name={exercise.name}
+                                    key={exercise._id}
+                                    value={exercise.name}
+                                  >
+                                    {exercise.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
 
-                      <input
-                        name={`sets${day}`}
-                        type="number"
-                        min="1"
-                        max="50"
-                        defaultValue={1}
-                      />
+                            <input
+                              name={`sets${day}`}
+                              type="number"
+                              min="1"
+                              max="50"
+                              defaultValue={1}
+                            />
 
-                      <input
-                        name={`reps${day}`}
-                        type="number"
-                        min="1"
-                        max="50"
-                        defaultValue={1}
-                      />
+                            <input
+                              name={`reps${day}`}
+                              type="number"
+                              min="1"
+                              max="50"
+                              defaultValue={1}
+                            />
 
-                      <textarea
-                        className="col-span-2"
-                        name="description"
-                        type="text"
-                        defaultValue={""}
-                      ></textarea>
+                            <textarea
+                              className="col-span-2"
+                              name="description"
+                              type="text"
+                              defaultValue={""}
+                            ></textarea>
 
-                      <button
-                        className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
-                        data-id={day}
-                        onClick={removeDay}
-                      >
-                        Delete Exercise
-                      </button>
-                    </div>
+                            <button
+                              className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                              data-id={day}
+                              // onClick={}
+                            >
+                              Delete Exercise
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
                     <button
                       className="font-xl hover:text-white hover:cursor-pointer hover:font-bold"
                       data-id={day}
