@@ -20,14 +20,16 @@ const WorkoutUpdate = () => {
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
   const [weeks, setWeeks] = useState([]);
-  const [days, setDays] = useState([1]);
-  const [exercises1, setExercises1] = useState([1]);
-  const [exercises2, setExercises2] = useState([1]);
-  const [exercises3, setExercises3] = useState([1]);
-  const [exercises4, setExercises4] = useState([1]);
-  const [exercises5, setExercises5] = useState([1]);
-  const [exercises6, setExercises6] = useState([1]);
-  const [exercises7, setExercises7] = useState([1]);
+  const [day1, setday1] = useState([{ day: 1, exercises: [1] }]);
+  const [day2, setday2] = useState([{ day: 2, exercises: [1] }]);
+  const [day3, setday3] = useState([{ day: 3, exercises: [1] }]);
+  const [day4, setday4] = useState([{ day: 4, exercises: [1] }]);
+  const [day5, setday5] = useState([{ day: 5, exercises: [1] }]);
+  const [day6, setday6] = useState([{ day: 6, exercises: [1] }]);
+  const [day7, setday7] = useState([{ day: 7, exercises: [1] }]);
+  const [days, setDays] = useState({
+    day: [day1, day2, day3, day4, day5, day6, day7],
+  });
 
   const exerciseForm = useRef(null);
 
@@ -191,7 +193,7 @@ const WorkoutUpdate = () => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    const data = new FormData(exerciseForm.current); //////////////////////////////////////////////////////////////////////////////////
+    const data = new FormData(exerciseForm.current);
     let array = [];
     for (const [y, z] of data) console.log(y, z);
 
@@ -232,43 +234,43 @@ const WorkoutUpdate = () => {
 
   const addExercise = (e) => {
     e.preventDefault();
-    let x = e.target.value;
+    let x = parseInt(e.target.value);
     let exercisesVal = [];
 
-    if (x == 1) {
-      exercisesVal = [...exercises1];
-      exercisesVal.push(exercises1.length + 1);
-      setExercises1(exercisesVal);
+    if (x === 1) {
+      exercisesVal = [...day1];
+      exercisesVal.push(day1.length + 1);
+      setday1(exercisesVal);
     }
-    if (x == 2) {
-      exercisesVal = [...exercises2];
-      exercisesVal.push(exercises2.length + 1);
-      setExercises2(exercisesVal);
+    if (x === 2) {
+      exercisesVal = [...day2];
+      exercisesVal.push(day2.length + 1);
+      setday2(exercisesVal);
     }
-    if (x == 3) {
-      exercisesVal = [...exercises3];
-      exercisesVal.push(exercises3.length + 1);
-      setExercises3(exercisesVal);
+    if (x === 3) {
+      exercisesVal = [...day3];
+      exercisesVal.push(day3.length + 1);
+      setday3(exercisesVal);
     }
-    if (x == 4) {
-      exercisesVal = [...exercises4];
-      exercisesVal.push(exercises4.length + 1);
-      setExercises4(exercisesVal);
+    if (x === 4) {
+      exercisesVal = [...day4];
+      exercisesVal.push(day4.length + 1);
+      setday4(exercisesVal);
     }
-    if (x == 5) {
-      exercisesVal = [...exercises5];
-      exercisesVal.push(exercises5.length + 1);
-      setExercises5(exercisesVal);
+    if (x === 5) {
+      exercisesVal = [...day5];
+      exercisesVal.push(day5.length + 1);
+      setday5(exercisesVal);
     }
-    if (x == 6) {
-      exercisesVal = [...exercises6];
-      exercisesVal.push(exercises6.length + 1);
-      setExercises6(exercisesVal);
+    if (x === 6) {
+      exercisesVal = [...day6];
+      exercisesVal.push(day6.length + 1);
+      setday6(exercisesVal);
     }
-    if (x == 7) {
-      exercisesVal = [...exercises7];
-      exercisesVal.push(exercises7.length + 1);
-      setExercises7(exercisesVal);
+    if (x === 7) {
+      exercisesVal = [...day7];
+      exercisesVal.push(day7.length + 1);
+      setday7(exercisesVal);
     }
 
     console.log(exercisesVal);
@@ -277,6 +279,16 @@ const WorkoutUpdate = () => {
   useEffect(() => {
     workoutWeeks();
   }, [workoutPlan.numOfWeeks]);
+
+  const help = function () {
+    //////////////////////////////////////////////////////////////////////////////////
+    days.day.map((day) => {
+      return console.log(day);
+    });
+  };
+  console.log(days);
+  console.log(days.day);
+  console.log(days.day[0]);
 
   return (
     <div>
@@ -297,18 +309,18 @@ const WorkoutUpdate = () => {
               onSubmit={formSubmit}
               className="bg-purple-100 shadow-md px-2 py-2"
             >
-              {days.map((day) => {
+              {days.day.map((day) => {
                 return (
-                  <div key={week + day} name={`exercise${day}`}>
-                    <h1>Day: {day} </h1>
+                  <div key={week + day.day} name={`exercise${day.day}`}>
+                    <h1>Day: {day.day} </h1>
                     <button
                       className="text-white bg-purple-200 hover:bg-purple-100"
                       onClick={(e) => addExercise(e)}
-                      value={day}
+                      value={day.day}
                     >
                       Add another exercise
                     </button>
-                    {exercises1.map((exercise) => {
+                    {day.exercises.map((exercise) => {
                       return (
                         <div key={exercise}>
                           <div className="grid grid-cols-7 gap-2">
