@@ -20,14 +20,16 @@ const WorkoutUpdate = () => {
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
   const [weeks, setWeeks] = useState([]);
-  const [days, setDays] = useState([1]);
-  const [exercises1, setExercises1] = useState([1]);
-  const [exercises2, setExercises2] = useState([1]);
-  const [exercises3, setExercises3] = useState([1]);
-  const [exercises4, setExercises4] = useState([1]);
-  const [exercises5, setExercises5] = useState([1]);
-  const [exercises6, setExercises6] = useState([1]);
-  const [exercises7, setExercises7] = useState([1]);
+  const [day1, setday1] = useState({ day: 1, exercises: [1] });
+  const [day2, setday2] = useState({ day: 2, exercises: [1] });
+  const [day3, setday3] = useState({ day: 3, exercises: [1] });
+  const [day4, setday4] = useState({ day: 4, exercises: [1] });
+  const [day5, setday5] = useState({ day: 5, exercises: [1] });
+  const [day6, setday6] = useState({ day: 6, exercises: [1] });
+  const [day7, setday7] = useState({ day: 7, exercises: [1] });
+  const [days, setDays] = useState({
+    day: [day1, day2, day3, day4, day5, day6, day7],
+  });
 
   const exerciseForm = useRef(null);
 
@@ -191,7 +193,7 @@ const WorkoutUpdate = () => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    const data = new FormData(exerciseForm.current); //////////////////////////////////////////////////////////////////////////////////
+    const data = new FormData(exerciseForm.current);
     let array = [];
     for (const [y, z] of data) console.log(y, z);
 
@@ -214,69 +216,125 @@ const WorkoutUpdate = () => {
     setWeeks(weeksVal);
   };
 
-  const workoutDays = () => {
-    let daysVal = [...days];
+  /////////////// trying to decide on optimal way to add/remove days - left off looking into state
+  const addDay = () => {
+    let daysVal = [];
 
-    if (daysVal.length < 7) daysVal.push(days.length + 1);
+    daysVal = [...days.day];
 
-    setDays(daysVal);
+    console.log(daysVal);
+
+    if (daysVal.length < 7) {
+      daysVal.push({ day: daysVal.length + 1, exercises: [1] });
+    }
+    // setDays({
+    //   day: daysVal,
+    // });
   };
 
   const removeDay = (e) => {
     e.preventDefault();
     let i = e.target.getAttribute("data-id");
-    let daysVal = [...days];
-    let newVal = daysVal.filter((day) => day !== parseInt(i));
-    setDays(newVal);
+    let daysVal = [...days.day];
+    let newVal = daysVal.filter((day) => day.day !== parseInt(i));
+    setDays({
+      day: newVal,
+    });
+    console.log(days);
   };
 
   const addExercise = (e) => {
     e.preventDefault();
-    let x = e.target.value;
+    let x = parseInt(e.target.value);
     let exercisesVal = [];
 
-    if (x == 1) {
-      exercisesVal = [...exercises1];
-      exercisesVal.push(exercises1.length + 1);
-      setExercises1(exercisesVal);
+    if (x === 1) {
+      exercisesVal = [...day1.exercises];
+      exercisesVal.push(day1.exercises.length + 1);
+      setday1({ day: 1, exercises: exercisesVal });
     }
-    if (x == 2) {
-      exercisesVal = [...exercises2];
-      exercisesVal.push(exercises2.length + 1);
-      setExercises2(exercisesVal);
+    if (x === 2) {
+      exercisesVal = [...day2.exercises];
+      exercisesVal.push(day2.exercises.length + 1);
+      setday2({ day: 2, exercises: exercisesVal });
     }
-    if (x == 3) {
-      exercisesVal = [...exercises3];
-      exercisesVal.push(exercises3.length + 1);
-      setExercises3(exercisesVal);
+    if (x === 3) {
+      exercisesVal = [...day3.exercises];
+      exercisesVal.push(day3.exercises.length + 1);
+      setday3({ day: 3, exercises: exercisesVal });
     }
-    if (x == 4) {
-      exercisesVal = [...exercises4];
-      exercisesVal.push(exercises4.length + 1);
-      setExercises4(exercisesVal);
+    if (x === 4) {
+      exercisesVal = [...day4.exercises];
+      exercisesVal.push(day4.exercises.length + 1);
+      setday4({ day: 4, exercises: exercisesVal });
     }
-    if (x == 5) {
-      exercisesVal = [...exercises5];
-      exercisesVal.push(exercises5.length + 1);
-      setExercises5(exercisesVal);
+    if (x === 5) {
+      exercisesVal = [...day5.exercises];
+      exercisesVal.push(day5.exercises.length + 1);
+      setday5({ day: 5, exercises: exercisesVal });
     }
-    if (x == 6) {
-      exercisesVal = [...exercises6];
-      exercisesVal.push(exercises6.length + 1);
-      setExercises6(exercisesVal);
+    if (x === 6) {
+      exercisesVal = [...day6.exercises];
+      exercisesVal.push(day6.exercises.length + 1);
+      setday6({ day: 6, exercises: exercisesVal });
     }
-    if (x == 7) {
-      exercisesVal = [...exercises7];
-      exercisesVal.push(exercises7.length + 1);
-      setExercises7(exercisesVal);
+    if (x === 7) {
+      exercisesVal = [...day7.exercises];
+      exercisesVal.push(day7.exercises.length + 1);
+      setday7({ day: 7, exercises: exercisesVal });
     }
+  };
 
-    console.log(exercisesVal);
+  const removeExercise = (e) => {
+    e.preventDefault();
+    let exercisesVal = [];
+    let x = parseInt(e.target.getAttribute("data-id"));
+    let y = parseInt(e.target.value);
+
+    if (x === 1) {
+      exercisesVal = [...day1.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday1({ day: 1, exercises: newVal });
+    }
+    if (x === 2) {
+      exercisesVal = [...day2.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday2({ day: 2, exercises: newVal });
+    }
+    if (x === 3) {
+      exercisesVal = [...day3.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday3({ day: 3, exercises: newVal });
+    }
+    if (x === 4) {
+      exercisesVal = [...day4.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday4({ day: 4, exercises: newVal });
+    }
+    if (x === 5) {
+      exercisesVal = [...day5.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday5({ day: 5, exercises: newVal });
+    }
+    if (x === 6) {
+      exercisesVal = [...day6.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday6({ day: 6, exercises: newVal });
+    }
+    if (x === 7) {
+      exercisesVal = [...day7.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday7({ day: 7, exercises: newVal });
+    }
   };
 
   useEffect(() => {
     workoutWeeks();
   }, [workoutPlan.numOfWeeks]);
+
+  useEffect(() => {
+    setDays({ day: [day1, day2, day3, day4, day5, day6, day7] });
+  }, [day1, day2, day3, day4, day5, day6, day7]);
 
   return (
     <div>
@@ -287,7 +345,7 @@ const WorkoutUpdate = () => {
               <h1 className="col-span-5">Week:{week}</h1>
               <button
                 className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                onClick={workoutDays}
+                onClick={addDay}
               >
                 Add another day
               </button>
@@ -297,23 +355,23 @@ const WorkoutUpdate = () => {
               onSubmit={formSubmit}
               className="bg-purple-100 shadow-md px-2 py-2"
             >
-              {days.map((day) => {
+              {days.day.map((day) => {
                 return (
-                  <div key={week + day} name={`exercise${day}`}>
-                    <h1>Day: {day} </h1>
+                  <div key={week + day.day} name={`exercise${day.day}`}>
+                    <h1>Day: {day.day} </h1>
                     <button
                       className="text-white bg-purple-200 hover:bg-purple-100"
                       onClick={(e) => addExercise(e)}
-                      value={day}
+                      value={day.day}
                     >
                       Add another exercise
                     </button>
-                    {exercises1.map((exercise) => {
+                    {day.exercises.map((exercise) => {
                       return (
                         <div key={exercise}>
                           <div className="grid grid-cols-7 gap-2">
                             <select
-                              id={`exerciseSel${day}`}
+                              id={`exerciseSel${exercise}`}
                               className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                               aria-label="exercise"
                             >
@@ -331,7 +389,7 @@ const WorkoutUpdate = () => {
                             </select>
 
                             <input
-                              name={`sets${day}`}
+                              name={`sets${day.day}`}
                               type="number"
                               min="1"
                               max="50"
@@ -339,7 +397,7 @@ const WorkoutUpdate = () => {
                             />
 
                             <input
-                              name={`reps${day}`}
+                              name={`reps${day.day}`}
                               type="number"
                               min="1"
                               max="50"
@@ -355,8 +413,9 @@ const WorkoutUpdate = () => {
 
                             <button
                               className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
-                              data-id={day}
-                              // onClick={}
+                              data-id={day.day}
+                              value={exercise}
+                              onClick={(e) => removeExercise(e)}
                             >
                               Delete Exercise
                             </button>
@@ -366,8 +425,8 @@ const WorkoutUpdate = () => {
                     })}
                     <button
                       className="font-xl hover:text-white hover:cursor-pointer hover:font-bold"
-                      data-id={day}
-                      onClick={removeDay}
+                      data-id={day.day}
+                      onClick={(e) => removeDay(e)}
                     >
                       Delete day
                     </button>
