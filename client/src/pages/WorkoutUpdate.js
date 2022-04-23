@@ -277,8 +277,49 @@ const WorkoutUpdate = () => {
       exercisesVal.push(day7.exercises.length + 1);
       setday7({ day: 7, exercises: exercisesVal });
     }
+  };
 
-    console.log(exercisesVal);
+  const removeExercise = (e) => {
+    e.preventDefault();
+    let exercisesVal = [];
+    let x = parseInt(e.target.getAttribute("data-id"));
+    let y = parseInt(e.target.value);
+
+    if (x === 1) {
+      exercisesVal = [...day1.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday1({ day: 1, exercises: newVal });
+    }
+    if (x === 2) {
+      exercisesVal = [...day2.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday2({ day: 2, exercises: newVal });
+    }
+    if (x === 3) {
+      exercisesVal = [...day3.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday3({ day: 3, exercises: newVal });
+    }
+    if (x === 4) {
+      exercisesVal = [...day4.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday4({ day: 4, exercises: newVal });
+    }
+    if (x === 5) {
+      exercisesVal = [...day5.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday5({ day: 5, exercises: newVal });
+    }
+    if (x === 6) {
+      exercisesVal = [...day6.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday6({ day: 6, exercises: newVal });
+    }
+    if (x === 7) {
+      exercisesVal = [...day7.exercises];
+      let newVal = exercisesVal.filter((exercise) => exercise !== y);
+      setday7({ day: 7, exercises: newVal });
+    }
   };
 
   useEffect(() => {
@@ -288,9 +329,6 @@ const WorkoutUpdate = () => {
   useEffect(() => {
     setDays({ day: [day1, day2, day3, day4, day5, day6, day7] });
   }, [day1, day2, day3, day4, day5, day6, day7]);
-
-  console.log(days);
-  console.log(days.day);
 
   return (
     <div>
@@ -370,7 +408,8 @@ const WorkoutUpdate = () => {
                             <button
                               className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
                               data-id={day.day}
-                              // onClick={}
+                              value={exercise}
+                              onClick={(e) => removeExercise(e)}
                             >
                               Delete Exercise
                             </button>
@@ -381,7 +420,7 @@ const WorkoutUpdate = () => {
                     <button
                       className="font-xl hover:text-white hover:cursor-pointer hover:font-bold"
                       data-id={day.day}
-                      onClick={removeDay}
+                      onClick={(e) => removeDay(e)}
                     >
                       Delete day
                     </button>
