@@ -20,13 +20,13 @@ const WorkoutUpdate = () => {
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
   const [weeks, setWeeks] = useState([]);
-  const [day1, setday1] = useState([{ day: 1, exercises: [1] }]);
-  const [day2, setday2] = useState([{ day: 2, exercises: [1] }]);
-  const [day3, setday3] = useState([{ day: 3, exercises: [1] }]);
-  const [day4, setday4] = useState([{ day: 4, exercises: [1] }]);
-  const [day5, setday5] = useState([{ day: 5, exercises: [1] }]);
-  const [day6, setday6] = useState([{ day: 6, exercises: [1] }]);
-  const [day7, setday7] = useState([{ day: 7, exercises: [1] }]);
+  const [day1, setday1] = useState({ day: 1, exercises: [1] });
+  const [day2, setday2] = useState({ day: 2, exercises: [1] });
+  const [day3, setday3] = useState({ day: 3, exercises: [1] });
+  const [day4, setday4] = useState({ day: 4, exercises: [1] });
+  const [day5, setday5] = useState({ day: 5, exercises: [1] });
+  const [day6, setday6] = useState({ day: 6, exercises: [1] });
+  const [day7, setday7] = useState({ day: 7, exercises: [1] });
   const [days, setDays] = useState({
     day: [day1, day2, day3, day4, day5, day6, day7],
   });
@@ -217,7 +217,7 @@ const WorkoutUpdate = () => {
   };
 
   const workoutDays = () => {
-    let daysVal = [...days];
+    let daysVal = [...days.day];
 
     if (daysVal.length < 7) daysVal.push(days.length + 1);
 
@@ -227,9 +227,14 @@ const WorkoutUpdate = () => {
   const removeDay = (e) => {
     e.preventDefault();
     let i = e.target.getAttribute("data-id");
-    let daysVal = [...days];
-    let newVal = daysVal.filter((day) => day !== parseInt(i));
-    setDays(newVal);
+    console.log(i);
+    let daysVal = [...days.day];
+    console.log(daysVal);
+    let newVal = daysVal.filter((day) => day.day !== parseInt(i));
+    console.log(newVal);
+    setDays({
+      day: newVal,
+    });
   };
 
   const addExercise = (e) => {
@@ -238,39 +243,39 @@ const WorkoutUpdate = () => {
     let exercisesVal = [];
 
     if (x === 1) {
-      exercisesVal = [...day1];
-      exercisesVal.push(day1.length + 1);
-      setday1(exercisesVal);
+      exercisesVal = [...day1.exercises];
+      exercisesVal.push(day1.exercises.length + 1);
+      setday1({ day: 1, exercises: exercisesVal });
     }
     if (x === 2) {
-      exercisesVal = [...day2];
-      exercisesVal.push(day2.length + 1);
-      setday2(exercisesVal);
+      exercisesVal = [...day2.exercises];
+      exercisesVal.push(day2.exercises.length + 1);
+      setday2({ day: 2, exercises: exercisesVal });
     }
     if (x === 3) {
-      exercisesVal = [...day3];
-      exercisesVal.push(day3.length + 1);
-      setday3(exercisesVal);
+      exercisesVal = [...day3.exercises];
+      exercisesVal.push(day3.exercises.length + 1);
+      setday3({ day: 3, exercises: exercisesVal });
     }
     if (x === 4) {
-      exercisesVal = [...day4];
-      exercisesVal.push(day4.length + 1);
-      setday4(exercisesVal);
+      exercisesVal = [...day4.exercises];
+      exercisesVal.push(day4.exercises.length + 1);
+      setday4({ day: 4, exercises: exercisesVal });
     }
     if (x === 5) {
-      exercisesVal = [...day5];
-      exercisesVal.push(day5.length + 1);
-      setday5(exercisesVal);
+      exercisesVal = [...day5.exercises];
+      exercisesVal.push(day5.exercises.length + 1);
+      setday5({ day: 5, exercises: exercisesVal });
     }
     if (x === 6) {
-      exercisesVal = [...day6];
-      exercisesVal.push(day6.length + 1);
-      setday6(exercisesVal);
+      exercisesVal = [...day6.exercises];
+      exercisesVal.push(day6.exercises.length + 1);
+      setday6({ day: 6, exercises: exercisesVal });
     }
     if (x === 7) {
-      exercisesVal = [...day7];
-      exercisesVal.push(day7.length + 1);
-      setday7(exercisesVal);
+      exercisesVal = [...day7.exercises];
+      exercisesVal.push(day7.exercises.length + 1);
+      setday7({ day: 7, exercises: exercisesVal });
     }
 
     console.log(exercisesVal);
@@ -280,15 +285,12 @@ const WorkoutUpdate = () => {
     workoutWeeks();
   }, [workoutPlan.numOfWeeks]);
 
-  const help = function () {
-    //////////////////////////////////////////////////////////////////////////////////
-    days.day.map((day) => {
-      return console.log(day);
-    });
-  };
+  useEffect(() => {
+    setDays({ day: [day1, day2, day3, day4, day5, day6, day7] });
+  }, [day1, day2, day3, day4, day5, day6, day7]);
+
   console.log(days);
   console.log(days.day);
-  console.log(days.day[0]);
 
   return (
     <div>
@@ -325,7 +327,7 @@ const WorkoutUpdate = () => {
                         <div key={exercise}>
                           <div className="grid grid-cols-7 gap-2">
                             <select
-                              id={`exerciseSel${day}`}
+                              id={`exerciseSel${exercise}`}
                               className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                               aria-label="exercise"
                             >
@@ -343,7 +345,7 @@ const WorkoutUpdate = () => {
                             </select>
 
                             <input
-                              name={`sets${day}`}
+                              name={`sets${day.day}`}
                               type="number"
                               min="1"
                               max="50"
@@ -351,7 +353,7 @@ const WorkoutUpdate = () => {
                             />
 
                             <input
-                              name={`reps${day}`}
+                              name={`reps${day.day}`}
                               type="number"
                               min="1"
                               max="50"
@@ -367,7 +369,7 @@ const WorkoutUpdate = () => {
 
                             <button
                               className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
-                              data-id={day}
+                              data-id={day.day}
                               // onClick={}
                             >
                               Delete Exercise
@@ -378,7 +380,7 @@ const WorkoutUpdate = () => {
                     })}
                     <button
                       className="font-xl hover:text-white hover:cursor-pointer hover:font-bold"
-                      data-id={day}
+                      data-id={day.day}
                       onClick={removeDay}
                     >
                       Delete day
