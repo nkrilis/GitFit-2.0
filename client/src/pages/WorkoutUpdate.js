@@ -216,25 +216,31 @@ const WorkoutUpdate = () => {
     setWeeks(weeksVal);
   };
 
-  const workoutDays = () => {
-    let daysVal = [...days.day];
+  /////////////// trying to decide on optimal way to add/remove days - left off looking into state
+  const addDay = () => {
+    let daysVal = [];
 
-    if (daysVal.length < 7) daysVal.push(days.length + 1);
+    daysVal = [...days.day];
 
-    setDays(daysVal);
+    console.log(daysVal);
+
+    if (daysVal.length < 7) {
+      daysVal.push({ day: daysVal.length + 1, exercises: [1] });
+    }
+    // setDays({
+    //   day: daysVal,
+    // });
   };
 
   const removeDay = (e) => {
     e.preventDefault();
     let i = e.target.getAttribute("data-id");
-    console.log(i);
     let daysVal = [...days.day];
-    console.log(daysVal);
     let newVal = daysVal.filter((day) => day.day !== parseInt(i));
-    console.log(newVal);
     setDays({
       day: newVal,
     });
+    console.log(days);
   };
 
   const addExercise = (e) => {
@@ -339,7 +345,7 @@ const WorkoutUpdate = () => {
               <h1 className="col-span-5">Week:{week}</h1>
               <button
                 className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                onClick={workoutDays}
+                onClick={addDay}
               >
                 Add another day
               </button>
