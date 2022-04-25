@@ -20,16 +20,24 @@ const WorkoutUpdate = () => {
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
   const [weeks, setWeeks] = useState([]);
-  const [day1, setday1] = useState({ day: 1, exercises: [1] });
-  const [day2, setday2] = useState({ day: 2, exercises: [1] });
-  const [day3, setday3] = useState({ day: 3, exercises: [1] });
-  const [day4, setday4] = useState({ day: 4, exercises: [1] });
-  const [day5, setday5] = useState({ day: 5, exercises: [1] });
-  const [day6, setday6] = useState({ day: 6, exercises: [1] });
-  const [day7, setday7] = useState({ day: 7, exercises: [1] });
+  const [day1, setday1] = useState({ day: "Monday", exercises: [1] });
+  const [day2, setday2] = useState({ day: "Tuesday", exercises: [1] });
+  const [day3, setday3] = useState({ day: "Wednesday", exercises: [1] });
+  const [day4, setday4] = useState({ day: "Thursday", exercises: [1] });
+  const [day5, setday5] = useState({ day: "Friday", exercises: [1] });
+  const [day6, setday6] = useState({ day: "Saturday", exercises: [1] });
+  const [day7, setday7] = useState({ day: "Sunday", exercises: [1] });
   const [days, setDays] = useState({
-    day: [day1, day2, day3, day4, day5, day6, day7],
+    day: [day1],
   });
+
+  const [isActive1, setDisplay1] = useState("false");
+  const [isActive2, setDisplay2] = useState("false");
+  const [isActive3, setDisplay3] = useState("false");
+  const [isActive4, setDisplay4] = useState("false");
+  const [isActive5, setDisplay5] = useState("false");
+  const [isActive6, setDisplay6] = useState("false");
+  const [isActive7, setDisplay7] = useState("false");
 
   const exerciseForm = useRef(null);
 
@@ -328,27 +336,219 @@ const WorkoutUpdate = () => {
     }
   };
 
+  const toggleDisplay = (e) => {
+    e.preventDefault();
+    let x = parseInt(e.target.value);
+
+    if (x === 1) {
+      setDisplay1(!isActive1);
+    }
+    if (x === 2) {
+      setDisplay2(!isActive2);
+    }
+    if (x === 3) {
+      setDisplay3(!isActive3);
+    }
+    if (x === 4) {
+      setDisplay4(!isActive4);
+    }
+    if (x === 5) {
+      setDisplay5(!isActive5);
+    }
+    if (x === 6) {
+      setDisplay6(!isActive6);
+    }
+    if (x === 7) {
+      setDisplay7(!isActive7);
+    }
+  };
+
+  const workoutDays = () => {};
+
   useEffect(() => {
     workoutWeeks();
   }, [workoutPlan.numOfWeeks]);
 
-  useEffect(() => {
-    setDays({ day: [day1, day2, day3, day4, day5, day6, day7] });
-  }, [day1, day2, day3, day4, day5, day6, day7]);
+  // useEffect(() => {
+  //   setDays({ day: [day1, day2, day3, day4, day5, day6, day7] });
+  // }, [day1, day2, day3, day4, day5, day6, day7]);
 
   return (
     <div>
       {weeks.map((week) => {
         return (
           <div key={week}>
-            <div className="grid grid-cols-6">
-              <h1 className="col-span-5">Week:{week}</h1>
-              <button
-                className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                onClick={addDay}
-              >
-                Add another day
-              </button>
+            <div className="grid grid-cols-7">
+              <h1 className="col-span-6">Week:{week}</h1>
+              Workout Days - Click to add
+              <div className={`${isActive1 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="1"
+                >
+                  Add Monday
+                </button>
+              </div>
+              <div className={`${isActive1 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="1"
+                >
+                  Remove Monday
+                </button>
+              </div>
+              <div className={`${isActive2 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="2"
+                >
+                  Add Tuesday
+                </button>
+              </div>
+              <div className={`${isActive2 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="2"
+                >
+                  Remove Tuesday
+                </button>
+              </div>
+              <div className={`${isActive3 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="3"
+                >
+                  Add Wednesday
+                </button>
+              </div>
+              <div className={`${isActive3 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="3"
+                >
+                  Remove Wednesday
+                </button>
+              </div>
+              <div className={`${isActive4 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="4"
+                >
+                  Add Thursday
+                </button>
+              </div>
+              <div className={`${isActive4 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="4"
+                >
+                  Remove Thursday
+                </button>
+              </div>
+              <div className={`${isActive5 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="5"
+                >
+                  Add Friday
+                </button>
+              </div>
+              <div className={`${isActive5 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="5"
+                >
+                  Remove Friday
+                </button>
+              </div>
+              <div className={`${isActive6 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="6"
+                >
+                  Add Saturday
+                </button>
+              </div>
+              <div className={`${isActive6 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="6"
+                >
+                  Remove Saturday
+                </button>
+              </div>
+              <div className={`${isActive7 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="7"
+                >
+                  Add Sunday
+                </button>
+              </div>
+              <div className={`${isActive7 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="7"
+                >
+                  Remove Sunday
+                </button>
+              </div>
             </div>
             <form
               ref={exerciseForm}
