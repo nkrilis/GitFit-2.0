@@ -222,7 +222,7 @@ const WorkoutUpdate = () => {
     setWeeks(weeksVal);
   };
 
-  /////////////// trying to decide on optimal way to add/remove days - left off looking into state
+  //Checking which day is being added and where to add into the array then updating state
   const addDay = (e) => {
     e.preventDefault();
     let x = parseInt(e.target.value);
@@ -242,13 +242,18 @@ const WorkoutUpdate = () => {
 
     if (x === 3) {
       if (daysVal.length <= 1) {
-        daysVal.some((day) => day.day === "Monday" || "Tuesday")
+        daysVal.some((day) => day.day === "Monday" || day.day === "Tuesday")
           ? daysVal.push(day3)
           : daysVal.unshift(day3);
-      } else if (daysVal.length === 2) {
-        if (daysVal.some((day) => day.day === "Monday" && "Tuesday")) {
-          daysVal.push(day3);
-        } else if (daysVal.some((day) => day.day === "Monday" || "Tuesday")) {
+      } else if (daysVal.length >= 2) {
+        if (
+          daysVal.some((day) => day.day === "Monday") &&
+          daysVal.some((day) => day.day === "Tuesday")
+        ) {
+          daysVal.splice(2, 0, day3);
+        } else if (
+          daysVal.some((day) => day.day === "Monday" || day.day === "Tuesday")
+        ) {
           daysVal.splice(1, 0, day3);
         } else {
           daysVal.unshift(day3);
@@ -258,12 +263,161 @@ const WorkoutUpdate = () => {
 
     if (x === 4) {
       if (daysVal.length <= 1) {
-        daysVal.some((day) => day.day === "Monday" || "Tuesday" || "Wednesday")
+        daysVal.some(
+          (day) =>
+            day.day === "Monday" ||
+            day.day === "Tuesday" ||
+            day.day === "Wednesday"
+        )
           ? daysVal.push(day4)
           : daysVal.unshift(day4);
+      } else if (daysVal.length === 2) {
+        daysVal.some(
+          (day) =>
+            day.day === ("Monday" && "Tuesday") ||
+            day.day === ("Monday" && "Wedesday") ||
+            day.day === ("Tuesday" && "Wednesday")
+        )
+          ? daysVal.push(day4)
+          : daysVal.unshift(day4);
+      } else if (daysVal.length >= 3) {
+        if (
+          daysVal.some((day) => day.day === "Monday") &&
+          daysVal.some((day) => day.day === "Tuesday") &&
+          daysVal.some((day) => day.day === "Wednesday")
+        ) {
+          daysVal.splice(3, 0, day4);
+        } else if (
+          daysVal.some(
+            (day) =>
+              day.day === ("Monday" && "Tuesday") ||
+              day.day === ("Monday" && "Wedesday") ||
+              day.day === ("Tuesday" && "Wednesday")
+          )
+        ) {
+          daysVal.splice(2, 0, day4);
+        } else if (
+          daysVal.some(
+            (day) =>
+              day.day === "Monday" ||
+              day.day === "Tuesday" ||
+              day.day === "Wednesday"
+          )
+        ) {
+          daysVal.splice(1, 0, day4);
+        } else {
+          daysVal.unshift(day4);
+        }
       }
     }
 
+    if (x === 5) {
+      if (daysVal.length <= 1) {
+        daysVal.some(
+          (day) =>
+            day.day === "Monday" ||
+            day.day === "Tuesday" ||
+            day.day === "Wednesday" ||
+            day.day === "Thursday"
+        )
+          ? daysVal.push(day5)
+          : daysVal.unshift(day5);
+      } else if (daysVal.length === 2) {
+        daysVal.some(
+          (day) =>
+            day.day === ("Monday" && "Tuesday") ||
+            day.day === ("Monday" && "Wedesday") ||
+            day.day === ("Monday" && "Thursday") ||
+            day.day === ("Tuesday" && "Wednesday") ||
+            day.day === ("Tuesday" && "Thursday") ||
+            day.day === ("Wednesday" && "Thursday")
+        )
+          ? daysVal.push(day5)
+          : daysVal.unshift(day5);
+      } else if (x === 3) {
+        daysVal.some(
+          (day) =>
+            day.day === ("Monday" && "Tuesday" && "Wednesday") ||
+            day.day === ("Monday" && "Wedesday" && "Thursday") ||
+            day.day === ("Monday" && "Tuesday" && "Thursday") ||
+            day.day === ("Tuesday" && "Wednesday" && "Thursday")
+        )
+          ? daysVal.push(day5)
+          : daysVal.unshift(day5);
+      } else if (daysVal.length >= 4) {
+        if (
+          daysVal.some((day) => day.day === "Monday") &&
+          daysVal.some((day) => day.day === "Tuesday") &&
+          daysVal.some((day) => day.day === "Wednesday") &&
+          daysVal.some((day) => day.day === "Thursday")
+        ) {
+          daysVal.splice(4, 0, day5);
+        } else if (
+          daysVal.some(
+            (day) =>
+              day.day === ("Monday" && "Tuesday" && "Wednesday") ||
+              day.day === ("Monday" && "Tuesday" && "Thursday") ||
+              day.day === ("Monday" && "Wednesday" && "Thursday") ||
+              day.day === ("Tuesday" && "Wednesday" && "Thursday")
+          )
+        ) {
+          daysVal.splice(3, 0, day5);
+        } else if (
+          daysVal.some(
+            (day) =>
+              day.day === ("Monday" && "Tuesday") ||
+              day.day === ("Monday" && "Wednesday") ||
+              day.day === ("Monday" && "Thursday") ||
+              day.day === ("Tuesday" && "Wednesday") ||
+              day.day === ("Tuesday" && "Thursday") ||
+              day.day === ("Wednesday" && "Thursday")
+          )
+        ) {
+          daysVal.splice(2, 0, day5);
+        } else if (
+          (day) =>
+            day.day === "Monday" ||
+            day.day === "Tuesday" ||
+            day.day === "Wednesday" ||
+            day.day === "Thursday"
+        ) {
+          daysVal.splice(1, 0, day5);
+        } else {
+          daysVal.unshift(day5);
+        }
+      }
+    }
+
+    if (x === 6) {
+      if (daysVal.length === 1) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.unshift(day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 2) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.splice(1, 0, day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 3) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.splice(2, 0, day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 4) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.splice(3, 0, day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 5) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.splice(4, 0, day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 6) {
+        daysVal.splice(5, 0, day6);
+      }
+    }
+
+    if (x === 7) {
+      daysVal.push(day7);
+    }
+    console.log(daysVal);
     setDays(daysVal);
   };
 
