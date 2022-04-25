@@ -27,9 +27,7 @@ const WorkoutUpdate = () => {
   const [day5, setday5] = useState({ day: "Friday", exercises: [1] });
   const [day6, setday6] = useState({ day: "Saturday", exercises: [1] });
   const [day7, setday7] = useState({ day: "Sunday", exercises: [1] });
-  const [days, setDays] = useState({
-    day: [day1],
-  });
+  const [days, setDays] = useState([]);
 
   const [isActive1, setDisplay1] = useState("false");
   const [isActive2, setDisplay2] = useState("false");
@@ -225,30 +223,87 @@ const WorkoutUpdate = () => {
   };
 
   /////////////// trying to decide on optimal way to add/remove days - left off looking into state
-  const addDay = () => {
+  const addDay = (e) => {
+    e.preventDefault();
+    let x = parseInt(e.target.value);
     let daysVal = [];
+    console.log(x);
+    daysVal = [...days];
 
-    daysVal = [...days.day];
-
-    console.log(daysVal);
-
-    if (daysVal.length < 7) {
-      daysVal.push({ day: daysVal.length + 1, exercises: [1] });
+    if (x === 1) {
+      daysVal.unshift(day1);
     }
-    // setDays({
-    //   day: daysVal,
-    // });
+
+    if (x === 2) {
+      daysVal.some((day) => day.day === "Monday")
+        ? daysVal.splice(1, 0, day2)
+        : daysVal.unshift(day2);
+    }
+
+    if (x === 3) {
+      if (daysVal.length <= 1) {
+        daysVal.some((day) => day.day === "Monday" || "Tuesday")
+          ? daysVal.push(day3)
+          : daysVal.unshift(day3);
+      } else if (daysVal.length === 2) {
+        if (daysVal.some((day) => day.day === "Monday" && "Tuesday")) {
+          daysVal.push(day3);
+        } else if (daysVal.some((day) => day.day === "Monday" || "Tuesday")) {
+          daysVal.splice(1, 0, day3);
+        } else {
+          daysVal.unshift(day3);
+        }
+      }
+    }
+
+    if (x === 4) {
+      if (daysVal.length <= 1) {
+        daysVal.some((day) => day.day === "Monday" || "Tuesday" || "Wednesday")
+          ? daysVal.push(day4)
+          : daysVal.unshift(day4);
+      }
+    }
+
+    setDays(daysVal);
   };
 
   const removeDay = (e) => {
     e.preventDefault();
-    let i = e.target.getAttribute("data-id");
-    let daysVal = [...days.day];
-    let newVal = daysVal.filter((day) => day.day !== parseInt(i));
-    setDays({
-      day: newVal,
-    });
-    console.log(days);
+    let x = parseInt(e.target.value);
+    let daysVal = [];
+    let day = "";
+
+    switch (x) {
+      case 1:
+        day = "Monday";
+        break;
+      case 2:
+        day = "Tuesday";
+        break;
+      case 3:
+        day = "Wednesday";
+        break;
+      case 4:
+        day = "Thursday";
+        break;
+      case 5:
+        day = "Friday";
+        break;
+      case 6:
+        day = "Saturday";
+        break;
+      case 7:
+        day = "Sunday";
+        break;
+      default:
+        day = "error";
+    }
+
+    daysVal = [...days];
+    let newVal = daysVal.filter((y) => y.day !== day);
+    console.log(newVal);
+
+    setDays(newVal);
   };
 
   const addExercise = (e) => {
@@ -555,7 +610,7 @@ const WorkoutUpdate = () => {
               onSubmit={formSubmit}
               className="bg-purple-100 shadow-md px-2 py-2"
             >
-              {days.day.map((day) => {
+              {days.map((day) => {
                 return (
                   <div key={week + day.day} name={`exercise${day.day}`}>
                     <h1>Day: {day.day} </h1>
@@ -623,13 +678,6 @@ const WorkoutUpdate = () => {
                         </div>
                       );
                     })}
-                    <button
-                      className="font-xl hover:text-white hover:cursor-pointer hover:font-bold"
-                      data-id={day.day}
-                      onClick={(e) => removeDay(e)}
-                    >
-                      Delete day
-                    </button>
                   </div>
                 );
               })}
