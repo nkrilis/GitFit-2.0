@@ -20,13 +20,76 @@ const WorkoutUpdate = () => {
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
   const [weeks, setWeeks] = useState([]);
-  const [day1, setday1] = useState({ day: "Monday", exercises: [1] });
-  const [day2, setday2] = useState({ day: "Tuesday", exercises: [1] });
-  const [day3, setday3] = useState({ day: "Wednesday", exercises: [1] });
-  const [day4, setday4] = useState({ day: "Thursday", exercises: [1] });
-  const [day5, setday5] = useState({ day: "Friday", exercises: [1] });
-  const [day6, setday6] = useState({ day: "Saturday", exercises: [1] });
-  const [day7, setday7] = useState({ day: "Sunday", exercises: [1] });
+  const [day1, setday1] = useState({
+    day: "Monday",
+    exercises: [
+      {
+        exerciseId: "1",
+        userSets: 1,
+        userReps: 1,
+      },
+    ],
+  });
+  const [day2, setday2] = useState({
+    day: "Tuesday",
+    exercises: [
+      {
+        exerciseId: "2",
+        userSets: 2,
+        userReps: 2,
+      },
+    ],
+  });
+  const [day3, setday3] = useState({
+    day: "Wednesday",
+    exercises: [
+      {
+        exerciseId: "3",
+        userSets: 3,
+        userReps: 3,
+      },
+    ],
+  });
+  const [day4, setday4] = useState({
+    day: "Thursday",
+    exercises: [
+      {
+        exerciseId: "4",
+        userSets: 4,
+        userReps: 4,
+      },
+    ],
+  });
+  const [day5, setday5] = useState({
+    day: "Friday",
+    exercises: [
+      {
+        exerciseId: "5",
+        userSets: 5,
+        userReps: 5,
+      },
+    ],
+  });
+  const [day6, setday6] = useState({
+    day: "Saturday",
+    exercises: [
+      {
+        exerciseId: "6",
+        userSets: 6,
+        userReps: 6,
+      },
+    ],
+  });
+  const [day7, setday7] = useState({
+    day: "Sunday",
+    exercises: [
+      {
+        exerciseId: "7",
+        userSets: 7,
+        userReps: 7,
+      },
+    ],
+  });
   const [days, setDays] = useState([]);
 
   const [isActive1, setDisplay1] = useState("false");
@@ -203,7 +266,7 @@ const WorkoutUpdate = () => {
     let array = [];
     for (const [y, z] of data) console.log(y, z);
 
-    array.push(data.getAll("sets1"));
+    array.push(data.getAll("setsMonday1"));
     console.log(array);
     let x = document.querySelector("#exerciseSel1");
 
@@ -387,6 +450,7 @@ const WorkoutUpdate = () => {
         }
       }
     }
+    console.log(day5);
 
     if (x === 6) {
       if (daysVal.length === 1) {
@@ -467,10 +531,15 @@ const WorkoutUpdate = () => {
 
     if (x === "Monday") {
       exercisesVal = [...day1.exercises];
-      exercisesVal.push(day1.exercises.length + 1);
+      exercisesVal.push({
+        exerciseId: "1",
+        userSets: 3,
+        userReps: 3,
+      });
       console.log(exercisesVal);
       console.log(day1);
       setday1({ day: "Monday", exercises: exercisesVal });
+      exercisesVal = [];
     }
     if (x === "Tuesday") {
       exercisesVal = [...day2.exercises];
@@ -510,10 +579,15 @@ const WorkoutUpdate = () => {
     let x = parseInt(e.target.getAttribute("data-id"));
     let y = e.target.value;
 
+    console.log(x, y);
+
     if (y === "Monday") {
       exercisesVal = [...day1.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== x);
-      setday1({ day: "Monday", exercises: newVal });
+      console.log(exercisesVal);
+      exercisesVal.splice(x, 1);
+      console.log(exercisesVal);
+      setday1({ day: "Monday", exercises: exercisesVal });
+      exercisesVal = [];
     }
     if (y === "Tuesday") {
       exercisesVal = [...day2.exercises];
@@ -574,7 +648,12 @@ const WorkoutUpdate = () => {
     }
   };
 
-  const workoutDays = () => {};
+  const setUserSets = (index) => {
+    let x = index;
+    console.log(x);
+  };
+
+  const setUserReps = () => {};
 
   useEffect(() => {
     workoutWeeks();
@@ -805,23 +884,23 @@ const WorkoutUpdate = () => {
                     >
                       Add another exercise
                     </button>
-                    {day.exercises.map((exercise) => {
+                    {day.exercises.map((exercise, index) => {
                       return (
-                        <div key={exercise}>
+                        <div key={index}>
                           <div className="grid grid-cols-7 gap-2">
                             <select
                               id={`exerciseSel${exercise}`}
                               className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                               aria-label="exercise"
                             >
-                              {exerciseList.map((exercise) => {
+                              {exerciseList.map((exerciseL) => {
                                 return (
                                   <option
-                                    name={exercise.name}
-                                    key={exercise._id}
-                                    value={exercise.name}
+                                    name={exerciseL.name}
+                                    key={exerciseL._id}
+                                    value={exerciseL.name}
                                   >
-                                    {exercise.name}
+                                    {exerciseL.name}
                                   </option>
                                 );
                               })}
@@ -832,15 +911,17 @@ const WorkoutUpdate = () => {
                               type="number"
                               min="1"
                               max="50"
-                              defaultValue={1}
+                              onChange={setUserSets(index)}
+                              defaultValue={exercise.userSets}
                             />
 
                             <input
-                              name={`reps${day.day}`}
+                              name={`reps${day.day + exercise}`}
                               type="number"
                               min="1"
                               max="50"
-                              defaultValue={1}
+                              onChange={setUserReps}
+                              defaultValue={exercise.userReps}
                             />
 
                             <textarea
@@ -852,7 +933,7 @@ const WorkoutUpdate = () => {
 
                             <button
                               className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
-                              data-id={exercise}
+                              data-id={index}
                               value={day.day}
                               onClick={(e) => removeExercise(e)}
                             >
