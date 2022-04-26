@@ -20,16 +20,22 @@ const WorkoutUpdate = () => {
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
   const [weeks, setWeeks] = useState([]);
-  const [day1, setday1] = useState({ day: 1, exercises: [1] });
-  const [day2, setday2] = useState({ day: 2, exercises: [1] });
-  const [day3, setday3] = useState({ day: 3, exercises: [1] });
-  const [day4, setday4] = useState({ day: 4, exercises: [1] });
-  const [day5, setday5] = useState({ day: 5, exercises: [1] });
-  const [day6, setday6] = useState({ day: 6, exercises: [1] });
-  const [day7, setday7] = useState({ day: 7, exercises: [1] });
-  const [days, setDays] = useState({
-    day: [day1, day2, day3, day4, day5, day6, day7],
-  });
+  const [day1, setday1] = useState({ day: "Monday", exercises: [1] });
+  const [day2, setday2] = useState({ day: "Tuesday", exercises: [1] });
+  const [day3, setday3] = useState({ day: "Wednesday", exercises: [1] });
+  const [day4, setday4] = useState({ day: "Thursday", exercises: [1] });
+  const [day5, setday5] = useState({ day: "Friday", exercises: [1] });
+  const [day6, setday6] = useState({ day: "Saturday", exercises: [1] });
+  const [day7, setday7] = useState({ day: "Sunday", exercises: [1] });
+  const [days, setDays] = useState([]);
+
+  const [isActive1, setDisplay1] = useState("false");
+  const [isActive2, setDisplay2] = useState("false");
+  const [isActive3, setDisplay3] = useState("false");
+  const [isActive4, setDisplay4] = useState("false");
+  const [isActive5, setDisplay5] = useState("false");
+  const [isActive6, setDisplay6] = useState("false");
+  const [isActive7, setDisplay7] = useState("false");
 
   const exerciseForm = useRef(null);
 
@@ -216,31 +222,242 @@ const WorkoutUpdate = () => {
     setWeeks(weeksVal);
   };
 
-  /////////////// trying to decide on optimal way to add/remove days - left off looking into state
-  const addDay = () => {
+  //Checking which day is being added and where to add into the array then updating state
+  const addDay = (e) => {
+    e.preventDefault();
+    let x = parseInt(e.target.value);
     let daysVal = [];
+    console.log(x);
+    daysVal = [...days];
 
-    daysVal = [...days.day];
-
-    console.log(daysVal);
-
-    if (daysVal.length < 7) {
-      daysVal.push({ day: daysVal.length + 1, exercises: [1] });
+    if (x === 1) {
+      daysVal.unshift(day1);
     }
-    // setDays({
-    //   day: daysVal,
-    // });
+
+    if (x === 2) {
+      daysVal.some((day) => day.day === "Monday")
+        ? daysVal.splice(1, 0, day2)
+        : daysVal.unshift(day2);
+    }
+
+    if (x === 3) {
+      if (daysVal.length <= 1) {
+        daysVal.some((day) => day.day === "Monday" || day.day === "Tuesday")
+          ? daysVal.push(day3)
+          : daysVal.unshift(day3);
+      } else if (daysVal.length >= 2) {
+        if (
+          daysVal.some((day) => day.day === "Monday") &&
+          daysVal.some((day) => day.day === "Tuesday")
+        ) {
+          daysVal.splice(2, 0, day3);
+        } else if (
+          daysVal.some((day) => day.day === "Monday" || day.day === "Tuesday")
+        ) {
+          daysVal.splice(1, 0, day3);
+        } else {
+          daysVal.unshift(day3);
+        }
+      }
+    }
+
+    if (x === 4) {
+      if (daysVal.length <= 1) {
+        daysVal.some(
+          (day) =>
+            day.day === "Monday" ||
+            day.day === "Tuesday" ||
+            day.day === "Wednesday"
+        )
+          ? daysVal.push(day4)
+          : daysVal.unshift(day4);
+      } else if (daysVal.length === 2) {
+        daysVal.some(
+          (day) =>
+            day.day === ("Monday" && "Tuesday") ||
+            day.day === ("Monday" && "Wedesday") ||
+            day.day === ("Tuesday" && "Wednesday")
+        )
+          ? daysVal.push(day4)
+          : daysVal.unshift(day4);
+      } else if (daysVal.length >= 3) {
+        if (
+          daysVal.some((day) => day.day === "Monday") &&
+          daysVal.some((day) => day.day === "Tuesday") &&
+          daysVal.some((day) => day.day === "Wednesday")
+        ) {
+          daysVal.splice(3, 0, day4);
+        } else if (
+          daysVal.some(
+            (day) =>
+              day.day === ("Monday" && "Tuesday") ||
+              day.day === ("Monday" && "Wedesday") ||
+              day.day === ("Tuesday" && "Wednesday")
+          )
+        ) {
+          daysVal.splice(2, 0, day4);
+        } else if (
+          daysVal.some(
+            (day) =>
+              day.day === "Monday" ||
+              day.day === "Tuesday" ||
+              day.day === "Wednesday"
+          )
+        ) {
+          daysVal.splice(1, 0, day4);
+        } else {
+          daysVal.unshift(day4);
+        }
+      }
+    }
+
+    if (x === 5) {
+      if (daysVal.length <= 1) {
+        daysVal.some(
+          (day) =>
+            day.day === "Monday" ||
+            day.day === "Tuesday" ||
+            day.day === "Wednesday" ||
+            day.day === "Thursday"
+        )
+          ? daysVal.push(day5)
+          : daysVal.unshift(day5);
+      } else if (daysVal.length === 2) {
+        daysVal.some(
+          (day) =>
+            day.day === ("Monday" && "Tuesday") ||
+            day.day === ("Monday" && "Wedesday") ||
+            day.day === ("Monday" && "Thursday") ||
+            day.day === ("Tuesday" && "Wednesday") ||
+            day.day === ("Tuesday" && "Thursday") ||
+            day.day === ("Wednesday" && "Thursday")
+        )
+          ? daysVal.push(day5)
+          : daysVal.unshift(day5);
+      } else if (x === 3) {
+        daysVal.some(
+          (day) =>
+            day.day === ("Monday" && "Tuesday" && "Wednesday") ||
+            day.day === ("Monday" && "Wedesday" && "Thursday") ||
+            day.day === ("Monday" && "Tuesday" && "Thursday") ||
+            day.day === ("Tuesday" && "Wednesday" && "Thursday")
+        )
+          ? daysVal.push(day5)
+          : daysVal.unshift(day5);
+      } else if (daysVal.length >= 4) {
+        if (
+          daysVal.some((day) => day.day === "Monday") &&
+          daysVal.some((day) => day.day === "Tuesday") &&
+          daysVal.some((day) => day.day === "Wednesday") &&
+          daysVal.some((day) => day.day === "Thursday")
+        ) {
+          daysVal.splice(4, 0, day5);
+        } else if (
+          daysVal.some(
+            (day) =>
+              day.day === ("Monday" && "Tuesday" && "Wednesday") ||
+              day.day === ("Monday" && "Tuesday" && "Thursday") ||
+              day.day === ("Monday" && "Wednesday" && "Thursday") ||
+              day.day === ("Tuesday" && "Wednesday" && "Thursday")
+          )
+        ) {
+          daysVal.splice(3, 0, day5);
+        } else if (
+          daysVal.some(
+            (day) =>
+              day.day === ("Monday" && "Tuesday") ||
+              day.day === ("Monday" && "Wednesday") ||
+              day.day === ("Monday" && "Thursday") ||
+              day.day === ("Tuesday" && "Wednesday") ||
+              day.day === ("Tuesday" && "Thursday") ||
+              day.day === ("Wednesday" && "Thursday")
+          )
+        ) {
+          daysVal.splice(2, 0, day5);
+        } else if (
+          (day) =>
+            day.day === "Monday" ||
+            day.day === "Tuesday" ||
+            day.day === "Wednesday" ||
+            day.day === "Thursday"
+        ) {
+          daysVal.splice(1, 0, day5);
+        } else {
+          daysVal.unshift(day5);
+        }
+      }
+    }
+
+    if (x === 6) {
+      if (daysVal.length === 1) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.unshift(day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 2) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.splice(1, 0, day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 3) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.splice(2, 0, day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 4) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.splice(3, 0, day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 5) {
+        daysVal.some((day) => day.day === "Sunday")
+          ? daysVal.splice(4, 0, day6)
+          : daysVal.push(day6);
+      } else if (daysVal.length === 6) {
+        daysVal.splice(5, 0, day6);
+      }
+    }
+
+    if (x === 7) {
+      daysVal.push(day7);
+    }
+    console.log(daysVal);
+    setDays(daysVal);
   };
 
   const removeDay = (e) => {
     e.preventDefault();
-    let i = e.target.getAttribute("data-id");
-    let daysVal = [...days.day];
-    let newVal = daysVal.filter((day) => day.day !== parseInt(i));
-    setDays({
-      day: newVal,
-    });
-    console.log(days);
+    let x = parseInt(e.target.value);
+    let daysVal = [];
+    let day = "";
+
+    switch (x) {
+      case 1:
+        day = "Monday";
+        break;
+      case 2:
+        day = "Tuesday";
+        break;
+      case 3:
+        day = "Wednesday";
+        break;
+      case 4:
+        day = "Thursday";
+        break;
+      case 5:
+        day = "Friday";
+        break;
+      case 6:
+        day = "Saturday";
+        break;
+      case 7:
+        day = "Sunday";
+        break;
+      default:
+        day = "error";
+    }
+
+    daysVal = [...days];
+    let newVal = daysVal.filter((y) => y.day !== day);
+    console.log(newVal);
+
+    setDays(newVal);
   };
 
   const addExercise = (e) => {
@@ -328,34 +545,226 @@ const WorkoutUpdate = () => {
     }
   };
 
+  const toggleDisplay = (e) => {
+    e.preventDefault();
+    let x = parseInt(e.target.value);
+
+    if (x === 1) {
+      setDisplay1(!isActive1);
+    }
+    if (x === 2) {
+      setDisplay2(!isActive2);
+    }
+    if (x === 3) {
+      setDisplay3(!isActive3);
+    }
+    if (x === 4) {
+      setDisplay4(!isActive4);
+    }
+    if (x === 5) {
+      setDisplay5(!isActive5);
+    }
+    if (x === 6) {
+      setDisplay6(!isActive6);
+    }
+    if (x === 7) {
+      setDisplay7(!isActive7);
+    }
+  };
+
+  const workoutDays = () => {};
+
   useEffect(() => {
     workoutWeeks();
   }, [workoutPlan.numOfWeeks]);
 
-  useEffect(() => {
-    setDays({ day: [day1, day2, day3, day4, day5, day6, day7] });
-  }, [day1, day2, day3, day4, day5, day6, day7]);
+  // useEffect(() => {
+  //   setDays({ day: [day1, day2, day3, day4, day5, day6, day7] });
+  // }, [day1, day2, day3, day4, day5, day6, day7]);
 
   return (
     <div>
       {weeks.map((week) => {
         return (
           <div key={week}>
-            <div className="grid grid-cols-6">
-              <h1 className="col-span-5">Week:{week}</h1>
-              <button
-                className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                onClick={addDay}
-              >
-                Add another day
-              </button>
+            <div className="grid grid-cols-7">
+              <h1 className="col-span-6">Week:{week}</h1>
+              Workout Days - Click to add
+              <div className={`${isActive1 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="1"
+                >
+                  Add Monday
+                </button>
+              </div>
+              <div className={`${isActive1 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="1"
+                >
+                  Remove Monday
+                </button>
+              </div>
+              <div className={`${isActive2 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="2"
+                >
+                  Add Tuesday
+                </button>
+              </div>
+              <div className={`${isActive2 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="2"
+                >
+                  Remove Tuesday
+                </button>
+              </div>
+              <div className={`${isActive3 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="3"
+                >
+                  Add Wednesday
+                </button>
+              </div>
+              <div className={`${isActive3 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="3"
+                >
+                  Remove Wednesday
+                </button>
+              </div>
+              <div className={`${isActive4 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="4"
+                >
+                  Add Thursday
+                </button>
+              </div>
+              <div className={`${isActive4 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="4"
+                >
+                  Remove Thursday
+                </button>
+              </div>
+              <div className={`${isActive5 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="5"
+                >
+                  Add Friday
+                </button>
+              </div>
+              <div className={`${isActive5 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="5"
+                >
+                  Remove Friday
+                </button>
+              </div>
+              <div className={`${isActive6 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="6"
+                >
+                  Add Saturday
+                </button>
+              </div>
+              <div className={`${isActive6 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="6"
+                >
+                  Remove Saturday
+                </button>
+              </div>
+              <div className={`${isActive7 ? "f" : "hidden"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    addDay(e);
+                  }}
+                  value="7"
+                >
+                  Add Sunday
+                </button>
+              </div>
+              <div className={`${isActive7 ? "hidden" : "f"}`}>
+                <button
+                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+                  onClick={(e) => {
+                    toggleDisplay(e);
+                    removeDay(e);
+                  }}
+                  value="7"
+                >
+                  Remove Sunday
+                </button>
+              </div>
             </div>
             <form
               ref={exerciseForm}
               onSubmit={formSubmit}
               className="bg-purple-100 shadow-md px-2 py-2"
             >
-              {days.day.map((day) => {
+              {days.map((day) => {
                 return (
                   <div key={week + day.day} name={`exercise${day.day}`}>
                     <h1>Day: {day.day} </h1>
@@ -423,13 +832,6 @@ const WorkoutUpdate = () => {
                         </div>
                       );
                     })}
-                    <button
-                      className="font-xl hover:text-white hover:cursor-pointer hover:font-bold"
-                      data-id={day.day}
-                      onClick={(e) => removeDay(e)}
-                    >
-                      Delete day
-                    </button>
                   </div>
                 );
               })}
