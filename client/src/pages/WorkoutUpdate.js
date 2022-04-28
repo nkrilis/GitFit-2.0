@@ -20,13 +20,76 @@ const WorkoutUpdate = () => {
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
   const [weeks, setWeeks] = useState([]);
-  const [day1, setday1] = useState({ day: "Monday", exercises: [1] });
-  const [day2, setday2] = useState({ day: "Tuesday", exercises: [1] });
-  const [day3, setday3] = useState({ day: "Wednesday", exercises: [1] });
-  const [day4, setday4] = useState({ day: "Thursday", exercises: [1] });
-  const [day5, setday5] = useState({ day: "Friday", exercises: [1] });
-  const [day6, setday6] = useState({ day: "Saturday", exercises: [1] });
-  const [day7, setday7] = useState({ day: "Sunday", exercises: [1] });
+  const [day1, setDay1] = useState({
+    day: "Monday",
+    exercises: [
+      {
+        exerciseId: "4",
+        userSets: 1,
+        userReps: 1,
+      },
+    ],
+  });
+  const [day2, setDay2] = useState({
+    day: "Tuesday",
+    exercises: [
+      {
+        exerciseId: "2",
+        userSets: 2,
+        userReps: 2,
+      },
+    ],
+  });
+  const [day3, setDay3] = useState({
+    day: "Wednesday",
+    exercises: [
+      {
+        exerciseId: "3",
+        userSets: 3,
+        userReps: 3,
+      },
+    ],
+  });
+  const [day4, setDay4] = useState({
+    day: "Thursday",
+    exercises: [
+      {
+        exerciseId: "4",
+        userSets: 4,
+        userReps: 4,
+      },
+    ],
+  });
+  const [day5, setDay5] = useState({
+    day: "Friday",
+    exercises: [
+      {
+        exerciseId: "5",
+        userSets: 5,
+        userReps: 5,
+      },
+    ],
+  });
+  const [day6, setDay6] = useState({
+    day: "Saturday",
+    exercises: [
+      {
+        exerciseId: "6",
+        userSets: 6,
+        userReps: 6,
+      },
+    ],
+  });
+  const [day7, setDay7] = useState({
+    day: "Sunday",
+    exercises: [
+      {
+        exerciseId: "7",
+        userSets: 7,
+        userReps: 7,
+      },
+    ],
+  });
   const [days, setDays] = useState([]);
 
   const [isActive1, setDisplay1] = useState("false");
@@ -41,6 +104,7 @@ const WorkoutUpdate = () => {
 
   // function to create workout plan in database
   const planUpdate = async () => {
+    console.log(workoutPlan.plan[0].weeks[0].days);
     let planVal = [
       ...workoutPlan.plan[0].weeks[0].days.map((day) => {
         if (day.dayOfWeek === "Monday") {
@@ -203,7 +267,7 @@ const WorkoutUpdate = () => {
     let array = [];
     for (const [y, z] of data) console.log(y, z);
 
-    array.push(data.getAll("sets1"));
+    array.push(data.getAll("setsMonday1"));
     console.log(array);
     let x = document.querySelector("#exerciseSel1");
 
@@ -227,7 +291,6 @@ const WorkoutUpdate = () => {
     e.preventDefault();
     let x = parseInt(e.target.value);
     let daysVal = [];
-    console.log(x);
     daysVal = [...days];
 
     if (x === 1) {
@@ -334,7 +397,7 @@ const WorkoutUpdate = () => {
         )
           ? daysVal.push(day5)
           : daysVal.unshift(day5);
-      } else if (x === 3) {
+      } else if (daysVal.length === 3) {
         daysVal.some(
           (day) =>
             day.day === ("Monday" && "Tuesday" && "Wednesday") ||
@@ -387,6 +450,7 @@ const WorkoutUpdate = () => {
         }
       }
     }
+    console.log(day5);
 
     if (x === 6) {
       if (daysVal.length === 1) {
@@ -455,50 +519,57 @@ const WorkoutUpdate = () => {
 
     daysVal = [...days];
     let newVal = daysVal.filter((y) => y.day !== day);
-    console.log(newVal);
 
     setDays(newVal);
   };
 
   const addExercise = (e) => {
     e.preventDefault();
-    let x = parseInt(e.target.value);
+    let x = e.target.value;
+
     let exercisesVal = [];
 
-    if (x === 1) {
+    if (x === "Monday") {
       exercisesVal = [...day1.exercises];
-      exercisesVal.push(day1.exercises.length + 1);
-      setday1({ day: 1, exercises: exercisesVal });
+      exercisesVal.push({
+        exerciseId: "1",
+        userSets: 3,
+        userReps: 3,
+      });
+      console.log(exercisesVal);
+      console.log(day1);
+      setDay1({ day: "Monday", exercises: exercisesVal });
+      exercisesVal = [];
     }
-    if (x === 2) {
+    if (x === "Tuesday") {
       exercisesVal = [...day2.exercises];
       exercisesVal.push(day2.exercises.length + 1);
-      setday2({ day: 2, exercises: exercisesVal });
+      setDay2({ day: "Tuesday", exercises: exercisesVal });
     }
-    if (x === 3) {
+    if (x === "Wednesday") {
       exercisesVal = [...day3.exercises];
       exercisesVal.push(day3.exercises.length + 1);
-      setday3({ day: 3, exercises: exercisesVal });
+      setDay3({ day: "Wednesday", exercises: exercisesVal });
     }
-    if (x === 4) {
+    if (x === "Thursday") {
       exercisesVal = [...day4.exercises];
       exercisesVal.push(day4.exercises.length + 1);
-      setday4({ day: 4, exercises: exercisesVal });
+      setDay4({ day: "Thursday", exercises: exercisesVal });
     }
-    if (x === 5) {
+    if (x === "Friday") {
       exercisesVal = [...day5.exercises];
       exercisesVal.push(day5.exercises.length + 1);
-      setday5({ day: 5, exercises: exercisesVal });
+      setDay5({ day: "Friday", exercises: exercisesVal });
     }
-    if (x === 6) {
+    if (x === "Saturday") {
       exercisesVal = [...day6.exercises];
       exercisesVal.push(day6.exercises.length + 1);
-      setday6({ day: 6, exercises: exercisesVal });
+      setDay6({ day: "Saturday", exercises: exercisesVal });
     }
-    if (x === 7) {
+    if (x === "Sunday") {
       exercisesVal = [...day7.exercises];
       exercisesVal.push(day7.exercises.length + 1);
-      setday7({ day: 7, exercises: exercisesVal });
+      setDay7({ day: "Sunday", exercises: exercisesVal });
     }
   };
 
@@ -506,42 +577,50 @@ const WorkoutUpdate = () => {
     e.preventDefault();
     let exercisesVal = [];
     let x = parseInt(e.target.getAttribute("data-id"));
-    let y = parseInt(e.target.value);
+    let y = e.target.value;
 
-    if (x === 1) {
-      exercisesVal = [...day1.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== y);
-      setday1({ day: 1, exercises: newVal });
+    console.log(x, y);
+    exercisesVal = [...day1.exercises];
+    if (y === "Monday") {
+      if (x === 0) {
+        exercisesVal.shift();
+      } else {
+        console.log(exercisesVal);
+        exercisesVal.splice(x, 1);
+        console.log(exercisesVal);
+      }
+      setDay1({ day: "Monday", exercises: exercisesVal });
+      exercisesVal = [];
     }
-    if (x === 2) {
+    if (y === "Tuesday") {
       exercisesVal = [...day2.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== y);
-      setday2({ day: 2, exercises: newVal });
+      let newVal = exercisesVal.filter((exercise) => exercise !== x);
+      setDay2({ day: "Tuesday", exercises: newVal });
     }
-    if (x === 3) {
+    if (y === "Wednesday") {
       exercisesVal = [...day3.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== y);
-      setday3({ day: 3, exercises: newVal });
+      let newVal = exercisesVal.filter((exercise) => exercise !== x);
+      setDay3({ day: "Wednesday", exercises: newVal });
     }
-    if (x === 4) {
+    if (y === "Thursday") {
       exercisesVal = [...day4.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== y);
-      setday4({ day: 4, exercises: newVal });
+      let newVal = exercisesVal.filter((exercise) => exercise !== x);
+      setDay4({ day: "Thursday", exercises: newVal });
     }
-    if (x === 5) {
+    if (y === "Friday") {
       exercisesVal = [...day5.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== y);
-      setday5({ day: 5, exercises: newVal });
+      let newVal = exercisesVal.filter((exercise) => exercise !== x);
+      setDay5({ day: "Friday", exercises: newVal });
     }
-    if (x === 6) {
+    if (y === "Saturday") {
       exercisesVal = [...day6.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== y);
-      setday6({ day: 6, exercises: newVal });
+      let newVal = exercisesVal.filter((exercise) => exercise !== x);
+      setDay6({ day: "Saturday", exercises: newVal });
     }
-    if (x === 7) {
+    if (y === "Sunday") {
       exercisesVal = [...day7.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== y);
-      setday7({ day: 7, exercises: newVal });
+      let newVal = exercisesVal.filter((exercise) => exercise !== x);
+      setDay7({ day: "Sunday", exercises: newVal });
     }
   };
 
@@ -572,15 +651,171 @@ const WorkoutUpdate = () => {
     }
   };
 
-  const workoutDays = () => {};
+  const setUserSets = (e) => {
+    let x = parseInt(e.target.value);
+    let y = e.target.id;
+    let z = parseInt(e.target.name);
+    let exerciseArr = [];
+
+    if (y === "Monday") {
+      exerciseArr = [...day1.exercises];
+      exerciseArr[z].userSets = x;
+      setDay1({ day: "Monday", exercises: exerciseArr });
+    }
+    if (y === "Tuesday") {
+      exerciseArr = [...day2.exercises];
+      exerciseArr[z].userSets = x;
+      setDay2({ day: "Tuesday", exercises: exerciseArr });
+    }
+    if (y === "Wednesday") {
+      exerciseArr = [...day3.exercises];
+      exerciseArr[z].userSets = x;
+      setDay3({ day: "Wednesday", exercises: exerciseArr });
+    }
+    if (y === "Thursday") {
+      exerciseArr = [...day4.exercises];
+      exerciseArr[z].userSets = x;
+      setDay4({ day: "Thursday", exercises: exerciseArr });
+    }
+    if (y === "Friday") {
+      exerciseArr = [...day5.exercises];
+      exerciseArr[z].userSets = x;
+      setDay5({ day: "Friday", exercises: exerciseArr });
+    }
+    if (y === "Satuday") {
+      exerciseArr = [...day6.exercises];
+      exerciseArr[z].userSets = x;
+      setDay6({ day: "Saturday", exercises: exerciseArr });
+    }
+    if (y === "Sunday") {
+      exerciseArr = [...day7.exercises];
+      exerciseArr[z].userSets = x;
+      setDay7({ day: "Sunday", exercises: exerciseArr });
+    }
+  };
+
+  const setUserReps = (e) => {
+    let x = parseInt(e.target.value);
+    let y = e.target.id;
+    let z = parseInt(e.target.name);
+    let exerciseArr = [];
+
+    if (y === "Monday") {
+      exerciseArr = [...day1.exercises];
+      exerciseArr[z].userReps = x;
+      setDay1({ day: "Monday", exercises: exerciseArr });
+    }
+    if (y === "Tuesday") {
+      exerciseArr = [...day2.exercises];
+      exerciseArr[z].userReps = x;
+      setDay2({ day: "Tuesday", exercises: exerciseArr });
+    }
+    if (y === "Wednesday") {
+      exerciseArr = [...day3.exercises];
+      exerciseArr[z].userReps = x;
+      setDay3({ day: "Wednesday", exercises: exerciseArr });
+    }
+    if (y === "Thursday") {
+      exerciseArr = [...day4.exercises];
+      exerciseArr[z].userReps = x;
+      setDay4({ day: "Thursday", exercises: exerciseArr });
+    }
+    if (y === "Friday") {
+      exerciseArr = [...day5.exercises];
+      exerciseArr[z].userReps = x;
+      setDay5({ day: "Friday", exercises: exerciseArr });
+    }
+    if (y === "Satuday") {
+      exerciseArr = [...day6.exercises];
+      exerciseArr[z].userReps = x;
+      setDay6({ day: "Saturday", exercises: exerciseArr });
+    }
+    if (y === "Sunday") {
+      exerciseArr = [...day7.exercises];
+      exerciseArr[z].userReps = x;
+      setDay7({ day: "Sunday", exercises: exerciseArr });
+    }
+  };
+
+  const setExercise = (e) => {
+    let x = parseInt(e.target.value);
+    console.log(x);
+    let y = e.target.id;
+    let z = parseInt(e.target.name);
+    let exerciseArr = [];
+
+    if (y === "Monday") {
+      exerciseArr = [...day1.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay1({ day: "Monday", exercises: exerciseArr });
+    }
+    if (y === "Tuesday") {
+      exerciseArr = [...day2.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay2({ day: "Tuesday", exercises: exerciseArr });
+    }
+    if (y === "Wednesday") {
+      exerciseArr = [...day3.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay3({ day: "Wednesday", exercises: exerciseArr });
+    }
+    if (y === "Thursday") {
+      exerciseArr = [...day4.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay4({ day: "Thursday", exercises: exerciseArr });
+    }
+    if (y === "Friday") {
+      exerciseArr = [...day5.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay5({ day: "Friday", exercises: exerciseArr });
+    }
+    if (y === "Satuday") {
+      exerciseArr = [...day6.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay6({ day: "Saturday", exercises: exerciseArr });
+    }
+    if (y === "Sunday") {
+      exerciseArr = [...day7.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay7({ day: "Sunday", exercises: exerciseArr });
+    }
+  };
 
   useEffect(() => {
     workoutWeeks();
   }, [workoutPlan.numOfWeeks]);
 
-  // useEffect(() => {
-  //   setDays({ day: [day1, day2, day3, day4, day5, day6, day7] });
-  // }, [day1, day2, day3, day4, day5, day6, day7]);
+  useEffect(() => {
+    let daysArray = [];
+    let daysVal = [...days];
+
+    daysVal.map((day) => {
+      if (day.day === "Monday") {
+        daysArray.push(day1);
+      }
+      if (day.day === "Tuesday") {
+        daysArray.push(day2);
+      }
+      if (day.day === "Wednesday") {
+        daysArray.push(day3);
+      }
+      if (day.day === "Thursday") {
+        daysArray.push(day4);
+      }
+      if (day.day === "Friday") {
+        daysArray.push(day5);
+      }
+      if (day.day === "Saturday") {
+        daysArray.push(day6);
+      }
+      if (day.day === "Sunday") {
+        daysArray.push(day7);
+      }
+    });
+
+    setDays(daysArray);
+    daysArray = [];
+  }, [day1, day2, day3, day4, day5, day6, day7]);
 
   return (
     <div>
@@ -775,42 +1010,48 @@ const WorkoutUpdate = () => {
                     >
                       Add another exercise
                     </button>
-                    {day.exercises.map((exercise) => {
+                    {day.exercises.map((exercise, index) => {
                       return (
-                        <div key={exercise}>
+                        <div key={index}>
                           <div className="grid grid-cols-7 gap-2">
                             <select
-                              id={`exerciseSel${exercise}`}
+                              id={day.day}
+                              name={index}
                               className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                               aria-label="exercise"
+                              onChange={setExercise}
+                              value={exercise.exerciseId}
                             >
-                              {exerciseList.map((exercise) => {
+                              {exerciseList.map((exerciseL) => {
                                 return (
                                   <option
-                                    name={exercise.name}
-                                    key={exercise._id}
-                                    value={exercise.name}
+                                    key={exerciseL._id}
+                                    value={exerciseL._id}
                                   >
-                                    {exercise.name}
+                                    {exerciseL.name}
                                   </option>
                                 );
                               })}
                             </select>
-
+                            {/* /////////////////////////////////////////updating the select option */}
                             <input
-                              name={`sets${day.day}`}
+                              name={index}
+                              id={day.day}
                               type="number"
                               min="1"
                               max="50"
-                              defaultValue={1}
+                              onChange={setUserSets}
+                              value={exercise.userSets}
                             />
 
                             <input
-                              name={`reps${day.day}`}
+                              name={index}
+                              id={day.day}
                               type="number"
                               min="1"
                               max="50"
-                              defaultValue={1}
+                              onChange={setUserReps}
+                              value={exercise.userReps}
                             />
 
                             <textarea
@@ -822,8 +1063,8 @@ const WorkoutUpdate = () => {
 
                             <button
                               className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
-                              data-id={day.day}
-                              value={exercise}
+                              data-id={index}
+                              value={day.day}
                               onClick={(e) => removeExercise(e)}
                             >
                               Delete Exercise
