@@ -24,12 +24,7 @@ const WorkoutUpdate = () => {
     day: "Monday",
     exercises: [
       {
-        exerciseId: "1",
-        userSets: 1,
-        userReps: 1,
-      },
-      {
-        exerciseId: "1",
+        exerciseId: "4",
         userSets: 1,
         userReps: 1,
       },
@@ -109,6 +104,7 @@ const WorkoutUpdate = () => {
 
   // function to create workout plan in database
   const planUpdate = async () => {
+    console.log(workoutPlan.plan[0].weeks[0].days);
     let planVal = [
       ...workoutPlan.plan[0].weeks[0].days.map((day) => {
         if (day.dayOfWeek === "Monday") {
@@ -401,7 +397,7 @@ const WorkoutUpdate = () => {
         )
           ? daysVal.push(day5)
           : daysVal.unshift(day5);
-      } else if (x === 3) {
+      } else if (daysVal.length === 3) {
         daysVal.some(
           (day) =>
             day.day === ("Monday" && "Tuesday" && "Wednesday") ||
@@ -741,6 +737,50 @@ const WorkoutUpdate = () => {
     }
   };
 
+  const setExercise = (e) => {
+    let x = parseInt(e.target.value);
+    console.log(x);
+    let y = e.target.id;
+    let z = parseInt(e.target.name);
+    let exerciseArr = [];
+
+    if (y === "Monday") {
+      exerciseArr = [...day1.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay1({ day: "Monday", exercises: exerciseArr });
+    }
+    if (y === "Tuesday") {
+      exerciseArr = [...day2.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay2({ day: "Tuesday", exercises: exerciseArr });
+    }
+    if (y === "Wednesday") {
+      exerciseArr = [...day3.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay3({ day: "Wednesday", exercises: exerciseArr });
+    }
+    if (y === "Thursday") {
+      exerciseArr = [...day4.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay4({ day: "Thursday", exercises: exerciseArr });
+    }
+    if (y === "Friday") {
+      exerciseArr = [...day5.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay5({ day: "Friday", exercises: exerciseArr });
+    }
+    if (y === "Satuday") {
+      exerciseArr = [...day6.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay6({ day: "Saturday", exercises: exerciseArr });
+    }
+    if (y === "Sunday") {
+      exerciseArr = [...day7.exercises];
+      exerciseArr[z].exerciseId = x;
+      setDay7({ day: "Sunday", exercises: exerciseArr });
+    }
+  };
+
   useEffect(() => {
     workoutWeeks();
   }, [workoutPlan.numOfWeeks]);
@@ -975,23 +1015,25 @@ const WorkoutUpdate = () => {
                         <div key={index}>
                           <div className="grid grid-cols-7 gap-2">
                             <select
-                              id={`exerciseSel${exercise}`}
+                              id={day.day}
+                              name={index}
                               className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                               aria-label="exercise"
+                              onChange={setExercise}
+                              value={exercise.exerciseId}
                             >
                               {exerciseList.map((exerciseL) => {
                                 return (
                                   <option
-                                    name={exerciseL.name}
                                     key={exerciseL._id}
-                                    value={exerciseL.name}
+                                    value={exerciseL._id}
                                   >
                                     {exerciseL.name}
                                   </option>
                                 );
                               })}
                             </select>
-
+                            {/* /////////////////////////////////////////updating the select option */}
                             <input
                               name={index}
                               id={day.day}
