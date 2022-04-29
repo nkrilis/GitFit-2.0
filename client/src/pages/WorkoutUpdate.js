@@ -24,7 +24,7 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Monday",
     exercises: [
       {
-        exerciseId: "1",
+        exerciseId: { _id: "1" },
         userSets: 1,
         userReps: 1,
       },
@@ -34,9 +34,9 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Tuesday",
     exercises: [
       {
-        exerciseId: "2",
-        userSets: 2,
-        userReps: 2,
+        exerciseId: { _id: "1" },
+        userSets: 1,
+        userReps: 1,
       },
     ],
   });
@@ -44,9 +44,9 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Wednesday",
     exercises: [
       {
-        exerciseId: "3",
-        userSets: 3,
-        userReps: 3,
+        exerciseId: { _id: "1" },
+        userSets: 1,
+        userReps: 1,
       },
     ],
   });
@@ -54,9 +54,9 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Thursday",
     exercises: [
       {
-        exerciseId: "4",
-        userSets: 4,
-        userReps: 4,
+        exerciseId: { _id: "1" },
+        userSets: 1,
+        userReps: 1,
       },
     ],
   });
@@ -64,9 +64,9 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Friday",
     exercises: [
       {
-        exerciseId: "5",
-        userSets: 5,
-        userReps: 5,
+        exerciseId: { _id: "1" },
+        userSets: 1,
+        userReps: 1,
       },
     ],
   });
@@ -74,9 +74,9 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Saturday",
     exercises: [
       {
-        exerciseId: "6",
-        userSets: 6,
-        userReps: 6,
+        exerciseId: { _id: "1" },
+        userSets: 1,
+        userReps: 1,
       },
     ],
   });
@@ -84,9 +84,9 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Sunday",
     exercises: [
       {
-        exerciseId: "7",
-        userSets: 7,
-        userReps: 7,
+        exerciseId: { _id: "1" },
+        userSets: 1,
+        userReps: 1,
       },
     ],
   });
@@ -458,7 +458,7 @@ const WorkoutUpdate = () => {
     console.log(day5);
 
     if (x === 6) {
-      if (daysVal.length === 1) {
+      if (daysVal.length <= 1) {
         daysVal.some((day) => day.dayOfWeek === "Sunday")
           ? daysVal.unshift(day6)
           : daysVal.push(day6);
@@ -523,7 +523,7 @@ const WorkoutUpdate = () => {
     }
 
     daysVal = [...days];
-    let newVal = daysVal.filter((y) => y.day !== day);
+    let newVal = daysVal.filter((y) => y.dayOfWeek !== day);
 
     setDays(newVal);
   };
@@ -537,7 +537,7 @@ const WorkoutUpdate = () => {
     if (x === "Monday") {
       exercisesVal = [...day1.exercises];
       exercisesVal.push({
-        exerciseId: "1",
+        exerciseId: { _id: "1" },
         userSets: 1,
         userReps: 1,
       });
@@ -549,7 +549,7 @@ const WorkoutUpdate = () => {
     if (x === "Tuesday") {
       exercisesVal = [...day2.exercises];
       exercisesVal.push({
-        exerciseId: "1",
+        exerciseId: { _id: "1" },
         userSets: 1,
         userReps: 1,
       });
@@ -558,7 +558,7 @@ const WorkoutUpdate = () => {
     if (x === "Wednesday") {
       exercisesVal = [...day3.exercises];
       exercisesVal.push({
-        exerciseId: "1",
+        exerciseId: { _id: "1" },
         userSets: 1,
         userReps: 1,
       });
@@ -567,7 +567,7 @@ const WorkoutUpdate = () => {
     if (x === "Thursday") {
       exercisesVal = [...day4.exercises];
       exercisesVal.push({
-        exerciseId: "1",
+        exerciseId: { _id: "1" },
         userSets: 1,
         userReps: 1,
       });
@@ -576,7 +576,7 @@ const WorkoutUpdate = () => {
     if (x === "Friday") {
       exercisesVal = [...day5.exercises];
       exercisesVal.push({
-        exerciseId: "1",
+        exerciseId: { _id: "1" },
         userSets: 1,
         userReps: 1,
       });
@@ -585,7 +585,7 @@ const WorkoutUpdate = () => {
     if (x === "Saturday") {
       exercisesVal = [...day6.exercises];
       exercisesVal.push({
-        exerciseId: "1",
+        exerciseId: { _id: "1" },
         userSets: 1,
         userReps: 1,
       });
@@ -594,11 +594,11 @@ const WorkoutUpdate = () => {
     if (x === "Sunday") {
       exercisesVal = [...day7.exercises];
       exercisesVal.push({
-        exerciseId: "1",
+        exerciseId: { _id: "1" },
         userSets: 1,
         userReps: 1,
       });
-      setDay7({ dayOfWeeky: "Sunday", exercises: exercisesVal });
+      setDay7({ dayOfWeek: "Sunday", exercises: exercisesVal });
     }
   };
 
@@ -623,33 +623,69 @@ const WorkoutUpdate = () => {
     }
     if (y === "Tuesday") {
       exercisesVal = [...day2.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== x);
-      setDay2({ dayOfWeek: "Tuesday", exercises: newVal });
+      if (x === 0) {
+        exercisesVal.shift();
+      } else {
+        console.log(exercisesVal);
+        exercisesVal.splice(x, 1);
+        console.log(exercisesVal);
+      }
+      setDay2({ dayOfWeek: "Tuesday", exercises: exercisesVal });
     }
     if (y === "Wednesday") {
       exercisesVal = [...day3.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== x);
-      setDay3({ dayOfWeek: "Wednesday", exercises: newVal });
+      if (x === 0) {
+        exercisesVal.shift();
+      } else {
+        console.log(exercisesVal);
+        exercisesVal.splice(x, 1);
+        console.log(exercisesVal);
+      }
+      setDay3({ dayOfWeek: "Wednesday", exercises: exercisesVal });
     }
     if (y === "Thursday") {
       exercisesVal = [...day4.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== x);
-      setDay4({ dayOfWeek: "Thursday", exercises: newVal });
+      if (x === 0) {
+        exercisesVal.shift();
+      } else {
+        console.log(exercisesVal);
+        exercisesVal.splice(x, 1);
+        console.log(exercisesVal);
+      }
+      setDay4({ dayOfWeek: "Thursday", exercises: exercisesVal });
     }
     if (y === "Friday") {
       exercisesVal = [...day5.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== x);
-      setDay5({ dayOfWeek: "Friday", exercises: newVal });
+      if (x === 0) {
+        exercisesVal.shift();
+      } else {
+        console.log(exercisesVal);
+        exercisesVal.splice(x, 1);
+        console.log(exercisesVal);
+      }
+      setDay5({ dayOfWeek: "Friday", exercises: exercisesVal });
     }
     if (y === "Saturday") {
       exercisesVal = [...day6.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== x);
-      setDay6({ dayOfWeek: "Saturday", exercises: newVal });
+      if (x === 0) {
+        exercisesVal.shift();
+      } else {
+        console.log(exercisesVal);
+        exercisesVal.splice(x, 1);
+        console.log(exercisesVal);
+      }
+      setDay6({ dayOfWeek: "Saturday", exercises: exercisesVal });
     }
     if (y === "Sunday") {
       exercisesVal = [...day7.exercises];
-      let newVal = exercisesVal.filter((exercise) => exercise !== x);
-      setDay7({ dayOfWeek: "Sunday", exercises: newVal });
+      if (x === 0) {
+        exercisesVal.shift();
+      } else {
+        console.log(exercisesVal);
+        exercisesVal.splice(x, 1);
+        console.log(exercisesVal);
+      }
+      setDay7({ dayOfWeek: "Sunday", exercises: exercisesVal });
     }
   };
 
@@ -711,7 +747,7 @@ const WorkoutUpdate = () => {
       exerciseArr[z].userSets = x;
       setDay5({ dayOfWeek: "Friday", exercises: exerciseArr });
     }
-    if (y === "Satuday") {
+    if (y === "Saturday") {
       exerciseArr = [...day6.exercises];
       exerciseArr[z].userSets = x;
       setDay6({ dayOfWeek: "Saturday", exercises: exerciseArr });
@@ -754,7 +790,7 @@ const WorkoutUpdate = () => {
       exerciseArr[z].userReps = x;
       setDay5({ dayOfWeek: "Friday", exercises: exerciseArr });
     }
-    if (y === "Satuday") {
+    if (y === "Saturday") {
       exerciseArr = [...day6.exercises];
       exerciseArr[z].userReps = x;
       setDay6({ dayOfWeek: "Saturday", exercises: exerciseArr });
@@ -781,12 +817,12 @@ const WorkoutUpdate = () => {
     if (y === "Tuesday") {
       exerciseArr = [...day2.exercises];
       exerciseArr[z].exerciseId = x;
-      setDay2({ dayOfWeeky: "Tuesday", exercises: exerciseArr });
+      setDay2({ dayOfWeek: "Tuesday", exercises: exerciseArr });
     }
     if (y === "Wednesday") {
       exerciseArr = [...day3.exercises];
       exerciseArr[z].exerciseId = x;
-      setDay3({ dayOfWeeky: "Wednesday", exercises: exerciseArr });
+      setDay3({ dayOfWeek: "Wednesday", exercises: exerciseArr });
     }
     if (y === "Thursday") {
       exerciseArr = [...day4.exercises];
@@ -798,7 +834,7 @@ const WorkoutUpdate = () => {
       exerciseArr[z].exerciseId = x;
       setDay5({ dayOfWeek: "Friday", exercises: exerciseArr });
     }
-    if (y === "Satuday") {
+    if (y === "Saturday") {
       exerciseArr = [...day6.exercises];
       exerciseArr[z].exerciseId = x;
       setDay6({ dayOfWeek: "Saturday", exercises: exerciseArr });
@@ -813,34 +849,48 @@ const WorkoutUpdate = () => {
   useEffect(() => {
     workoutWeeks();
 
-    // if (!loading) {
-    //   workoutPlan.plan[0].weeks[0].days.map((day) => {
-    //     if (day.dayOfWeek === "Monday") {
-    //       let arr = []
-    //       setDay1({day:arr);
-    //     }
-    //     if (day.dayOfWeek === "Tuesday") {
-    //       setDay2(day);
-    //     }
-    //     if (day.dayOfWeek === "Wednesday") {
-    //       setDay3(day);
-    //     }
-    //     if (day.dayOfWeek === "Thursday") {
-    //       setDay4(day);
-    //     }
-    //     if (day.dayOfWeek === "Friday") {
-    //       setDay5(day);
-    //     }
-    //     if (day.dayOfWeek === "Saturday") {
-    //       setDay6(day);
-    //     }
-    //     if (day.dayOfWeek === "Sunday") {
-    //       setDay7(day);
-    //     }
-    //     console.log(day1);
-    //   });
-    // }
-  }, [workoutPlan.plan]);
+    if (!loading) {
+      let arr = [];
+      workoutPlan.plan[0].weeks[0].days.map((day) => {
+        if (day.dayOfWeek === "Monday") {
+          setDisplay1(!isActive1);
+          setDay1(day);
+          arr.push(day1);
+        }
+        if (day.dayOfWeek === "Tuesday") {
+          setDisplay2(!isActive2);
+          setDay2(day);
+          arr.push(day2);
+        }
+        if (day.dayOfWeek === "Wednesday") {
+          setDisplay3(!isActive3);
+          setDay3(day);
+          arr.push(day3);
+        }
+        if (day.dayOfWeek === "Thursday") {
+          setDisplay4(!isActive4);
+          setDay4(day);
+          arr.push(day4);
+        }
+        if (day.dayOfWeek === "Friday") {
+          setDisplay5(!isActive5);
+          setDay5(day);
+          arr.push(day5);
+        }
+        if (day.dayOfWeek === "Saturday") {
+          setDisplay6(!isActive6);
+          setDay6(day);
+          arr.push(day6);
+        }
+        if (day.dayOfWeek === "Sunday") {
+          setDisplay7(!isActive7);
+          setDay7(day);
+          arr.push(day7);
+        }
+      });
+      setDays(arr);
+    }
+  }, [loading]);
 
   useEffect(() => {
     let daysArray = [];
@@ -1081,7 +1131,7 @@ const WorkoutUpdate = () => {
                               className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                               aria-label="exercise"
                               onChange={setExercise}
-                              value={exercise.exerciseId}
+                              value={exercise.exerciseId._id}
                             >
                               {exerciseList.map((exerciseL) => {
                                 return (
