@@ -20,6 +20,7 @@ const WorkoutUpdate = () => {
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
   const [weeks, setWeeks] = useState([]);
+
   const [day1, setDay1] = useState({
     dayOfWeek: "Monday",
     exercises: [
@@ -247,7 +248,7 @@ const WorkoutUpdate = () => {
   };
 
   // Create array to map for weeks and days in workout
-  const workoutWeeks = () => {
+  const weekChange = () => {
     let weeksVal = [];
     // if(!workoutPlan.numOfWeeks === []) {
     // }
@@ -260,6 +261,7 @@ const WorkoutUpdate = () => {
   //Checking which day is being added and where to add into the array then updating state
   const addDay = (e) => {
     e.preventDefault();
+
     let x = parseInt(e.target.value);
     let daysVal = [];
     daysVal = [...days];
@@ -425,7 +427,6 @@ const WorkoutUpdate = () => {
         }
       }
     }
-    console.log(day5);
 
     if (x === 6) {
       if (daysVal.length <= 1) {
@@ -817,8 +818,6 @@ const WorkoutUpdate = () => {
   };
 
   useEffect(() => {
-    workoutWeeks();
-
     if (!loading) {
       let arr = [];
       workoutPlan.plan[0].weeks[0].days.map((day) => {
@@ -859,6 +858,8 @@ const WorkoutUpdate = () => {
         }
       });
       setDays(arr);
+      setWeeks(workoutPlan.plan[0].weeks);
+      console.log(weeks);
     }
   }, [loading]);
 
@@ -897,275 +898,272 @@ const WorkoutUpdate = () => {
 
   return (
     <div>
-      {weeks.map((week) => {
-        return (
-          <div key={week}>
-            <div className="grid grid-cols-7">
-              <h1 className="col-span-6">Week:{week}</h1>
-              Workout Days - Click to add
-              <div className={`${isActive1 ? "f" : "hidden"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    addDay(e);
-                  }}
-                  value="1"
-                >
-                  Add Monday
-                </button>
-              </div>
-              <div className={`${isActive1 ? "hidden" : "f"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    removeDay(e);
-                  }}
-                  value="1"
-                >
-                  Remove Monday
-                </button>
-              </div>
-              <div className={`${isActive2 ? "f" : "hidden"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    addDay(e);
-                  }}
-                  value="2"
-                >
-                  Add Tuesday
-                </button>
-              </div>
-              <div className={`${isActive2 ? "hidden" : "f"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    removeDay(e);
-                  }}
-                  value="2"
-                >
-                  Remove Tuesday
-                </button>
-              </div>
-              <div className={`${isActive3 ? "f" : "hidden"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    addDay(e);
-                  }}
-                  value="3"
-                >
-                  Add Wednesday
-                </button>
-              </div>
-              <div className={`${isActive3 ? "hidden" : "f"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    removeDay(e);
-                  }}
-                  value="3"
-                >
-                  Remove Wednesday
-                </button>
-              </div>
-              <div className={`${isActive4 ? "f" : "hidden"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    addDay(e);
-                  }}
-                  value="4"
-                >
-                  Add Thursday
-                </button>
-              </div>
-              <div className={`${isActive4 ? "hidden" : "f"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    removeDay(e);
-                  }}
-                  value="4"
-                >
-                  Remove Thursday
-                </button>
-              </div>
-              <div className={`${isActive5 ? "f" : "hidden"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    addDay(e);
-                  }}
-                  value="5"
-                >
-                  Add Friday
-                </button>
-              </div>
-              <div className={`${isActive5 ? "hidden" : "f"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    removeDay(e);
-                  }}
-                  value="5"
-                >
-                  Remove Friday
-                </button>
-              </div>
-              <div className={`${isActive6 ? "f" : "hidden"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    addDay(e);
-                  }}
-                  value="6"
-                >
-                  Add Saturday
-                </button>
-              </div>
-              <div className={`${isActive6 ? "hidden" : "f"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    removeDay(e);
-                  }}
-                  value="6"
-                >
-                  Remove Saturday
-                </button>
-              </div>
-              <div className={`${isActive7 ? "f" : "hidden"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    addDay(e);
-                  }}
-                  value="7"
-                >
-                  Add Sunday
-                </button>
-              </div>
-              <div className={`${isActive7 ? "hidden" : "f"}`}>
-                <button
-                  className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
-                  onClick={(e) => {
-                    toggleDisplay(e);
-                    removeDay(e);
-                  }}
-                  value="7"
-                >
-                  Remove Sunday
-                </button>
-              </div>
-            </div>
-            <form
-              ref={exerciseForm}
-              className="bg-purple-100 shadow-md px-2 py-2"
-            >
-              {days.map((day) => {
-                return (
-                  <div
-                    key={week + day.dayOfWeek}
-                    name={`exercise${day.dayOfWeek}`}
-                  >
-                    <h1>Day: {day.dayOfWeek} </h1>
-                    <button
-                      className="text-white bg-purple-200 hover:bg-purple-100"
-                      onClick={(e) => addExercise(e)}
-                      value={day.dayOfWeek}
-                    >
-                      Add another exercise
-                    </button>
-                    {day.exercises.map((exercise, index) => {
-                      return (
-                        <div key={index}>
-                          <div className="grid grid-cols-7 gap-2">
-                            <select
-                              id={day.dayOfWeek}
-                              name={index}
-                              className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                              aria-label="exercise"
-                              onChange={setExercise}
-                              value={exercise.exerciseId._id}
-                            >
-                              {exerciseList.map((exerciseL) => {
-                                return (
-                                  <option
-                                    key={exerciseL._id}
-                                    value={exerciseL._id}
-                                  >
-                                    {exerciseL.name}
-                                  </option>
-                                );
-                              })}
-                            </select>
-                            <input
-                              name={index}
-                              id={day.dayOfWeek}
-                              type="number"
-                              min="1"
-                              max="50"
-                              onChange={setUserSets}
-                              value={exercise.userSets}
-                            />
-
-                            <input
-                              name={index}
-                              id={day.dayOfWeek}
-                              type="number"
-                              min="1"
-                              max="50"
-                              onChange={setUserReps}
-                              value={exercise.userReps}
-                            />
-
-                            <textarea
-                              className="col-span-2"
-                              name="description"
-                              type="text"
-                              defaultValue={""}
-                            ></textarea>
-
-                            <button
-                              className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
-                              data-id={index}
-                              value={day.dayOfWeek}
-                              onClick={(e) => removeExercise(e)}
-                            >
-                              Delete Exercise
-                            </button>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-              <input type="submit" />
-            </form>
+      <div className="grid grid-flow-col text-center mx-auto">
+        {weeks.map((week, index) => {
+          return (
+            <button key={index} onClick={weekChange}>
+              <p className="hover:font-bold">Week: {week.weekNumber} </p>
+            </button>
+          );
+        })}
+      </div>
+      <div key={weeks.weekNumber}>
+        <div className="grid grid-cols-7">
+          <h1 className="col-span-6">Week:{weeks.weekNumber}</h1>
+          Workout Days - Click to add
+          <div className={`${isActive1 ? "f" : "hidden"}`}>
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                addDay(e);
+              }}
+              value="1"
             >
-              Edit plan details
+              Add Monday
             </button>
           </div>
-        );
-      })}
+          <div className={`${isActive1 ? "hidden" : "f"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                removeDay(e);
+              }}
+              value="1"
+            >
+              Remove Monday
+            </button>
+          </div>
+          <div className={`${isActive2 ? "f" : "hidden"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                addDay(e);
+              }}
+              value="2"
+            >
+              Add Tuesday
+            </button>
+          </div>
+          <div className={`${isActive2 ? "hidden" : "f"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                removeDay(e);
+              }}
+              value="2"
+            >
+              Remove Tuesday
+            </button>
+          </div>
+          <div className={`${isActive3 ? "f" : "hidden"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                addDay(e);
+              }}
+              value="3"
+            >
+              Add Wednesday
+            </button>
+          </div>
+          <div className={`${isActive3 ? "hidden" : "f"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                removeDay(e);
+              }}
+              value="3"
+            >
+              Remove Wednesday
+            </button>
+          </div>
+          <div className={`${isActive4 ? "f" : "hidden"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                addDay(e);
+              }}
+              value="4"
+            >
+              Add Thursday
+            </button>
+          </div>
+          <div className={`${isActive4 ? "hidden" : "f"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                removeDay(e);
+              }}
+              value="4"
+            >
+              Remove Thursday
+            </button>
+          </div>
+          <div className={`${isActive5 ? "f" : "hidden"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                addDay(e);
+              }}
+              value="5"
+            >
+              Add Friday
+            </button>
+          </div>
+          <div className={`${isActive5 ? "hidden" : "f"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                removeDay(e);
+              }}
+              value="5"
+            >
+              Remove Friday
+            </button>
+          </div>
+          <div className={`${isActive6 ? "f" : "hidden"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                addDay(e);
+              }}
+              value="6"
+            >
+              Add Saturday
+            </button>
+          </div>
+          <div className={`${isActive6 ? "hidden" : "f"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                removeDay(e);
+              }}
+              value="6"
+            >
+              Remove Saturday
+            </button>
+          </div>
+          <div className={`${isActive7 ? "f" : "hidden"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                addDay(e);
+              }}
+              value="7"
+            >
+              Add Sunday
+            </button>
+          </div>
+          <div className={`${isActive7 ? "hidden" : "f"}`}>
+            <button
+              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              onClick={(e) => {
+                toggleDisplay(e);
+                removeDay(e);
+              }}
+              value="7"
+            >
+              Remove Sunday
+            </button>
+          </div>
+        </div>
+        <form ref={exerciseForm} className="bg-purple-100 shadow-md px-2 py-2">
+          {days.map((day) => {
+            return (
+              <div key={day.dayOfWeek} name={`exercise${day.dayOfWeek}`}>
+                <h1>Day: {day.dayOfWeek} </h1>
+                <button
+                  className="text-white bg-purple-200 hover:bg-purple-100"
+                  onClick={(e) => addExercise(e)}
+                  value={day.dayOfWeek}
+                >
+                  Add another exercise
+                </button>
+                {day.exercises.map((exercise, index) => {
+                  return (
+                    <div key={index}>
+                      <div className="grid grid-cols-7 gap-2">
+                        <select
+                          id={day.dayOfWeek}
+                          name={index}
+                          className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                          aria-label="exercise"
+                          onChange={setExercise}
+                          value={exercise.exerciseId._id}
+                        >
+                          {exerciseList.map((exerciseL) => {
+                            return (
+                              <option key={exerciseL._id} value={exerciseL._id}>
+                                {exerciseL.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                        <input
+                          name={index}
+                          id={day.dayOfWeek}
+                          type="number"
+                          min="1"
+                          max="50"
+                          onChange={setUserSets}
+                          value={exercise.userSets}
+                        />
+
+                        <input
+                          name={index}
+                          id={day.dayOfWeek}
+                          type="number"
+                          min="1"
+                          max="50"
+                          onChange={setUserReps}
+                          value={exercise.userReps}
+                        />
+
+                        <textarea
+                          className="col-span-2"
+                          name="description"
+                          type="text"
+                          defaultValue={""}
+                        ></textarea>
+
+                        <button
+                          className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                          data-id={index}
+                          value={day.dayOfWeek}
+                          onClick={(e) => removeExercise(e)}
+                        >
+                          Delete Exercise
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+          <input type="submit" />
+        </form>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+        >
+          Edit plan details
+        </button>
+      </div>
+      );
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="button"
