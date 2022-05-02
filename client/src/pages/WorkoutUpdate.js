@@ -19,7 +19,38 @@ const WorkoutUpdate = () => {
 
   const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
-  const [weeks, setWeeks] = useState([]);
+  const [weeks, setWeeks] = useState([
+    {
+      weekNumber: 1,
+      days: [
+        {
+          dayOfWeek: "Monday",
+          exercises: [
+            {
+              exerciseId: { _id: "1" },
+              userSets: 1,
+              userReps: 1,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      weekNumber: 2,
+      days: [
+        {
+          dayOfWeek: "Tuesday",
+          exercises: [
+            {
+              exerciseId: { _id: "3" },
+              userSets: 3,
+              userReps: 3,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
 
   const [day1, setDay1] = useState({
     dayOfWeek: "Monday",
@@ -248,14 +279,19 @@ const WorkoutUpdate = () => {
   };
 
   // Create array to map for weeks and days in workout
-  const weekChange = () => {
-    let weeksVal = [];
-    // if(!workoutPlan.numOfWeeks === []) {
-    // }
-    for (let i = 1; i < 1 + workoutPlan.numOfWeeks; i++) {
-      weeksVal.push(i);
+  const weekChange = (e) => {
+    e.preventDefault();
+    let currentWeek = parseInt(e.target.id);
+
+    let testArr = [];
+    testArr = [...weeks];
+
+    if (currentWeek === 0) {
+      testArr[0].days = days;
+      setWeeks([testArr]);
     }
-    setWeeks(weeksVal);
+
+    console.log(weeks);
   };
 
   //Checking which day is being added and where to add into the array then updating state
@@ -858,8 +894,22 @@ const WorkoutUpdate = () => {
         }
       });
       setDays(arr);
+
+      let weekArr = [];
+      let dayNum = 1;
+      // workoutPlan.plan[0].weeks.map((weekAdd) => {
+      //   weekArr.push({
+      //     weekNumber: dayNum,
+      //     days: weekAdd.days,
+      //   });
+      //   dayNum++;
+      // });
+
       setWeeks(workoutPlan.plan[0].weeks);
+      // setWeeks(weekArr);
       console.log(weeks);
+      dayNum = 1;
+      weekArr = [];
     }
   }, [loading]);
 
@@ -901,15 +951,15 @@ const WorkoutUpdate = () => {
       <div className="grid grid-flow-col text-center mx-auto">
         {weeks.map((week, index) => {
           return (
-            <button key={index} onClick={weekChange}>
-              <p className="hover:font-bold">Week: {week.weekNumber} </p>
+            <button key={index} id={index} onClick={(e) => weekChange(e)}>
+              <p className="hover:font-bold">Week: {week.weekNumber}</p>
             </button>
           );
         })}
       </div>
       <div key={weeks.weekNumber}>
         <div className="grid grid-cols-7">
-          <h1 className="col-span-6">Week:{weeks.weekNumber}</h1>
+          <h1 className="col-span-6">Week:{}</h1>
           Workout Days - Click to add
           <div className={`${isActive1 ? "f" : "hidden"}`}>
             <button
