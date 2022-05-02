@@ -2,8 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import { GET_EXERCISES, GET_WORKOUT_PLAN } from "../utils/queries";
 import { UPDATE_WORKOUT_PLAN } from "../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
+import { Link, useParams } from "react-router-dom";
 
 const WorkoutUpdate = () => {
+  const { weekId: userParam } = useParams();
+  console.log(userParam);
+
   const { data: dataExercise } = useQuery(GET_EXERCISES, {
     fetchPolicy: "no-cache",
   });
@@ -281,17 +285,17 @@ const WorkoutUpdate = () => {
   // Create array to map for weeks and days in workout
   const weekChange = (e) => {
     e.preventDefault();
-    let currentWeek = parseInt(e.target.id);
+    let newWeek = parseInt(e.target.value);
+    console.log(newWeek);
 
     let testArr = [];
     testArr = [...weeks];
+    testArr[userParam - 1].days = days;
 
-    if (currentWeek === 0) {
-      testArr[0].days = days;
-      setWeeks([testArr]);
-    }
-
+    setWeeks(testArr);
     console.log(weeks);
+    setDays(weeks[newWeek - 1].days);
+    buttonChange(newWeek);
   };
 
   //Checking which day is being added and where to add into the array then updating state
@@ -853,6 +857,117 @@ const WorkoutUpdate = () => {
     }
   };
 
+  const buttonChange = (num) => {
+    let currentWeek = num - 1;
+    setDisplay1(true);
+    setDisplay2(true);
+    setDisplay3(true);
+    setDisplay4(true);
+    setDisplay5(true);
+    setDisplay6(true);
+    setDisplay7(true);
+    setDay1({
+      dayOfWeek: "Monday",
+      exercises: [
+        {
+          exerciseId: { _id: "1" },
+          userSets: 1,
+          userReps: 1,
+        },
+      ],
+    });
+    setDay2({
+      dayOfWeek: "Tuesday",
+      exercises: [
+        {
+          exerciseId: { _id: "1" },
+          userSets: 1,
+          userReps: 1,
+        },
+      ],
+    });
+    setDay3({
+      dayOfWeek: "Wednesday",
+      exercises: [
+        {
+          exerciseId: { _id: "1" },
+          userSets: 1,
+          userReps: 1,
+        },
+      ],
+    });
+    setDay4({
+      dayOfWeek: "Thursday",
+      exercises: [
+        {
+          exerciseId: { _id: "1" },
+          userSets: 1,
+          userReps: 1,
+        },
+      ],
+    });
+    setDay5({
+      dayOfWeek: "Friday",
+      exercises: [
+        {
+          exerciseId: { _id: "1" },
+          userSets: 1,
+          userReps: 1,
+        },
+      ],
+    });
+    setDay6({
+      dayOfWeek: "Saturday",
+      exercises: [
+        {
+          exerciseId: { _id: "1" },
+          userSets: 1,
+          userReps: 1,
+        },
+      ],
+    });
+    setDay7({
+      dayOfWeek: "Sunday",
+      exercises: [
+        {
+          exerciseId: { _id: "1" },
+          userSets: 1,
+          userReps: 1,
+        },
+      ],
+    });
+    weeks[currentWeek].days.map((day) => {
+      if (day.dayOfWeek === "Monday") {
+        setDisplay1(false);
+        setDay1(day);
+      }
+      if (day.dayOfWeek === "Tuesday") {
+        setDisplay2(!isActive2);
+        setDay2(day);
+      }
+      if (day.dayOfWeek === "Wednesday") {
+        setDisplay3(false);
+        setDay3(day);
+      }
+      if (day.dayOfWeek === "Thursday") {
+        setDisplay4(false);
+        setDay4(day);
+      }
+      if (day.dayOfWeek === "Friday") {
+        setDisplay5(false);
+        setDay5(day);
+      }
+      if (day.dayOfWeek === "Saturday") {
+        setDisplay6(false);
+        setDay6(day);
+      }
+      if (day.dayOfWeek === "Sunday") {
+        setDisplay7(false);
+        setDay7(day);
+      }
+    });
+  };
+
   useEffect(() => {
     if (!loading) {
       let arr = [];
@@ -894,22 +1009,7 @@ const WorkoutUpdate = () => {
         }
       });
       setDays(arr);
-
-      let weekArr = [];
-      let dayNum = 1;
-      // workoutPlan.plan[0].weeks.map((weekAdd) => {
-      //   weekArr.push({
-      //     weekNumber: dayNum,
-      //     days: weekAdd.days,
-      //   });
-      //   dayNum++;
-      // });
-
       setWeeks(workoutPlan.plan[0].weeks);
-      // setWeeks(weekArr);
-      console.log(weeks);
-      dayNum = 1;
-      weekArr = [];
     }
   }, [loading]);
 
@@ -951,8 +1051,13 @@ const WorkoutUpdate = () => {
       <div className="grid grid-flow-col text-center mx-auto">
         {weeks.map((week, index) => {
           return (
-            <button key={index} id={index} onClick={(e) => weekChange(e)}>
-              <p className="hover:font-bold">Week: {week.weekNumber}</p>
+            <button
+              className="hover:font-bold"
+              key={index}
+              onClick={(e) => weekChange(e)}
+              value={week.weekNumber}
+            >
+              Week: {week.weekNumber}
             </button>
           );
         })}

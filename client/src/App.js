@@ -79,7 +79,11 @@ function App() {
                 element={<TestCreateWorkout />}
                 exact
               /> */}
-              <Route path="/workoutupdate" element={<WorkoutUpdate />} exact />
+              <Route
+                path="/workoutupdate/:weekId"
+                element={<WorkoutUpdate />}
+                exact
+              />
             </Routes>
           </div>
           <Footer />
