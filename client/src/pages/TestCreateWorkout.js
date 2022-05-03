@@ -9,18 +9,26 @@ import decode from "jwt-decode";
 
 const TestCreateWorkout = () => {
   const [createWorkoutPlan] = useMutation(CREATE_WORKOUT_PLAN);
-
   // function to create workout plan in database
   const createWorkout = async () => {
-    console.log(planDetails);
+    let weeksArr = [];
+
+    for (let i = 0; i < parseInt(planDetails.numOfWeeks); i++) {
+      weeksArr.push({ weekNumber: i + 1, days: [] });
+    }
+
     await createWorkoutPlan({
       variables: {
-        id: "55",
+        id: workoutId,
         title: planDetails.title,
         description: planDetails.description,
         type: planDetails.type,
         numOfWeeks: parseInt(planDetails.numOfWeeks),
-        plan: {},
+        plan: [
+          {
+            weeks: weeksArr,
+          },
+        ],
       },
     });
     //add in function to set state back to starting text
@@ -41,6 +49,12 @@ const TestCreateWorkout = () => {
     return <Navigate to="/login" />;
   }
 
+  //temporary to generate random ID for workout beingt created until set up in mongoDB
+  const generateId = () => {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16);
+  };
+
+  let workoutId = generateId();
   //Updating state to have input user data
   const updateTitle = (val) => {
     setPlanDetails({
@@ -70,12 +84,12 @@ const TestCreateWorkout = () => {
     });
   };
 
-  const updateDays = (val) => {
-    setPlanDetails({
-      ...planDetails,
-      numOfDays: val,
-    });
-  };
+  // const updateDays = (val) => {
+  //   setPlanDetails({
+  //     ...planDetails,
+  //     numOfDays: val,
+  //   });
+  // };
 
   return (
     <div>
@@ -114,23 +128,25 @@ const TestCreateWorkout = () => {
             placeholder={planDetails.numOfWeeks}
             onChange={(e) => updateWeeks(e.target.value)}
           />
-          <label htmlFor="days">Number of workout days each week:</label>
+          {/* <label htmlFor="days">Number of workout days each week:</label>
           <input
             type="number"
             min="1"
             max="7"
             placeholder={planDetails.numOfDays}
             onChange={(e) => updateDays(e.target.value)}
-          />
+          /> */}
         </div>
         <br></br>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-          onClick={createWorkout}
-        >
-          Add exercises
-        </button>
+        <Link to={{ pathname: `/workoutupdate/${workoutId}` }}>
+          <div
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center"
+            type="button"
+            onClick={createWorkout}
+          >
+            Create workout plan
+          </div>
+        </Link>
       </form>
     </div>
   );

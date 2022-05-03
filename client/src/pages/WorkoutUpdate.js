@@ -5,7 +5,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 
 const WorkoutUpdate = () => {
-  // const { weekId: userParam } = useParams();
+  const { id: userParam } = useParams();
   // console.log(userParam);
 
   const { data: dataExercise } = useQuery(GET_EXERCISES, {
@@ -14,7 +14,7 @@ const WorkoutUpdate = () => {
   const exerciseList = dataExercise?.getExercises || [];
 
   const { loading, data: dataWorkoutPlan } = useQuery(GET_WORKOUT_PLAN, {
-    variables: { id: "new" },
+    variables: { id: userParam },
     fetchPolicy: "no-cache",
   });
   const workoutPlan = dataWorkoutPlan?.getWorkoutPlan || [];
@@ -263,7 +263,7 @@ const WorkoutUpdate = () => {
 
     await updateWorkoutPlan({
       variables: {
-        id: "new",
+        id: userParam,
         title: workoutPlan.title,
         description: workoutPlan.description,
         type: workoutPlan.type,
