@@ -67,7 +67,7 @@ const Profile = () => {
     return (
       <main>
         <div className="text-white">
-          <Link to="/workoutupdate">Workout management page</Link>
+          <Link to="/workoutupdate/">Workout management page</Link>
         </div>
         <br></br>
         <Link to="/">
@@ -82,7 +82,7 @@ const Profile = () => {
   return (
     <main>
       <div className="text-white">
-        <Link to="/workoutupdate">Workout management page</Link>
+        <Link to="/workoutupdate/">Workout management page</Link>
       </div>
       <br></br>
       <div className="flex-row justify-center" key={user._id}>
