@@ -261,17 +261,13 @@ const WorkoutUpdate = () => {
       }),
     ];
 
-    console.log(weekVal);
-    console.log(weekVal[1].days);
-    console.log(planVal);
-
     await updateWorkoutPlan({
       variables: {
         id: "new",
         title: workoutPlan.title,
         description: workoutPlan.description,
         type: workoutPlan.type,
-        numOfWeeks: parseInt(workoutPlan.numOfWeeks),
+        numOfWeeks: parseInt(weeks.length),
         plan: [
           {
             weeks: weekVal,
@@ -281,30 +277,66 @@ const WorkoutUpdate = () => {
     });
   };
 
-  // Create array to map for weeks and days in workout
+  // Changing current week that is being updated
   const weekChange = (e) => {
     e.preventDefault();
     let newWeek = parseInt(e.target.value);
-    let saveArr = [];
-    let current = [];
-
-    console.log(weekDisplay);
-    console.log(weeks);
-
-    // weeks.map((week) => {
-    //   saveArr.push(week);
-    // });
-    // days.map((day) => {
-    //   current.push(day);
-    // });
-    // console.log(current);
-    // saveArr[newWeek - 1].days = current;
-    // console.log(saveArr);
-    // setWeeks(saveArr);
-
     setWeekDisplay(newWeek);
   };
 
+  const addWeek = () => {
+    let weekAddArr = [...weeks];
+
+    weekAddArr.push({
+      weekNumber: weekAddArr.length + 1,
+      days: [
+        {
+          dayOfWeek: "Monday",
+          exercises: [
+            {
+              exerciseId: "1",
+              userSets: 1,
+              userReps: 1,
+            },
+          ],
+        },
+      ],
+    });
+    setWeeks(weekAddArr);
+  };
+
+  const removeWeek = () => {
+    let weeksArr = [...weeks];
+    let newVal = weeksArr.filter((y) => y.weekNumber !== weekDisplay);
+    let num = 0;
+
+    let newArr = [
+      ...newVal.map((week) => {
+        num++;
+        return { weekNumber: num, days: week.days };
+      }),
+    ];
+
+    if (newArr.length === 0) {
+      newArr.push({
+        weekNumber: 1,
+        days: [
+          {
+            dayOfWeek: "Monday",
+            exercises: [
+              {
+                exerciseId: "1",
+                userSets: 1,
+                userReps: 1,
+              },
+            ],
+          },
+        ],
+      });
+    }
+    setWeeks(newArr);
+    setWeekDisplay(1);
+  };
   //Checking which day is being added and where to add into the array then updating state
   const addDay = (e) => {
     e.preventDefault();
@@ -818,7 +850,7 @@ const WorkoutUpdate = () => {
   };
 
   const setExercise = (e) => {
-    let x = parseInt(e.target.value);
+    let x = e.target.value;
     console.log(x);
     let y = e.target.id;
     let z = parseInt(e.target.name);
@@ -1053,6 +1085,9 @@ const WorkoutUpdate = () => {
   return (
     <div>
       <div className="grid grid-flow-col text-center mx-auto">
+        <button className="hover:font-bold" onClick={addWeek}>
+          Add another week
+        </button>
         {weeks.map((week, index) => {
           return (
             <button
@@ -1320,6 +1355,12 @@ const WorkoutUpdate = () => {
           type="button"
         >
           Edit plan details
+        </button>
+        <button
+          className="font-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          onClick={removeWeek}
+        >
+          Remove week
         </button>
       </div>
       );
