@@ -147,8 +147,8 @@ const WorkoutUpdate = () => {
           day1.exercises.map((exercise) => {
             exercisesArr.push({
               exerciseId: exercise.exerciseId._id.toString(),
+              userSets: exercise.userSets,
               userReps: exercise.userReps,
-              userSets: exercise.userReps,
             });
           });
 
@@ -163,8 +163,8 @@ const WorkoutUpdate = () => {
           day2.exercises.map((exercise) => {
             exercisesArr.push({
               exerciseId: exercise.exerciseId._id.toString(),
+              userSets: exercise.userSets,
               userReps: exercise.userReps,
-              userSets: exercise.userReps,
             });
           });
 
@@ -179,8 +179,8 @@ const WorkoutUpdate = () => {
           day3.exercises.map((exercise) => {
             exercisesArr.push({
               exerciseId: exercise.exerciseId._id.toString(),
+              userSets: exercise.userSets,
               userReps: exercise.userReps,
-              userSets: exercise.userReps,
             });
           });
 
@@ -195,8 +195,8 @@ const WorkoutUpdate = () => {
           day4.exercises.map((exercise) => {
             exercisesArr.push({
               exerciseId: exercise.exerciseId._id.toString(),
+              userSets: exercise.userSets,
               userReps: exercise.userReps,
-              userSets: exercise.userReps,
             });
           });
 
@@ -211,8 +211,8 @@ const WorkoutUpdate = () => {
           day5.exercises.map((exercise) => {
             exercisesArr.push({
               exerciseId: exercise.exerciseId._id.toString(),
+              userSets: exercise.userSets,
               userReps: exercise.userReps,
-              userSets: exercise.userReps,
             });
           });
 
@@ -227,8 +227,8 @@ const WorkoutUpdate = () => {
           day6.exercises.map((exercise) => {
             exercisesArr.push({
               exerciseId: exercise.exerciseId._id.toString(),
+              userSets: exercise.userSets,
               userReps: exercise.userReps,
-              userSets: exercise.userReps,
             });
           });
 
@@ -243,8 +243,8 @@ const WorkoutUpdate = () => {
           day7.exercises.map((exercise) => {
             exercisesArr.push({
               exerciseId: exercise.exerciseId._id.toString(),
+              userSets: exercise.userSets,
               userReps: exercise.userReps,
-              userSets: exercise.userReps,
             });
           });
 
@@ -259,7 +259,19 @@ const WorkoutUpdate = () => {
       }),
     ];
 
-    console.log(planVal);
+    let weekVal = [
+      ...weeks.map((week) => {
+        if (week.weekNumber === weekDisplay) {
+          delete week.__typename;
+          return { weekNumber: weekDisplay, days: planVal };
+        } else {
+          delete week.__typename;
+          return week;
+        }
+      }),
+    ];
+
+    console.log(weekVal);
 
     await updateWorkoutPlan({
       variables: {
@@ -276,6 +288,8 @@ const WorkoutUpdate = () => {
                 days: planVal,
               },
             ],
+
+            // weeks: [weekVal],
           },
         ],
       },
@@ -292,9 +306,9 @@ const WorkoutUpdate = () => {
     console.log(weekDisplay);
     console.log(weeks);
 
-    // weeks.map((week) => {
-    //   saveArr.push(week);
-    // });
+    weeks.map((week) => {
+      saveArr.push(week);
+    });
     // days.map((day) => {
     //   current.push(day);
     // });
@@ -949,12 +963,12 @@ const WorkoutUpdate = () => {
       weeks[weekDisplay - 1].days.map((day) => {
         if (day.dayOfWeek === "Monday") {
           setDisplay1(false);
-          setDay1(day);
+          setDay1(day1);
           arr.push(day1);
         }
         if (day.dayOfWeek === "Tuesday") {
           setDisplay2(false);
-          setDay2(day);
+          setDay2(day2);
           arr.push(day2);
         }
         if (day.dayOfWeek === "Wednesday") {
@@ -995,6 +1009,7 @@ const WorkoutUpdate = () => {
     daysVal.map((day) => {
       if (day.dayOfWeek === "Monday") {
         daysArray.push(day1);
+        console.log(day1);
       }
       if (day.dayOfWeek === "Tuesday") {
         daysArray.push(day2);
