@@ -152,6 +152,7 @@ export const GET_WORKOUT_PLAN = gql`
               exerciseId {
                 _id
                 name
+                description
               }
               userSets
               userReps

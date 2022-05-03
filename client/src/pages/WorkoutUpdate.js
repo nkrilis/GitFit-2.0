@@ -5,7 +5,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 
 const WorkoutUpdate = () => {
-  // const { weekId: userParam } = useParams();
+  const { id: userParam } = useParams();
   // console.log(userParam);
 
   const { data: dataExercise } = useQuery(GET_EXERCISES, {
@@ -14,7 +14,7 @@ const WorkoutUpdate = () => {
   const exerciseList = dataExercise?.getExercises || [];
 
   const { loading, data: dataWorkoutPlan } = useQuery(GET_WORKOUT_PLAN, {
-    variables: { id: "new" },
+    variables: { id: userParam },
     fetchPolicy: "no-cache",
   });
   const workoutPlan = dataWorkoutPlan?.getWorkoutPlan || [];
@@ -31,7 +31,7 @@ const WorkoutUpdate = () => {
           dayOfWeek: "Monday",
           exercises: [
             {
-              exerciseId: { _id: "1" },
+              exerciseId: "1",
               userSets: 1,
               userReps: 1,
             },
@@ -46,7 +46,7 @@ const WorkoutUpdate = () => {
           dayOfWeek: "Tuesday",
           exercises: [
             {
-              exerciseId: { _id: "3" },
+              exerciseId: "3",
               userSets: 3,
               userReps: 3,
             },
@@ -62,7 +62,7 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Monday",
     exercises: [
       {
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       },
@@ -72,7 +72,7 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Tuesday",
     exercises: [
       {
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       },
@@ -82,7 +82,7 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Wednesday",
     exercises: [
       {
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       },
@@ -92,7 +92,7 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Thursday",
     exercises: [
       {
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       },
@@ -102,7 +102,7 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Friday",
     exercises: [
       {
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       },
@@ -112,7 +112,7 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Saturday",
     exercises: [
       {
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       },
@@ -122,7 +122,7 @@ const WorkoutUpdate = () => {
     dayOfWeek: "Sunday",
     exercises: [
       {
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       },
@@ -146,13 +146,12 @@ const WorkoutUpdate = () => {
           let exercisesArr = [];
           day1.exercises.map((exercise) => {
             exercisesArr.push({
-              exerciseId: exercise.exerciseId._id.toString(),
+              exerciseId: exercise.exerciseId.toString(),
               userSets: exercise.userSets,
               userReps: exercise.userReps,
             });
           });
 
-          delete day.__typename;
           return {
             ...day,
             exercises: exercisesArr,
@@ -162,13 +161,12 @@ const WorkoutUpdate = () => {
           let exercisesArr = [];
           day2.exercises.map((exercise) => {
             exercisesArr.push({
-              exerciseId: exercise.exerciseId._id.toString(),
+              exerciseId: exercise.exerciseId.toString(),
               userSets: exercise.userSets,
               userReps: exercise.userReps,
             });
           });
 
-          delete day.__typename;
           return {
             ...day,
             exercises: exercisesArr,
@@ -178,13 +176,12 @@ const WorkoutUpdate = () => {
           let exercisesArr = [];
           day3.exercises.map((exercise) => {
             exercisesArr.push({
-              exerciseId: exercise.exerciseId._id.toString(),
+              exerciseId: exercise.exerciseId.toString(),
               userSets: exercise.userSets,
               userReps: exercise.userReps,
             });
           });
 
-          delete day.__typename;
           return {
             ...day,
             exercises: exercisesArr,
@@ -194,13 +191,12 @@ const WorkoutUpdate = () => {
           let exercisesArr = [];
           day4.exercises.map((exercise) => {
             exercisesArr.push({
-              exerciseId: exercise.exerciseId._id.toString(),
+              exerciseId: exercise.exerciseId.toString(),
               userSets: exercise.userSets,
               userReps: exercise.userReps,
             });
           });
 
-          delete day.__typename;
           return {
             ...day,
             exercises: exercisesArr,
@@ -210,13 +206,12 @@ const WorkoutUpdate = () => {
           let exercisesArr = [];
           day5.exercises.map((exercise) => {
             exercisesArr.push({
-              exerciseId: exercise.exerciseId._id.toString(),
+              exerciseId: exercise.exerciseId.toString(),
               userSets: exercise.userSets,
               userReps: exercise.userReps,
             });
           });
 
-          delete day.__typename;
           return {
             ...day,
             exercises: exercisesArr,
@@ -226,13 +221,12 @@ const WorkoutUpdate = () => {
           let exercisesArr = [];
           day6.exercises.map((exercise) => {
             exercisesArr.push({
-              exerciseId: exercise.exerciseId._id.toString(),
+              exerciseId: exercise.exerciseId.toString(),
               userSets: exercise.userSets,
               userReps: exercise.userReps,
             });
           });
 
-          delete day.__typename;
           return {
             ...day,
             exercises: exercisesArr,
@@ -242,19 +236,17 @@ const WorkoutUpdate = () => {
           let exercisesArr = [];
           day7.exercises.map((exercise) => {
             exercisesArr.push({
-              exerciseId: exercise.exerciseId._id.toString(),
+              exerciseId: exercise.exerciseId.toString(),
               userSets: exercise.userSets,
               userReps: exercise.userReps,
             });
           });
 
-          delete day.__typename;
           return {
             ...day,
             exercises: exercisesArr,
           };
         }
-        delete day.__typename;
         return day;
       }),
     ];
@@ -262,64 +254,89 @@ const WorkoutUpdate = () => {
     let weekVal = [
       ...weeks.map((week) => {
         if (week.weekNumber === weekDisplay) {
-          delete week.__typename;
           return { weekNumber: weekDisplay, days: planVal };
         } else {
-          delete week.__typename;
           return week;
         }
       }),
     ];
 
-    console.log(weekVal);
-
     await updateWorkoutPlan({
       variables: {
-        id: "new",
+        id: userParam,
         title: workoutPlan.title,
         description: workoutPlan.description,
         type: workoutPlan.type,
-        numOfWeeks: parseInt(workoutPlan.numOfWeeks),
+        numOfWeeks: parseInt(weeks.length),
         plan: [
           {
-            weeks: [
-              {
-                weekNumber: 1,
-                days: planVal,
-              },
-            ],
-
-            // weeks: [weekVal],
+            weeks: weekVal,
           },
         ],
       },
     });
   };
 
-  // Create array to map for weeks and days in workout
+  // Changing current week that is being updated
   const weekChange = (e) => {
     e.preventDefault();
     let newWeek = parseInt(e.target.value);
-    let saveArr = [];
-    let current = [];
-
-    console.log(weekDisplay);
-    console.log(weeks);
-
-    weeks.map((week) => {
-      saveArr.push(week);
-    });
-    // days.map((day) => {
-    //   current.push(day);
-    // });
-    // console.log(current);
-    // saveArr[newWeek - 1].days = current;
-    // console.log(saveArr);
-    // setWeeks(saveArr);
-
     setWeekDisplay(newWeek);
   };
 
+  const addWeek = () => {
+    let weekAddArr = [...weeks];
+
+    weekAddArr.push({
+      weekNumber: weekAddArr.length + 1,
+      days: [
+        {
+          dayOfWeek: "Monday",
+          exercises: [
+            {
+              exerciseId: "1",
+              userSets: 1,
+              userReps: 1,
+            },
+          ],
+        },
+      ],
+    });
+    setWeeks(weekAddArr);
+  };
+
+  const removeWeek = () => {
+    let weeksArr = [...weeks];
+    let newVal = weeksArr.filter((y) => y.weekNumber !== weekDisplay);
+    let num = 0;
+
+    let newArr = [
+      ...newVal.map((week) => {
+        num++;
+        return { weekNumber: num, days: week.days };
+      }),
+    ];
+
+    if (newArr.length === 0) {
+      newArr.push({
+        weekNumber: 1,
+        days: [
+          {
+            dayOfWeek: "Monday",
+            exercises: [
+              {
+                exerciseId: "1",
+                userSets: 1,
+                userReps: 1,
+              },
+            ],
+          },
+        ],
+      });
+    }
+    setWeeks(newArr);
+    setWeekDisplay(1);
+  };
   //Checking which day is being added and where to add into the array then updating state
   const addDay = (e) => {
     e.preventDefault();
@@ -570,19 +587,16 @@ const WorkoutUpdate = () => {
     if (x === "Monday") {
       exercisesVal = [...day1.exercises];
       exercisesVal.push({
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       });
-      console.log(exercisesVal);
-      console.log(day1);
       setDay1({ dayOfWeek: "Monday", exercises: exercisesVal });
-      exercisesVal = [];
     }
     if (x === "Tuesday") {
       exercisesVal = [...day2.exercises];
       exercisesVal.push({
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       });
@@ -591,7 +605,7 @@ const WorkoutUpdate = () => {
     if (x === "Wednesday") {
       exercisesVal = [...day3.exercises];
       exercisesVal.push({
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       });
@@ -600,7 +614,7 @@ const WorkoutUpdate = () => {
     if (x === "Thursday") {
       exercisesVal = [...day4.exercises];
       exercisesVal.push({
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       });
@@ -609,7 +623,7 @@ const WorkoutUpdate = () => {
     if (x === "Friday") {
       exercisesVal = [...day5.exercises];
       exercisesVal.push({
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       });
@@ -618,7 +632,7 @@ const WorkoutUpdate = () => {
     if (x === "Saturday") {
       exercisesVal = [...day6.exercises];
       exercisesVal.push({
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       });
@@ -627,7 +641,7 @@ const WorkoutUpdate = () => {
     if (x === "Sunday") {
       exercisesVal = [...day7.exercises];
       exercisesVal.push({
-        exerciseId: { _id: "1" },
+        exerciseId: "1",
         userSets: 1,
         userReps: 1,
       });
@@ -836,7 +850,7 @@ const WorkoutUpdate = () => {
   };
 
   const setExercise = (e) => {
-    let x = parseInt(e.target.value);
+    let x = e.target.value;
     console.log(x);
     let y = e.target.id;
     let z = parseInt(e.target.name);
@@ -844,37 +858,37 @@ const WorkoutUpdate = () => {
 
     if (y === "Monday") {
       exerciseArr = [...day1.exercises];
-      exerciseArr[z].exerciseId._id = x;
+      exerciseArr[z].exerciseId = x;
       setDay1({ dayOfWeek: "Monday", exercises: exerciseArr });
     }
     if (y === "Tuesday") {
       exerciseArr = [...day2.exercises];
-      exerciseArr[z].exerciseId._id = x;
+      exerciseArr[z].exerciseId = x;
       setDay2({ dayOfWeek: "Tuesday", exercises: exerciseArr });
     }
     if (y === "Wednesday") {
       exerciseArr = [...day3.exercises];
-      exerciseArr[z].exerciseId._id = x;
+      exerciseArr[z].exerciseId = x;
       setDay3({ dayOfWeek: "Wednesday", exercises: exerciseArr });
     }
     if (y === "Thursday") {
       exerciseArr = [...day4.exercises];
-      exerciseArr[z].exerciseId._id = x;
+      exerciseArr[z].exerciseId = x;
       setDay4({ dayOfWeek: "Thursday", exercises: exerciseArr });
     }
     if (y === "Friday") {
       exerciseArr = [...day5.exercises];
-      exerciseArr[z].exerciseId._id = x;
+      exerciseArr[z].exerciseId = x;
       setDay5({ dayOfWeek: "Friday", exercises: exerciseArr });
     }
     if (y === "Saturday") {
       exerciseArr = [...day6.exercises];
-      exerciseArr[z].exerciseId._id = x;
+      exerciseArr[z].exerciseId = x;
       setDay6({ dayOfWeek: "Saturday", exercises: exerciseArr });
     }
     if (y === "Sunday") {
       exerciseArr = [...day7.exercises];
-      exerciseArr[z].exerciseId._id = x;
+      exerciseArr[z].exerciseId = x;
       setDay7({ dayOfWeek: "Sunday", exercises: exerciseArr });
     }
   };
@@ -891,7 +905,7 @@ const WorkoutUpdate = () => {
       dayOfWeek: "Monday",
       exercises: [
         {
-          exerciseId: { _id: "1" },
+          exerciseId: "1",
           userSets: 1,
           userReps: 1,
         },
@@ -901,7 +915,7 @@ const WorkoutUpdate = () => {
       dayOfWeek: "Tuesday",
       exercises: [
         {
-          exerciseId: { _id: "1" },
+          exerciseId: "1",
           userSets: 1,
           userReps: 1,
         },
@@ -911,7 +925,7 @@ const WorkoutUpdate = () => {
       dayOfWeek: "Wednesday",
       exercises: [
         {
-          exerciseId: { _id: "1" },
+          exerciseId: "1",
           userSets: 1,
           userReps: 1,
         },
@@ -921,7 +935,7 @@ const WorkoutUpdate = () => {
       dayOfWeek: "Thursday",
       exercises: [
         {
-          exerciseId: { _id: "1" },
+          exerciseId: "1",
           userSets: 1,
           userReps: 1,
         },
@@ -931,7 +945,7 @@ const WorkoutUpdate = () => {
       dayOfWeek: "Friday",
       exercises: [
         {
-          exerciseId: { _id: "1" },
+          exerciseId: "1",
           userSets: 1,
           userReps: 1,
         },
@@ -941,7 +955,7 @@ const WorkoutUpdate = () => {
       dayOfWeek: "Saturday",
       exercises: [
         {
-          exerciseId: { _id: "1" },
+          exerciseId: "1",
           userSets: 1,
           userReps: 1,
         },
@@ -951,7 +965,7 @@ const WorkoutUpdate = () => {
       dayOfWeek: "Sunday",
       exercises: [
         {
-          exerciseId: { _id: "1" },
+          exerciseId: "1",
           userSets: 1,
           userReps: 1,
         },
@@ -963,12 +977,12 @@ const WorkoutUpdate = () => {
       weeks[weekDisplay - 1].days.map((day) => {
         if (day.dayOfWeek === "Monday") {
           setDisplay1(false);
-          setDay1(day1);
+          setDay1(day);
           arr.push(day1);
         }
         if (day.dayOfWeek === "Tuesday") {
           setDisplay2(false);
-          setDay2(day2);
+          setDay2(day);
           arr.push(day2);
         }
         if (day.dayOfWeek === "Wednesday") {
@@ -1038,13 +1052,42 @@ const WorkoutUpdate = () => {
 
   useEffect(() => {
     if (!loading) {
-      setWeeks(workoutPlan.plan[0].weeks);
+      let weekArr = [];
+
+      workoutPlan.plan[0].weeks.map((week) => {
+        let weekObj = {
+          weekNumber: week.weekNumber,
+          days: [
+            ...week.days.map((day) => {
+              return {
+                dayOfWeek: day.dayOfWeek,
+                exercises: [
+                  ...day.exercises.map((exercise) => {
+                    return {
+                      exerciseId: exercise.exerciseId._id,
+                      userSets: exercise.userSets,
+                      userReps: exercise.userReps,
+                    };
+                  }),
+                ],
+              };
+            }),
+          ],
+        };
+        weekArr.push(weekObj);
+      });
+
+      console.log(weekArr);
+      setWeeks(weekArr);
     }
   }, [workoutPlan.plan]);
 
   return (
     <div>
       <div className="grid grid-flow-col text-center mx-auto">
+        <button className="hover:font-bold" onClick={addWeek}>
+          Add another week
+        </button>
         {weeks.map((week, index) => {
           return (
             <button
@@ -1253,7 +1296,7 @@ const WorkoutUpdate = () => {
                           className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           aria-label="exercise"
                           onChange={setExercise}
-                          value={exercise.exerciseId._id}
+                          value={exercise.exerciseId}
                         >
                           {exerciseList.map((exerciseL) => {
                             return (
@@ -1312,6 +1355,12 @@ const WorkoutUpdate = () => {
           type="button"
         >
           Edit plan details
+        </button>
+        <button
+          className="font-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          onClick={removeWeek}
+        >
+          Remove week
         </button>
       </div>
       );

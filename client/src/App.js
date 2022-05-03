@@ -43,7 +43,7 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({ addTypename: false }),
 });
 
 function App() {
@@ -79,7 +79,11 @@ function App() {
                 element={<TestCreateWorkout />}
                 exact
               /> */}
-              <Route path="/workoutupdate" element={<WorkoutUpdate />} exact />
+              <Route
+                path="/workoutupdate/:id"
+                element={<WorkoutUpdate />}
+                exact
+              />
             </Routes>
           </div>
           <Footer />
