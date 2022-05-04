@@ -1123,7 +1123,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive1 ? "hidden" : "f"}`}>
             <button
-              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1147,7 +1147,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive2 ? "hidden" : "f"}`}>
             <button
-              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1171,7 +1171,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive3 ? "hidden" : "f"}`}>
             <button
-              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1195,7 +1195,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive4 ? "hidden" : "f"}`}>
             <button
-              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1219,7 +1219,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive5 ? "hidden" : "f"}`}>
             <button
-              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1243,7 +1243,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive6 ? "hidden" : "f"}`}>
             <button
-              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1267,7 +1267,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive7 ? "hidden" : "f"}`}>
             <button
-              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1293,64 +1293,134 @@ const WorkoutUpdate = () => {
                   </button>
                 </div>
                 {day.exercises.map((exercise, index) => {
-                  return (
-                    <div key={index}>
-                      <div className="grid grid-cols-5 gap-2">
-                        <select
-                          id={day.dayOfWeek}
-                          name={index}
-                          className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                          aria-label="exercise"
-                          onChange={setExercise}
-                          value={exercise.exerciseId}
-                        >
-                          {exerciseList.map((exerciseL) => {
-                            return (
-                              <option key={exerciseL._id} value={exerciseL._id}>
-                                {exerciseL.name}
-                              </option>
-                            );
-                          })}
-                        </select>
-                        <input
-                          name={index}
-                          id={day.dayOfWeek}
-                          type="number"
-                          min="1"
-                          max="50"
-                          onChange={setUserSets}
-                          value={exercise.userSets}
-                        />
+                  if (index === 0) {
+                    return (
+                      <div key={index}>
+                        <div className="grid grid-cols-5 gap-2">
+                          <select
+                            id={day.dayOfWeek}
+                            name={index}
+                            className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            aria-label="exercise"
+                            onChange={setExercise}
+                            value={exercise.exerciseId}
+                          >
+                            {exerciseList.map((exerciseL) => {
+                              return (
+                                <option
+                                  key={exerciseL._id}
+                                  value={exerciseL._id}
+                                >
+                                  {exerciseL.name}
+                                </option>
+                              );
+                            })}
+                          </select>
+                          <input
+                            className="text-center"
+                            name={index}
+                            id={day.dayOfWeek}
+                            type="number"
+                            min="1"
+                            max="50"
+                            onChange={setUserSets}
+                            value={exercise.userSets}
+                          />
 
-                        <input
-                          name={index}
-                          id={day.dayOfWeek}
-                          type="number"
-                          min="1"
-                          max="50"
-                          onChange={setUserReps}
-                          value={exercise.userReps}
-                        />
+                          <input
+                            className="text-center"
+                            name={index}
+                            id={day.dayOfWeek}
+                            type="number"
+                            min="1"
+                            max="50"
+                            onChange={setUserReps}
+                            value={exercise.userReps}
+                          />
 
-                        {/* <textarea
+                          {/* <textarea
                           className="col-span-2"
                           name="description"
                           type="text"
                           defaultValue={""}
                         ></textarea> */}
-                        {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
+                          {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
 
-                        <button
-                          className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
-                          data-id={index}
-                          value={day.dayOfWeek}
-                          onClick={(e) => removeExercise(e)}
-                        >
-                          Delete Exercise
-                        </button>
+                          <button
+                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                            data-id={index}
+                            value={day.dayOfWeek}
+                            onClick={(e) => removeExercise(e)}
+                          >
+                            Delete Exercise
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  );
+                    );
+                  } else
+                    return (
+                      <div key={index}>
+                        <div className="grid grid-cols-5 gap-2">
+                          <select
+                            id={day.dayOfWeek}
+                            name={index}
+                            className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            aria-label="exercise"
+                            onChange={setExercise}
+                            value={exercise.exerciseId}
+                          >
+                            {exerciseList.map((exerciseL) => {
+                              return (
+                                <option
+                                  key={exerciseL._id}
+                                  value={exerciseL._id}
+                                >
+                                  {exerciseL.name}
+                                </option>
+                              );
+                            })}
+                          </select>
+                          <input
+                            className="border-t-2 border-black text-center"
+                            name={index}
+                            id={day.dayOfWeek}
+                            type="number"
+                            min="1"
+                            max="50"
+                            onChange={setUserSets}
+                            value={exercise.userSets}
+                          />
+
+                          <input
+                            className="border-t-2 border-black text-center"
+                            name={index}
+                            id={day.dayOfWeek}
+                            type="number"
+                            min="1"
+                            max="50"
+                            onChange={setUserReps}
+                            value={exercise.userReps}
+                          />
+
+                          {/* <textarea
+                          className="col-span-2"
+                          name="description"
+                          type="text"
+                          defaultValue={""}
+                        ></textarea> */}
+                          {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
+
+                          <button
+                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                            data-id={index}
+                            value={day.dayOfWeek}
+                            onClick={(e) => removeExercise(e)}
+                          >
+                            Delete Exercise
+                          </button>
+                        </div>
+                      </div>
+                    );
                 })}
               </div>
             );
