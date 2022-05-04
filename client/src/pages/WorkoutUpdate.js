@@ -1084,27 +1084,31 @@ const WorkoutUpdate = () => {
 
   return (
     <div>
-      <div className="grid grid-flow-col text-center mx-auto">
-        <button className="hover:font-bold" onClick={addWeek}>
-          Add another week
-        </button>
+      <button className="hover:font-bold text-white" onClick={addWeek}>
+        Click here to add another week
+      </button>
+      <div className="grid grid-flow-col text-center mx-auto bg-purple-100">
+        <br></br>
         {weeks.map((week, index) => {
           return (
             <button
+              className="bg-purple-100 hover:font-bold"
               key={index}
-              className="hover:font-bold"
               onClick={(e) => weekChange(e)}
               value={week.weekNumber}
             >
-              Week: {week.weekNumber}
+              Edit Week {week.weekNumber}
             </button>
           );
         })}
+        <br></br>
       </div>
+      <br></br>
       <div key={weeks.weekNumber}>
-        <div className="grid grid-cols-7">
-          <h1 className="col-span-6">Week:{}</h1>
-          Workout Days - Click to add
+        <div className="grid grid-cols-7 text-center bg-purple-100">
+          <h1 className="col-span-7 text-xl text-white pb-5">
+            --- Week: {weekDisplay} ---
+          </h1>
           <div className={`${isActive1 ? "f" : "hidden"}`}>
             <button
               className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
@@ -1274,22 +1278,24 @@ const WorkoutUpdate = () => {
             </button>
           </div>
         </div>
-        <form className="bg-purple-100 shadow-md px-2 py-2">
+        <div className="bg-purple-100 shadow-md px-2 py-2">
           {days.map((day) => {
             return (
               <div key={day.dayOfWeek} name={`exercise${day.dayOfWeek}`}>
-                <h1>Day: {day.dayOfWeek} </h1>
-                <button
-                  className="text-white bg-purple-200 hover:bg-purple-100"
-                  onClick={(e) => addExercise(e)}
-                  value={day.dayOfWeek}
-                >
-                  Add another exercise
-                </button>
+                <div>
+                  <h1>Day: {day.dayOfWeek} </h1>
+                  <button
+                    className="text-white bg-purple-200 hover:bg-purple-100"
+                    onClick={(e) => addExercise(e)}
+                    value={day.dayOfWeek}
+                  >
+                    Add another exercise
+                  </button>
+                </div>
                 {day.exercises.map((exercise, index) => {
                   return (
                     <div key={index}>
-                      <div className="grid grid-cols-7 gap-2">
+                      <div className="grid grid-cols-5 gap-2">
                         <select
                           id={day.dayOfWeek}
                           name={index}
@@ -1326,12 +1332,13 @@ const WorkoutUpdate = () => {
                           value={exercise.userReps}
                         />
 
-                        <textarea
+                        {/* <textarea
                           className="col-span-2"
                           name="description"
                           type="text"
                           defaultValue={""}
-                        ></textarea>
+                        ></textarea> */}
+                        {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
 
                         <button
                           className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
@@ -1348,29 +1355,24 @@ const WorkoutUpdate = () => {
               </div>
             );
           })}
-          <input type="submit" />
-        </form>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-        >
-          Edit plan details
-        </button>
-        <button
-          className="font-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          onClick={removeWeek}
-        >
-          Remove week
-        </button>
+        </div>
+        <div className="grid grid-flow-col text-center mx-auto">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onClick={planUpdate}
+          >
+            Update week {weekDisplay}
+          </button>
+          <button
+            className="font-xl bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={removeWeek}
+          >
+            Remove week
+          </button>
+        </div>
       </div>
       );
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        type="button"
-        onClick={planUpdate}
-      >
-        Update test
-      </button>
     </div>
   );
 };
