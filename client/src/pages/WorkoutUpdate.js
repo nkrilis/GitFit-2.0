@@ -1111,7 +1111,7 @@ const WorkoutUpdate = () => {
           </h1>
           <div className={`${isActive1 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1123,7 +1123,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive1 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1135,7 +1135,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive2 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1147,7 +1147,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive2 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1159,7 +1159,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive3 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1171,7 +1171,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive3 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1183,7 +1183,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive4 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1195,7 +1195,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive4 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1207,7 +1207,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive5 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1219,7 +1219,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive5 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1231,7 +1231,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive6 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1243,7 +1243,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive6 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1255,7 +1255,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive7 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1267,7 +1267,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive7 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1341,7 +1341,7 @@ const WorkoutUpdate = () => {
                         {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
 
                         <button
-                          className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                          className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
                           data-id={index}
                           value={day.dayOfWeek}
                           onClick={(e) => removeExercise(e)}
@@ -1365,7 +1365,7 @@ const WorkoutUpdate = () => {
             Update week {weekDisplay}
           </button>
           <button
-            className="font-xl bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="text-sm md:text-lg lg:text-xl bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={removeWeek}
           >
             Remove week
