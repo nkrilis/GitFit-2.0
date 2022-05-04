@@ -81,7 +81,7 @@ const Profile = () => {
 
   return (
     <main>
-      <div className="text-white">
+      <div className="text-white hover:text-purple-100">
         <Link to="/createworkoutplan/">Create a workout</Link>
       </div>
       <br></br>

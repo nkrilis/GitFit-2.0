@@ -1084,30 +1084,34 @@ const WorkoutUpdate = () => {
 
   return (
     <div>
-      <div className="grid grid-flow-col text-center mx-auto">
-        <button className="hover:font-bold" onClick={addWeek}>
-          Add another week
-        </button>
+      <button className="hover:font-bold text-white" onClick={addWeek}>
+        Click here to add another week
+      </button>
+      <div className="grid grid-flow-col text-center mx-auto bg-purple-100">
+        <br></br>
         {weeks.map((week, index) => {
           return (
             <button
+              className="bg-purple-100 hover:font-bold"
               key={index}
-              className="hover:font-bold"
               onClick={(e) => weekChange(e)}
               value={week.weekNumber}
             >
-              Week: {week.weekNumber}
+              Edit Week {week.weekNumber}
             </button>
           );
         })}
+        <br></br>
       </div>
+      <br></br>
       <div key={weeks.weekNumber}>
-        <div className="grid grid-cols-7">
-          <h1 className="col-span-6">Week:{}</h1>
-          Workout Days - Click to add
+        <div className="grid grid-cols-7 text-center bg-purple-100">
+          <h1 className="col-span-7 text-xl text-white pb-5">
+            --- Week: {weekDisplay} ---
+          </h1>
           <div className={`${isActive1 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1119,7 +1123,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive1 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1131,7 +1135,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive2 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1143,7 +1147,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive2 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1155,7 +1159,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive3 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1167,7 +1171,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive3 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1179,7 +1183,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive4 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1191,7 +1195,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive4 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1203,7 +1207,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive5 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1215,7 +1219,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive5 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1227,7 +1231,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive6 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1239,7 +1243,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive6 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1251,7 +1255,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive7 ? "f" : "hidden"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1263,7 +1267,7 @@ const WorkoutUpdate = () => {
           </div>
           <div className={`${isActive7 ? "hidden" : "f"}`}>
             <button
-              className="font-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-red-500 hover:cursor-pointer hover:font-bold bg-purple-100"
               onClick={(e) => {
                 toggleDisplay(e);
                 removeDay(e);
@@ -1274,103 +1278,171 @@ const WorkoutUpdate = () => {
             </button>
           </div>
         </div>
-        <form className="bg-purple-100 shadow-md px-2 py-2">
+        <div className="bg-purple-100 shadow-md px-2 py-2">
           {days.map((day) => {
             return (
               <div key={day.dayOfWeek} name={`exercise${day.dayOfWeek}`}>
-                <h1>Day: {day.dayOfWeek} </h1>
-                <button
-                  className="text-white bg-purple-200 hover:bg-purple-100"
-                  onClick={(e) => addExercise(e)}
-                  value={day.dayOfWeek}
-                >
-                  Add another exercise
-                </button>
+                <div>
+                  <h1>Day: {day.dayOfWeek} </h1>
+                  <button
+                    className="text-white bg-purple-200 hover:bg-purple-100"
+                    onClick={(e) => addExercise(e)}
+                    value={day.dayOfWeek}
+                  >
+                    Add another exercise
+                  </button>
+                </div>
                 {day.exercises.map((exercise, index) => {
-                  return (
-                    <div key={index}>
-                      <div className="grid grid-cols-7 gap-2">
-                        <select
-                          id={day.dayOfWeek}
-                          name={index}
-                          className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                          aria-label="exercise"
-                          onChange={setExercise}
-                          value={exercise.exerciseId}
-                        >
-                          {exerciseList.map((exerciseL) => {
-                            return (
-                              <option key={exerciseL._id} value={exerciseL._id}>
-                                {exerciseL.name}
-                              </option>
-                            );
-                          })}
-                        </select>
-                        <input
-                          name={index}
-                          id={day.dayOfWeek}
-                          type="number"
-                          min="1"
-                          max="50"
-                          onChange={setUserSets}
-                          value={exercise.userSets}
-                        />
+                  if (index === 0) {
+                    return (
+                      <div key={index}>
+                        <div className="grid grid-cols-5 gap-2">
+                          <select
+                            id={day.dayOfWeek}
+                            name={index}
+                            className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            aria-label="exercise"
+                            onChange={setExercise}
+                            value={exercise.exerciseId}
+                          >
+                            {exerciseList.map((exerciseL) => {
+                              return (
+                                <option
+                                  key={exerciseL._id}
+                                  value={exerciseL._id}
+                                >
+                                  {exerciseL.name}
+                                </option>
+                              );
+                            })}
+                          </select>
+                          <input
+                            className="text-center"
+                            name={index}
+                            id={day.dayOfWeek}
+                            type="number"
+                            min="1"
+                            max="50"
+                            onChange={setUserSets}
+                            value={exercise.userSets}
+                          />
 
-                        <input
-                          name={index}
-                          id={day.dayOfWeek}
-                          type="number"
-                          min="1"
-                          max="50"
-                          onChange={setUserReps}
-                          value={exercise.userReps}
-                        />
+                          <input
+                            className="text-center"
+                            name={index}
+                            id={day.dayOfWeek}
+                            type="number"
+                            min="1"
+                            max="50"
+                            onChange={setUserReps}
+                            value={exercise.userReps}
+                          />
 
-                        <textarea
+                          {/* <textarea
                           className="col-span-2"
                           name="description"
                           type="text"
                           defaultValue={""}
-                        ></textarea>
+                        ></textarea> */}
+                          {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
 
-                        <button
-                          className="font-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
-                          data-id={index}
-                          value={day.dayOfWeek}
-                          onClick={(e) => removeExercise(e)}
-                        >
-                          Delete Exercise
-                        </button>
+                          <button
+                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                            data-id={index}
+                            value={day.dayOfWeek}
+                            onClick={(e) => removeExercise(e)}
+                          >
+                            Delete Exercise
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  );
+                    );
+                  } else
+                    return (
+                      <div key={index}>
+                        <div className="grid grid-cols-5 gap-2">
+                          <select
+                            id={day.dayOfWeek}
+                            name={index}
+                            className="col-span-2 form-select form-select-sm appearance-none block w-full px-2 text-md text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            aria-label="exercise"
+                            onChange={setExercise}
+                            value={exercise.exerciseId}
+                          >
+                            {exerciseList.map((exerciseL) => {
+                              return (
+                                <option
+                                  key={exerciseL._id}
+                                  value={exerciseL._id}
+                                >
+                                  {exerciseL.name}
+                                </option>
+                              );
+                            })}
+                          </select>
+                          <input
+                            className="border-t-2 border-black text-center"
+                            name={index}
+                            id={day.dayOfWeek}
+                            type="number"
+                            min="1"
+                            max="50"
+                            onChange={setUserSets}
+                            value={exercise.userSets}
+                          />
+
+                          <input
+                            className="border-t-2 border-black text-center"
+                            name={index}
+                            id={day.dayOfWeek}
+                            type="number"
+                            min="1"
+                            max="50"
+                            onChange={setUserReps}
+                            value={exercise.userReps}
+                          />
+
+                          {/* <textarea
+                          className="col-span-2"
+                          name="description"
+                          type="text"
+                          defaultValue={""}
+                        ></textarea> */}
+                          {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
+
+                          <button
+                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                            data-id={index}
+                            value={day.dayOfWeek}
+                            onClick={(e) => removeExercise(e)}
+                          >
+                            Delete Exercise
+                          </button>
+                        </div>
+                      </div>
+                    );
                 })}
               </div>
             );
           })}
-          <input type="submit" />
-        </form>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-        >
-          Edit plan details
-        </button>
-        <button
-          className="font-xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          onClick={removeWeek}
-        >
-          Remove week
-        </button>
+        </div>
+        <div className="grid grid-flow-col text-center mx-auto">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onClick={planUpdate}
+          >
+            Update week {weekDisplay}
+          </button>
+          <button
+            className="text-sm md:text-lg lg:text-xl bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={removeWeek}
+          >
+            Remove week
+          </button>
+        </div>
       </div>
       );
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        type="button"
-        onClick={planUpdate}
-      >
-        Update test
-      </button>
     </div>
   );
 };
