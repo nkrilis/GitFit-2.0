@@ -140,116 +140,7 @@ const WorkoutUpdate = () => {
 
   // function to create workout plan in database
   const planUpdate = async () => {
-    let planVal = [
-      ...days.map((day) => {
-        if (day.dayOfWeek === "Monday") {
-          let exercisesArr = [];
-          day1.exercises.map((exercise) => {
-            exercisesArr.push({
-              exerciseId: exercise.exerciseId.toString(),
-              userSets: exercise.userSets,
-              userReps: exercise.userReps,
-            });
-          });
-
-          return {
-            ...day,
-            exercises: exercisesArr,
-          };
-        }
-        if (day.dayOfWeek === "Tuesday") {
-          let exercisesArr = [];
-          day2.exercises.map((exercise) => {
-            exercisesArr.push({
-              exerciseId: exercise.exerciseId.toString(),
-              userSets: exercise.userSets,
-              userReps: exercise.userReps,
-            });
-          });
-
-          return {
-            ...day,
-            exercises: exercisesArr,
-          };
-        }
-        if (day.dayOfWeek === "Wednesday") {
-          let exercisesArr = [];
-          day3.exercises.map((exercise) => {
-            exercisesArr.push({
-              exerciseId: exercise.exerciseId.toString(),
-              userSets: exercise.userSets,
-              userReps: exercise.userReps,
-            });
-          });
-
-          return {
-            ...day,
-            exercises: exercisesArr,
-          };
-        }
-        if (day.dayOfWeek === "Thursday") {
-          let exercisesArr = [];
-          day4.exercises.map((exercise) => {
-            exercisesArr.push({
-              exerciseId: exercise.exerciseId.toString(),
-              userSets: exercise.userSets,
-              userReps: exercise.userReps,
-            });
-          });
-
-          return {
-            ...day,
-            exercises: exercisesArr,
-          };
-        }
-        if (day.dayOfWeek === "Friday") {
-          let exercisesArr = [];
-          day5.exercises.map((exercise) => {
-            exercisesArr.push({
-              exerciseId: exercise.exerciseId.toString(),
-              userSets: exercise.userSets,
-              userReps: exercise.userReps,
-            });
-          });
-
-          return {
-            ...day,
-            exercises: exercisesArr,
-          };
-        }
-        if (day.dayOfWeek === "Saturday") {
-          let exercisesArr = [];
-          day6.exercises.map((exercise) => {
-            exercisesArr.push({
-              exerciseId: exercise.exerciseId.toString(),
-              userSets: exercise.userSets,
-              userReps: exercise.userReps,
-            });
-          });
-
-          return {
-            ...day,
-            exercises: exercisesArr,
-          };
-        }
-        if (day.dayOfWeek === "Sunday") {
-          let exercisesArr = [];
-          day7.exercises.map((exercise) => {
-            exercisesArr.push({
-              exerciseId: exercise.exerciseId.toString(),
-              userSets: exercise.userSets,
-              userReps: exercise.userReps,
-            });
-          });
-
-          return {
-            ...day,
-            exercises: exercisesArr,
-          };
-        }
-        return day;
-      }),
-    ];
+    let planVal = [...days];
 
     let weekVal = [
       ...weeks.map((week) => {
@@ -275,15 +166,24 @@ const WorkoutUpdate = () => {
         ],
       },
     });
-  };
 
+    setWeeks(weekVal);
+  };
+  // function to show update successful response to user for period of 5 seconds
+  const showResponse = () => {
+    document.getElementById("update").innerHTML = "Update successful";
+
+    setTimeout(function () {
+      document.getElementById("update").innerHTML = "";
+    }, 5000);
+  };
   // Changing current week that is being updated
   const weekChange = (e) => {
     e.preventDefault();
     let newWeek = parseInt(e.target.value);
     setWeekDisplay(newWeek);
   };
-
+  // function that adds a week to week array and updates state for weeks
   const addWeek = () => {
     let weekAddArr = [...weeks];
 
@@ -304,7 +204,7 @@ const WorkoutUpdate = () => {
     });
     setWeeks(weekAddArr);
   };
-
+  // function that removes week from array and adjusts the week names, then updates state for weeks
   const removeWeek = () => {
     let weeksArr = [...weeks];
     let newVal = weeksArr.filter((y) => y.weekNumber !== weekDisplay);
@@ -539,7 +439,7 @@ const WorkoutUpdate = () => {
     console.log(daysVal);
     setDays(daysVal);
   };
-
+  // removes the day from state
   const removeDay = (e) => {
     e.preventDefault();
     let x = parseInt(e.target.value);
@@ -577,7 +477,7 @@ const WorkoutUpdate = () => {
 
     setDays(newVal);
   };
-
+  // adds exercise to day and updates state
   const addExercise = (e) => {
     e.preventDefault();
     let x = e.target.value;
@@ -648,7 +548,7 @@ const WorkoutUpdate = () => {
       setDay7({ dayOfWeek: "Sunday", exercises: exercisesVal });
     }
   };
-
+  // removes chosen exercise from day and updates state
   const removeExercise = (e) => {
     e.preventDefault();
     let exercisesVal = [];
@@ -735,7 +635,7 @@ const WorkoutUpdate = () => {
       setDay7({ dayOfWeek: "Sunday", exercises: exercisesVal });
     }
   };
-
+  // changes betweem add and remove options for each day
   const toggleDisplay = (e) => {
     e.preventDefault();
     let x = parseInt(e.target.value);
@@ -762,13 +662,12 @@ const WorkoutUpdate = () => {
       setDisplay7(!isActive7);
     }
   };
-
+  // updating state for sets
   const setUserSets = (e) => {
     let x = parseInt(e.target.value);
     let y = e.target.id;
     let z = parseInt(e.target.name);
     let exerciseArr = [];
-    console.log(x, y, x);
     if (y === "Monday") {
       exerciseArr = [...day1.exercises];
       exerciseArr[z].userSets = x;
@@ -805,7 +704,7 @@ const WorkoutUpdate = () => {
       setDay7({ dayOfWeek: "Sunday", exercises: exerciseArr });
     }
   };
-
+  // updating state for reps
   const setUserReps = (e) => {
     let x = parseInt(e.target.value);
     let y = e.target.id;
@@ -848,7 +747,7 @@ const WorkoutUpdate = () => {
       setDay7({ dayOfWeek: "Sunday", exercises: exerciseArr });
     }
   };
-
+  // updating state with exercise Id
   const setExercise = (e) => {
     let x = e.target.value;
     console.log(x);
@@ -892,7 +791,7 @@ const WorkoutUpdate = () => {
       setDay7({ dayOfWeek: "Sunday", exercises: exerciseArr });
     }
   };
-
+  // updates which add/remove day buttons to show and updates the week being displayed
   useEffect(() => {
     setDisplay1(true);
     setDisplay2(true);
@@ -1015,7 +914,7 @@ const WorkoutUpdate = () => {
       setDays(arr);
     }
   }, [weeks, weekDisplay]);
-
+  // updates the days being displayed with any changes are made to the days exercises
   useEffect(() => {
     let daysArray = [];
     let daysVal = [...days];
@@ -1049,7 +948,7 @@ const WorkoutUpdate = () => {
     setDays(daysArray);
     daysArray = [];
   }, [day1, day2, day3, day4, day5, day6, day7]);
-
+  // updates weeks state with the data from the query of the plan when loaded
   useEffect(() => {
     if (!loading) {
       let weekArr = [];
@@ -1430,7 +1329,10 @@ const WorkoutUpdate = () => {
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onClick={planUpdate}
+            onClick={() => {
+              planUpdate();
+              showResponse();
+            }}
           >
             Update week {weekDisplay}
           </button>
@@ -1441,8 +1343,9 @@ const WorkoutUpdate = () => {
             Remove week
           </button>
         </div>
+        <br></br>
+        <p id="update" className="text-xl text-center text-white"></p>
       </div>
-      );
     </div>
   );
 };
