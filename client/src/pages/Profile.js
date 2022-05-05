@@ -67,7 +67,7 @@ const Profile = () => {
     return (
       <main>
         <div className="text-white">
-          <Link to="/workoutupdate/">Workout management page</Link>
+          <Link to="/createworkoutplan/">Create a workout</Link>
         </div>
         <br></br>
         <Link to="/">
