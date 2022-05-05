@@ -1340,10 +1340,11 @@ const WorkoutUpdate = () => {
             className="text-sm md:text-lg lg:text-xl bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={removeWeek}
           >
-            ) Remove week
+            Remove week
           </button>
         </div>
-        <p id="update"></p>
+        <br></br>
+        <p id="update" className="text-xl text-center text-white"></p>
       </div>
     </div>
   );
