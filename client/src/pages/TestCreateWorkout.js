@@ -14,7 +14,15 @@ const TestCreateWorkout = () => {
     let weeksArr = [];
 
     for (let i = 0; i < parseInt(planDetails.numOfWeeks); i++) {
-      weeksArr.push({ weekNumber: i + 1, days: [] });
+      weeksArr.push({
+        weekNumber: i + 1,
+        days: [
+          {
+            dayOfWeek: "Monday",
+            exercises: [{ exerciseId: "1", userSets: 1, userReps: 1 }],
+          },
+        ],
+      });
     }
 
     await createWorkoutPlan({

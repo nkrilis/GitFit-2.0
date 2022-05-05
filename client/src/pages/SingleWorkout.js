@@ -77,7 +77,7 @@ const SingleWorkout = () => {
         <div className="grid grid-flow-col text-center mx-auto">
           {workout.plan[0].weeks.map((week) => {
             return (
-              <a href={`#${week.weekNumber}`}>
+              <a href={`#${week.weekNumber}`} key={week.weekNumber}>
                 {" "}
                 <p className="hover:font-bold">Week: {week.weekNumber} </p>
               </a>
@@ -122,13 +122,12 @@ const SingleWorkout = () => {
                       {day.exercises.map((exercise, index) => {
                         if (index % 2 === 0) {
                           return (
-                            <tbody
-                              key={day.dayofweek + exercise.exerciseId._id}
-                              className=""
-                            >
+                            <tbody key={index}>
                               <tr>
                                 <td className="border-t border-r border-black">
-                                  <Link to={`/exercise/${exercise.exerciseId._id}`}>
+                                  <Link
+                                    to={`/exercise/${exercise.exerciseId._id}`}
+                                  >
                                     {exercise.exerciseId.name}
                                   </Link>
                                 </td>
@@ -154,7 +153,9 @@ const SingleWorkout = () => {
                             >
                               <tr>
                                 <td className="border-t border-r border-black">
-                                  <Link to={`/exercise/${exercise.exerciseId._id}`}>
+                                  <Link
+                                    to={`/exercise/${exercise.exerciseId._id}`}
+                                  >
                                     {exercise.exerciseId.name}
                                   </Link>
                                 </td>
@@ -164,7 +165,9 @@ const SingleWorkout = () => {
                                 <td className="text-center border-t border-r border-black">
                                   {exercise.userReps}
                                 </td>
-                                <td className="">{exercise.exerciseId.description}</td>
+                                <td className="">
+                                  {exercise.exerciseId.description}
+                                </td>
                               </tr>
                             </tbody>
                           );
