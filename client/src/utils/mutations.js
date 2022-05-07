@@ -181,3 +181,22 @@ export const DELETE_WORKOUT_PLAN = gql`
     }
   }
 `;
+
+// Add like to workout plan
+export const ADD_WORKOUT_PLAN_LIKE = gql`
+  mutation addPlanLike($userLikes: String!, $id: ID!) {
+    addPlanLike(userLikes: $userLikes, _id: $id) {
+      userLikes
+    }
+  }
+`;
+
+// Remove like from workout plan
+export const REMOVE_WORKOUT_PLAN_LIKE = gql`
+  mutation RemovePlanLike($id: ID!, $userLikes: String!) {
+    removePlanLike(_id: $id, userLikes: $userLikes) {
+      _id
+      likes
+    }
+  }
+`;

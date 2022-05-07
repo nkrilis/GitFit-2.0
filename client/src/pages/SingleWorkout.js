@@ -2,7 +2,11 @@ import React from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_WORKOUT_PLAN } from "../utils/queries";
-import { ADD_WORKOUT_PLAN_TO_USER } from "../utils/mutations";
+import {
+  ADD_WORKOUT_PLAN_TO_USER,
+  REMOVE_WORKOUT_PLAN_LIKE,
+  ADD_WORKOUT_PLAN_LIKE,
+} from "../utils/mutations";
 
 import Auth from "../utils/auth";
 import decode from "jwt-decode";
@@ -11,6 +15,8 @@ const SingleWorkout = () => {
   const { _id: userParam } = useParams();
 
   const [addWorkoutPlanToUser] = useMutation(ADD_WORKOUT_PLAN_TO_USER);
+  const [addPlanLike] = useMutation(ADD_WORKOUT_PLAN_LIKE);
+  const [removePlanLike] = useMutation(REMOVE_WORKOUT_PLAN_LIKE);
 
   const { loading, data } = useQuery(GET_WORKOUT_PLAN, {
     variables: { id: userParam },
@@ -37,6 +43,24 @@ const SingleWorkout = () => {
       variables: {
         id: decoded.data._id,
         workoutPlan: userParam,
+      },
+    });
+  };
+
+  const addLike = async () => {
+    await addPlanLike({
+      variables: {
+        id: workout._id,
+        userLikes: decoded.data._id,
+      },
+    });
+  };
+
+  const removeLike = async () => {
+    await removePlanLike({
+      variables: {
+        id: workout._id,
+        userLikes: decoded.data._id,
       },
     });
   };
@@ -95,6 +119,10 @@ const SingleWorkout = () => {
               <a href="#top">
                 <p className="text-center">Return to top</p>
               </a>
+              <button onClick={addLike} className="text-purple-100">
+                Test add like
+              </button>
+              <button onClick={removeLike}>Test remove Like</button>
 
               {week.days.map((day) => {
                 return (
