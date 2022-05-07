@@ -3,14 +3,14 @@ import { useQuery } from "@apollo/client";
 import { GET_WORKOUT_PLANS } from "../utils/queries";
 import { Link } from "react-router-dom";
 import { FcPlanner } from "react-icons/fc";
+import { BiLike } from "react-icons/bi";
 
 const Home = () => {
   const { loading, data } = useQuery(GET_WORKOUT_PLANS, {
     fetchPolicy: "no-cache",
   });
-
   const workoutList = data?.getWorkoutPlans || [];
-
+  console.log(workoutList);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -23,8 +23,11 @@ const Home = () => {
             return (
               <div
                 key={workout._id}
-                className="content-center bg-white text-center rounded-md px-10 py-5"
+                className="relative content-center bg-white text-center rounded-md px-10 py-5"
               >
+                <div className="absolute top-0 right-1">
+                  {workout.likes} <BiLike size={48} />{" "}
+                </div>
                 <Link
                   className="items-center"
                   to={`/workoutplan/${workout._id}`}

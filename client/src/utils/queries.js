@@ -111,6 +111,7 @@ export const GET_WORKOUT_PLANS = gql`
       description
       type
       numOfWeeks
+      likes
       plan {
         weeks {
           weekNumber
@@ -143,6 +144,7 @@ export const GET_WORKOUT_PLAN = gql`
       description
       type
       numOfWeeks
+      likes
       plan {
         weeks {
           weekNumber
