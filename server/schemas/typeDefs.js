@@ -124,8 +124,11 @@ const typeDefs = gql`
       plan: [PlanInput]
     ): WorkoutPlan
 
-    #Update a like of a plan
-    updatePlanLikes(_id: ID!, userLikes: String!): WorkoutPlan
+    #add like to plan
+    addPlanLike(_id: ID!, userLikes: String!): WorkoutPlan
+
+    #remove like from plan
+    removePlanLike(_id: ID!, userLikes: String!): WorkoutPlan
 
     # Delete a workout plan
     deleteWorkoutPlan(_id: ID!): WorkoutPlan

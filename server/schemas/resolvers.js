@@ -159,8 +159,8 @@ const resolvers = {
       return workoutPlan;
     },
 
-    // Update a workout plan likes
-    updatePlanLikes: async (parent, { _id, userLikes }, context) => {
+    // Add a like to workout plan
+    addPlanLike: async (parent, { _id, userLikes }, context) => {
       const workoutPlan = await WorkoutPlan.find(
         { _id: _id },
         {
@@ -182,6 +182,32 @@ const resolvers = {
         return updateLikes;
       } else {
         throw new Error("Already liked by User");
+      }
+    },
+
+    // Remove a like to workout plan
+    removePlanLike: async (parent, { _id, userLikes }, context) => {
+      const workoutPlan = await WorkoutPlan.find(
+        { _id: _id },
+        {
+          userLikes: {
+            $elemMatch: { $eq: userLikes },
+          },
+        }
+      );
+      console.log(workoutPlan[0].userLikes);
+      if (workoutPlan[0].userLikes.length !== 0) {
+        const updateLikes = await WorkoutPlan.findByIdAndUpdate(
+          _id,
+          {
+            $inc: { likes: -1 },
+            $pull: { userLikes: userLikes },
+          },
+          { new: true }
+        );
+        return updateLikes;
+      } else {
+        throw new Error("Error removing like");
       }
     },
 
