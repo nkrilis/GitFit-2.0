@@ -17,6 +17,8 @@ const typeDefs = gql`
     description: String!
     type: String!
     numOfWeeks: Int!
+    likes: Int!
+    userLikes: [String]
     plan: [Plan]
   }
 
@@ -121,6 +123,9 @@ const typeDefs = gql`
       numOfWeeks: Int!
       plan: [PlanInput]
     ): WorkoutPlan
+
+    #Update a like of a plan
+    updatePlanLikes(_id: ID!, userLikes: String!): WorkoutPlan
 
     # Delete a workout plan
     deleteWorkoutPlan(_id: ID!): WorkoutPlan

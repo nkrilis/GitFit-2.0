@@ -34,6 +34,11 @@ const workoutPlanSchema = new Schema({
     required: true,
     trim: true,
   },
+  likes: {
+    type: Number,
+    default: 0,
+  },
+  userLikes: [String],
 
   plan: [
     {

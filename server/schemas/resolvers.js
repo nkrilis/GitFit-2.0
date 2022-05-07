@@ -159,6 +159,32 @@ const resolvers = {
       return workoutPlan;
     },
 
+    // Update a workout plan likes
+    updatePlanLikes: async (parent, { _id, userLikes }, context) => {
+      const workoutPlan = await WorkoutPlan.find(
+        { _id: _id },
+        {
+          userLikes: {
+            $elemMatch: { $eq: userLikes },
+          },
+        }
+      );
+      console.log(workoutPlan[0].userLikes);
+      if (workoutPlan[0].userLikes.length === 0) {
+        const updateLikes = await WorkoutPlan.findByIdAndUpdate(
+          _id,
+          {
+            $inc: { likes: 1 },
+            $push: { userLikes: userLikes },
+          },
+          { new: true }
+        );
+        return updateLikes;
+      } else {
+        throw new Error("Already liked by User");
+      }
+    },
+
     // Update an exercise
     deleteWorkoutPlan: async (parent, { _id }, context) => {
       const workoutPlan = await WorkoutPlan.findByIdAndDelete(_id);
