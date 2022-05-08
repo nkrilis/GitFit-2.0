@@ -4,9 +4,12 @@ import { UPDATE_WORKOUT_PLAN } from "../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 
+import decode from "jwt-decode";
+
 const WorkoutUpdate = () => {
   const { id: userParam } = useParams();
-  // console.log(userParam);
+
+  const decoded = decode(localStorage.getItem("id_token"));
 
   const { data: dataExercise } = useQuery(GET_EXERCISES, {
     fetchPolicy: "no-cache",
@@ -155,6 +158,7 @@ const WorkoutUpdate = () => {
     await updateWorkoutPlan({
       variables: {
         id: userParam,
+        ownerId: decoded.data._id,
         title: workoutPlan.title,
         description: workoutPlan.description,
         type: workoutPlan.type,

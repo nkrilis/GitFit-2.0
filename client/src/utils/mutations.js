@@ -30,6 +30,7 @@ export const ADD_USER = gql`
 export const CREATE_WORKOUT_PLAN = gql`
   mutation CreateWorkoutPlan(
     $id: ID!
+    $ownerId: String!
     $title: String!
     $description: String!
     $type: String!
@@ -38,6 +39,7 @@ export const CREATE_WORKOUT_PLAN = gql`
   ) {
     createWorkoutPlan(
       _id: $id
+      ownerId: $ownerId
       title: $title
       description: $description
       type: $type
@@ -45,6 +47,9 @@ export const CREATE_WORKOUT_PLAN = gql`
       plan: $plan
     ) {
       _id
+      ownerId{
+        _id
+      }
       title
       description
       type
