@@ -2,7 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
-    _id: ID
+    _id: ID!
     username: String
     email: String
     password: String
@@ -98,6 +98,7 @@ const typeDefs = gql`
     # Create a new workout plan
     createWorkoutPlan(
       _id: ID!
+      ownerId: String
       title: String!
       description: String!
       type: String!

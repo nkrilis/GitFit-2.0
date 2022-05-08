@@ -46,7 +46,7 @@ const resolvers = {
     getWorkoutPlan: async (_, { _id }, context) => {
       const workoutPlan = await WorkoutPlan.findById(_id).populate(
         "plan.weeks.days.exercises.exerciseId"
-      );
+      ).populate("ownerId");
 
       if (!workoutPlan) {
         throw new Error("WorkoutPlan not found");
@@ -57,8 +57,8 @@ const resolvers = {
     // Query all workout plans and populate exercises where the _id is in the exercise model
     getWorkoutPlans: async (_, __, context) => {
       const workoutPlans = await WorkoutPlan.find().populate(
-        "plan.weeks.days.exercises.exerciseId"
-      );
+        "plan.weeks.days.exercises.exerciseId" 
+      ).populate("ownerId");
 
       return workoutPlans;
     },
@@ -113,10 +113,11 @@ const resolvers = {
     // Create a new workout plan
     createWorkoutPlan: async (
       parent,
-      { _id, title, description, type, numOfWeeks, plan }
+      { _id, ownerId, title, description, type, numOfWeeks, plan }
     ) => {
       const workoutPlan = await WorkoutPlan.create({
         _id,
+        ownerId,
         title,
         description,
         type,
