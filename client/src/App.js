@@ -19,7 +19,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Workout from "./pages/Workout";
 import CreateWorkout from "./pages/CreateWorkout";
-import TestCreateWorkout from "./pages/TestCreateWorkout";
 import WorkoutUpdate from "./pages/WorkoutUpdate";
 
 // Construct our main GraphQL API endpoint
@@ -71,14 +70,9 @@ function App() {
               <Route path="/workoutplan" element={<Workout />} exact />
               <Route
                 path="/createworkoutplan"
-                element={<TestCreateWorkout />}
+                element={<CreateWorkout />}
                 exact
               />
-              {/* <Route
-                path="/testcreateworkoutplan"
-                element={<TestCreateWorkout />}
-                exact
-              /> */}
               <Route
                 path="/workoutupdate/:id"
                 element={<WorkoutUpdate />}
