@@ -158,15 +158,23 @@ const resolvers = {
       { _id, title, description, type, numOfWeeks, plan },
       context
     ) => {
-      const workoutPlan = await WorkoutPlan.findByIdAndUpdate(
-        _id,
-        { title, description, type, numOfWeeks, plan },
-        { new: true }
-      );
-      if (!workoutPlan) {
-        throw new Error("WorkoutPlan not found");
+      const getPlan = await WorkoutPlan.findById(_id);
+      if (getPlan.ownerId.toString() !== context.user._id.toString()) {
+        throw new AuthenticationError("You do not have permission to update this workout plan");
       }
-      return workoutPlan;
+      
+      else
+      {
+        const workoutPlan = await WorkoutPlan.findByIdAndUpdate(
+          _id,
+          { title, description, type, numOfWeeks, plan },
+          { new: true }
+        );
+        if (!workoutPlan) {
+          throw new Error("WorkoutPlan not found");
+        }
+        return workoutPlan;
+      }
     },
 
     // Add a like to workout plan
