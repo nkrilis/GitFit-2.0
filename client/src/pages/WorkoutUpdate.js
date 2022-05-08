@@ -4,7 +4,6 @@ import { UPDATE_WORKOUT_PLAN } from "../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 
-import Auth from "../utils/auth";
 import decode from "jwt-decode";
 
 const WorkoutUpdate = () => {
