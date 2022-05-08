@@ -9,6 +9,8 @@ import decode from "jwt-decode";
 
 const CreateWorkout = () => {
   const [createWorkoutPlan] = useMutation(CREATE_WORKOUT_PLAN);
+
+  const decoded = decode(localStorage.getItem("id_token"));
   // function to create workout plan in database
   const createWorkout = async () => {
     let weeksArr = [];
@@ -28,6 +30,7 @@ const CreateWorkout = () => {
     await createWorkoutPlan({
       variables: {
         id: workoutId,
+        ownerId: decoded.data._id,
         title: planDetails.title,
         description: planDetails.description,
         type: planDetails.type,
@@ -40,8 +43,6 @@ const CreateWorkout = () => {
       },
     });
   };
-
-  const decoded = decode(localStorage.getItem("id_token"));
 
   const [planDetails, setPlanDetails] = useState({
     title: "Name here",
