@@ -84,6 +84,7 @@ const typeDefs = gql`
 
     getWorkoutPlan(_id: ID!): WorkoutPlan
     getWorkoutPlans: [WorkoutPlan]
+    getWorkoutPlansByOwnerId(ownerId: String!): [WorkoutPlan]
     getExercise(_id: ID!): Exercise
     getExercises: [Exercise]
   }

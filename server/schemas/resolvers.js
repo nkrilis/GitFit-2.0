@@ -63,6 +63,15 @@ const resolvers = {
       return workoutPlans;
     },
 
+    // Query all workout plans by a user's id and populate exercises where the _id is in the exercise model
+    getWorkoutPlansByOwnerId: async (_, { ownerId }, context) => {
+      const workoutPlans = await WorkoutPlan.find({ ownerId }).populate(
+        "plan.weeks.days.exercises.exerciseId"
+      ).populate("ownerId");
+      
+        return workoutPlans;
+    },
+
     // Query a single exercise by id
     getExercise: async (_, { _id }, context) => {
       console.log(`${_id}  context: ${context}`);

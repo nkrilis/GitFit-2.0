@@ -107,6 +107,10 @@ export const GET_WORKOUT_PLANS = gql`
   query GetWorkoutPlans {
     getWorkoutPlans {
       _id
+      ownerId {
+        _id
+        username
+      }
       title
       description
       type
@@ -140,6 +144,10 @@ export const GET_WORKOUT_PLAN = gql`
   query GetWorkoutPlan($id: ID!) {
     getWorkoutPlan(_id: $id) {
       _id
+      ownerId {
+        _id
+        username
+      }
       title
       description
       type
