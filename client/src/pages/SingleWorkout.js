@@ -67,12 +67,12 @@ const SingleWorkout = () => {
 
   return (
     <main>
-      <div className="justify-center bg-white rounded-lg">
-        <div className="inline-flex hover:font-bold" onClick={addClick}>
+      <div className="justify-center bg-purple-200 rounded-lg p-10">
+        <div className="hover:font-bold text-right" onClick={addClick}>
           <Link to={{ pathname: `/me` }}>
             {" "}
             <svg
-              className="w-6 h-6"
+              className="w-10 h-10"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -88,7 +88,7 @@ const SingleWorkout = () => {
             <p className="hover:cursor-pointer">Add to my workouts</p>
           </Link>
         </div>
-        <h1 className="text-3xl text-center border-b border-black bg-purple-100 text-black">
+        <h1 className="text-3xl text-center  border-black bg-purple-200 text-black">
           {workout.title}
         </h1>
         <br></br>
@@ -117,28 +117,30 @@ const SingleWorkout = () => {
       {workout.plan[0].weeks.map((week) => {
         return (
           <div
-            className="bg-white rounded-lg"
+            className="bg-black rounded-lg"
             id={week.weekNumber}
             key={week.weekNumber}
           >
-            <h1 className="text-center text-2xl bg-gray rounded-t-lg">
+            <h1 className="text-center text-2xl bg-purple-100 rounded-t-lg">
               - Week {week.weekNumber} -
             </h1>
+            <div className=" bg-gray rounded-b-lg">
             <a href="#top">
               <p className="text-center">Return to top</p>
             </a>
-            <button onClick={addLike} className="text-purple-100">
+            {/* <button onClick={addLike} className="text-purple-100">
               Test add like
             </button>
-            <button onClick={removeLike}>Test remove Like</button>
+            <button onClick={removeLike}>Test remove Like</button> */}
+            </div>
 
             {week.days.map((day) => {
               return (
                 <div key={day + day.dayOfWeek} className="rounded-lg">
-                  <h1 className="font-bold bg-purple-100 text-lg">
+                  <h1 className="font-bold bg-purple-100 text-xl text-center rounded-t-lg">
                     {day.dayOfWeek}
                   </h1>
-                  <table className="w-full bg-gray border-t border-b border-black">
+                  <table className="w-full bg-gray border-t border-b border-black rounded-lg ">
                     <thead className="bg-white">
                       <tr>
                         <th className="w-1.5 text-center px-4 py-4 border-r border-black">
@@ -208,7 +210,7 @@ const SingleWorkout = () => {
                       }
                     })}
                   </table>
-                  <br></br>
+                  
                 </div>
               );
             })}
