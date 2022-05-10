@@ -23,13 +23,10 @@ const SingleWorkout = () => {
     fetchPolicy: "no-cache",
   });
 
-  console.log(data);
-
   if (!Auth.loggedIn()) {
     return <Navigate to="/login" />;
   }
   const workout = data?.getWorkoutPlan || [];
-  console.log(workout);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -125,10 +122,10 @@ const SingleWorkout = () => {
               - Week {week.weekNumber} -
             </h1>
             <div className=" bg-gray rounded-b-lg">
-            <a href="#top">
-              <p className="text-center">Return to top</p>
-            </a>
-            {/* <button onClick={addLike} className="text-purple-100">
+              <a href="#top">
+                <p className="text-center">Return to top</p>
+              </a>
+              {/* <button onClick={addLike} className="text-purple-100">
               Test add like
             </button>
             <button onClick={removeLike}>Test remove Like</button> */}
@@ -210,7 +207,6 @@ const SingleWorkout = () => {
                       }
                     })}
                   </table>
-                  
                 </div>
               );
             })}

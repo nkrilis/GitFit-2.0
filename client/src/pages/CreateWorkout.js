@@ -10,7 +10,22 @@ import decode from "jwt-decode";
 const CreateWorkout = () => {
   const [createWorkoutPlan] = useMutation(CREATE_WORKOUT_PLAN);
 
+  const [planDetails, setPlanDetails] = useState({
+    title: "Name here",
+    description: "Description here",
+    type: "Type here",
+    numOfWeeks: 1,
+    plan: "",
+    numOfDays: 1,
+  });
+
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
+  }
   const decoded = decode(localStorage.getItem("id_token"));
+
+  console.log(Auth.loggedIn());
+
   // function to create workout plan in database
   const createWorkout = async () => {
     let weeksArr = [];
@@ -43,19 +58,6 @@ const CreateWorkout = () => {
       },
     });
   };
-
-  const [planDetails, setPlanDetails] = useState({
-    title: "Name here",
-    description: "Description here",
-    type: "Type here",
-    numOfWeeks: 1,
-    plan: "",
-    numOfDays: 1,
-  });
-
-  if (!Auth.loggedIn()) {
-    return <Navigate to="/login" />;
-  }
 
   //temporary to generate random ID for workout beingt created until set up in mongoDB
   const generateId = () => {
@@ -91,13 +93,6 @@ const CreateWorkout = () => {
       numOfWeeks: val,
     });
   };
-
-  // const updateDays = (val) => {
-  //   setPlanDetails({
-  //     ...planDetails,
-  //     numOfDays: val,
-  //   });
-  // };
 
   return (
     <div>
