@@ -258,7 +258,6 @@ const WorkoutUpdate = () => {
           arr.push(day7);
         }
       });
-      console.log(arr);
       setDays(arr);
     }
   }, [weeks, weekDisplay]);
@@ -271,7 +270,6 @@ const WorkoutUpdate = () => {
     daysVal.map((day) => {
       if (day.dayOfWeek === "Monday") {
         daysArray.push(day1);
-        console.log(day1);
       }
       if (day.dayOfWeek === "Tuesday") {
         daysArray.push(day2);
@@ -291,7 +289,6 @@ const WorkoutUpdate = () => {
       if (day.dayOfWeek === "Sunday") {
         daysArray.push(day7);
       }
-      console.log(days);
     });
 
     setDays(daysArray);
@@ -325,8 +322,6 @@ const WorkoutUpdate = () => {
         };
         weekArr.push(weekObj);
       });
-
-      console.log(weekArr);
       setWeeks(weekArr);
     }
   }, [workoutPlan.plan]);
@@ -350,7 +345,7 @@ const WorkoutUpdate = () => {
       }),
     ];
 
-    await updateWorkoutPlan({
+    const updateRes = await updateWorkoutPlan({
       variables: {
         id: userParam,
         ownerId: decoded.data._id,
@@ -366,11 +361,18 @@ const WorkoutUpdate = () => {
       },
     });
 
+    console.log(updateRes.data.updateWorkoutPlan);
+    if (updateRes.data.updateWorkoutPlan._id) {
+      showResponse("Update Succesful");
+    } else {
+      showResponse("Unable to Update");
+    }
+
     setWeeks(weekVal);
   };
   // function to show update successful response to user for period of 5 seconds
-  const showResponse = () => {
-    document.getElementById("update").innerHTML = "Update successful";
+  const showResponse = (message) => {
+    document.getElementById("update").innerHTML = message;
 
     setTimeout(function () {
       document.getElementById("update").innerHTML = "";
@@ -1339,10 +1341,7 @@ const WorkoutUpdate = () => {
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onClick={() => {
-              planUpdate();
-              showResponse();
-            }}
+            onClick={planUpdate}
           >
             Update week {weekDisplay}
           </button>
