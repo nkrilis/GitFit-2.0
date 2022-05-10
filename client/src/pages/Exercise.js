@@ -13,7 +13,6 @@ const Exercise = () => {
     return <Navigate to="/login" />;
   }
   const exerciseList = data?.getExercises || [];
-  console.log(exerciseList);
 
   return (
     <div className="container flex-col justify-center items-center">

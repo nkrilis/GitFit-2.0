@@ -10,7 +10,6 @@ const Home = () => {
     fetchPolicy: "no-cache",
   });
   const workoutList = data?.getWorkoutPlans || [];
-  console.log(workoutList);
   if (loading) {
     return <div>Loading...</div>;
   }

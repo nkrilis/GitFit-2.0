@@ -33,8 +33,6 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
 
-  console.log(user);
-
   const removeClick = async (event) => {
     event.preventDefault();
 

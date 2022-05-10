@@ -217,10 +217,7 @@ const SingleWorkout = () => {
                         );
                       } else {
                         return (
-                          <tbody
-                            key={day.dayofweek + exercise.exerciseId._id}
-                            className=" bg-white"
-                          >
+                          <tbody key={index} className=" bg-white">
                             <tr>
                               <td className="border-t border-r border-black">
                                 <Link
