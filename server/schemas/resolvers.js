@@ -44,9 +44,9 @@ const resolvers = {
 
     // Query a workout plan by its id and populate its exercises
     getWorkoutPlan: async (_, { _id }, context) => {
-      const workoutPlan = await WorkoutPlan.findById(_id).populate(
-        "plan.weeks.days.exercises.exerciseId"
-      ).populate("ownerId");
+      const workoutPlan = await WorkoutPlan.findById(_id)
+        .populate("plan.weeks.days.exercises.exerciseId")
+        .populate("ownerId");
 
       if (!workoutPlan) {
         throw new Error("WorkoutPlan not found");
@@ -56,20 +56,20 @@ const resolvers = {
 
     // Query all workout plans and populate exercises where the _id is in the exercise model
     getWorkoutPlans: async (_, __, context) => {
-      const workoutPlans = await WorkoutPlan.find().populate(
-        "plan.weeks.days.exercises.exerciseId" 
-      ).populate("ownerId");
+      const workoutPlans = await WorkoutPlan.find()
+        .populate("plan.weeks.days.exercises.exerciseId")
+        .populate("ownerId");
 
       return workoutPlans;
     },
 
     // Query all workout plans by a user's id and populate exercises where the _id is in the exercise model
     getWorkoutPlansByOwnerId: async (_, { ownerId }, context) => {
-      const workoutPlans = await WorkoutPlan.find({ ownerId }).populate(
-        "plan.weeks.days.exercises.exerciseId"
-      ).populate("ownerId");
-      
-        return workoutPlans;
+      const workoutPlans = await WorkoutPlan.find({ ownerId })
+        .populate("plan.weeks.days.exercises.exerciseId")
+        .populate("ownerId");
+
+      return workoutPlans;
     },
 
     // Query a single exercise by id
@@ -160,11 +160,10 @@ const resolvers = {
     ) => {
       const getPlan = await WorkoutPlan.findById(_id);
       if (getPlan.ownerId.toString() !== context.user._id.toString()) {
-        throw new AuthenticationError("You do not have permission to update this workout plan");
-      }
-      
-      else
-      {
+        throw new AuthenticationError(
+          "You do not have permission to update this workout plan"
+        );
+      } else {
         const workoutPlan = await WorkoutPlan.findByIdAndUpdate(
           _id,
           { title, description, type, numOfWeeks, plan },
@@ -240,15 +239,21 @@ const resolvers = {
 
     // Add workout plan to user
     addWorkoutPlanToUser: async (parent, { _id, workoutPlan }, context) => {
-      const user = await User.findByIdAndUpdate(
-        _id,
-        { $push: { workoutPlan } },
-        { new: true }
-      );
-      if (!user) {
+      const workoutPlanId = workoutPlan;
+      const userPlan = await User.findById(_id);
+      if (!userPlan) {
         throw new Error("User not found");
       }
-      return user;
+      if (userPlan.workoutPlan.find((plan) => plan === workoutPlanId)) {
+        throw new Error("User already has plan");
+      } else {
+        const user = await User.findByIdAndUpdate(
+          _id,
+          { $push: { workoutPlan } },
+          { new: true }
+        );
+        return user;
+      }
     },
 
     // Remove workout plan from user

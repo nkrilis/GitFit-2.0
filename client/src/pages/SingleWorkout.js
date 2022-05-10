@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { useQuery, useMutation } from "@apollo/client";
-import { GET_WORKOUT_PLAN } from "../utils/queries";
+import { useQuery, useMutation, useLazyQuery } from "@apollo/client";
+import { GET_WORKOUT_PLAN, QUERY_USER } from "../utils/queries";
 import {
   ADD_WORKOUT_PLAN_TO_USER,
   REMOVE_WORKOUT_PLAN_LIKE,
@@ -18,10 +18,46 @@ const SingleWorkout = () => {
   const [addPlanLike] = useMutation(ADD_WORKOUT_PLAN_LIKE);
   const [removePlanLike] = useMutation(REMOVE_WORKOUT_PLAN_LIKE);
 
+  const [addPlanShow, setDisplay] = useState("false");
+
+  const decoded = decode(localStorage.getItem("id_token"));
+
   const { loading, data } = useQuery(GET_WORKOUT_PLAN, {
     variables: { id: userParam },
     fetchPolicy: "no-cache",
   });
+
+  const [loadQuery, { loading: userLoading1, data: userPlans1 }] = useLazyQuery(
+    QUERY_USER,
+    {
+      variables: { username: decoded.data.username },
+    }
+  );
+
+  useEffect(() => {
+    loadQuery();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const { loading: userLoading, data: userPlans2 } = useQuery(QUERY_USER, {
+    variables: { username: decoded.data.username },
+  });
+
+  const userPlans = userPlans1 || userPlans2 || {};
+
+  useEffect(() => {
+    if (!userLoading) {
+      let display = true;
+      console.log(userPlans);
+      userPlans.user.workoutPlan.forEach((plan) => {
+        if (plan._id === userParam) {
+          display = false;
+        }
+      });
+      setDisplay(display);
+    }
+  }, [userPlans]);
 
   if (!Auth.loggedIn()) {
     return <Navigate to="/login" />;
@@ -32,8 +68,6 @@ const SingleWorkout = () => {
     return <div>Loading...</div>;
   }
 
-  const decoded = decode(localStorage.getItem("id_token"));
-
   const addClick = async (event) => {
     event.preventDefault();
     await addWorkoutPlanToUser({
@@ -42,6 +76,7 @@ const SingleWorkout = () => {
         workoutPlan: userParam,
       },
     });
+    loadQuery();
   };
 
   const addLike = async () => {
@@ -65,25 +100,27 @@ const SingleWorkout = () => {
   return (
     <main>
       <div className="justify-center bg-purple-200 rounded-lg p-10">
-        <div className="hover:font-bold text-right" onClick={addClick}>
-          <Link to={{ pathname: `/me` }}>
-            {" "}
-            <svg
-              className="w-10 h-10"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
-              />
-            </svg>
-            <p className="hover:cursor-pointer">Add to my workouts</p>
-          </Link>
+        <div className={`${addPlanShow ? "f" : "hidden"}`}>
+          <div className="hover:font-bold text-right" onClick={addClick}>
+            <Link to={{ pathname: `/me` }}>
+              {" "}
+              <svg
+                className="w-10 h-10"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+                />
+              </svg>
+              <p className="hover:cursor-pointer">Add to my workouts</p>
+            </Link>
+          </div>
         </div>
         <h1 className="text-3xl text-center  border-black bg-purple-200 text-black">
           {workout.title}
