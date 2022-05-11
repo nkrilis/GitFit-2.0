@@ -520,6 +520,15 @@
         "reps": 12,
         "muscleGroup": "Abdominals",
         "video": "https://youtu.be/2RrGnjxSsiA?t=374"
+    },
+    {
+        "_id": 59,
+        "name": "ROUND-BACK DUMBELL 45° HYPEREXTENSION",
+        "description": "UPPER BACK ROUNDED, DRIVE YOUR HIPS INTO THE PAD LIKE A HIP THRUST",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Glutes",
+        "video": "https://youtu.be/J46aPqFl0WE?t=38"
     }
 ]
 

@@ -62,6 +62,10 @@ const workoutPlanSchema = new Schema({
                     type: Number,
                     default: 0,
                   },
+                  rpe: {
+                    type: Number,
+                    default: 0,
+                  },
                 },
               ],
             },

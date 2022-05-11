@@ -1,7 +1,8 @@
 [
   {
-    "username": "Brian Kernighan",
-    "email": "bkernighan@techfriends.dev",
+    "_id": "123456789012345678901234",
+    "username": "GitFit",
+    "email": "gitfit@gitfit.com",
     "password": "password01"
   },
   {
