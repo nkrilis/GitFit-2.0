@@ -6,8 +6,6 @@ export const QUERY_USER = gql`
     user(username: $username) {
       _id
       username
-      email
-      password
       workoutPlan {
         _id
         title
@@ -44,8 +42,6 @@ export const QUERY_ME = gql`
     me {
       _id
       username
-      email
-      password
       workoutPlan {
         _id
         title
@@ -173,5 +169,3 @@ export const GET_WORKOUT_PLAN = gql`
     }
   }
 `;
-
-

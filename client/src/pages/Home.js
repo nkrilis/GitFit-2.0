@@ -41,7 +41,7 @@ const Home = () => {
                   </div>
                   <div> {workout.type}</div>
                   <div> {workout.description}</div>
-                  <div> {workout.numOfWeeks}</div>
+                  <div> Weeks: {workout.numOfWeeks}</div>
                   <div> {workout.ownerId.username}</div>
                 </Link>
               </div>

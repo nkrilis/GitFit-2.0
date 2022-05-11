@@ -376,7 +376,7 @@ const WorkoutUpdate = () => {
 
     setTimeout(function () {
       document.getElementById("update").innerHTML = "";
-    }, 5000);
+    }, 4000);
   };
   // Changing current week that is being updated
   const weekChange = (e) => {
@@ -1353,7 +1353,7 @@ const WorkoutUpdate = () => {
           </button>
         </div>
         <br></br>
-        <p id="update" className="text-xl text-center text-white"></p>
+        <p id="update" className="text-xl text-center text-white pb-4"></p>
       </div>
     </div>
   );
