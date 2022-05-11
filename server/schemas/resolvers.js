@@ -210,7 +210,6 @@ const resolvers = {
           },
         }
       );
-      console.log(workoutPlan[0].userLikes);
       if (workoutPlan[0].userLikes.length === 0) {
         const updateLikes = await WorkoutPlan.findByIdAndUpdate(
           _id,
@@ -236,7 +235,6 @@ const resolvers = {
           },
         }
       );
-      console.log(workoutPlan[0].userLikes);
       if (workoutPlan[0].userLikes.length !== 0) {
         const updateLikes = await WorkoutPlan.findByIdAndUpdate(
           _id,

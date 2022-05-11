@@ -5,6 +5,7 @@ import { FcPlanner, FcEmptyTrash } from "react-icons/fc";
 import { GrEdit } from "react-icons/gr";
 import { REMOVE_WORKOUT_PLAN_FROM_USER } from "../utils/mutations";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { BiLike } from "react-icons/bi";
 
 import Auth from "../utils/auth";
 import decode from "jwt-decode";
@@ -33,8 +34,6 @@ const Profile = () => {
   }, []);
 
   const user = data?.me || data?.user || {};
-
-  console.log(user);
 
   const removeClick = async (event) => {
     event.preventDefault();
@@ -83,8 +82,12 @@ const Profile = () => {
   }
 
   return (
-    <main>
-      <div className="flex-row justify-center" key={"edit" + user._id}>
+    <main className="px-2">
+      <h1 className="text-white text-center pb-1">My created plans</h1>
+      <div className="text-white hover:text-purple-100 py-2">
+        <Link to="/createworkoutplan/">Create a workout</Link>
+      </div>
+      <div className="flex-row justify-center pb-6" key={"edit" + user._id}>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
           {user.workoutPlan?.map((workout) => {
             if (workout.ownerId._id === decoded.data._id) {
@@ -102,8 +105,14 @@ const Profile = () => {
                       <GrEdit size={36} className="absolute top-2 left-2" />
                       {workout.title}
                     </div>
+                    <div className="absolute top-0 right-0">
+                      <BiLike size={58} />{" "}
+                    </div>
+                    <div className="absolute top-6 right-5 text-purple-200">
+                      {workout.likes}
+                    </div>
                     <div> {workout.type}</div>
-                    <div> {workout.description}</div>
+                    <div className="italic"> {workout.description}</div>
                   </Link>
                 </div>
               );
@@ -111,12 +120,7 @@ const Profile = () => {
           })}
         </div>
       </div>
-      <br></br>
-
-      <div className="text-white hover:text-purple-100">
-        <Link to="/createworkoutplan/">Create a workout</Link>
-      </div>
-      <br></br>
+      <h1 className="text-white text-center pb-2">My workout plans</h1>
       <div className="flex-row justify-center" key={user._id}>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
           {user.workoutPlan?.map((workout) => {
@@ -132,11 +136,18 @@ const Profile = () => {
                   >
                     {" "}
                     <div className="items-center text-purple-100 text-bold text-lg">
-                      <FcPlanner size={56} className="absolute top-2 left-2" />
+                      <FcPlanner size={48} className="absolute top-2 left-2" />
                       {workout.title}
                     </div>
+                    <div className="absolute top-0 right-0">
+                      <BiLike size={58} />{" "}
+                    </div>
+                    <div className="absolute top-6 right-5 text-purple-200">
+                      {workout.likes}
+                    </div>
                     <div> {workout.type}</div>
-                    <div> {workout.description}</div>
+                    <div className="italic"> {workout.description}</div>
+                    <div>Creator: {workout.ownerId.username}</div>
                   </Link>
                   <div>
                     <button

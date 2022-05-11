@@ -30,10 +30,10 @@ const SingleExercise = () => {
     >
       <div className="font-bold">{exercise.name}:</div>
       <div>
-        Main muscle: <span className="font-bold">{exercise.muscleGroup}</span>
+        Main muscle:{" "}
+        <span className="font-bold pb-2">{exercise.muscleGroup}</span>
       </div>
-      <br></br>
-      <div>{exercise.description}</div>
+      <div className="pb-2">{exercise.description}</div>
       <div className="player-wrapper">
         <ReactPlayer
           className="react-player"
