@@ -4,6 +4,7 @@
     "description": "An intermediate-advanced Program BY: Jeff Nippard",
     "type": "Hypertrophy Training",
     "numOfWeeks": "8",
+    "ownerId": "123456789012345678901234",
     "plan": 
     [
         {
