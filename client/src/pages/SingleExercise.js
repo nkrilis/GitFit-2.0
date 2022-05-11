@@ -7,7 +7,6 @@ import ReactPlayer from "react-player";
 
 const SingleExercise = () => {
   const { _id: userParam } = useParams();
-  console.log(userParam);
 
   const { loading, data } = useQuery(GET_EXERCISE, {
     variables: { _id: userParam },
@@ -19,7 +18,6 @@ const SingleExercise = () => {
   }
 
   const exercise = data?.getExercise || [];
-  console.log(exercise);
 
   if (loading) {
     return <div>Loading...</div>;

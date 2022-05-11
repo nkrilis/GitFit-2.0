@@ -10,7 +10,20 @@ import decode from "jwt-decode";
 const CreateWorkout = () => {
   const [createWorkoutPlan] = useMutation(CREATE_WORKOUT_PLAN);
 
+  const [planDetails, setPlanDetails] = useState({
+    title: "Name here",
+    description: "Description here",
+    type: "Type here",
+    numOfWeeks: 1,
+    plan: "",
+    numOfDays: 1,
+  });
+
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
+  }
   const decoded = decode(localStorage.getItem("id_token"));
+
   // function to create workout plan in database
   const createWorkout = async () => {
     let weeksArr = [];
@@ -44,25 +57,16 @@ const CreateWorkout = () => {
     });
   };
 
-  const [planDetails, setPlanDetails] = useState({
-    title: "Name here",
-    description: "Description here",
-    type: "Type here",
-    numOfWeeks: 1,
-    plan: "",
-    numOfDays: 1,
-  });
-
-  if (!Auth.loggedIn()) {
-    return <Navigate to="/login" />;
-  }
-
   //temporary to generate random ID for workout beingt created until set up in mongoDB
   const generateId = () => {
-    return Math.floor((1 + Math.random()) * 0x10000).toString(16);
+    return (
+      Math.floor((1 + Math.random()) * 0x10000).toString(16) +
+      Math.floor((1 + Math.random()) * 0x10000).toString(36)
+    );
   };
 
   let workoutId = generateId();
+
   //Updating state to have input user data
   const updateTitle = (val) => {
     setPlanDetails({
@@ -92,44 +96,34 @@ const CreateWorkout = () => {
     });
   };
 
-  // const updateDays = (val) => {
-  //   setPlanDetails({
-  //     ...planDetails,
-  //     numOfDays: val,
-  //   });
-  // };
-
   return (
-    <div>
-      <Link to="/">
-        <div className="text-white">My created workout plans</div>
-      </Link>
-      <br></br>
-
-      <form className="bg-purple-100 shadow-md px-2 py-2">
-        <div className="grid grid-cols-4 gap-2">
+    <div className="container">
+      <form className="bg-purple-100 shadow-md px-2 py-2 rounded-lg">
+        <div className="block lg:grid lg:grid-cols-6 gap-2">
           <label htmlFor="name">Workout plan name:</label>
           <input
-            className="w-full"
+            className="w-full col-span-2"
             type="text"
             placeholder={planDetails.title}
             onChange={(e) => updateTitle(e.target.value)}
           />
           <label htmlFor="type">Workout type:</label>
           <input
+            className="w-full col-span-2"
             type="text"
             placeholder={planDetails.type}
             onChange={(e) => updateType(e.target.value)}
           />
           <label htmlFor="description">Workout description:</label>
           <textarea
-            className="col-span-3"
+            className="w-full col-span-5"
             type="text"
             placeholder={planDetails.description}
             onChange={(e) => updateDescription(e.target.value)}
           />
           <label htmlFor="numOfWeeks">Number of weeks:</label>
           <input
+            className="w-full"
             type="number"
             min="1"
             max="52"
