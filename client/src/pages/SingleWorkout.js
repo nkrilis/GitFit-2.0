@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_WORKOUT_PLAN } from "../utils/queries";
@@ -8,6 +8,7 @@ import {
   ADD_WORKOUT_PLAN_LIKE,
 } from "../utils/mutations";
 import { GrEdit } from "react-icons/gr";
+import { BiLike } from "react-icons/bi";
 
 import Auth from "../utils/auth";
 import decode from "jwt-decode";
@@ -19,32 +20,30 @@ const SingleWorkout = () => {
   const [addPlanLike] = useMutation(ADD_WORKOUT_PLAN_LIKE);
   const [removePlanLike] = useMutation(REMOVE_WORKOUT_PLAN_LIKE);
 
+  const [userLike, setUserLike] = useState("false");
+
   const { loading, data } = useQuery(GET_WORKOUT_PLAN, {
     variables: { id: userParam },
     fetchPolicy: "no-cache",
   });
 
-  //   const [loadQuery, { loading, data }] = useLazyQuery(
-  //   userParam ? QUERY_USER : QUERY_ME,
-  //   {
-  //     variables: { username: userParam },
-  //   }
-  // );
-
-  // useEffect(() => {
-  //   loadQuery();
-
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
-  if (!Auth.loggedIn()) {
-    return <Navigate to="/login" />;
-  }
   const workout = data?.getWorkoutPlan || [];
 
   console.log(workout);
 
   const decoded = decode(localStorage.getItem("id_token"));
+
+  useEffect(() => {
+    if (!loading) {
+      if (workout.userLikes.includes(decoded.data._id) === true) {
+        setUserLike(false);
+      }
+    }
+  }, [workout.plan]);
+
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
+  }
 
   const addClick = async (event) => {
     event.preventDefault();
@@ -80,7 +79,7 @@ const SingleWorkout = () => {
 
   if (decoded.data._id === workout.ownerId._id) {
     return (
-      <main>
+      <main key={workout._id}>
         <div className="relative justify-center bg-purple-200 rounded-lg px-4 pt-4 pb-1">
           <div className="hover:font-bold text-right">
             <Link to={{ pathname: `/workoutupdate/${workout._id}` }}>
@@ -109,12 +108,14 @@ const SingleWorkout = () => {
               <p className="pr-2">Jump to week.. </p>
               {workout.plan[0].weeks.map((week) => {
                 return (
-                  <a href={`#${week.weekNumber}`} key={week.weekNumber}>
-                    {" "}
-                    <p className="hover:font-bold rounded-full px-2 border-2">
-                      {week.weekNumber}{" "}
-                    </p>
-                  </a>
+                  <div key={week.weekNumber} className="pl-1">
+                    <a href={`#${week.weekNumber}`}>
+                      {" "}
+                      <p className="hover:font-bold rounded-full px-2 border-2">
+                        {week.weekNumber}{" "}
+                      </p>
+                    </a>
+                  </div>
                 );
               })}
             </div>
@@ -223,7 +224,7 @@ const SingleWorkout = () => {
     );
   }
   return (
-    <main>
+    <main key={"plan"}>
       <div className="relative justify-center bg-purple-200 rounded-lg p-10">
         <div className="hover:font-bold text-right" onClick={addClick}>
           <Link to={{ pathname: `/me` }}>
@@ -247,10 +248,29 @@ const SingleWorkout = () => {
             </p>
           </Link>
         </div>
-        <button onClick={addLike} className="text-purple-100">
-          Test add like
-        </button>
-        <button onClick={removeLike}>Test remove Like</button>
+        <div className={`${userLike ? "f" : "hidden"}`}>
+          <button
+            onClick={() => {
+              addLike();
+              setUserLike(!userLike);
+            }}
+            className="hover:cursor-pointer hover:text-white absolute top-3 left-5"
+          >
+            <BiLike size={44} /> Like
+          </button>
+        </div>
+        <div className={`${userLike ? "hidden" : "f"}`}>
+          <button
+            onClick={() => {
+              removeLike();
+              setUserLike(!userLike);
+            }}
+            className="hover:cursor-pointer hover:text-white absolute top-3 left-5"
+          >
+            Remove like
+          </button>
+        </div>
+
         <h1 className="text-3xl text-center  border-black bg-purple-200 text-black">
           {workout.title}
         </h1>
@@ -262,15 +282,22 @@ const SingleWorkout = () => {
               Number of weeks: {workout.numOfWeeks}
             </div>
           </div>
-          <div className="px-5 pb-2">{workout.description}</div>
+          <div className="px-5 pb-2 text-center italic border-b">
+            {workout.description}
+          </div>
 
-          <div className="grid grid-flow-col text-center mx-auto">
+          <div className="flex justify-center text-center mx-auto pt-1">
+            <p className="pr-2">Jump to week.. </p>
             {workout.plan[0].weeks.map((week) => {
               return (
-                <a href={`#${week.weekNumber}`} key={week.weekNumber}>
-                  {" "}
-                  <p className="hover:font-bold">Week: {week.weekNumber} </p>
-                </a>
+                <div key={week.weekNumber} className="pl-1">
+                  <a href={`#${week.weekNumber}`}>
+                    {" "}
+                    <p className="hover:font-bold rounded-full px-2 border-2">
+                      {week.weekNumber}{" "}
+                    </p>
+                  </a>
+                </div>
               );
             })}
           </div>

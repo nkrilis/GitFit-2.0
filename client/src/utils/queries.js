@@ -131,6 +131,7 @@ export const GET_WORKOUT_PLAN = gql`
       type
       numOfWeeks
       likes
+      userLikes
       plan {
         weeks {
           weekNumber

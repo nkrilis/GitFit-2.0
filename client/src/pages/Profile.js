@@ -136,7 +136,7 @@ const Profile = () => {
                   >
                     {" "}
                     <div className="items-center text-purple-100 text-bold text-lg">
-                      <FcPlanner size={48} className="absolute top-2 left-2" />
+                      <FcPlanner size={48} className="absolute top-1 left-1" />
                       {workout.title}
                     </div>
                     <div className="absolute top-0 right-0">
@@ -147,7 +147,7 @@ const Profile = () => {
                     </div>
                     <div> {workout.type}</div>
                     <div className="italic"> {workout.description}</div>
-                    <div>Creator: {workout.ownerId.username}</div>
+                    <div>Created by: {workout.ownerId.username}</div>
                   </Link>
                   <div>
                     <button
@@ -155,7 +155,7 @@ const Profile = () => {
                       onClick={removeClick}
                       value={workout._id}
                     >
-                      Delete
+                      Remove
                     </button>
                   </div>
                 </div>

@@ -38,11 +38,11 @@ const Home = () => {
                 >
                   {" "}
                   <div className="items-center text-purple-100 text-bold text-lg">
-                    <FcPlanner size={56} className="absolute top-2 left-2" />
+                    <FcPlanner size={56} className="absolute top-0 left-0" />
                     {workout.title}
                   </div>
+                  <div className="italic py-1"> {workout.description}</div>
                   <div> Type: {workout.type}</div>
-                  <div className="italic"> {workout.description}</div>
                   <div> Number of Weeks: {workout.numOfWeeks}</div>
                   <div> Created by: {workout.ownerId.username}</div>
                 </Link>

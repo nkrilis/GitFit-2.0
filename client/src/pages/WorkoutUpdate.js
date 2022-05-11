@@ -1017,7 +1017,7 @@ const WorkoutUpdate = () => {
 
       <div className="grid grid-flow-col text-center mx-auto bg-purple-100 rounded-t-lg">
         <br></br>
-        <div className="flex justify-between pt-2">
+        <div className="flex justify-between py-2">
           Edit Week
           {weeks.map((week, index) => {
             return (
@@ -1226,7 +1226,7 @@ const WorkoutUpdate = () => {
                   if (index === 0) {
                     return (
                       <div key={index}>
-                        <div className="grid grid-cols-5 gap-2">
+                        <div className="grid grid-cols-5 gap-2 pb-1">
                           <select
                             id={day.dayOfWeek}
                             name={index}
@@ -1277,7 +1277,7 @@ const WorkoutUpdate = () => {
                           {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
 
                           <button
-                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold rounded-lg"
                             data-id={index}
                             value={day.dayOfWeek}
                             onClick={(e) => removeExercise(e)}
@@ -1290,7 +1290,7 @@ const WorkoutUpdate = () => {
                   } else
                     return (
                       <div key={index}>
-                        <div className="grid grid-cols-5 gap-2">
+                        <div className="grid grid-cols-5 gap-2 pb-1">
                           <select
                             id={day.dayOfWeek}
                             name={index}
@@ -1341,7 +1341,7 @@ const WorkoutUpdate = () => {
                           {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
 
                           <button
-                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold rounded-lg"
                             data-id={index}
                             value={day.dayOfWeek}
                             onClick={(e) => removeExercise(e)}
