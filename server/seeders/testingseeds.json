@@ -19,14 +19,327 @@
                             "exercises":
                             [
                                 {
-                                    "exerciseId": "1",
-                                    "userSets": 3,
-                                    "userReps": 5
+                                    "exerciseId": "2",
+                                    "userSets": 5,
+                                    "userReps": 3,
+                                    "rpe": "8"
                                 },
                                 {
                                     "exerciseId": "1",
+                                    "userSets": 2,
+                                    "userReps": 6,
+                                    "rpe": "6"
+                                },
+                                {
+                                    "exerciseId": "59",
+                                    "userSets": 2,
+                                    "userReps": 20,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "17",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "5",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "6",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "20",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "7",
                                     "userSets": 3,
-                                    "userReps": 5
+                                    "userReps": 8,
+                                    "rpe": "8"
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "dayOfWeek": "Tuesday",
+                            "exercises":
+                            [
+                                {
+                                    "exerciseId": "21",
+                                    "userSets": 2,
+                                    "userReps": 8,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "1",
+                                    "userSets": 2,
+                                    "userReps": 6,
+                                    "rpe": "6"
+                                },
+                                {
+                                    "exerciseId": "59",
+                                    "userSets": 2,
+                                    "userReps": 20,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "17",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "5",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "6",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "20",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "7",
+                                    "userSets": 3,
+                                    "userReps": 8,
+                                    "rpe": "8"
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "dayOfWeek": "Wednesday",
+                            "exercises":
+                            [
+                                {
+                                    "exerciseId": "2",
+                                    "userSets": 5,
+                                    "userReps": 3,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "1",
+                                    "userSets": 2,
+                                    "userReps": 6,
+                                    "rpe": "6"
+                                },
+                                {
+                                    "exerciseId": "59",
+                                    "userSets": 2,
+                                    "userReps": 20,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "17",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "5",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "6",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "20",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "7",
+                                    "userSets": 3,
+                                    "userReps": 8,
+                                    "rpe": "8"
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "dayOfWeek": "Thursday",
+                            "exercises":
+                            [
+                                {
+                                    "exerciseId": "2",
+                                    "userSets": 5,
+                                    "userReps": 3,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "1",
+                                    "userSets": 2,
+                                    "userReps": 6,
+                                    "rpe": "6"
+                                },
+                                {
+                                    "exerciseId": "59",
+                                    "userSets": 2,
+                                    "userReps": 20,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "17",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "5",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "6",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "20",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "7",
+                                    "userSets": 3,
+                                    "userReps": 8,
+                                    "rpe": "8"
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "dayOfWeek": "Friday",
+                            "exercises":
+                            [
+                                {
+                                    "exerciseId": "2",
+                                    "userSets": 5,
+                                    "userReps": 3,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "1",
+                                    "userSets": 2,
+                                    "userReps": 6,
+                                    "rpe": "6"
+                                },
+                                {
+                                    "exerciseId": "59",
+                                    "userSets": 2,
+                                    "userReps": 20,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "17",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "5",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "6",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "20",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "7",
+                                    "userSets": 3,
+                                    "userReps": 8,
+                                    "rpe": "8"
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "dayOfWeek": "Saturday",
+                            "exercises":
+                            [
+                                {
+                                    "exerciseId": "2",
+                                    "userSets": 5,
+                                    "userReps": 3,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "1",
+                                    "userSets": 2,
+                                    "userReps": 6,
+                                    "rpe": "6"
+                                },
+                                {
+                                    "exerciseId": "59",
+                                    "userSets": 2,
+                                    "userReps": 20,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "17",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "5",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "6",
+                                    "userSets": 2,
+                                    "userReps": 12,
+                                    "rpe": "9"
+                                },
+                                {
+                                    "exerciseId": "20",
+                                    "userSets": 2,
+                                    "userReps": 15,
+                                    "rpe": "8"
+                                },
+                                {
+                                    "exerciseId": "7",
+                                    "userSets": 3,
+                                    "userReps": 8,
+                                    "rpe": "8"
                                 }
                                 
                             ]

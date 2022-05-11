@@ -54,6 +54,7 @@ const typeDefs = gql`
     exerciseId: Exercise
     userSets: Int!
     userReps: Int!
+    rpe: Int!
   }
 
   input ExerciseInput {

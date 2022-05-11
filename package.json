@@ -17,6 +17,7 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "graphqlviz": "^4.0.1",
     "react-player": "^2.10.0"
   }
 }
