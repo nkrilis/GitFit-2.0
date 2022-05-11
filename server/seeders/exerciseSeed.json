@@ -529,6 +529,78 @@
         "reps": 12,
         "muscleGroup": "Glutes",
         "video": "https://youtu.be/J46aPqFl0WE?t=38"
+    },
+    {
+        "_id": 60,
+        "name": "HANGING LEG RAISE",
+        "description": "FOCUS ON FLEXING YOUR SPINE",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Abdominals",
+        "video": "https://youtu.be/Pr1ieGZ5atk"
+    },
+    {
+        "_id": 61,
+        "name": "PULL-UP",
+        "description": "ADD WEIGHT OR USE ASSISTANCE AS NEEDED",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/Hdc7Mw6BIEE?t=15"
+    },
+    {
+        "_id": 62,
+        "name": "DUMBBELL ONE-ARM ROW",
+        "description": "BRACE WITH YOUR NON-WORKING ARM, PULL YOUR ARMS BACK AT YOUR SIDES",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/djKXLt7kv7Q?t=9"
+    },
+    {
+        "_id": 63,
+        "name": "CHEST-SUPPORTED T-BAR ROW W/ BAND",
+        "description": "CLICK THE WORKOUT FOR A INSTRUCTIONAL VIDEO",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/9B-5irFdB3c?list=PLp4G6oBUcv8x4Z0h8Fd40t--bGSwZjusI&t=174"
+    },
+    {
+        "_id": 64,
+        "name": "LOW-TO-HIGH REVERSE FLYE",
+        "description": "THIS IS A CROSS BETWEEN A SHRUG, A ROW, AND A REVERSE CABLE FLY - SCAPULAR RETRACTION & UPWARD ROTATION, ABDUCTION OF THE HUMERUS",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/5zSyPleRewc"
+    },
+    {
+        "_id": 65,
+        "name": "ROPE UPRIGHT ROW",
+        "description": "FOCUS ON SQUEEZING THE UPPER TRAPS AT THE TOP",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/nwkLwMRHMQo?t=231"
+    },
+    {
+        "_id": 66,
+        "name": "SPIDER CURL",
+        "description": "BRACE YOUR CHEST AGAINST AN INCLINE BENCH, CURL WITH YOUR ELBOWS SLIGHTLY IN FRONT OF YOU",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Biceps",
+        "video": "https://youtu.be/fsPdv3JQwNk?t=183"
+    },
+    {
+        "_id": 67,
+        "name": "SINGLE-ARM PULLDOWN",
+        "description": "START WITH YOUR WEAKER SIDE, STRETCH YOUR LAT AT THE TOP, PULL DOWN AND IN",
+        "sets": 3,
+        "reps": 12,
+        "muscleGroup": "Back",
+        "video": "https://youtu.be/r68DrqhNSis?t=51"
     }
 ]
 
