@@ -68,7 +68,7 @@ const Profile = () => {
   if (user.workoutPlan.length === 0) {
     return (
       <main>
-        <div className="text-white">
+        <div className="text-white hover:text-purple-100 py-2 bg-purple-200 text-center rounded bold">
           <Link to="/createworkoutplan/">Create a workout</Link>
         </div>
         <br></br>
