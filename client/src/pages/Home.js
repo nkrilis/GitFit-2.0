@@ -14,20 +14,22 @@ const Home = () => {
     return <div>Loading...</div>;
   }
 
-  console.log(workoutList);
   // returns list of current workout plans available with links to each when clicked
   return (
     <main>
       <div className="flex-row justify-center">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3 px-2">
           {workoutList.map((workout) => {
             return (
               <div
                 key={workout._id}
                 className="relative content-center bg-white text-center rounded-md px-10 py-5"
               >
-                <div className="absolute top-0 right-1">
-                  {workout.likes} <BiLike size={48} />{" "}
+                <div className="absolute top-0 right-0">
+                  <BiLike size={58} />{" "}
+                </div>
+                <div className="absolute top-6 right-5 text-purple-200">
+                  {workout.likes}
                 </div>
 
                 <Link
@@ -36,13 +38,13 @@ const Home = () => {
                 >
                   {" "}
                   <div className="items-center text-purple-100 text-bold text-lg">
-                    <FcPlanner size={56} />
+                    <FcPlanner size={56} className="absolute top-0 left-0" />
                     {workout.title}
                   </div>
-                  <div> {workout.type}</div>
-                  <div> {workout.description}</div>
-                  <div> {workout.numOfWeeks}</div>
-                  <div> {workout.ownerId.username}</div>
+                  <div className="italic py-1"> {workout.description}</div>
+                  <div> Type: {workout.type}</div>
+                  <div> Number of Weeks: {workout.numOfWeeks}</div>
+                  <div> Created by: {workout.ownerId.username}</div>
                 </Link>
               </div>
             );

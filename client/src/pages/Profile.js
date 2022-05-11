@@ -2,8 +2,10 @@ import { React, useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useMutation, useLazyQuery } from "@apollo/client";
 import { FcPlanner, FcEmptyTrash } from "react-icons/fc";
+import { GrEdit } from "react-icons/gr";
 import { REMOVE_WORKOUT_PLAN_FROM_USER } from "../utils/mutations";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { BiLike } from "react-icons/bi";
 
 import Auth from "../utils/auth";
 import decode from "jwt-decode";
@@ -80,43 +82,85 @@ const Profile = () => {
   }
 
   return (
-    <main>
-      <div className="text-white hover:text-purple-100">
+    <main className="px-2">
+      <h1 className="text-white text-center pb-1">My created plans</h1>
+      <div className="text-white hover:text-purple-100 py-2">
         <Link to="/createworkoutplan/">Create a workout</Link>
       </div>
-      <br></br>
+      <div className="flex-row justify-center pb-6" key={"edit" + user._id}>
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
+          {user.workoutPlan?.map((workout) => {
+            if (workout.ownerId._id === decoded.data._id) {
+              return (
+                <div
+                  className="relative content-center bg-white text-center rounded-md px-10 py-5"
+                  key={workout._id}
+                >
+                  <Link
+                    className="items-center"
+                    to={`/workoutupdate/${workout._id}`}
+                  >
+                    {" "}
+                    <div className="items-center text-purple-100 text-bold text-lg">
+                      <GrEdit size={36} className="absolute top-2 left-2" />
+                      {workout.title}
+                    </div>
+                    <div className="absolute top-0 right-0">
+                      <BiLike size={58} />{" "}
+                    </div>
+                    <div className="absolute top-6 right-5 text-purple-200">
+                      {workout.likes}
+                    </div>
+                    <div> {workout.type}</div>
+                    <div className="italic"> {workout.description}</div>
+                  </Link>
+                </div>
+              );
+            }
+          })}
+        </div>
+      </div>
+      <h1 className="text-white text-center pb-2">My workout plans</h1>
       <div className="flex-row justify-center" key={user._id}>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
           {user.workoutPlan?.map((workout) => {
-            return (
-              <div
-                className="relative content-center bg-white text-center rounded-md px-10 py-5"
-                key={workout._id}
-              >
-                <Link
-                  className="items-center"
-                  to={`/workoutplan/${workout._id}`}
+            if (workout.ownerId._id !== decoded.data._id) {
+              return (
+                <div
+                  className="relative content-center bg-white text-center rounded-md px-10 py-5"
+                  key={workout._id}
                 >
-                  {" "}
-                  <div className="items-center text-purple-100 text-bold text-lg">
-                    <FcPlanner size={56} />
-                    {workout.title}
-                  </div>
-                  <div> {workout.type}</div>
-                  <div> {workout.description}</div>
-                </Link>
-                <div className="absolute bottom-0 right-1">
-                  <FcEmptyTrash size={40} className="" />
-                  <button
-                    className="font-xl hover:text-purple-100 hover:cursor-pointer hover:font-bold"
-                    onClick={removeClick}
-                    value={workout._id}
+                  <Link
+                    className="items-center"
+                    to={`/workoutplan/${workout._id}`}
                   >
-                    Delete
-                  </button>
+                    {" "}
+                    <div className="items-center text-purple-100 text-bold text-lg">
+                      <FcPlanner size={48} className="absolute top-1 left-1" />
+                      {workout.title}
+                    </div>
+                    <div className="absolute top-0 right-0">
+                      <BiLike size={58} />{" "}
+                    </div>
+                    <div className="absolute top-6 right-5 text-purple-200">
+                      {workout.likes}
+                    </div>
+                    <div> {workout.type}</div>
+                    <div className="italic"> {workout.description}</div>
+                    <div>Created by: {workout.ownerId.username}</div>
+                  </Link>
+                  <div>
+                    <button
+                      className="text-md hover:text-purple-100 hover:cursor-pointer hover:font-bold absolute bottom-0 right-1"
+                      onClick={removeClick}
+                      value={workout._id}
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
+              );
+            }
           })}
         </div>
       </div>

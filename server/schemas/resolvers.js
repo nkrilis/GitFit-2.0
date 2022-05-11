@@ -6,38 +6,62 @@ const resolvers = {
   Query: {
     // Query all users and populate their workoutplans and exercises
     users: async () => {
-      const users = await User.find({}).populate({
-        path: "workoutPlan",
-        populate: {
-          path: "plan.weeks.days.exercises.exerciseId",
-          model: "Exercise",
-        },
-      });
+      const users = await User.find({})
+        .populate({
+          path: "workoutPlan",
+          populate: {
+            path: "plan.weeks.days.exercises.exerciseId",
+            model: "Exercise",
+          },
+        })
+        .populate({
+          path: "workoutPlan",
+          populate: {
+            path: "ownerId",
+            model: "User",
+          },
+        });
       return users;
     },
 
     // Query to get a single user by their username and populate their workout plan and exercises
     user: async (parent, { username }) => {
-      const users = User.findOne({ username }).populate({
-        path: "workoutPlan",
-        populate: {
-          path: "plan.weeks.days.exercises.exerciseId",
-          model: "Exercise",
-        },
-      });
+      const users = User.findOne({ username })
+        .populate({
+          path: "workoutPlan",
+          populate: {
+            path: "plan.weeks.days.exercises.exerciseId",
+            model: "Exercise",
+          },
+        })
+        .populate({
+          path: "workoutPlan",
+          populate: {
+            path: "ownerId",
+            model: "User",
+          },
+        });
       return users;
     },
 
     // Query a logged in user and populate their workout plan and exercises
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate({
-          path: "workoutPlan",
-          populate: {
-            path: "plan.weeks.days.exercises.exerciseId",
-            model: "Exercise",
-          },
-        });
+        return User.findOne({ _id: context.user._id })
+          .populate({
+            path: "workoutPlan",
+            populate: {
+              path: "plan.weeks.days.exercises.exerciseId",
+              model: "Exercise",
+            },
+          })
+          .populate({
+            path: "workoutPlan",
+            populate: {
+              path: "ownerId",
+              model: "User",
+            },
+          });
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -186,7 +210,6 @@ const resolvers = {
           },
         }
       );
-      console.log(workoutPlan[0].userLikes);
       if (workoutPlan[0].userLikes.length === 0) {
         const updateLikes = await WorkoutPlan.findByIdAndUpdate(
           _id,
@@ -212,7 +235,6 @@ const resolvers = {
           },
         }
       );
-      console.log(workoutPlan[0].userLikes);
       if (workoutPlan[0].userLikes.length !== 0) {
         const updateLikes = await WorkoutPlan.findByIdAndUpdate(
           _id,

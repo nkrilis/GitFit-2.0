@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { GET_EXERCISES, GET_WORKOUT_PLAN } from "../utils/queries";
 import { UPDATE_WORKOUT_PLAN } from "../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import Auth from "../utils/auth";
 import decode from "jwt-decode";
 
 const WorkoutUpdate = () => {
+  const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
   const { id: userParam } = useParams();
 
   const { data: dataExercise } = useQuery(GET_EXERCISES, {
@@ -19,10 +20,6 @@ const WorkoutUpdate = () => {
     fetchPolicy: "no-cache",
   });
   const workoutPlan = dataWorkoutPlan?.getWorkoutPlan || [];
-
-  console.log(workoutPlan);
-
-  const [updateWorkoutPlan] = useMutation(UPDATE_WORKOUT_PLAN);
 
   const [weeks, setWeeks] = useState([
     {
@@ -361,7 +358,6 @@ const WorkoutUpdate = () => {
       },
     });
 
-    console.log(updateRes.data.updateWorkoutPlan);
     if (updateRes.data.updateWorkoutPlan._id) {
       showResponse("Update Succesful");
     } else {
@@ -376,7 +372,7 @@ const WorkoutUpdate = () => {
 
     setTimeout(function () {
       document.getElementById("update").innerHTML = "";
-    }, 5000);
+    }, 4000);
   };
   // Changing current week that is being updated
   const weekChange = (e) => {
@@ -637,7 +633,6 @@ const WorkoutUpdate = () => {
     if (x === 7) {
       daysVal.push(day7);
     }
-    console.log(daysVal);
     setDays(daysVal);
   };
   // removes the day from state
@@ -756,15 +751,15 @@ const WorkoutUpdate = () => {
     let x = parseInt(e.target.getAttribute("data-id"));
     let y = e.target.value;
 
-    console.log(x, y);
     exercisesVal = [...day1.exercises];
     if (y === "Monday") {
       if (x === 0) {
         exercisesVal.shift();
       } else {
-        console.log(exercisesVal);
         exercisesVal.splice(x, 1);
-        console.log(exercisesVal);
+      }
+      if (exercisesVal.length === 0) {
+        exercisesVal = [{ exerciseId: 1, userSets: 1, userReps: 1 }];
       }
       setDay1({ dayOfWeek: "Monday", exercises: exercisesVal });
       exercisesVal = [];
@@ -774,9 +769,10 @@ const WorkoutUpdate = () => {
       if (x === 0) {
         exercisesVal.shift();
       } else {
-        console.log(exercisesVal);
         exercisesVal.splice(x, 1);
-        console.log(exercisesVal);
+      }
+      if (exercisesVal.length === 0) {
+        exercisesVal = [{ exerciseId: 1, userSets: 1, userReps: 1 }];
       }
       setDay2({ dayOfWeek: "Tuesday", exercises: exercisesVal });
     }
@@ -785,9 +781,10 @@ const WorkoutUpdate = () => {
       if (x === 0) {
         exercisesVal.shift();
       } else {
-        console.log(exercisesVal);
         exercisesVal.splice(x, 1);
-        console.log(exercisesVal);
+      }
+      if (exercisesVal.length === 0) {
+        exercisesVal = [{ exerciseId: 1, userSets: 1, userReps: 1 }];
       }
       setDay3({ dayOfWeek: "Wednesday", exercises: exercisesVal });
     }
@@ -796,9 +793,10 @@ const WorkoutUpdate = () => {
       if (x === 0) {
         exercisesVal.shift();
       } else {
-        console.log(exercisesVal);
         exercisesVal.splice(x, 1);
-        console.log(exercisesVal);
+      }
+      if (exercisesVal.length === 0) {
+        exercisesVal = [{ exerciseId: 1, userSets: 1, userReps: 1 }];
       }
       setDay4({ dayOfWeek: "Thursday", exercises: exercisesVal });
     }
@@ -807,9 +805,10 @@ const WorkoutUpdate = () => {
       if (x === 0) {
         exercisesVal.shift();
       } else {
-        console.log(exercisesVal);
         exercisesVal.splice(x, 1);
-        console.log(exercisesVal);
+      }
+      if (exercisesVal.length === 0) {
+        exercisesVal = [{ exerciseId: 1, userSets: 1, userReps: 1 }];
       }
       setDay5({ dayOfWeek: "Friday", exercises: exercisesVal });
     }
@@ -818,9 +817,10 @@ const WorkoutUpdate = () => {
       if (x === 0) {
         exercisesVal.shift();
       } else {
-        console.log(exercisesVal);
         exercisesVal.splice(x, 1);
-        console.log(exercisesVal);
+      }
+      if (exercisesVal.length === 0) {
+        exercisesVal = [{ exerciseId: 1, userSets: 1, userReps: 1 }];
       }
       setDay6({ dayOfWeek: "Saturday", exercises: exercisesVal });
     }
@@ -829,9 +829,10 @@ const WorkoutUpdate = () => {
       if (x === 0) {
         exercisesVal.shift();
       } else {
-        console.log(exercisesVal);
         exercisesVal.splice(x, 1);
-        console.log(exercisesVal);
+      }
+      if (exercisesVal.length === 0) {
+        exercisesVal = [{ exerciseId: 1, userSets: 1, userReps: 1 }];
       }
       setDay7({ dayOfWeek: "Sunday", exercises: exercisesVal });
     }
@@ -951,7 +952,6 @@ const WorkoutUpdate = () => {
   // updating state with exercise Id
   const setExercise = (e) => {
     let x = e.target.value;
-    console.log(x);
     let y = e.target.id;
     let z = parseInt(e.target.name);
     let exerciseArr = [];
@@ -995,34 +995,53 @@ const WorkoutUpdate = () => {
 
   return (
     <div>
-      <button className="hover:font-bold text-white" onClick={addWeek}>
-        Click here to add another week
-      </button>
-      <div className="grid grid-flow-col text-center mx-auto bg-purple-100">
+      <h1 className="text-xl font-semi-bold text-purple-200 text-center">
+        {" "}
+        {workoutPlan.title}
+      </h1>
+      <br></br>
+      <div className="flex justify-between pb-2">
+        <button
+          className="hover:font-bold bg-white rounded-lg p-1"
+          onClick={addWeek}
+        >
+          Add another week
+        </button>
+        <Link
+          className="bg-white rounded-lg p-1 hover:font-bold"
+          to={`/workoutplan/${workoutPlan._id}`}
+        >
+          View plan page
+        </Link>
+      </div>
+
+      <div className="grid grid-flow-col text-center mx-auto bg-purple-100 rounded-t-lg">
         <br></br>
-        {weeks.map((week, index) => {
-          return (
-            <button
-              className="bg-purple-100 hover:font-bold"
-              key={index}
-              onClick={(e) => weekChange(e)}
-              value={week.weekNumber}
-            >
-              Edit Week {week.weekNumber}
-            </button>
-          );
-        })}
+        <div className="flex justify-between py-2">
+          Edit Week
+          {weeks.map((week, index) => {
+            return (
+              <button
+                className="bg-purple-100 hover:font-bold rounded-full px-2 border-2"
+                key={index}
+                onClick={(e) => weekChange(e)}
+                value={week.weekNumber}
+              >
+                {week.weekNumber}
+              </button>
+            );
+          })}
+        </div>
         <br></br>
       </div>
-      <br></br>
       <div key={weeks.weekNumber}>
-        <div className="grid grid-cols-7 text-center bg-purple-100">
-          <h1 className="col-span-7 text-xl text-white pb-5">
-            --- Week: {weekDisplay} ---
-          </h1>
+        <h1 className=" text-xl text-center bg-purple-100 text-white py-2 underline">
+          Week {weekDisplay}
+        </h1>
+        <div className="grid grid-cols-2 sm:grid-cols-7 md:grid-cols-7 lg:grid-cols-7 text-center bg-purple-100">
           <div className={`${isActive1 ? "f" : "hidden"}`}>
             <button
-              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100"
+              className="text-sm md:text-lg lg:text-xl hover:text-white hover:cursor-pointer hover:font-bold bg-purple-100 no-underline"
               onClick={(e) => {
                 toggleDisplay(e);
                 addDay(e);
@@ -1207,7 +1226,7 @@ const WorkoutUpdate = () => {
                   if (index === 0) {
                     return (
                       <div key={index}>
-                        <div className="grid grid-cols-5 gap-2">
+                        <div className="grid grid-cols-5 gap-2 pb-1">
                           <select
                             id={day.dayOfWeek}
                             name={index}
@@ -1258,7 +1277,7 @@ const WorkoutUpdate = () => {
                           {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
 
                           <button
-                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold rounded-lg"
                             data-id={index}
                             value={day.dayOfWeek}
                             onClick={(e) => removeExercise(e)}
@@ -1271,7 +1290,7 @@ const WorkoutUpdate = () => {
                   } else
                     return (
                       <div key={index}>
-                        <div className="grid grid-cols-5 gap-2">
+                        <div className="grid grid-cols-5 gap-2 pb-1">
                           <select
                             id={day.dayOfWeek}
                             name={index}
@@ -1322,7 +1341,7 @@ const WorkoutUpdate = () => {
                           {/* Future implementation to allow user to add a specific detail or description for doing exercise in their workout */}
 
                           <button
-                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold"
+                            className="text-sm md:text-lg lg:text-xl hover:text-white bg-purple-200 hover:cursor-pointer hover:font-bold rounded-lg"
                             data-id={index}
                             value={day.dayOfWeek}
                             onClick={(e) => removeExercise(e)}
@@ -1339,21 +1358,21 @@ const WorkoutUpdate = () => {
         </div>
         <div className="grid grid-flow-col text-center mx-auto">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-b-lg focus:outline-none focus:shadow-outline"
             type="button"
             onClick={planUpdate}
           >
             Update week {weekDisplay}
           </button>
           <button
-            className="text-sm md:text-lg lg:text-xl bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="text-sm md:text-lg lg:text-xl bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-b-lg focus:outline-none focus:shadow-outline"
             onClick={removeWeek}
           >
             Remove week
           </button>
         </div>
         <br></br>
-        <p id="update" className="text-xl text-center text-white"></p>
+        <p id="update" className="text-xl text-center text-white pb-4"></p>
       </div>
     </div>
   );
