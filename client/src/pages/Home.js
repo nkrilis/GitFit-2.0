@@ -13,6 +13,8 @@ const Home = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  console.log(workoutList);
   // returns list of current workout plans available with links to each when clicked
   return (
     <main>
@@ -27,6 +29,7 @@ const Home = () => {
                 <div className="absolute top-0 right-1">
                   {workout.likes} <BiLike size={48} />{" "}
                 </div>
+
                 <Link
                   className="items-center"
                   to={`/workoutplan/${workout._id}`}
@@ -38,6 +41,8 @@ const Home = () => {
                   </div>
                   <div> {workout.type}</div>
                   <div> {workout.description}</div>
+                  <div> {workout.numOfWeeks}</div>
+                  <div> {workout.ownerId.username}</div>
                 </Link>
               </div>
             );

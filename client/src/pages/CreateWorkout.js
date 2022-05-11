@@ -98,7 +98,7 @@ const CreateWorkout = () => {
 
   return (
     <div className="container">
-      <form className="bg-purple-100 shadow-md px-2 py-2">
+      <form className="bg-purple-100 shadow-md px-2 py-2 rounded-lg">
         <div className="block lg:grid lg:grid-cols-6 gap-2">
           <label htmlFor="name">Workout plan name:</label>
           <input
