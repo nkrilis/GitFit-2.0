@@ -36,7 +36,7 @@ const Home = () => {
                 >
                   {" "}
                   <div className="items-center text-purple-100 text-bold text-lg">
-                    <FcPlanner size={56} />
+                    <FcPlanner size={56} className="absolute top-2 left-2" />
                     {workout.title}
                   </div>
                   <div> {workout.type}</div>

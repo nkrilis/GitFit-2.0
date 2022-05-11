@@ -8,27 +8,18 @@ export const QUERY_USER = gql`
       username
       workoutPlan {
         _id
+        ownerId {
+          _id
+          username
+        }
         title
         description
         type
         numOfWeeks
+        likes
         plan {
           weeks {
             weekNumber
-            days {
-              dayOfWeek
-              exercises {
-                exerciseId {
-                  _id
-                  name
-                  description
-                  muscleGroup
-                  video
-                }
-                userSets
-                userReps
-              }
-            }
           }
         }
       }
@@ -44,27 +35,18 @@ export const QUERY_ME = gql`
       username
       workoutPlan {
         _id
+        ownerId {
+          _id
+          username
+        }
         title
         description
         type
         numOfWeeks
+        likes
         plan {
           weeks {
             weekNumber
-            days {
-              dayOfWeek
-              exercises {
-                exerciseId {
-                  _id
-                  name
-                  description
-                  muscleGroup
-                  video
-                }
-                userSets
-                userReps
-              }
-            }
           }
         }
       }

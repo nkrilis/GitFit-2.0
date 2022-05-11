@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
-import { CREATE_WORKOUT_PLAN } from "../utils/mutations";
+import {
+  CREATE_WORKOUT_PLAN,
+  ADD_WORKOUT_PLAN_TO_USER,
+} from "../utils/mutations";
 
 import Auth from "../utils/auth";
 import decode from "jwt-decode";
 
 const CreateWorkout = () => {
   const [createWorkoutPlan] = useMutation(CREATE_WORKOUT_PLAN);
+  const [addWorkoutPlanToUser] = useMutation(ADD_WORKOUT_PLAN_TO_USER);
 
   const [planDetails, setPlanDetails] = useState({
     title: "Name here",
@@ -53,6 +57,13 @@ const CreateWorkout = () => {
             weeks: weeksArr,
           },
         ],
+      },
+    });
+
+    await addWorkoutPlanToUser({
+      variables: {
+        id: decoded.data._id,
+        workoutPlan: workoutId,
       },
     });
   };
