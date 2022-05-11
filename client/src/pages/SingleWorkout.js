@@ -31,8 +31,6 @@ const SingleWorkout = () => {
 
   console.log(workout);
 
-  const decoded = decode(localStorage.getItem("id_token"));
-
   useEffect(() => {
     if (!loading) {
       if (workout.userLikes.includes(decoded.data._id) === true) {
@@ -41,9 +39,11 @@ const SingleWorkout = () => {
     }
   }, [workout.plan]);
 
-  if (!Auth.loggedIn()) {
+  if (Auth.loggedIn() === false) {
     return <Navigate to="/login" />;
   }
+
+  const decoded = decode(localStorage.getItem("id_token"));
 
   const addClick = async (event) => {
     event.preventDefault();
@@ -144,19 +144,19 @@ const SingleWorkout = () => {
                     <h1 className="font-bold bg-purple-100 text-xl text-center rounded-t-lg">
                       {day.dayOfWeek}
                     </h1>
-                    <table className="w-full bg-gray border-t border-b border-black rounded-lg ">
+                    <table className="w-fit table-fixed bg-gray border-t border-b border-black rounded-lg ">
                       <thead className="bg-white">
-                        <tr>
-                          <th className="w-1.5 text-center px-4 py-4 border-r border-black">
+                        <tr className="row space-x-3">
+                          <th className="w-2/4 text-center border-r border-black">
                             <div className="font-bold">Exercise</div>
                           </th>
-                          <th className="w-1.5 text-center px-4 py-4 border-r border-black">
+                          <th className="w-3/12 text-center border-r border-black">
                             <div className="font-bold">Sets</div>
                           </th>
-                          <th className="w-1.5 text-center px-4 py-4 border-r border-black">
+                          <th className="w-3/12 text-center border-r border-black">
                             <div className="font-bold">Reps</div>
                           </th>
-                          <th className="w-1.5 text-center px-4 py-4">
+                          <th className="w-3/4 text-center  ">
                             <div className="font-bold">Description</div>
                           </th>
                         </tr>
@@ -165,21 +165,21 @@ const SingleWorkout = () => {
                         if (index % 2 === 0) {
                           return (
                             <tbody key={index}>
-                              <tr>
-                                <td className="border-t border-r border-black">
+                              <tr className="row">
+                                <td className="text-center break-words border-t border-r border-black col">
                                   <Link
                                     to={`/exercise/${exercise.exerciseId._id}`}
                                   >
                                     {exercise.exerciseId.name}
                                   </Link>
                                 </td>
-                                <td className="text-center border-t border-r border-black">
+                                <td className="text-center border-t border-r border-black w-0">
                                   {exercise.userSets}
                                 </td>
-                                <td className="text-center border-t border-r border-black">
+                                <td className="text-center border-t border-r border-black w-0">
                                   {exercise.userReps}
                                 </td>
-                                <td className="border-t border-blac">
+                                <td className="p-2 border-t border-black border-b col">
                                   {exercise.exerciseId.description}
                                 </td>
                               </tr>
@@ -188,8 +188,8 @@ const SingleWorkout = () => {
                         } else {
                           return (
                             <tbody key={index} className=" bg-white">
-                              <tr>
-                                <td className="border-t border-r border-black">
+                              <tr className="row">
+                                <td className="text-center break-words border-t border-r border-black">
                                   <Link
                                     to={`/exercise/${exercise.exerciseId._id}`}
                                   >
@@ -202,7 +202,7 @@ const SingleWorkout = () => {
                                 <td className="text-center border-t border-r border-black">
                                   {exercise.userReps}
                                 </td>
-                                <td className="">
+                                <td className="p-2 border-t border-black border-b">
                                   {exercise.exerciseId.description}
                                 </td>
                               </tr>
@@ -326,19 +326,19 @@ const SingleWorkout = () => {
                   <h1 className="font-bold bg-purple-100 text-xl text-center rounded-t-lg">
                     {day.dayOfWeek}
                   </h1>
-                  <table className="w-full bg-gray border-t border-b border-black rounded-lg ">
+                  <table className="w-fit table-fixed bg-gray border-t border-b border-black rounded-b-lg ">
                     <thead className="bg-white">
                       <tr>
-                        <th className="w-1.5 text-center px-4 py-4 border-r border-black">
+                        <th className="w-2/4 text-center px-4 py-4 border-r border-black">
                           <div className="font-bold">Exercise</div>
                         </th>
-                        <th className="w-1.5 text-center px-4 py-4 border-r border-black">
+                        <th className="w-3/12 text-center px-4 py-4 border-r border-black">
                           <div className="font-bold">Sets</div>
                         </th>
-                        <th className="w-1.5 text-center px-4 py-4 border-r border-black">
+                        <th className="w-3/12 text-center px-4 py-4 border-r border-black">
                           <div className="font-bold">Reps</div>
                         </th>
-                        <th className="w-1.5 text-center px-4 py-4">
+                        <th className="w-3/4 text-center px-4 py-4">
                           <div className="font-bold">Description</div>
                         </th>
                       </tr>
@@ -348,7 +348,7 @@ const SingleWorkout = () => {
                         return (
                           <tbody key={index}>
                             <tr>
-                              <td className="border-t border-r border-black">
+                              <td className="text-center break-words border-t border-r border-black">
                                 <Link
                                   to={`/exercise/${exercise.exerciseId._id}`}
                                 >
@@ -361,7 +361,7 @@ const SingleWorkout = () => {
                               <td className="text-center border-t border-r border-black">
                                 {exercise.userReps}
                               </td>
-                              <td className="border-t border-blac">
+                              <td className="border-t border-black p-2">
                                 {exercise.exerciseId.description}
                               </td>
                             </tr>
@@ -369,9 +369,9 @@ const SingleWorkout = () => {
                         );
                       } else {
                         return (
-                          <tbody key={index} className=" bg-white">
+                          <tbody key={index} className=" bg-white rounded-b-lg">
                             <tr>
-                              <td className="border-t border-r border-black">
+                              <td className="text-center break-words border-t border-r border-black">
                                 <Link
                                   to={`/exercise/${exercise.exerciseId._id}`}
                                 >
@@ -384,7 +384,7 @@ const SingleWorkout = () => {
                               <td className="text-center border-t border-r border-black">
                                 {exercise.userReps}
                               </td>
-                              <td className="">
+                              <td className="border-t border-black p-2">
                                 {exercise.exerciseId.description}
                               </td>
                             </tr>
