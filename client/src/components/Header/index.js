@@ -20,9 +20,9 @@ const Header = () => {
           />
         </div>
       </Link>
-      <div className="grid grid-cols-1 sm:flex md:flex lg:flex">
+      <div className="grid grid-cols-1 sm:flex md:flex lg:flex -mt-5 sm:mt-0 md:mt-0 lg:mt-0">
         <Link
-          className="inline-flex items-center pr-3 md:pr-6 lg:pr-9 text-white hover:text-purple-200"
+          className="inline-flex items-center pr-3 md:pr-6 lg:pr-9 text-white hover:text-purple-200 pt-0.5"
           to="/exercise"
         >
           Exercises
@@ -31,13 +31,13 @@ const Header = () => {
         {Auth.loggedIn() ? (
           <>
             <Link
-              className="inline-flex items-center pr-3 md:pr-6 lg:pr-9 text-white hover:text-purple-200"
+              className="inline-flex items-center pr-3 md:pr-6 lg:pr-9 text-white hover:text-purple-200 pt-0.5"
               to="/me"
             >
               Profile
             </Link>
             <button
-              className="inline-flex items-center text-white hover:text-purple-200"
+              className="inline-flex items-center text-white hover:text-purple-200 pt-0.5"
               onClick={logout}
             >
               Logout
@@ -46,13 +46,13 @@ const Header = () => {
         ) : (
           <>
             <Link
-              className="inline-flex items-center pr-3 md:pr-6 lg:pr-9 text-white hover:text-purple-200"
+              className="inline-flex items-center pr-3 md:pr-6 lg:pr-9 text-white hover:text-purple-200 pt-0.5"
               to="/login"
             >
               Login
             </Link>
             <Link
-              className="inline-flex items-center text-white hover:text-purple-200"
+              className="inline-flex items-center text-white hover:text-purple-200 pt-0.5"
               to="/signup"
             >
               Signup
