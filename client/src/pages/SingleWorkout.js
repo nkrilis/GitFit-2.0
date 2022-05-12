@@ -254,9 +254,9 @@ const SingleWorkout = () => {
               addLike();
               setUserLike(!userLike);
             }}
-            className="hover:cursor-pointer hover:text-white absolute top-3 left-5"
+            className="hover:cursor-pointer hover:text-white absolute top-1 left-0"
           >
-            <BiLike size={44} /> Like
+            <BiLike size={36} /> Like
           </button>
         </div>
         <div className={`${userLike ? "hidden" : "f"}`}>
@@ -265,7 +265,7 @@ const SingleWorkout = () => {
               removeLike();
               setUserLike(!userLike);
             }}
-            className="hover:cursor-pointer hover:text-white absolute top-3 left-5"
+            className="hover:cursor-pointer hover:text-white absolute top-1 left-1"
           >
             Remove like
           </button>
