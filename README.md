@@ -1,7 +1,7 @@
 # GitFit-2.0
 
 <p align="center">
-  <img width="300" height="300" src="/client/src/assets/images/logo.png">
+  <a href="https://gitfit-2.herokuapp.com/"><img width="300" height="300" src="/client/src/assets/images/logo.png"></a>
 </p>
 
 ## Description
