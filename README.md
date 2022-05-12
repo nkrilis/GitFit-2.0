@@ -6,29 +6,28 @@
 
 ## Description
 
-GitFit is a [React.js](https://reactjs.org/)-driven application designed to discover and organize your workouts, track progress, and interact with users and trainers. [Node.js](https://nodejs.org/en/) and [Express.js](https://expressjs.com/) are used as the server-side framework, and data is handled by [GraphQL](https://graphql.org/), [MongoDB](https://www.mongodb.com/) and [MongoDB Atlas](https://www.mongodb.com/atlas).
-
-
-
-Features:
-
-- Sign up, log in, and manage profile
-- View homepage
-- View workouts
-- Connect with other users
-
-
+GitFit is an application that allows users to signup, login, and view workout plans. Workout plans are created by other users and can be viewed by anyone who has an account. Users can like workout plans and save them to their profile for quicker viewing. In addition all users have the ability to create and update their workout plans by using our growing database of exercises. All exercises have a breif description and video tutorial viewed by simply clicking the exercise.
 
 ## Table of Contents
 
-  * [Description](#description)
-  * [How to Use](#usage)
+  * [Technologies Used](#technologies-used)
+  * [How to Use](#how-to-use)
   * [Demo](#demo)
-  * [Screenshots](#screenshots)
   * [Future Development](#future-development)
-  * [Questions](#questions)
-  * [GitFit Team](#gitfit-team)
+  * [Contact Us](#contact-us)
 
+## Technologies Used:
+
+- React
+- Javascript
+- Tailwind Framework
+- GraphQL
+- Apollo Express
+- MongoDB
+- Node.js
+- Express.js
+- HTML
+- CSS
 
 ## How to Use
 See Demo
@@ -74,15 +73,15 @@ Deployed to Heroku here: [gitfit.app](https://www.gitfit.app/)
 
 
 ## Future Development
-- User-created workouts
-- Created workouts accessible by other users
-- Paid features for personal trainer accounts
+- Click on a Trainer  to see a profile page displaying social media and contact info
+- Paid features for personal trainer accounts for users to gain access to exclusive plans
+- User feedback/social media commenting
+- Nutrition plans and special diets that can be tagged to specific workouts
+- Admin accounts to monitor creation of plans and comments from users
+- Creating our own algorithm for encrypting passwords and setting up a payment service
 
 
-## Questions
-You may contact the GitFit team on GitHub.
-
-## GitFit Team:
+## Contact Us:
 
 
 <p align="center">
@@ -91,9 +90,6 @@ You may contact the GitFit team on GitHub.
   </a>
   <a href="https://github.com/MpAlfano">
     <img width="200" height="255" src="/client/src/assets/images/MpAlfano.jpg">
-  </a>
-  <a href="https://github.com/ericfrancey">
-    <img width="200" height="255" src="/client/src/assets/images/ericfrancey.jpg">
   </a>
 </p>
 
