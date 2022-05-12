@@ -83,7 +83,9 @@ const Profile = () => {
 
   return (
     <main className="px-2">
-      <h1 className="text-white text-center pb-1 text-lg bold">My created plans</h1>
+      <h1 className="text-white text-center pb-1 text-lg bold">
+        My created plans
+      </h1>
       <br></br>
       <div className="text-white hover:text-purple-100 py-2 bg-purple-200 text-center rounded bold">
         <Link to="/createworkoutplan/">Create a workout</Link>
@@ -122,9 +124,11 @@ const Profile = () => {
           })}
         </div>
       </div>
-      <h1 className="text-white text-center pb-2 text-lg bold">My saved workout plans</h1>
+      <h1 className="text-white text-center pb-2 text-lg bold">
+        My saved workout plans
+      </h1>
       <br></br>
-      <div className="flex-row justify-center" key={user._id}>
+      <div className="flex-row justify-center pb-5" key={user._id}>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
           {user.workoutPlan?.map((workout) => {
             if (workout.ownerId._id !== decoded.data._id) {

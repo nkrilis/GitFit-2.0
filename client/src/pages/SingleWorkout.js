@@ -12,6 +12,7 @@ import { BiLike } from "react-icons/bi";
 
 import Auth from "../utils/auth";
 import decode from "jwt-decode";
+import { isCompositeType } from "graphql";
 
 const SingleWorkout = () => {
   const { _id: userParam } = useParams();
@@ -179,15 +180,38 @@ const SingleWorkout = () => {
                                 <td className="text-center border-t border-r border-black w-0">
                                   {exercise.userReps}
                                 </td>
-                                <td className="p-2 border-t border-black border-b col">
+                                <td className="p-2 border-t border-black border-b">
                                   {exercise.exerciseId.description}
                                 </td>
                               </tr>
                             </tbody>
                           );
-                        } else {
+                        } else if (day.exercises.length - 1 === index) {
                           return (
-                            <tbody key={index} className=" bg-white">
+                            <tbody key={index} className="bg-white">
+                              <tr className="row">
+                                <td className="text-center break-words border-t border-r border-black rounded-b-lg">
+                                  <Link
+                                    to={`/exercise/${exercise.exerciseId._id}`}
+                                  >
+                                    {exercise.exerciseId.name}
+                                  </Link>
+                                </td>
+                                <td className="text-center border-t border-r border-black">
+                                  {exercise.userSets}
+                                </td>
+                                <td className="text-center border-t border-r border-black">
+                                  {exercise.userReps}
+                                </td>
+                                <td className="p-2 border-t border-black border-b rounded-b-lg">
+                                  {exercise.exerciseId.description}
+                                </td>
+                              </tr>
+                            </tbody>
+                          );
+                        } else
+                          return (
+                            <tbody key={index} className="bg-white">
                               <tr className="row">
                                 <td className="text-center break-words border-t border-r border-black">
                                   <Link
@@ -208,7 +232,6 @@ const SingleWorkout = () => {
                               </tr>
                             </tbody>
                           );
-                        }
                       })}
                     </table>
                   </div>
@@ -367,10 +390,33 @@ const SingleWorkout = () => {
                             </tr>
                           </tbody>
                         );
+                      } else if (day.exercises.length - 1 === index) {
+                        return (
+                          <tbody key={index} className="bg-white">
+                            <tr className="row">
+                              <td className="text-center break-words border-t border-r border-black rounded-b-lg">
+                                <Link
+                                  to={`/exercise/${exercise.exerciseId._id}`}
+                                >
+                                  {exercise.exerciseId.name}
+                                </Link>
+                              </td>
+                              <td className="text-center border-t border-r border-black">
+                                {exercise.userSets}
+                              </td>
+                              <td className="text-center border-t border-r border-black">
+                                {exercise.userReps}
+                              </td>
+                              <td className="p-2 border-t border-black border-b rounded-b-lg">
+                                {exercise.exerciseId.description}
+                              </td>
+                            </tr>
+                          </tbody>
+                        );
                       } else {
                         return (
-                          <tbody key={index} className=" bg-white rounded-b-lg">
-                            <tr>
+                          <tbody key={index} className="bg-white">
+                            <tr className="row">
                               <td className="text-center break-words border-t border-r border-black">
                                 <Link
                                   to={`/exercise/${exercise.exerciseId._id}`}
@@ -384,7 +430,7 @@ const SingleWorkout = () => {
                               <td className="text-center border-t border-r border-black">
                                 {exercise.userReps}
                               </td>
-                              <td className="border-t border-black p-2">
+                              <td className="p-2 border-t border-black border-b">
                                 {exercise.exerciseId.description}
                               </td>
                             </tr>
