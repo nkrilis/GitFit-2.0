@@ -15,6 +15,7 @@ GitFit is an application that allows users to signup, login, and view workout pl
   * [Demo](#demo)
   * [Future Development](#future-development)
   * [Contact Us](#contact-us)
+  * [License](#license)
 
 ## Technologies Used:
 
@@ -98,5 +99,10 @@ Deployed to Heroku here: [gitfit.app](https://www.gitfit.app/)
   <img width="200" height="200" src="/client/src/assets/images/logo.png">
 </p>
  -->
+ ## License
+ 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+[GNU PUBLIC LICENSE](https://www.gnu.org/licenses/gpl-3.0)
 
 
