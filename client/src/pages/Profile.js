@@ -88,6 +88,7 @@ const Profile = () => {
       <div className="text-white hover:text-purple-100 py-2 bg-purple-200 text-center rounded bold">
         <Link to="/createworkoutplan/">Create a workout</Link>
       </div>
+      <br></br>
       <div className="flex-row justify-center pb-6" key={"edit" + user._id}>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3">
           {user.workoutPlan?.map((workout) => {
