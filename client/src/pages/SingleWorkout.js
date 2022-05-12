@@ -144,7 +144,7 @@ const SingleWorkout = () => {
                     <h1 className="font-bold bg-purple-100 text-xl text-center rounded-t-lg">
                       {day.dayOfWeek}
                     </h1>
-                    <table className="w-fit table-fixed bg-gray border-t border-b border-black rounded-lg ">
+                    <table className="w-full table-fixed bg-gray border-t border-b border-black rounded-lg ">
                       <thead className="bg-white">
                         <tr className="row space-x-3">
                           <th className="w-2/4 text-center border-r border-black">
@@ -326,7 +326,7 @@ const SingleWorkout = () => {
                   <h1 className="font-bold bg-purple-100 text-xl text-center rounded-t-lg">
                     {day.dayOfWeek}
                   </h1>
-                  <table className="w-fit table-fixed bg-gray border-t border-b border-black rounded-b-lg ">
+                  <table className="w-full table-fixed bg-gray border-t border-b border-black rounded-b-lg ">
                     <thead className="bg-white">
                       <tr>
                         <th className="w-2/4 text-center px-4 py-4 border-r border-black">
