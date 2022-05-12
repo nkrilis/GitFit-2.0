@@ -12,3 +12,9 @@
     top: 0;
     left: 0;
   }
+
+  @layer base {
+    html{
+      font-family: 'Exo 2', sans-serif;
+    }
+  }
