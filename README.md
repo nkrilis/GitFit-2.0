@@ -9,14 +9,14 @@
 GitFit is a [React.js](https://reactjs.org/)-driven application designed to discover and organize your workouts, track progress, and interact with users and trainers. [Node.js](https://nodejs.org/en/) and [Express.js](https://expressjs.com/) are used as the server-side framework, and data is handled by [GraphQL](https://graphql.org/), [MongoDB](https://www.mongodb.com/) and [MongoDB Atlas](https://www.mongodb.com/atlas).
 
 
-```md
+
 Features:
 
 - Sign up, log in, and manage profile
 - View homepage
 - View workouts
 - Connect with other users
-```
+
 
 
 ## Table of Contents
@@ -53,18 +53,24 @@ To run:
 ```
 
 ## Demo
-Deployed to Heroku here: [https://gitfit-2.herokuapp.com/](https://gitfit-2.herokuapp.com/)
+Deployed to Heroku here: [gitfit.app](https://www.gitfit.app/)
 
-## Screenshots
 
-![Screenshot (634)](https://user-images.githubusercontent.com/96558916/161861996-32921cdb-e876-4fad-8f64-56b8313f53ac.png)
-![Screen2](/client/src/assets/images/screenshot2.jpg)
-![Screen3](/client/src/assets/images/screenshot3.jpg)
-![Screen4](/client/src/assets/images/screenshot4.jpg)
-![Screen5](/client/src/assets/images/screenshot5.jpg)
-![Screenshot (638)](https://user-images.githubusercontent.com/96558916/161862020-74b84bfb-4c9a-41d6-8367-1e4f3e7a02a5.png)
-![Screenshot (640)](https://user-images.githubusercontent.com/96558916/161862032-235acb98-5253-48b6-a8c0-ba0a142a5346.png)
-![Screenshot (642)](https://user-images.githubusercontent.com/96558916/161862043-c1bf5300-2557-41ca-8b3e-2f77209e1608.png)
+
+### Mobile Application
+![GitFit-mobile](https://user-images.githubusercontent.com/22037181/168157609-4138e1cb-b845-40b9-8ac8-01f67b17ccf2.gif)
+
+### Desktop Application
+![GitFit-desktop](https://user-images.githubusercontent.com/22037181/168157245-d5576671-6295-43f8-9067-4bcd99406863.gif)
+
+### Profile Page
+
+![GitFit-Profile](https://user-images.githubusercontent.com/22037181/168158664-ab7fd61d-8103-454a-8949-0c6ebae32cea.png)
+
+### Create Workout Plan Page
+
+![GitFit-CreatePlan](https://user-images.githubusercontent.com/22037181/168159166-da5fd170-ee44-4571-991e-ec2a97d08a8f.png)
+
 
 
 ## Future Development
@@ -96,3 +102,5 @@ You may contact the GitFit team on GitHub.
   <img width="200" height="200" src="/client/src/assets/images/logo.png">
 </p>
  -->
+
+
