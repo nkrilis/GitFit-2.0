@@ -17,7 +17,7 @@ const Home = () => {
   // returns list of current workout plans available with links to each when clicked
   return (
     <main>
-      <div className="flex-row justify-center">
+      <div className="flex-row justify-center pb-5">
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-auto gap-3 px-2">
           {workoutList.map((workout) => {
             return (
