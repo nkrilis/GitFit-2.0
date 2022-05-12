@@ -15,7 +15,7 @@ const Exercise = () => {
   const exerciseList = data?.getExercises || [];
 
   return (
-    <div className="container flex-col justify-center items-center">
+    <div className="container flex-col justify-center items-center pb-5">
       {loading ? (
         <div>Loading...</div>
       ) : (
